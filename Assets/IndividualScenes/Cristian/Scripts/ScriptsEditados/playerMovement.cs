@@ -30,6 +30,7 @@ public class playerMovement : MonoBehaviour
     [Header("Estado del jugador")]
     public bool onGround;
     public bool pressingKey;
+    public bool useAcceleration;
 
     void Awake()
     {
@@ -65,5 +66,78 @@ public class playerMovement : MonoBehaviour
         {
             pressingKey = false;
         }
+
+        _desiredVelocity = new Vector2(_directionX, 0f) * Mathf.Max(maxSpeed, 0f);
+    }
+    private void FixedUpdate()
+    {
+        //Fixed update runs in sync with Unity's physics engine
+
+        //Get Kit's current ground status from her ground script
+        onGround = playerGround.instance.GetOnGround();
+
+        //Get the Rigidbody's current velocity
+        _velocity = _rb.linearVelocity;
+
+        if (useAcceleration)
+        {
+            runWithAcceleration();
+        }
+        else
+        {
+            if (onGround)
+            {
+                runWithoutAcceleration();
+            }
+            else
+            {
+                runWithAcceleration();
+            }
+        }
+    }
+
+    private void runWithAcceleration()
+    {
+        //Set our acceleration, deceleration, and turn speed stats, based on whether we're on the ground on in the air
+
+        _acceleration = onGround ? maxAcceleration : maxAirAcceleration;
+        _deceleration = onGround ? maxDecceleration : maxAirDeceleration;
+        _turnSpeed = onGround ? maxTurnSpeed : maxAirTurnSpeed;
+
+        if (pressingKey)
+        {
+            //If the sign (i.e. positive or negative) of our input direction doesn't match our movement, it means we're turning around and so should use the turn speed stat.
+            if (Mathf.Sign(_directionX) != Mathf.Sign(_velocity.x))
+            {
+                _maxSpeedChange = _turnSpeed * Time.deltaTime;
+            }
+            else
+            {
+                //If they match, it means we're simply running along and so should use the acceleration stat
+                _maxSpeedChange = _acceleration * Time.deltaTime;
+            }
+        }
+        else
+        {
+            //And if we're not pressing a direction at all, use the deceleration stat
+            _maxSpeedChange = _deceleration * Time.deltaTime;
+        }
+
+        //Move our velocity towards the desired velocity, at the rate of the number calculated above
+        _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange);
+
+        //Update the Rigidbody with this new velocity
+        _rb.linearVelocity = _velocity;
+
+    }
+
+    private void runWithoutAcceleration()
+    {
+        //If we're not using acceleration and deceleration, just send our desired velocity (direction * max speed) to the Rigidbody
+        _velocity.x = _desiredVelocity.x;
+
+        _rb.linearVelocity = _velocity;
     }
 }
+    
+
