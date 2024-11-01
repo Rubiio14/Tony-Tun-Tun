@@ -6723,7 +6723,19 @@ MonoBehaviour:
     m_ActionId: 0cec30aa-54dd-4da1-b451-d8bb1712e097
     m_ActionName: 'Player/Toolkit[/Keyboard/t]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678911364}
+        m_TargetAssemblyTypeName: playerJump, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6e703ba4-d99d-4c70-86ed-e32c8a1a8c5b
     m_ActionName: 'Player/Jump[/Keyboard/space,/Keyboard/j]'
   - m_PersistentCalls:
@@ -7268,6 +7280,7 @@ GameObject:
   - component: {fileID: 1678911358}
   - component: {fileID: 1678911357}
   - component: {fileID: 1678911356}
+  - component: {fileID: 1678911364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7524,6 +7537,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678911354}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1678911364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678911354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7daa398ba9c2b6646bb00c3f040603b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1678911360}
+  velocity: {x: 0, y: 0}
+  jumpHeight: 10
+  timeToJumpApex: 0.2
+  upwardMovementMultiplier: 0.85
+  downwardMovementMultiplier: 1.65
+  variablejumpHeight: 0
+  jumpCutOff: 3.91
+  speedLimit: 13.88
+  coyoteTime: 0.15
+  jumpBuffer: 0.15
+  jumpSpeed: 111.75377
+  gravMultiplier: 1
+  canJumpAgain: 0
+  onGround: 1
 --- !u!1 &1715677522
 GameObject:
   m_ObjectHideFlags: 0

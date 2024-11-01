@@ -71,9 +71,9 @@ public class playerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //Fixed update runs in sync with Unity's physics engine
+       
 
-        //Get Kit's current ground status from her ground script
+        //Get current ground status from her ground script
         onGround = playerGround.instance.GetOnGround();
 
         //Get the Rigidbody's current velocity
@@ -106,20 +106,20 @@ public class playerMovement : MonoBehaviour
 
         if (pressingKey)
         {
-            //If the sign (i.e. positive or negative) of our input direction doesn't match our movement, it means we're turning around and so should use the turn speed stat.
+            //If the sign of our input direction doesn't match our movement, we're turning around so should use the turn speed stat.
             if (Mathf.Sign(_directionX) != Mathf.Sign(_velocity.x))
             {
                 _maxSpeedChange = _turnSpeed * Time.deltaTime;
             }
             else
             {
-                //If they match, it means we're simply running along and so should use the acceleration stat
+                //If they match, it means we're running along and we use the acceleration stat
                 _maxSpeedChange = _acceleration * Time.deltaTime;
             }
         }
         else
         {
-            //And if we're not pressing a direction at all, use the deceleration stat
+            //If we're not pressing a direction we use the deceleration stat
             _maxSpeedChange = _deceleration * Time.deltaTime;
         }
 
