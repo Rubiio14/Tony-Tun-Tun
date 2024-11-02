@@ -134,8 +134,8 @@ public class playerJump : MonoBehaviour
         if (_desiredChargedJump)
         {
             //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
-            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
-            rb.gravityScale = (newGravity.y * 2/ Physics2D.gravity.y) * gravMultiplier;
+            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * 5) / (timeToJumpApex * timeToJumpApex));
+            rb.gravityScale = (newGravity.y/ Physics2D.gravity.y) * gravMultiplier;
             Debug.Log(rb.gravityScale);
         }
         else

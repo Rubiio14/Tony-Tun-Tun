@@ -26,8 +26,8 @@ public class PruebaBarra : MonoBehaviour
 
     private void Update()
     {
-        // Si el botón se está manteniendo presionado, incrementa el temporizador
-        if (isFilling)
+        // Si el botón se está manteniendo presionado y el personaje está en el suelo
+        if (isFilling && playerGround.instance.GetOnGround())
         {
             holdTime += Time.deltaTime;
 
