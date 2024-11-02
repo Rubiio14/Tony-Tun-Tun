@@ -27,19 +27,19 @@
                     "name": "Jump",
                     "type": "Value",
                     "id": "6e703ba4-d99d-4c70-86ed-e32c8a1a8c5b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
                     "name": "Skip",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "47b7bf0f-7dd4-4eb6-936a-5dfd26e8a27f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Continue",

@@ -9,17 +9,17 @@ public class playerJump : MonoBehaviour
     [HideInInspector] public Vector2 velocity;
 
     [Header("Jumping Stats")]
-    [SerializeField, Range(2f, 10f)] [Tooltip("Altura máxima de salto")] public float jumpHeight = 7.3f;
-    [SerializeField, Range(0.2f, 1.25f)] [Tooltip("Tiempo que tarda en llegar a la altura máxima de salto")] public float timeToJumpApex;
-    [SerializeField, Range(0f, 5f)] [Tooltip("Multiplicador de gravedad cuando está subiendo")] public float upwardMovementMultiplier = 1f;
-    [SerializeField, Range(1f, 10f)] [Tooltip("Multiplicador de gravedad cuando está bajando")] public float downwardMovementMultiplier = 6.17f;
+    [SerializeField, Range(2f, 10f)] [Tooltip("Altura mÃ¡xima de salto")] public float jumpHeight = 7.3f;
+    [SerializeField, Range(0.2f, 1.25f)] [Tooltip("Tiempo que tarda en llegar a la altura mÃ¡xima de salto")] public float timeToJumpApex;
+    [SerializeField, Range(0f, 5f)] [Tooltip("Multiplicador de gravedad cuando estÃ¡ subiendo")] public float upwardMovementMultiplier = 1f;
+    [SerializeField, Range(1f, 10f)] [Tooltip("Multiplicador de gravedad cuando estÃ¡ bajando")] public float downwardMovementMultiplier = 6.17f;
     //[SerializeField, Range(0, 1)] [Tooltip("How many times can you jump in the air?")] public int maxAirJumps = 0;
 
     [Header("Options")]
-    [Tooltip("Mantener pulsado para saltar más alto")] public bool variablejumpHeight;
-    [SerializeField, Range(1f, 10f)] [Tooltip("Cuanto mantener pulsado para alcanzar la altura máxima")] public float jumpCutOff;
-    [SerializeField] [Tooltip("Velocidad máxima de caida del personaje")] public float speedLimit;
-    [SerializeField, Range(0f, 0.3f)] [Tooltip("Duración del coyote time")] public float coyoteTime = 0.15f;
+    [Tooltip("Mantener pulsado para saltar mÃ¡s alto")] public bool variablejumpHeight;
+    [SerializeField, Range(1f, 10f)] [Tooltip("Cuanto mantener pulsado para alcanzar la altura mÃ¡xima")] public float jumpCutOff;
+    [SerializeField] [Tooltip("Velocidad mÃ¡xima de caida del personaje")] public float speedLimit;
+    [SerializeField, Range(0f, 0.3f)] [Tooltip("DuraciÃ³n del coyote time")] public float coyoteTime = 0.15f;
     [SerializeField, Range(0f, 0.3f)] [Tooltip("Distancia del suelo a la que guarda el Jump Buffer")] public float jumpBuffer = 0.15f;
 
     [Header("Calculations")]
@@ -35,6 +35,12 @@ public class playerJump : MonoBehaviour
     private bool _pressingJump;
     public bool onGround;
     private bool _currentlyJumping;
+
+    [Header("Charged Jump Current State")]
+    private bool _desiredChargedJump;
+    private bool _pressingChargedJump;
+  
+   
 
     void Awake()
     {
@@ -54,13 +60,22 @@ public class playerJump : MonoBehaviour
             //Also, use the started and canceled contexts to know if we're currently holding the button
             if (context.started)
             {
-                _desiredJump = true;
-                _pressingJump = true;
+                _pressingJump = false;
+                _pressingChargedJump = false;
             }
 
             if (context.canceled)
             {
-                _pressingJump = false;
+                if (PruebaBarra.instance.barImage.fillAmount >= 0.1)
+                {
+                    _desiredChargedJump = true;
+                    _pressingChargedJump = true;
+                }
+                else
+                {
+                    _desiredJump = true;
+                    _pressingJump = true;
+                }
             }
         }
     }
@@ -77,7 +92,7 @@ public class playerJump : MonoBehaviour
         {
             //Instead of immediately turning off "desireJump", start counting up...
             //All the while, the DoAJump function will repeatedly be fired off
-            if (_desiredJump)
+            if (_desiredJump || _desiredChargedJump)
             {
                 jumpBufferCounter += Time.deltaTime;
 
@@ -85,6 +100,17 @@ public class playerJump : MonoBehaviour
                 {
                     //If time exceeds the jump buffer, turn off "desireJump"
                     _desiredJump = false;
+                    jumpBufferCounter = 0;
+                }
+            }
+            else if (_desiredChargedJump)
+            {
+                jumpBufferCounter += Time.deltaTime;
+
+                if (jumpBufferCounter > jumpBuffer)
+                {
+                    //If time exceeds the jump buffer, turn off "desireJump"
+                    _desiredChargedJump = false;
                     jumpBufferCounter = 0;
                 }
             }
@@ -105,9 +131,20 @@ public class playerJump : MonoBehaviour
 
     private void setPhysics()
     {
-        //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
-        Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
-        rb.gravityScale = (newGravity.y / Physics2D.gravity.y) * gravMultiplier;
+        if (_desiredChargedJump)
+        {
+            //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
+            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
+            rb.gravityScale = (newGravity.y * 2/ Physics2D.gravity.y) * gravMultiplier;
+            Debug.Log(rb.gravityScale);
+        }
+        else
+        {
+            //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
+            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
+            rb.gravityScale = (newGravity.y / Physics2D.gravity.y) * gravMultiplier;
+        }
+        
     }
 
     private void FixedUpdate()
@@ -116,7 +153,7 @@ public class playerJump : MonoBehaviour
         velocity = rb.linearVelocity;
 
         //Keep trying to do a jump, for as long as desiredJump is true
-        if (_desiredJump)
+        if (_desiredJump || _desiredChargedJump)
         {
             DoAJump();
             rb.linearVelocity = velocity;
@@ -147,7 +184,7 @@ public class playerJump : MonoBehaviour
                 if (variablejumpHeight)
                 {
                     //Apply upward multiplier if player is rising and holding jump
-                    if (_pressingJump && _currentlyJumping)
+                    if (_pressingJump && _currentlyJumping || _pressingChargedJump && _currentlyJumping)
                     {
                         gravMultiplier = upwardMovementMultiplier;
                     }
@@ -203,6 +240,7 @@ public class playerJump : MonoBehaviour
         if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime) || canJumpAgain)
         {
             _desiredJump = false;
+            _desiredChargedJump = false;
             jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
 
@@ -231,6 +269,7 @@ public class playerJump : MonoBehaviour
         {
             //If we don't have a jump buffer, then turn off desiredJump immediately after hitting jumping
             _desiredJump = false;
+            _desiredChargedJump = false;
         }
     }
 

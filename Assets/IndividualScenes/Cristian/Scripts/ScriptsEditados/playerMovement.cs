@@ -74,7 +74,7 @@ public class playerMovement : MonoBehaviour
        
 
         //Get current ground status from her ground script
-        onGround = playerGround.instance.GetOnGround();
+        onGround = groundScript.GetOnGround();
 
         //Get the Rigidbody's current velocity
         _velocity = _rb.linearVelocity;
