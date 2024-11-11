@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
+using UnityEngine.InputSystem.Interactions;
 public class PruebaBarra : MonoBehaviour
 {
     public static PruebaBarra instance;
@@ -10,9 +10,12 @@ public class PruebaBarra : MonoBehaviour
     private float holdTime = 0f; // Temporizador para contar el tiempo que se mantiene presionado
     private float requiredHoldTime = 0.3f; // Tiempo requerido antes de comenzar el llenado
 
+    [Header("Trameo de saltos")]
+    public float halfBaseBar = 0f;
+
     private void Awake()
     {
-        barImage = transform.Find("JB").GetComponent<Image>();
+        //barImage = transform.Find("JB").GetComponent<Image>();
         barImage.fillAmount = 0f;
         if (instance == null)
         {

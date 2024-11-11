@@ -39,6 +39,7 @@ public class playerJump : MonoBehaviour
     [Header("Charged Jump Current State")]
     private bool _desiredChargedJump;
     private bool _pressingChargedJump;
+    private float _jumpMultiplier;
   
    
 
@@ -66,10 +67,56 @@ public class playerJump : MonoBehaviour
 
             if (context.canceled)
             {
-                if (PruebaBarra.instance.barImage.fillAmount >= 0.1)
+                if(jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
                 {
                     _desiredChargedJump = true;
                     _pressingChargedJump = true;
+                    //Base Bar
+                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
+                    {
+                        _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
+}
+                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5)
+                    {
+                        //First bar
+                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5)
+                        {
+                            _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
+                        }
+                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5)
+                        {
+                            //Second bar
+                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5)
+                            {
+                                _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
+                            }
+                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount >= 0.5)
+                            {
+                                //Third bar
+                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5)
+                                {
+                                    _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
+                                }
+                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
+                                {
+                                    _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
+                                }
+                                else
+                                {
+                                    _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
+                                }
+                            }
+                            else
+                            {
+                                _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
+                            }
+                        }
+                        else
+                        {
+                            _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
+                        }
+                    }
+                    
                 }
                 else
                 {
@@ -134,7 +181,7 @@ public class playerJump : MonoBehaviour
         if (_desiredChargedJump)
         {
             //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
-            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * 5) / (timeToJumpApex * timeToJumpApex));
+            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * _jumpMultiplier) / (timeToJumpApex * timeToJumpApex));
             rb.gravityScale = (newGravity.y/ Physics2D.gravity.y) * gravMultiplier;
             Debug.Log(rb.gravityScale);
         }
