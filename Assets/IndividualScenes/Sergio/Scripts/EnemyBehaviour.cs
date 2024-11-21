@@ -1,0 +1,34 @@
+using UnityEngine;
+
+public class EnemyBehaviour: MonoBehaviour
+{
+    public Transform[] waypoints;
+    public float movSpeed = 2.5f;
+    int currentWaypoint;
+
+   
+    private void Start()
+    {
+        currentWaypoint = 0;
+    }
+    void Update()
+    {
+        if (transform.position != waypoints[currentWaypoint].position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, movSpeed * Time.deltaTime);
+        }
+        else
+        {
+            currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+        } 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //ejecutar muerte jugador, llama a DeathAndRespawn 
+            DeathAndRespawnManager.instance.playerDeath = true;
+        }
+    }
+
+}
