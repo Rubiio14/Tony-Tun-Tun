@@ -9,7 +9,7 @@ public class playerMovement : MonoBehaviour
     playerGround groundScript;
 
     [Header("Movement Stats")]
-    [SerializeField, Range(0f, 20f)] [Tooltip("Velocidad máxima de movimeinto")] public float maxSpeed = 10f;
+    [SerializeField, Range(0f, 40f)] [Tooltip("Velocidad máxima de movimeinto")] public float maxSpeed = 10f;
     [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda en alcanzar la velocidad máxima")] public float maxAcceleration = 52f;
     [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda en decelerar")] public float maxDecceleration = 52f;
     [SerializeField, Range(0f, 100f)] [Tooltip("Velocidad a la que para al cambiar de dirección")] public float maxTurnSpeed = 80f;
@@ -21,7 +21,7 @@ public class playerMovement : MonoBehaviour
     //Cálculos
     private float _directionX;
     private Vector2 _desiredVelocity;
-    private Vector2 _velocity;
+    public Vector2 velocity;
     private float _maxSpeedChange;
     private float _acceleration;
     private float _deceleration;
@@ -77,7 +77,7 @@ public class playerMovement : MonoBehaviour
         onGround = groundScript.GetOnGround();
 
         //Get the Rigidbody's current velocity
-        _velocity = _rb.linearVelocity;
+        velocity = _rb.linearVelocity;
 
         if (useAcceleration)
         {
@@ -107,7 +107,7 @@ public class playerMovement : MonoBehaviour
         if (pressingKey)
         {
             //If the sign of our input direction doesn't match our movement, we're turning around so should use the turn speed stat.
-            if (Mathf.Sign(_directionX) != Mathf.Sign(_velocity.x))
+            if (Mathf.Sign(_directionX) != Mathf.Sign(velocity.x))
             {
                 _maxSpeedChange = _turnSpeed * Time.deltaTime;
             }
@@ -124,19 +124,19 @@ public class playerMovement : MonoBehaviour
         }
 
         //Move our velocity towards the desired velocity, at the rate of the number calculated above
-        _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange);
+        velocity.x = Mathf.MoveTowards(velocity.x, _desiredVelocity.x, _maxSpeedChange);
 
         //Update the Rigidbody with this new velocity
-        _rb.linearVelocity = _velocity;
+        _rb.linearVelocity = velocity;
 
     }
 
     private void runWithoutAcceleration()
     {
         //If we're not using acceleration and deceleration, just send our desired velocity (direction * max speed) to the Rigidbody
-        _velocity.x = _desiredVelocity.x;
+        velocity.x = _desiredVelocity.x;
 
-        _rb.linearVelocity = _velocity;
+        _rb.linearVelocity = velocity;
     }
 }
     

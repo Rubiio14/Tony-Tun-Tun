@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 public class playerJump : MonoBehaviour
@@ -7,6 +9,7 @@ public class playerJump : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     private playerGround _ground;
     [HideInInspector] public Vector2 velocity;
+    private playerJuice juice;
 
     [Header("Jumping Stats")]
     [SerializeField, Range(2f, 10f)] [Tooltip("Altura máxima de salto")] public float jumpHeight = 7.3f;
@@ -29,10 +32,10 @@ public class playerJump : MonoBehaviour
 
     [Header("Current State")]
     public bool canJumpAgain = false;
-    private bool _desiredJump;
+    public bool desiredJump;
     private float jumpBufferCounter;
     private float _coyoteTimeCounter = 0;
-    private bool _pressingJump;
+    public bool pressingJump;
     public bool onGround;
     private bool _currentlyJumping;
 
@@ -49,6 +52,7 @@ public class playerJump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _ground = GetComponent<playerGround>();
         _defaultGravityScale = 1f;
+        juice = GetComponentInChildren<playerJuice>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -61,7 +65,7 @@ public class playerJump : MonoBehaviour
             //Also, use the started and canceled contexts to know if we're currently holding the button
             if (context.started)
             {
-                _pressingJump = false;
+                pressingJump = false;
                 _pressingChargedJump = false;
             }
 
@@ -120,8 +124,14 @@ public class playerJump : MonoBehaviour
                 }
                 else
                 {
-                    _desiredJump = true;
-                    _pressingJump = true;
+                    if (juice != null)
+                    {
+                        //Apply the jumping effects on the juice script
+                        juice.jumpEffects();
+                        StartCoroutine(DelaySalto());
+                                            
+                    }
+                    
                 }
             }
         }
@@ -139,14 +149,14 @@ public class playerJump : MonoBehaviour
         {
             //Instead of immediately turning off "desireJump", start counting up...
             //All the while, the DoAJump function will repeatedly be fired off
-            if (_desiredJump || _desiredChargedJump)
+            if (desiredJump || _desiredChargedJump)
             {
                 jumpBufferCounter += Time.deltaTime;
 
                 if (jumpBufferCounter > jumpBuffer)
                 {
                     //If time exceeds the jump buffer, turn off "desireJump"
-                    _desiredJump = false;
+                    desiredJump = false;
                     jumpBufferCounter = 0;
                 }
             }
@@ -200,7 +210,7 @@ public class playerJump : MonoBehaviour
         velocity = rb.linearVelocity;
 
         //Keep trying to do a jump, for as long as desiredJump is true
-        if (_desiredJump || _desiredChargedJump)
+        if (desiredJump || _desiredChargedJump)
         {
             DoAJump();
             rb.linearVelocity = velocity;
@@ -231,7 +241,7 @@ public class playerJump : MonoBehaviour
                 if (variablejumpHeight)
                 {
                     //Apply upward multiplier if player is rising and holding jump
-                    if (_pressingJump && _currentlyJumping || _pressingChargedJump && _currentlyJumping)
+                    if (pressingJump && _currentlyJumping || _pressingChargedJump && _currentlyJumping)
                     {
                         gravMultiplier = upwardMovementMultiplier;
                     }
@@ -286,7 +296,7 @@ public class playerJump : MonoBehaviour
         //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
         if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime) || canJumpAgain)
         {
-            _desiredJump = false;
+            desiredJump = false;
             _desiredChargedJump = false;
             jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
@@ -309,13 +319,13 @@ public class playerJump : MonoBehaviour
             velocity.y += jumpSpeed;
             _currentlyJumping = true;
 
-            
+
         }
 
         if (jumpBuffer == 0)
         {
             //If we don't have a jump buffer, then turn off desiredJump immediately after hitting jumping
-            _desiredJump = false;
+            desiredJump = false;
             _desiredChargedJump = false;
         }
     }
@@ -324,5 +334,11 @@ public class playerJump : MonoBehaviour
     {
         //Used by the spring y pad
         rb.AddForce(Vector2.up * bounceAmount, ForceMode2D.Impulse);
+    }
+    IEnumerator DelaySalto()
+    {
+        yield return new WaitForSeconds(0.1f);
+        desiredJump = true;
+        pressingJump = true;
     }
 }
