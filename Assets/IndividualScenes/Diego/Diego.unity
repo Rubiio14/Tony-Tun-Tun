@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 179528274}
   - component: {fileID: 179528273}
   - component: {fileID: 179528272}
+  - component: {fileID: 179528276}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -635,13 +636,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179528271}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.8562671, z: -0.51653326, w: 0}
-  m_LocalPosition: {x: -1, y: 3.7933161, z: 20.310017}
-  m_LocalScale: {x: 5.7, y: 5.7, z: 5.7}
+  m_LocalRotation: {x: -0.017082896, y: 0.8557988, z: -0.5162506, w: -0.028318644}
+  m_LocalPosition: {x: -9, y: 7.293316, z: 11.810017}
+  m_LocalScale: {x: 8.05, y: 8.05, z: 8.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 62.2, y: 180, z: 0}
+  m_Father: {fileID: 1183373226}
+  m_LocalEulerAnglesHint: {x: 62.2, y: 183.79, z: 0}
+--- !u!95 &179528276
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179528271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2200795b986973b4f96af95779dfa240, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &180904403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,6 +2437,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8f6235afc2e2cf49b7960009314dc6d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 714354058}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8f6235afc2e2cf49b7960009314dc6d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 179528275}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f6235afc2e2cf49b7960009314dc6d, type: 3}
 --- !u!4 &1183373226 stripped
@@ -3686,7 +3712,7 @@ MonoBehaviour:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 0.9612311, b: 0, a: 1}
-    bottomRight: {r: 1, g: 0.9607843, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.9612311, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -4035,5 +4061,4 @@ SceneRoots:
   - {fileID: 292252847}
   - {fileID: 1481326909}
   - {fileID: 319642344}
-  - {fileID: 179528275}
   - {fileID: 177411605}
