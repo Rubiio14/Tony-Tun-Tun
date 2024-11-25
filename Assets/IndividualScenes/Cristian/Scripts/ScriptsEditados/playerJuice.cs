@@ -50,6 +50,5 @@ public class playerJuice : MonoBehaviour
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
-
     }
 }
