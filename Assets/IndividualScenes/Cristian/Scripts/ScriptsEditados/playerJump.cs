@@ -73,8 +73,12 @@ public class playerJump : MonoBehaviour
             {
                 if(jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
                 {
-                    _desiredChargedJump = true;
-                    _pressingChargedJump = true;
+                    
+                    if (!_currentlyJumping)
+                    {
+                        juice.chargedjumpEffects();
+                        StartCoroutine(DelayChargedSalto());
+                    }
                     //Base Bar
                     if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
                     {
@@ -127,8 +131,12 @@ public class playerJump : MonoBehaviour
                     if (juice != null)
                     {
                         //Apply the jumping effects on the juice script
-                        juice.jumpEffects();
-                        StartCoroutine(DelaySalto());
+                        if(!_currentlyJumping)
+                        {
+                            juice.jumpEffects();
+                            StartCoroutine(DelaySalto());
+                        }
+                        
                                             
                     }
                     
@@ -214,6 +222,7 @@ public class playerJump : MonoBehaviour
         {
             DoAJump();
             rb.linearVelocity = velocity;
+            
 
             //Skip gravity calculations this frame, so currentlyJumping doesn't turn off
             //This makes sure you can't do the coyote time double jump bug
@@ -340,5 +349,11 @@ public class playerJump : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         desiredJump = true;
         pressingJump = true;
+    }
+    IEnumerator DelayChargedSalto()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _desiredChargedJump = true;
+        _pressingChargedJump = true;
     }
 }
