@@ -7,7 +7,7 @@ public class playerJuice : MonoBehaviour
     [Header("Components")]
     playerMovement moveScript;
     playerJump jumpScript;
-    [SerializeField]  public Animator myAnimator;
+    [SerializeField] Animator myAnimator;
     [Header("Calculations")]
     public float runningSpeed;
     public bool playerGrounded;
@@ -50,30 +50,21 @@ public class playerJuice : MonoBehaviour
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
-        //StartCoroutine(RestartIdle(0.01f, 1.5f));
+        StartCoroutine(RestartIdle(0.01f, 1f));
     }
     public void chargedjumpEffects()
     {
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("ChargedJump");
-        //StartCoroutine(RestartIdle(0.01f, 1.5f));
-    }
-    public void isFalling()
-    {
-        myAnimator.SetBool("IsFalling", true);
-    }
-    public void resetFalling()
-    {
-        myAnimator.SetBool("IsFalling", false);
+        StartCoroutine(RestartIdle(0.01f, 1.5f));
     }
 
-    /*IEnumerator RestartIdle(float time, float timelanded)
+    IEnumerator RestartIdle(float time, float timelanded)
     {
-        //yield return new WaitForSeconds(time);
-        //myAnimator.SetBool("IsFalling", true);
-        //yield return new WaitForSeconds(timelanded);
-        //myAnimator.SetBool("IsFalling", false);
+        yield return new WaitForSeconds(time);
+        myAnimator.SetBool("IsFalling", true);
+        yield return new WaitForSeconds(timelanded);
+        myAnimator.SetBool("IsFalling", false);
     }
-    */
 }

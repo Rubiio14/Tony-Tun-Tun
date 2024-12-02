@@ -43,8 +43,7 @@ public class playerJump : MonoBehaviour
     private bool _desiredChargedJump;
     private bool _pressingChargedJump;
     private float _jumpMultiplier;
-    
-    public bool canChargedjump = true;
+  
    
 
     void Awake()
@@ -72,70 +71,61 @@ public class playerJump : MonoBehaviour
 
             if (context.canceled)
             {
-                
-                    if (canChargedjump)
+                if(jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
+                {
+                    
+                    if (!_currentlyJumping)
                     {
                         juice.chargedjumpEffects();
-                        //_desiredChargedJump = true;
-                        //_pressingChargedJump = true;
                         StartCoroutine(DelayChargedSalto());
                     }
-                    else
+                    //Base Bar
+                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
                     {
-                        StartCoroutine(DelayChargedSaltoAgain());
-                    }
-
-                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
+                        _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
+}
+                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5)
                     {
-                        //Base Bar                  
-                        if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
+                        //First bar
+                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5)
                         {
-                            _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
+                            _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
                         }
-                        if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5)
+                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5)
                         {
-                            //First bar
-                            if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5)
+                            //Second bar
+                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5)
                             {
-                                _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
+                                _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
                             }
-                            if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5)
+                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount >= 0.5)
                             {
-                                //Second bar
-                                if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5)
+                                //Third bar
+                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5)
                                 {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
+                                    _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
                                 }
-                                if (jumpBarBehaviour.instance.secondBarImage.fillAmount >= 0.5)
+                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
                                 {
-                                    //Third bar
-                                    if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5)
-                                    {
-                                        _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
-                                    }
-                                    if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
-                                    {
-                                        _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
-                                    }
-                                    else
-                                    {
-                                        _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
-                                    }
+                                    _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
                                 }
                                 else
                                 {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
+                                    _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
                                 }
                             }
                             else
                             {
-                                _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
+                                _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
                             }
-                            canChargedjump = false;
                         }
-
+                        else
+                        {
+                            _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
+                        }
                     }
                     
+                }
                 else
                 {
                     if (juice != null)
@@ -211,7 +201,7 @@ public class playerJump : MonoBehaviour
             //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
             Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * _jumpMultiplier) / (timeToJumpApex * timeToJumpApex));
             rb.gravityScale = (newGravity.y/ Physics2D.gravity.y) * gravMultiplier;
-            Debug.Log("Cargado");
+            Debug.Log(rb.gravityScale);
         }
         else
         {
@@ -232,12 +222,12 @@ public class playerJump : MonoBehaviour
         {
             DoAJump();
             rb.linearVelocity = velocity;
-
+            
 
             //Skip gravity calculations this frame, so currentlyJumping doesn't turn off
             //This makes sure you can't do the coyote time double jump bug
             return;
-        }       
+        }
 
         calculateGravity();
     }
@@ -285,7 +275,6 @@ public class playerJump : MonoBehaviour
             //Don't change it if player is stood on something (such as a moving platform)
             {
                 gravMultiplier = _defaultGravityScale;
-                juice.resetFalling();
             }
             else
             {
@@ -312,8 +301,6 @@ public class playerJump : MonoBehaviour
 
     private void DoAJump()
     {
-        //FallingAnimationStart
-        juice.isFalling();
 
         //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
         if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime) || canJumpAgain)
@@ -330,8 +317,6 @@ public class playerJump : MonoBehaviour
             //This will ensure the jump is the exact same strength, no matter your velocity.
             if (velocity.y > 0f)
             {
-                
-                
                 jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
             }
             else if (velocity.y < 0f)
@@ -342,6 +327,8 @@ public class playerJump : MonoBehaviour
             //Apply the new jumpSpeed to the velocity. It will be sent to the Rigidbody in FixedUpdate;
             velocity.y += jumpSpeed;
             _currentlyJumping = true;
+
+
         }
 
         if (jumpBuffer == 0)
@@ -362,11 +349,6 @@ public class playerJump : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         desiredJump = true;
         pressingJump = true;
-    }
-    IEnumerator DelayChargedSaltoAgain()
-    {
-        yield return new WaitForSeconds(0.3f);
-        canChargedjump = true;
     }
     IEnumerator DelayChargedSalto()
     {
