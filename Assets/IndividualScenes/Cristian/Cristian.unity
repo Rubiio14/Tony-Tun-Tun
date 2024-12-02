@@ -11126,6 +11126,7 @@ MonoBehaviour:
   desiredJump: 0
   pressingJump: 0
   onGround: 1
+  canChargedjump: 1
 --- !u!1001 &1683846262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14052,6 +14053,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1678911360}
+    - target: {fileID: 8407458266005017978, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
+      propertyPath: jumpBuffer
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
