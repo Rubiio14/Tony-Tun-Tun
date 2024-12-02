@@ -19,7 +19,7 @@ public class playerJump : MonoBehaviour
     //[SerializeField, Range(0, 1)] [Tooltip("How many times can you jump in the air?")] public int maxAirJumps = 0;
 
     [Header("Options")]
-    [Tooltip("Mantener pulsado para saltar más alto")] public bool variablejumpHeight;
+    //[Tooltip("Mantener pulsado para saltar más alto")] public bool variablejumpHeight;
     [SerializeField, Range(1f, 10f)] [Tooltip("Cuanto mantener pulsado para alcanzar la altura máxima")] public float jumpCutOff;
     [SerializeField] [Tooltip("Velocidad máxima de caida del personaje")] public float speedLimit;
     [SerializeField, Range(0f, 0.3f)] [Tooltip("Duración del coyote time")] public float coyoteTime = 0.15f;
@@ -31,7 +31,7 @@ public class playerJump : MonoBehaviour
     public float gravMultiplier;
 
     [Header("Current State")]
-    public bool canJumpAgain = false;
+    //public bool canJumpAgain = false;
     public bool desiredJump;
     private float jumpBufferCounter;
     private float _coyoteTimeCounter = 0;
@@ -40,8 +40,8 @@ public class playerJump : MonoBehaviour
     private bool _currentlyJumping;
 
     [Header("Charged Jump Current State")]
-    private bool _desiredChargedJump;
-    private bool _pressingChargedJump;
+    public bool _desiredChargedJump;
+    //private bool _pressingChargedJump;
     private float _jumpMultiplier;
   
    
@@ -69,9 +69,9 @@ public class playerJump : MonoBehaviour
                 if(jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
                 {
                     
-                    if (!juice.myAnimator.GetBool("IsFalling"))
+                    if (onGround)
                     {
-                        juice.chargedjumpEffects();
+                        juice.chargedjumpEffects();                        
                         StartCoroutine(DelayChargedSalto());
                     }
                     //Base Bar
@@ -123,7 +123,7 @@ public class playerJump : MonoBehaviour
                 }
                 else
                 {
-                    if (!juice.myAnimator.GetBool("IsFalling"))
+                    if (onGround)
                     {
                         juice.jumpEffects();
                         StartCoroutine(DelaySalto());                                            
@@ -190,7 +190,6 @@ public class playerJump : MonoBehaviour
             //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
             Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * _jumpMultiplier) / (timeToJumpApex * timeToJumpApex));
             rb.gravityScale = (newGravity.y/ Physics2D.gravity.y) * gravMultiplier;
-            Debug.Log(rb.gravityScale);
         }
         else
         {
@@ -235,24 +234,32 @@ public class playerJump : MonoBehaviour
             }
             else
             {
+                Debug.Log("Else");
+                gravMultiplier = upwardMovementMultiplier;
                 //If we're using variable jump height...
+                /*
                 if (variablejumpHeight)
                 {
                     //Apply upward multiplier if player is rising and holding jump
                     if (pressingJump && _currentlyJumping || _pressingChargedJump && _currentlyJumping)
                     {
+                     
                         gravMultiplier = upwardMovementMultiplier;
                     }
                     //But apply a special downward multiplier if the player lets go of jump
                     else
                     {
+                  
                         gravMultiplier = jumpCutOff;
                     }
                 }
+                
                 else
                 {
+                    Debug.Log("Else");
                     gravMultiplier = upwardMovementMultiplier;
                 }
+                */
             }
         }
 
@@ -292,15 +299,23 @@ public class playerJump : MonoBehaviour
     {
 
         //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
-        if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime) || canJumpAgain)
+        if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime))
         {
-            desiredJump = false;
-            _desiredChargedJump = false;
+            //desiredJump = false;
+            //_desiredChargedJump = false;
             jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
 
             //Determine the power of the jump, based on our gravity and stats
-            jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight);
+            if (desiredJump)
+            {
+                jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight);
+            }
+            else
+            {
+                jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight * _jumpMultiplier);
+            }
+            
 
             //If player is moving up or down when she jumps (such as when doing a double jump), change the jumpSpeed;
             //This will ensure the jump is the exact same strength, no matter your velocity.
@@ -342,7 +357,9 @@ public class playerJump : MonoBehaviour
     IEnumerator DelayChargedSalto()
     {
         yield return new WaitForSeconds(0.2f);
+        rb.linearVelocityX = 0f;
+        yield return new WaitForSeconds(0.1f);
         _desiredChargedJump = true;
-        _pressingChargedJump = true;
+        //_pressingChargedJump = true;
     }
 }
