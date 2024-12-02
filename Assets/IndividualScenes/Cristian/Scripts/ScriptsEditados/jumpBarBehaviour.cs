@@ -12,6 +12,7 @@ public class jumpBarBehaviour : MonoBehaviour
     private bool _isBaseFilling = false; // Bandera para controlar el llenado
     private float holdTime = 0f; // Temporizador para contar el tiempo que se mantiene presionado
     private float requiredHoldTime = 0.3f; // Tiempo requerido antes de comenzar el llenado
+    public playerJuice juice;
 
     [Header("Trameo de salto base")]
     public float halfBaseBar = 0f;
@@ -48,7 +49,7 @@ public class jumpBarBehaviour : MonoBehaviour
     private void Update()
     {
         // Si el botón se está manteniendo presionado y el personaje está en el suelo
-        if (_isBaseFilling && playerGround.instance.GetOnGround())
+        if (_isBaseFilling && playerGround.instance.GetOnGround() || !juice.myAnimator.GetBool("IsFalling"))
         {
             holdTime += Time.deltaTime;
             if (_isBaseFilling && holdTime >= requiredHoldTime && baseBarImage.fillAmount < 1f)

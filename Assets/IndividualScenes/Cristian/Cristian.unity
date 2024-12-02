@@ -1012,6 +1012,7 @@ MonoBehaviour:
   firstBarImage: {fileID: 694821382}
   secondBarImage: {fileID: 1542118756}
   thirdBarImage: {fileID: 597063630}
+  juice: {fileID: 2089449838}
   halfBaseBar: 1.5
   maxBaseBar: 2
   halfFirstBar: 4
@@ -13439,6 +13440,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2921165275770636894, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
   m_PrefabInstance: {fileID: 5544308065492463649}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2089449838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1298194084722721982, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
+  m_PrefabInstance: {fileID: 5544308065492463649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e1ebc86497ab0489e9a93e1f372f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2097788727
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -63,18 +63,13 @@ public class playerJump : MonoBehaviour
         {
             //When we press the jump button, tell the script that we desire a jump.
             //Also, use the started and canceled contexts to know if we're currently holding the button
-            if (context.started)
-            {
-                pressingJump = false;
-                _pressingChargedJump = false;
-            }
 
             if (context.canceled)
             {
                 if(jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
                 {
                     
-                    if (!_currentlyJumping)
+                    if (!juice.myAnimator.GetBool("IsFalling"))
                     {
                         juice.chargedjumpEffects();
                         StartCoroutine(DelayChargedSalto());
@@ -128,16 +123,10 @@ public class playerJump : MonoBehaviour
                 }
                 else
                 {
-                    if (juice != null)
+                    if (!juice.myAnimator.GetBool("IsFalling"))
                     {
-                        //Apply the jumping effects on the juice script
-                        if(!_currentlyJumping)
-                        {
-                            juice.jumpEffects();
-                            StartCoroutine(DelaySalto());
-                        }
-                        
-                                            
+                        juice.jumpEffects();
+                        StartCoroutine(DelaySalto());                                            
                     }
                     
                 }
@@ -352,7 +341,7 @@ public class playerJump : MonoBehaviour
     }
     IEnumerator DelayChargedSalto()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         _desiredChargedJump = true;
         _pressingChargedJump = true;
     }

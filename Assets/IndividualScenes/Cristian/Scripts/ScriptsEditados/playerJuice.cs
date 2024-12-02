@@ -7,7 +7,7 @@ public class playerJuice : MonoBehaviour
     [Header("Components")]
     playerMovement moveScript;
     playerJump jumpScript;
-    [SerializeField] Animator myAnimator;
+    [SerializeField]  public Animator myAnimator;
     [Header("Calculations")]
     public float runningSpeed;
     public bool playerGrounded;
@@ -50,7 +50,7 @@ public class playerJuice : MonoBehaviour
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
-        StartCoroutine(RestartIdle(0.01f, 1f));
+        StartCoroutine(RestartIdle(0.01f, 0.5f));
     }
     public void chargedjumpEffects()
     {
