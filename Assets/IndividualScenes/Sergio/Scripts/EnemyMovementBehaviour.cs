@@ -5,6 +5,7 @@ public class EnemyMovementBehaviour : MonoBehaviour
     public Transform[] waypoints;
     public float movSpeed = 2.5f;
     int currentWaypoint;
+    public bool enemyFlying;
     public bool needRotation;
 
     private void Start()
@@ -19,10 +20,15 @@ public class EnemyMovementBehaviour : MonoBehaviour
         }
         else
         {
+            if(enemyFlying == false)
+            {
+                needRotation = true;
+            }
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
             if(needRotation == true)
             {
                 transform.Rotate(0, 180, 0);
+                needRotation = false;
             }
         } 
     }
