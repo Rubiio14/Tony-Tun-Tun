@@ -3,22 +3,7 @@ guid: b1170e1319662f049853e4d549121fc2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Botella
-    second: {fileID: 2100000, guid: 53ff4fa31d4d61040bf9b50e59001539, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Relleno
-    second: {fileID: 2100000, guid: 277cabce757582742b1174bc0f58c958, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tapon
-    second: {fileID: 2100000, guid: e6d8b788fb647784fbbfa3db6fd43eeb, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
