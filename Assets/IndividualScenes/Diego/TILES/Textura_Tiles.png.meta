@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,12 +108,2454 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Textura_Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3808
+        width: 172
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed8e599eee954c4789dad90c2ed6ad7
+      internalID: 952340532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 3816
+        width: 166
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6a691f5d90bfe4aa09f3ec58eb20f2
+      internalID: 1936760269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 3808
+        width: 476
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adbf2bd7953006b428b483d97cd4e29b
+      internalID: -1474034898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 3808
+        width: 156
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c11192c3992ac643bc9eb389f842c94
+      internalID: -707453550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 3810
+        width: 232
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ee7fe5b4751a34d86596bcb2dd8212
+      internalID: -692732903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 3808
+        width: 472
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fbe3826ae8ade4bbf3ad8925fb483c
+      internalID: -1981165095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 3816
+        width: 126
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453d9c41a134eed49a351b6f6bb64e98
+      internalID: -1677191275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 3816
+        width: 126
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d47b3d9d85df9e44a3072d15d3abe97
+      internalID: -1123759354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 3816
+        width: 126
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab826feeac4a6f44899225282af88ed0
+      internalID: -1255115166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 2104
+        y: 3808
+        width: 476
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ae9f02e82a6fc4ba1265dce58eb4a1
+      internalID: 1703167592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 2582
+        y: 3808
+        width: 132
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7d7046044423749a49887082749dc6
+      internalID: 26587255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 2712
+        y: 3808
+        width: 112
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97cb2aff307dde843a6b78719381edf9
+      internalID: -599170864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 2826
+        y: 3812
+        width: 116
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa27143d03e3c84984a3af532d16917
+      internalID: 64109614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 2948
+        y: 3816
+        width: 104
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55f30f35cf5014542a04f38e9db4549b
+      internalID: -380347850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 3068
+        y: 3816
+        width: 80
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f9e31770684d604cbf7df4cee6da5ca
+      internalID: 1312220407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 3154
+        y: 3808
+        width: 292
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6209d6870e3a6f40a9474bd7cb3cd69
+      internalID: -983862316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 3448
+        y: 3810
+        width: 90
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942e4caf23ca046448384900d2572332
+      internalID: -1251183490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 3542
+        y: 3812
+        width: 80
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ff3965aa9c65b43ba35afa84ecda4e
+      internalID: 1190212699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_18
+      rect:
+        serializedVersion: 2
+        x: 3622
+        y: 3808
+        width: 264
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b44c3176e724db40975869e36fdbd20
+      internalID: 1948940961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_19
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 3116
+        width: 306
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c9a0465d9395b4f92cf4b2e2086243
+      internalID: 857619478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_20
+      rect:
+        serializedVersion: 2
+        x: 3888
+        y: 3808
+        width: 36
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8caa5cc29342bcd4b87e7f0ec5b51917
+      internalID: 1748796290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_21
+      rect:
+        serializedVersion: 2
+        x: 4056
+        y: 3810
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90e1b025364be548b49a972e510ffae
+      internalID: -1104261760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_22
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 3364
+        width: 428
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10afef3344e9bf34c94d751886850471
+      internalID: 1287085053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_23
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 3364
+        width: 428
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611788555b8ab6545b0cc6820d0f9aba
+      internalID: -1069530622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_24
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 3364
+        width: 430
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856a080f6f6cec94a96454b5ac69e85b
+      internalID: 588323446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_25
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 3364
+        width: 296
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94f3d65773f8a0f42862ee95f4b016a9
+      internalID: 1924588791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_26
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 3364
+        width: 422
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5832a22dfb26b8f4487fd8e179c97e82
+      internalID: 911344237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_27
+      rect:
+        serializedVersion: 2
+        x: 2086
+        y: 3364
+        width: 112
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb52a4517f138274796ab1dd591682e2
+      internalID: 583740902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_28
+      rect:
+        serializedVersion: 2
+        x: 2212
+        y: 3364
+        width: 182
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd8953a8009fdc249ab0a9f52c172753
+      internalID: 881614366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_29
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 3364
+        width: 64
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a25af9728d0c44c9b545dac5465a4e
+      internalID: -629789573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_30
+      rect:
+        serializedVersion: 2
+        x: 2486
+        y: 3364
+        width: 50
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e75aff5bcbe1fc042b71c156850bb1e9
+      internalID: 1440653176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_31
+      rect:
+        serializedVersion: 2
+        x: 2550
+        y: 3364
+        width: 90
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 089db124a5313ae4995d3864c8e30b2a
+      internalID: 1466422275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_32
+      rect:
+        serializedVersion: 2
+        x: 2656
+        y: 3364
+        width: 178
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19c63fa25315c64097d67001682d42b
+      internalID: 89814020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_33
+      rect:
+        serializedVersion: 2
+        x: 2848
+        y: 3364
+        width: 324
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5f3243707d3464d842774b573eac7d
+      internalID: 1329402235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_34
+      rect:
+        serializedVersion: 2
+        x: 3186
+        y: 3364
+        width: 126
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871d36660478069408aa3350244b22e8
+      internalID: -316293414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_35
+      rect:
+        serializedVersion: 2
+        x: 3362
+        y: 3658
+        width: 334
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b44cebcc4e41e43ba6d729f5322948
+      internalID: 1810267625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_36
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2902
+        width: 442
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20e5baa2b531e634593f37013f7346f6
+      internalID: -947257717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_37
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 2902
+        width: 434
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1515528f4c329f54cbbe428816a0bf94
+      internalID: -1426433916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_38
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 2902
+        width: 370
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380f5d235ba88d04d87bfdfafb5ec445
+      internalID: -1051784316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_39
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 2902
+        width: 310
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c626a5f7a7e6a584681917b1a276df5a
+      internalID: -460732414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_40
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 2902
+        width: 432
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8602ef61fefcef843be8567ce22d3f5e
+      internalID: 1774419846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_41
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 2902
+        width: 430
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ceb53f10b626de408b32ffbd5b33ea8
+      internalID: 1892961831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_42
+      rect:
+        serializedVersion: 2
+        x: 2512
+        y: 2902
+        width: 100
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43e417e2dcbc6d041bbb01506f0027b5
+      internalID: 1523698658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_43
+      rect:
+        serializedVersion: 2
+        x: 2626
+        y: 2902
+        width: 430
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46480a0500bedf74d8aca5bc90c77c95
+      internalID: -2006661764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_44
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2902
+        width: 104
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ac5d6b9d53d914fb1eb2c2d605394e
+      internalID: -537996539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_45
+      rect:
+        serializedVersion: 2
+        x: 3192
+        y: 2902
+        width: 98
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c547185629f81c24294cbd271a04eec9
+      internalID: -946360187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_46
+      rect:
+        serializedVersion: 2
+        x: 3358
+        y: 3318
+        width: 338
+        height: 336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4648e148abacd0e448453b2d9ce08e89
+      internalID: -1459691549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_47
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 3012
+        width: 324
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ec51ad9daf2924f85f2993f1ddd019
+      internalID: -1833632825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_48
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 2582
+        width: 258
+        height: 534
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3773fbeeebfec34f916546f68c32296
+      internalID: -168236467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_49
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2420
+        width: 422
+        height: 466
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c1f23aeeebf234fa1a86aff7b69294
+      internalID: 60388245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_50
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 2420
+        width: 432
+        height: 466
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5411b3b21ab025c45acbd779d41154a6
+      internalID: -121453556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_51
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 2420
+        width: 430
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 693fa8cca90fad74c8db4a5c69d270c2
+      internalID: -2038436658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_52
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 2420
+        width: 430
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f291252f5422a04a84077b184b55a83
+      internalID: 240405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_53
+      rect:
+        serializedVersion: 2
+        x: 1780
+        y: 2420
+        width: 430
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8baa11d8bdae91a40bb9f5afb059a698
+      internalID: -257667040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_54
+      rect:
+        serializedVersion: 2
+        x: 2224
+        y: 2420
+        width: 432
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b529076b7cd8594b9c0b7822c55db03
+      internalID: -383056624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_55
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 2678
+        width: 332
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c06f794c0215e504a93559fae5752942
+      internalID: 595279424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_56
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 2224
+        width: 446
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d1987baa29ec64da7e8d0ca7b14462
+      internalID: 1234523891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_57
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 2554
+        width: 356
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5331bdd849e804398bca7b4e2df354
+      internalID: -1968062333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_58
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 2156
+        width: 302
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40257306afa3d0f46a5922d0d37d16aa
+      internalID: 1771655597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_59
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1920
+        width: 428
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bdc112eeb00c1349b64849ebe37d546
+      internalID: -202234747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_60
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1920
+        width: 428
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e8102473f6832b439143581f4a74cfe
+      internalID: -280742332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_61
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 1922
+        width: 318
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d9817f2d10c3b44b760c69e1c82abc
+      internalID: -1128395291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_62
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 1920
+        width: 432
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a4a866e8287e74cb860289d2d4b3e5
+      internalID: -422916228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_63
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 1920
+        width: 434
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc721798a8cf1504a84371cbac4c0706
+      internalID: -444678685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_64
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1920
+        width: 218
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4acf2eeca8565c449ae363189a080a5b
+      internalID: 368653066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_65
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 1792
+        width: 466
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645d1042bc8f4e24e9a24bbd6e04970f
+      internalID: 1280492661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_66
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 2214
+        width: 336
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab15d4d141b73c4aa53c20fc8aa035a
+      internalID: 159344024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_67
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1380
+        width: 474
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d44e88f1c8825644bbfc2af44fda266
+      internalID: 1192357465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_68
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 1380
+        width: 474
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ec983e7da998d4a8693e3fac9cb528
+      internalID: -1537904328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_69
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1380
+        width: 148
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b28c527b7d30984f96d1a64fc367a15
+      internalID: -1414784138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_70
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 1772
+        width: 448
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc06d53ae36650b4fb00b35d9e00872c
+      internalID: 1836798195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_71
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 1882
+        width: 338
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42665dbba5f25844acf40981b21342e
+      internalID: 1351701586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_72
+      rect:
+        serializedVersion: 2
+        x: 3764
+        y: 1640
+        width: 312
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa82b09ac6c80574a9db1a8fa0dfe1b7
+      internalID: -181210634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_73
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1294
+        width: 490
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 951b3a60b2d48dc4a9e30d5f315d4421
+      internalID: 768299599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_74
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 1340
+        width: 482
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cff1c808a0e094d80e687f66da3f89
+      internalID: 1244851127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_75
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 1346
+        width: 476
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a866031a232da8f4889979cfccfbb261
+      internalID: 1095647828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_76
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 1336
+        width: 456
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a43f0ab464f8d38429a9e39b4aab3d44
+      internalID: -375668662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_77
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 1678
+        width: 364
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570f68a4dac1a43498343490066dc8c3
+      internalID: -1267879295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_78
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 792
+        width: 482
+        height: 574
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8fe6f81812886f4faf7fdb21d50a717
+      internalID: 1899241573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_79
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 792
+        width: 210
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4c7905f61f5f94cb41eb395c80badf
+      internalID: -1137615714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_80
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 1356
+        width: 372
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad9525800bb0404f9a3cf6ef564dd08
+      internalID: 1173498920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_81
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 1278
+        width: 312
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d49251076c8e2646b713a23516bf2fa
+      internalID: 2126787852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_82
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 792
+        width: 442
+        height: 536
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5904a6d764d65d43a4f4b2cab14bd04
+      internalID: -1599041648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_83
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 792
+        width: 130
+        height: 534
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56b9c70297dbf0b4c95fb0a1db0abc5b
+      internalID: 2026410153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_84
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 850
+        width: 492
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc608d6b7331d3b4fabf7a1a1a0e99c1
+      internalID: 1037520046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_85
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 896
+        width: 482
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b146655d3986c4b4aa182e7e7eaa1d9a
+      internalID: 376568601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_86
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 900
+        width: 476
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a451edd1922274dba74b89b7da7da4
+      internalID: -1388338411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_87
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 900
+        width: 456
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15366ee70d62de644b9018c422255e15
+      internalID: 1516666011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_88
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 1030
+        width: 376
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b6c3ac67d259d4683a7470319335b2
+      internalID: -1044924160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_89
+      rect:
+        serializedVersion: 2
+        x: 3770
+        y: 974
+        width: 296
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996b9913a7d26cc4488f5d1bf5686bae
+      internalID: -1904753132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_90
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 450
+        width: 482
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c427064784bb0b4baad576217148f39
+      internalID: 1986969789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_91
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 454
+        width: 476
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f7c9d0c9a3c564c8d9664c5e06373b
+      internalID: 762429244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_92
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 454
+        width: 458
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e57f46abb999946bc353bcb3fcdbaa
+      internalID: -863718405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_93
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 648
+        width: 372
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faefffad457affc4d803f9bac4edabdf
+      internalID: -1435277246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_94
+      rect:
+        serializedVersion: 2
+        x: 3764
+        y: 840
+        width: 322
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d61e28fb1bd6e4496f5568a1c4bb15
+      internalID: -501995401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_95
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 66
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c215c9a68b7c64fb9275df7b8ce4fa
+      internalID: 214038900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_96
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 112
+        width: 600
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f79dd85cea23e4399f72d54b36d4f7
+      internalID: 1241373095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_97
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 504
+        width: 578
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eefc67bd894934b4ca89c5982b4c8c2a
+      internalID: 1905952352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_98
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 514
+        width: 498
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e342e0cbfa94d42be03a9f99db8db8
+      internalID: -264990899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_99
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 326
+        width: 388
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b932473caf754cd4283fa93850eb3c30
+      internalID: -179475582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_100
+      rect:
+        serializedVersion: 2
+        x: 3770
+        y: 528
+        width: 308
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9187e46ef47314a4082144726e0e31f0
+      internalID: -351818116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_101
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 8
+        width: 596
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee10cb0b2ff0d8447900adc3f7436b01
+      internalID: 160743128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_102
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 8
+        width: 494
+        height: 490
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edebb549e827c8b4ca1bbf7f7ceb1008
+      internalID: 261778803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_103
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 8
+        width: 492
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f75faea8e2a6e43aa4081d79ff3ed6
+      internalID: 466511819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_104
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 8
+        width: 476
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85fb33c365e3ed84597bd851d063fe99
+      internalID: -1580214422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_105
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 8
+        width: 458
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8366ce9fcdf7844a9c931c3bb663bd2
+      internalID: -1831777656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_106
+      rect:
+        serializedVersion: 2
+        x: 3770
+        y: 392
+        width: 318
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5536ed450f42e184ba329e6abea748b0
+      internalID: -210236635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_107
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 8
+        width: 390
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32413e0783402db40aa86db385d8df83
+      internalID: 1854074351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_108
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 166
+        width: 330
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d817c6252fe693489cc6f6a55b70c39
+      internalID: 283970325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_109
+      rect:
+        serializedVersion: 2
+        x: 3764
+        y: 0
+        width: 332
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec0242f65def72447b5a768f9da485e4
+      internalID: -25197719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Textura_Tiles_110
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 8
+        width: 674
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328f9cb50408d894598a532544caeac5
+      internalID: 909618354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 36cdd9cc1e8992b40bb82d2efb2d87c9
     internalID: 0
     vertices: []
     indices: 
@@ -122,7 +2564,118 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Textura_Tiles_0: 952340532
+      Textura_Tiles_1: 1936760269
+      Textura_Tiles_10: 26587255
+      Textura_Tiles_100: -351818116
+      Textura_Tiles_101: 160743128
+      Textura_Tiles_102: 261778803
+      Textura_Tiles_103: 466511819
+      Textura_Tiles_104: -1580214422
+      Textura_Tiles_105: -1831777656
+      Textura_Tiles_106: -210236635
+      Textura_Tiles_107: 1854074351
+      Textura_Tiles_108: 283970325
+      Textura_Tiles_109: -25197719
+      Textura_Tiles_11: -599170864
+      Textura_Tiles_110: 909618354
+      Textura_Tiles_12: 64109614
+      Textura_Tiles_13: -380347850
+      Textura_Tiles_14: 1312220407
+      Textura_Tiles_15: -983862316
+      Textura_Tiles_16: -1251183490
+      Textura_Tiles_17: 1190212699
+      Textura_Tiles_18: 1948940961
+      Textura_Tiles_19: 857619478
+      Textura_Tiles_2: -1474034898
+      Textura_Tiles_20: 1748796290
+      Textura_Tiles_21: -1104261760
+      Textura_Tiles_22: 1287085053
+      Textura_Tiles_23: -1069530622
+      Textura_Tiles_24: 588323446
+      Textura_Tiles_25: 1924588791
+      Textura_Tiles_26: 911344237
+      Textura_Tiles_27: 583740902
+      Textura_Tiles_28: 881614366
+      Textura_Tiles_29: -629789573
+      Textura_Tiles_3: -707453550
+      Textura_Tiles_30: 1440653176
+      Textura_Tiles_31: 1466422275
+      Textura_Tiles_32: 89814020
+      Textura_Tiles_33: 1329402235
+      Textura_Tiles_34: -316293414
+      Textura_Tiles_35: 1810267625
+      Textura_Tiles_36: -947257717
+      Textura_Tiles_37: -1426433916
+      Textura_Tiles_38: -1051784316
+      Textura_Tiles_39: -460732414
+      Textura_Tiles_4: -692732903
+      Textura_Tiles_40: 1774419846
+      Textura_Tiles_41: 1892961831
+      Textura_Tiles_42: 1523698658
+      Textura_Tiles_43: -2006661764
+      Textura_Tiles_44: -537996539
+      Textura_Tiles_45: -946360187
+      Textura_Tiles_46: -1459691549
+      Textura_Tiles_47: -1833632825
+      Textura_Tiles_48: -168236467
+      Textura_Tiles_49: 60388245
+      Textura_Tiles_5: -1981165095
+      Textura_Tiles_50: -121453556
+      Textura_Tiles_51: -2038436658
+      Textura_Tiles_52: 240405
+      Textura_Tiles_53: -257667040
+      Textura_Tiles_54: -383056624
+      Textura_Tiles_55: 595279424
+      Textura_Tiles_56: 1234523891
+      Textura_Tiles_57: -1968062333
+      Textura_Tiles_58: 1771655597
+      Textura_Tiles_59: -202234747
+      Textura_Tiles_6: -1677191275
+      Textura_Tiles_60: -280742332
+      Textura_Tiles_61: -1128395291
+      Textura_Tiles_62: -422916228
+      Textura_Tiles_63: -444678685
+      Textura_Tiles_64: 368653066
+      Textura_Tiles_65: 1280492661
+      Textura_Tiles_66: 159344024
+      Textura_Tiles_67: 1192357465
+      Textura_Tiles_68: -1537904328
+      Textura_Tiles_69: -1414784138
+      Textura_Tiles_7: -1123759354
+      Textura_Tiles_70: 1836798195
+      Textura_Tiles_71: 1351701586
+      Textura_Tiles_72: -181210634
+      Textura_Tiles_73: 768299599
+      Textura_Tiles_74: 1244851127
+      Textura_Tiles_75: 1095647828
+      Textura_Tiles_76: -375668662
+      Textura_Tiles_77: -1267879295
+      Textura_Tiles_78: 1899241573
+      Textura_Tiles_79: -1137615714
+      Textura_Tiles_8: -1255115166
+      Textura_Tiles_80: 1173498920
+      Textura_Tiles_81: 2126787852
+      Textura_Tiles_82: -1599041648
+      Textura_Tiles_83: 2026410153
+      Textura_Tiles_84: 1037520046
+      Textura_Tiles_85: 376568601
+      Textura_Tiles_86: -1388338411
+      Textura_Tiles_87: 1516666011
+      Textura_Tiles_88: -1044924160
+      Textura_Tiles_89: -1904753132
+      Textura_Tiles_9: 1703167592
+      Textura_Tiles_90: 1986969789
+      Textura_Tiles_91: 762429244
+      Textura_Tiles_92: -863718405
+      Textura_Tiles_93: -1435277246
+      Textura_Tiles_94: -501995401
+      Textura_Tiles_95: 214038900
+      Textura_Tiles_96: 1241373095
+      Textura_Tiles_97: 1905952352
+      Textura_Tiles_98: -264990899
+      Textura_Tiles_99: -179475582
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
