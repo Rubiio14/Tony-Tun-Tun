@@ -582,7 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLength: 5
   startRaycast: 0.9
-  meleeShooterAnimator: {fileID: 0}
+  meleeShooterAnimator: {fileID: 5932150282874819274}
 --- !u!61 &5719758326555875328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 1860131969973922459}
   m_Layer: 0
   m_Name: EnMeleeShooterPREFAB
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

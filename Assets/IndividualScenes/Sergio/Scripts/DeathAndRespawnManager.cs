@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DeathAndRespawnManager : MonoBehaviour
@@ -7,7 +8,15 @@ public class DeathAndRespawnManager : MonoBehaviour
     [SerializeField]
     CanvasGroup deathBackground;
     public bool playerDeath = false;
+
+    [SerializeField]
+    GameObject player;
+
+    [SerializeField]
+    GameObject tonyGhost;
+
     public float fadeOutSpeed = 1f;
+    public float deathAnimationDuration = 3;
 
     private void Awake()
     {
@@ -24,7 +33,7 @@ public class DeathAndRespawnManager : MonoBehaviour
     {
         if (playerDeath == true)
         {
-            Death();
+            StartCoroutine("Death");
         }
         else if (playerDeath == false)
         {
@@ -32,10 +41,16 @@ public class DeathAndRespawnManager : MonoBehaviour
         }
     }
 
-    public void Death()
+    IEnumerator Death()
     {
+        tonyGhost.transform.position = player.transform.position;
+        Destroy(player);
+        tonyGhost.SetActive(true);
+        yield return new WaitForSeconds(deathAnimationDuration);
         deathBackground.alpha += 1f * Time.deltaTime * fadeOutSpeed;
+        yield return null;
     }
+
     public void Respawn()
     {
         deathBackground.alpha -= 1f * Time.deltaTime * fadeOutSpeed;

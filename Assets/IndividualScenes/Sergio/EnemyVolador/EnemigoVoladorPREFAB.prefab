@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 482724293552340177}
   m_Layer: 0
   m_Name: EnemigoVoladorPREFAB
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1178,6 +1178,7 @@ MonoBehaviour:
   - {fileID: 7043234787102447954}
   - {fileID: 1182266151950400347}
   movSpeed: 2.5
+  enemyFlying: 0
   needRotation: 0
 --- !u!61 &1738437272095998676
 BoxCollider2D:
