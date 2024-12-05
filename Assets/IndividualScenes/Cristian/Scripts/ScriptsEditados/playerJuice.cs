@@ -57,7 +57,7 @@ public class playerJuice : MonoBehaviour
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("ChargedJump");
-        StartCoroutine(RestartIdle(0.01f, 1.5f));
+        StartCoroutine(RestartIdle(0.01f, 1f));
     }
 
     IEnumerator RestartIdle(float time, float timelanded)
