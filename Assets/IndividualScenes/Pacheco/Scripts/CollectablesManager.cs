@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class CollectablesManager : MonoBehaviour
+public interface ICollectable
 {
-    public interface ICollectable
-    {
-        void collect();
-    }
+    void Collect();
+    
 }

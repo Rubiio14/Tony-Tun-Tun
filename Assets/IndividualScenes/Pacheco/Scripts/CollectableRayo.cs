@@ -1,10 +1,20 @@
 using UnityEngine;
-using static CollectablesManager;
 
 public class CollectableRayo : MonoBehaviour, ICollectable
 {
-    public void collect()
+
+
+    public int totalRayo = 0;
+
+
+    public void Collect()
     {
+        totalRayo++;
+        Destroy(gameObject);
+    }
+
+    public void collectingRayo()
+    {       
 
     }
 }
