@@ -2,31 +2,38 @@ using UnityEngine;
 
 public class EnemyMeleeShooterBehaviour : MonoBehaviour
 {
+    //Para ajustar la distancia del raycast desde el inspector
     [Header("Detection")]
-    [SerializeField, Range(1f, 20f)] [Tooltip("Longitud m?xima de detecci?n")] public float raycastLength = 5f;
-    public float startRaycast = 0f;
+    [SerializeField, Range(1f, 50f)] [Tooltip("Longitud maxima de deteccion")] public float raycastLength = 5f;
 
-    public Animator meleeShooterAnimator;
+    //Para que el raycast empiece desde el enemigo pero no impacte con su propio collider. No es modificable en el inspectos para ahorrarnos errores.
+    private float _startRaycast = 0.9f;
+
+    //Animaciones del shooter
+    private Animator _meleeShooterAnimator;
+    //Para detectar solo el collider del jugador
+    [SerializeField] private LayerMask _playerLayer;
 
     private void Start()
     {
-        meleeShooterAnimator = this.GetComponent<Animator>();
+        _meleeShooterAnimator = GetComponent<Animator>();
     }
     void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x * startRaycast, 1), Vector2.right, raycastLength);
-
+        //Rayo Debug en la escena
         Vector2 forward = transform.TransformDirection(Vector2.right) * raycastLength;
-        Debug.DrawRay(new Vector2(transform.position.x* startRaycast, 1), forward, Color.green);
+        Debug.DrawRay(new Vector2(transform.position.x* _startRaycast, 1), forward, Color.green);
 
-        if (hit.collider.gameObject.CompareTag("Player"))
+        //Crear raycast e impactar con el layer del jugador 
+        if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, 1), Vector2.right, raycastLength, _playerLayer))
         {
-            meleeShooterAnimator.SetBool("playerDetected", true);
-            Debug.Log(hit.collider.gameObject.tag);
+            //activar animacion de disparo
+            _meleeShooterAnimator.SetBool("playerDetected", true);
         }
         else
         {
-            meleeShooterAnimator.SetBool("playerDetected", false);
+            //Desactivar animacion de disparo
+            _meleeShooterAnimator.SetBool("playerDetected", false);
         }
     }
 
@@ -34,8 +41,10 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //ejecutar muerte jugador, llama a DeathAndRespawn 
+            //ejecutar muerte jugador, llama al script DeathAndRespawn 
             DeathAndRespawnManager.instance.playerDeath = true;
+            DeathAndRespawnManager.instance.tonyGhost.transform.position = DeathAndRespawnManager.instance.player.transform.position;
+
         }
     }
 }

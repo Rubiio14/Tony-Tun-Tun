@@ -2,25 +2,28 @@ using UnityEngine;
 
 public class MovingPlatformBehaviour : MonoBehaviour
 {
-    public Transform[] waypoints;
-    public float platformMovSpeed = 2.5f;
-    int currentWaypoint;
+    //lugares hacia los que se mueve y velocidad
+    [SerializeField] private Transform[] _waypoints;
+    [SerializeField] private float _platformMovSpeed = 2.5f;
+    private int _currentWaypoint;
 
     private void Start()
     {
-        currentWaypoint = 0;
+        _currentWaypoint = 0;
     }
     void Update()
     {
-        if (transform.position != waypoints[currentWaypoint].position)
+        if (transform.position != _waypoints[_currentWaypoint].position)
         {
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, platformMovSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _waypoints[_currentWaypoint].position, _platformMovSpeed * Time.deltaTime);
         }
         else
         {
-            currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+            _currentWaypoint = (_currentWaypoint + 1) % _waypoints.Length;
         }
     }
+
+    //Que el jugador se haga hijo de la plataforma para que siga el movimiento (o que deje de serlo)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

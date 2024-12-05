@@ -5,18 +5,17 @@ public class DeathAndRespawnManager : MonoBehaviour
 {
     public static DeathAndRespawnManager instance;
 
-    [SerializeField]
-    CanvasGroup deathBackground;
-    public bool playerDeath = false;
+    //Canvas y variable para oscurecer pantalla en la muerte del jugador
+    [SerializeField] public CanvasGroup deathBackground;
+    [SerializeField] public bool playerDeath = false;
 
-    [SerializeField]
-    GameObject player;
+    //jugador y fantasma del jugador
+    [SerializeField] public GameObject player;
+    [SerializeField] public GameObject tonyGhost;
 
-    [SerializeField]
-    GameObject tonyGhost;
-
-    public float fadeOutSpeed = 1f;
-    public float deathAnimationDuration = 3;
+    //Duracion y velocidad de la pantalla de muerte
+    [SerializeField] private float fadeOutSpeed = 1f;
+    [SerializeField] private float deathAnimationDuration = 3;
 
     private void Awake()
     {
@@ -33,19 +32,20 @@ public class DeathAndRespawnManager : MonoBehaviour
     {
         if (playerDeath == true)
         {
+            tonyGhost.SetActive(true);          
+            tonyGhost.transform.position = Vector2.MoveTowards(tonyGhost.transform.position, new Vector2(tonyGhost.transform.position.x, tonyGhost.transform.position.y + 3), deathAnimationDuration * Time.deltaTime);
             StartCoroutine("Death");
         }
         else if (playerDeath == false)
         {
             Respawn();
         }
+
     }
 
     IEnumerator Death()
     {
-        tonyGhost.transform.position = player.transform.position;
-        Destroy(player);
-        tonyGhost.SetActive(true);
+        player.SetActive(false);
         yield return new WaitForSeconds(deathAnimationDuration);
         deathBackground.alpha += 1f * Time.deltaTime * fadeOutSpeed;
         yield return null;

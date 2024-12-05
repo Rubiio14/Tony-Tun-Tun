@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class EnemyMovementBehaviour : MonoBehaviour
 {
-    public Transform[] waypoints;
-    public float movSpeed = 2.5f;
-    int currentWaypoint;
-    public bool enemyFlying;
-    public bool needRotation;
+    //lugares hacia los que se mueve y velocidad
+    [SerializeField] private Transform[] _waypoints;
+    [SerializeField] private float _movSpeed = 2.5f;
+    private int currentWaypoint;
+
+    //Si es volador no activara la rotacion. Si no lo es, rotará al lado contrario
+    [SerializeField] private bool enemyFlying;
+    private bool needRotation;
 
     private void Start()
     {
@@ -14,9 +17,9 @@ public class EnemyMovementBehaviour : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position != waypoints[currentWaypoint].position)
+        if (transform.position != _waypoints[currentWaypoint].position)
         {
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, movSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _waypoints[currentWaypoint].position, _movSpeed * Time.deltaTime);
         }
         else
         {
@@ -24,7 +27,7 @@ public class EnemyMovementBehaviour : MonoBehaviour
             {
                 needRotation = true;
             }
-            currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+            currentWaypoint = (currentWaypoint + 1) % _waypoints.Length;
             if(needRotation == true)
             {
                 transform.Rotate(0, 180, 0);
@@ -32,12 +35,15 @@ public class EnemyMovementBehaviour : MonoBehaviour
             }
         } 
     }
+    //Matar al jugador
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             //ejecutar muerte jugador, llama a DeathAndRespawn 
             DeathAndRespawnManager.instance.playerDeath = true;
+            DeathAndRespawnManager.instance.tonyGhost.transform.position = DeathAndRespawnManager.instance.player.transform.position;
+
         }
     }
 
