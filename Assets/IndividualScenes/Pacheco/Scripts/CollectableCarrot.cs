@@ -1,4 +1,6 @@
 using UnityEngine;
+using static CollectablesManager;
+
 
 public class CollectableCarrot : MonoBehaviour, ICollectable
 {
