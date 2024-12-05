@@ -224,11 +224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3588775261282687355, guid: cce9fe58b5e8b4141828a50bda8ecf84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.71
+      value: -7.25
       objectReference: {fileID: 0}
     - target: {fileID: 3588775261282687355, guid: cce9fe58b5e8b4141828a50bda8ecf84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3588775261282687355, guid: cce9fe58b5e8b4141828a50bda8ecf84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2242,10 +2242,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5043658525238407244, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8103670650328478116, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
       propertyPath: m_Name
       value: EnVoladorPREFAB
       objectReference: {fileID: 0}
+    - target: {fileID: 8446237210267803153, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

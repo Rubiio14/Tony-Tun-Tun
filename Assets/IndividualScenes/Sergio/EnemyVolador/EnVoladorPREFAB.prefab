@@ -973,7 +973,7 @@ GameObject:
   m_Layer: 0
   m_Name: WaypointDown
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1004,6 +1004,7 @@ GameObject:
   - component: {fileID: 5001475629902133802}
   - component: {fileID: 320651978089952022}
   - component: {fileID: 3462559958409788600}
+  - component: {fileID: 1780485869434628249}
   m_Layer: 0
   m_Name: EnemigoVolador_Final
   m_TagString: Untagged
@@ -1116,6 +1117,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.7261858, y: 1.569524}
   m_EdgeRadius: 0
+--- !u!50 &1780485869434628249
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195251124588451800}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &5394620261259649316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2118,7 @@ GameObject:
   m_Layer: 0
   m_Name: WaypointUp
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
