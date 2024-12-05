@@ -4,7 +4,19 @@ using UnityEngine.InputSystem;
 
 public class jumpBarBehaviour : MonoBehaviour
 {
+    public int zapatos = 0;
+    //BackGroundBox
     public static jumpBarBehaviour instance;
+    public GameObject baseBarImageBG;
+    public GameObject firstBarImageBG;
+    public GameObject secondBarImageBG;
+    public GameObject thirdBarImageBG;
+    //greenBox
+    public GameObject baseBarImageGameObject;
+    public GameObject firstBarImageGameObject;
+    public GameObject secondBarImageGameObject;
+    public GameObject thirdBarImageGameObject;
+    //refillBox
     public Image baseBarImage;
     public Image firstBarImage;
     public Image secondBarImage;
@@ -44,6 +56,15 @@ public class jumpBarBehaviour : MonoBehaviour
         {
             Destroy(this);
         }
+        baseBarImageBG.GetComponent<Image>().enabled = false;
+        firstBarImageBG.GetComponent<Image>().enabled = false;
+        secondBarImageBG.GetComponent<Image>().enabled = false;
+        thirdBarImageBG.GetComponent<Image>().enabled = false;
+        //greenBox
+        baseBarImageGameObject.GetComponent<Image>().enabled = false;
+        firstBarImageGameObject.GetComponent<Image>().enabled = false;
+        secondBarImageGameObject.GetComponent<Image>().enabled = false;
+        thirdBarImageGameObject.GetComponent<Image>().enabled = false;
     }
 
     private void Update()
@@ -54,10 +75,38 @@ public class jumpBarBehaviour : MonoBehaviour
             holdTime += Time.deltaTime;
             if (_isBaseFilling && holdTime >= requiredHoldTime && baseBarImage.fillAmount < 1f)
             {
+                if (zapatos >= 0)
+                {
+                    baseBarImageGameObject.GetComponent<Image>().enabled = true;
+                    baseBarImageBG.GetComponent<Image>().enabled = true;
+                    
+                    if (zapatos >= 1)
+                    {
+                       
+                        firstBarImageGameObject.GetComponent<Image>().enabled = true;
+                        firstBarImageBG.GetComponent<Image>().enabled = true;
+                        
+                        if (zapatos >= 2)
+                        {
+                           
+                            secondBarImageGameObject.GetComponent<Image>().enabled = true;
+                            secondBarImageBG.GetComponent<Image>().enabled = true;
+                            
+                            if (zapatos >= 3)
+                            {
+                                
+                                thirdBarImageGameObject.GetComponent<Image>().enabled = true;
+                                thirdBarImageBG.GetComponent<Image>().enabled = true;
+                            }
+                        }
+                        
+                    }
+                    
+                }
                 baseBarImage.fillAmount += 3f * Time.deltaTime; // Rellenado gradual
             }
             // Solo comienza a llenar la barra base si ha pasado el tiempo requerido
-            if (baseBarImage.fillAmount >= 1f && firstBarImage.fillAmount < 1f)
+            if (baseBarImage.fillAmount >= 1f && firstBarImage.fillAmount < 1f)        
             {
                 firstBarImage.fillAmount += 3f * Time.deltaTime;
             }
@@ -71,7 +120,7 @@ public class jumpBarBehaviour : MonoBehaviour
             {
                 thirdBarImage.fillAmount += 3f * Time.deltaTime;
             }
-            
+
         }
     }
 
@@ -80,8 +129,8 @@ public class jumpBarBehaviour : MonoBehaviour
         if (context.started)
         {
             _isBaseFilling = true; // Activa el temporizador de relleno
-            holdTime = 0f; // Reinicia el temporizador al presionar
-            
+            holdTime = 0f; // Reinicia el temporizador al presionar            
+
         }
         if (context.canceled)
         {
@@ -91,7 +140,11 @@ public class jumpBarBehaviour : MonoBehaviour
             secondBarImage.fillAmount = 0f;
             thirdBarImage.fillAmount = 0f;
             holdTime = 0f; // Reinicia el temporizador al soltar
-            
+            baseBarImageBG.GetComponent<Image>().enabled = false;
+            firstBarImageBG.GetComponent<Image>().enabled = false;
+            secondBarImageBG.GetComponent<Image>().enabled = false;
+            thirdBarImageBG.GetComponent<Image>().enabled = false;
+
         }
     }
 }

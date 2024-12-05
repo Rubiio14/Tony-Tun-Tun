@@ -66,18 +66,22 @@ public class playerJump : MonoBehaviour
 
             if (context.canceled)
             {
-                if(jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
+                Debug.Log(jumpBarBehaviour.instance.baseBarImage.fillAmount);
+                if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
                 {
-                    
+
                     if (onGround)
                     {
-                        juice.chargedjumpEffects();                        
+                        juice.chargedjumpEffects();
                         StartCoroutine(DelayChargedSalto());
                     }
+                    
                     //Base Bar
                     if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
                     {
                         _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
+                        Debug.Log("HalfBaseBar");
+                      
 }
                     if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5)
                     {
@@ -85,6 +89,8 @@ public class playerJump : MonoBehaviour
                         if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5)
                         {
                             _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
+                            Debug.Log("HalfFirstBar");
+
                         }
                         if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5)
                         {
@@ -92,6 +98,8 @@ public class playerJump : MonoBehaviour
                             if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5)
                             {
                                 _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
+                                Debug.Log("HalfSecondBar");
+
                             }
                             if (jumpBarBehaviour.instance.secondBarImage.fillAmount >= 0.5)
                             {
@@ -99,267 +107,344 @@ public class playerJump : MonoBehaviour
                                 if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5)
                                 {
                                     _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
+                                    Debug.Log("HalfThirdBar");
+
                                 }
                                 if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
                                 {
                                     _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
+                                    Debug.Log("MaxThirdBar");
+
                                 }
                                 else
                                 {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
+                                    if (jumpBarBehaviour.instance.thirdBarImage)
+                                    {
+                                        _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
+                                        Debug.Log("maxSecondBar");
+                                    }
+                                        
+                                   
                                 }
                             }
                             else
                             {
-                                _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
+                                if (jumpBarBehaviour.instance.secondBarImage)
+                                { 
+                                
+                                    _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
+                                    Debug.Log("maxFirstBar");
+                                }
+                               
                             }
                         }
                         else
                         {
-                            _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
+                            if(jumpBarBehaviour.instance.firstBarImage)
+                            {
+                                _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
+                                Debug.Log("maxBaseBar");
+                            }
+                            
                         }
                     }
-                    
+                    /*
+                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
+                    {
+                        _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
+                        Debug.Log("HalfBaseBar");
+                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5 && jumpBarBehaviour.instance.baseBarImage.fillAmount == 1)
+                        {
+                            Debug.Log("tramo1");
+                            _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
+                            Debug.Log("halfFirstBar");
+                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5 && jumpBarBehaviour.instance.firstBarImage.fillAmount == 1)
+                            {
+                                _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
+                                Debug.Log("HalfSecondBar");
+                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5 && jumpBarBehaviour.instance.secondBarImage.fillAmount == 1)
+                                {
+                                    _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
+                                    Debug.Log("halfThirdBar");
+                                }
+                            }
+                   
+                           
+                            if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
+                            {
+                                _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
+                                Debug.Log("maxThirdBar");
+                            }
+                            else 
+                            {
+                                if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5 && jumpBarBehaviour.instance.thirdBarImage.fillAmount == 0)
+                                {
+                                    _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
+                                    Debug.Log("maxSecondBar");
+                                }
+                                else
+                                {
+                                    if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5 && jumpBarBehaviour.instance.secondBarImage.fillAmount == 0)
+                                    {
+                                        _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
+                                        Debug.Log("maxFirstbar");
+                                    }
+                                    else 
+                                    {
+                                        if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5 && jumpBarBehaviour.instance.firstBarImage.fillAmount == 0)
+                                        {
+                                            _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
+                                            Debug.Log("maxBaseBar");
+
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }                   
+                    }*/
                 }
+
                 else
                 {
                     if (onGround)
                     {
                         juice.jumpEffects();
-                        StartCoroutine(DelaySalto());                                            
+                        StartCoroutine(DelaySalto());
                     }
-                    
+
+                }
                 }
             }
         }
-    }
+    
 
-    void Update()
-    {
-        setPhysics();
-
-        //Check if we're on ground, using player Ground script
-        onGround = _ground.GetOnGround();
-
-        //Jump buffer allows us to queue up a jump, which will play when we next hit the ground
-        if (jumpBuffer > 0)
+        void Update()
         {
-            //Instead of immediately turning off "desireJump", start counting up...
-            //All the while, the DoAJump function will repeatedly be fired off
+            setPhysics();
+
+            //Check if we're on ground, using player Ground script
+            onGround = _ground.GetOnGround();
+
+            //Jump buffer allows us to queue up a jump, which will play when we next hit the ground
+            if (jumpBuffer > 0)
+            {
+                //Instead of immediately turning off "desireJump", start counting up...
+                //All the while, the DoAJump function will repeatedly be fired off
+                if (desiredJump || _desiredChargedJump)
+                {
+                    jumpBufferCounter += Time.deltaTime;
+
+                    if (jumpBufferCounter > jumpBuffer)
+                    {
+                        //If time exceeds the jump buffer, turn off "desireJump"
+                        desiredJump = false;
+                        jumpBufferCounter = 0;
+                    }
+                }
+                else if (_desiredChargedJump)
+                {
+                    jumpBufferCounter += Time.deltaTime;
+
+                    if (jumpBufferCounter > jumpBuffer)
+                    {
+                        //If time exceeds the jump buffer, turn off "desireJump"
+                        _desiredChargedJump = false;
+                        jumpBufferCounter = 0;
+                    }
+                }
+            }
+
+            //If we're not on the ground and we're not currently jumping, that means we've stepped off the edge of a platform.
+            //So, start the coyote time counter...
+            if (!_currentlyJumping && !onGround)
+            {
+                _coyoteTimeCounter += Time.deltaTime;
+            }
+            else
+            {
+                //Reset it when we touch the ground, or jump
+                _coyoteTimeCounter = 0;
+            }
+        }
+
+        private void setPhysics()
+        {
+            if (_desiredChargedJump)
+            {
+                //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
+                Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * _jumpMultiplier) / (timeToJumpApex * timeToJumpApex));
+                rb.gravityScale = (newGravity.y / Physics2D.gravity.y) * gravMultiplier;
+            }
+            else
+            {
+                //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
+                Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
+                rb.gravityScale = (newGravity.y / Physics2D.gravity.y) * gravMultiplier;
+            }
+
+        }
+
+        private void FixedUpdate()
+        {
+            //Get velocity from Kit's Rigidbody 
+            velocity = rb.linearVelocity;
+
+            //Keep trying to do a jump, for as long as desiredJump is true
             if (desiredJump || _desiredChargedJump)
             {
-                jumpBufferCounter += Time.deltaTime;
+                DoAJump();
+                rb.linearVelocity = velocity;
 
-                if (jumpBufferCounter > jumpBuffer)
-                {
-                    //If time exceeds the jump buffer, turn off "desireJump"
-                    desiredJump = false;
-                    jumpBufferCounter = 0;
-                }
+
+                //Skip gravity calculations this frame, so currentlyJumping doesn't turn off
+                //This makes sure you can't do the coyote time double jump bug
+                return;
             }
-            else if (_desiredChargedJump)
-            {
-                jumpBufferCounter += Time.deltaTime;
 
-                if (jumpBufferCounter > jumpBuffer)
+            calculateGravity();
+        }
+
+        private void calculateGravity()
+        {
+            //We change the character's gravity based on her Y direction
+
+            //If player is going up...
+            if (rb.linearVelocity.y > 0.01f)
+            {
+                if (onGround)
                 {
-                    //If time exceeds the jump buffer, turn off "desireJump"
-                    _desiredChargedJump = false;
-                    jumpBufferCounter = 0;
+                    //Don't change it if player is stood on something (such as a moving platform)
+                    gravMultiplier = _defaultGravityScale;
                 }
-            }
-        }
-
-        //If we're not on the ground and we're not currently jumping, that means we've stepped off the edge of a platform.
-        //So, start the coyote time counter...
-        if (!_currentlyJumping && !onGround)
-        {
-            _coyoteTimeCounter += Time.deltaTime;
-        }
-        else
-        {
-            //Reset it when we touch the ground, or jump
-            _coyoteTimeCounter = 0;
-        }
-    }
-
-    private void setPhysics()
-    {
-        if (_desiredChargedJump)
-        {
-            //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
-            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight * _jumpMultiplier) / (timeToJumpApex * timeToJumpApex));
-            rb.gravityScale = (newGravity.y/ Physics2D.gravity.y) * gravMultiplier;
-        }
-        else
-        {
-            //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
-            Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
-            rb.gravityScale = (newGravity.y / Physics2D.gravity.y) * gravMultiplier;
-        }
-        
-    }
-
-    private void FixedUpdate()
-    {
-        //Get velocity from Kit's Rigidbody 
-        velocity = rb.linearVelocity;
-
-        //Keep trying to do a jump, for as long as desiredJump is true
-        if (desiredJump || _desiredChargedJump)
-        {
-            DoAJump();
-            rb.linearVelocity = velocity;
-            
-
-            //Skip gravity calculations this frame, so currentlyJumping doesn't turn off
-            //This makes sure you can't do the coyote time double jump bug
-            return;
-        }
-
-        calculateGravity();
-    }
-
-    private void calculateGravity()
-    {
-        //We change the character's gravity based on her Y direction
-
-        //If player is going up...
-        if (rb.linearVelocity.y > 0.01f)
-        {
-            if (onGround)
-            {
-                //Don't change it if player is stood on something (such as a moving platform)
-                gravMultiplier = _defaultGravityScale;
-            }
-            else
-            {
-                Debug.Log("Else");
-                gravMultiplier = upwardMovementMultiplier;
-                //If we're using variable jump height...
-                /*
-                if (variablejumpHeight)
-                {
-                    //Apply upward multiplier if player is rising and holding jump
-                    if (pressingJump && _currentlyJumping || _pressingChargedJump && _currentlyJumping)
-                    {
-                     
-                        gravMultiplier = upwardMovementMultiplier;
-                    }
-                    //But apply a special downward multiplier if the player lets go of jump
-                    else
-                    {
-                  
-                        gravMultiplier = jumpCutOff;
-                    }
-                }
-                
                 else
                 {
-                    Debug.Log("Else");
+
                     gravMultiplier = upwardMovementMultiplier;
+                    //If we're using variable jump height...
+                    /*
+                    if (variablejumpHeight)
+                    {
+                        //Apply upward multiplier if player is rising and holding jump
+                        if (pressingJump && _currentlyJumping || _pressingChargedJump && _currentlyJumping)
+                        {
+
+                            gravMultiplier = upwardMovementMultiplier;
+                        }
+                        //But apply a special downward multiplier if the player lets go of jump
+                        else
+                        {
+
+                            gravMultiplier = jumpCutOff;
+                        }
+                    }
+
+                    else
+                    {
+                        Debug.Log("Else");
+                        gravMultiplier = upwardMovementMultiplier;
+                    }
+                    */
                 }
-                */
             }
-        }
 
-        //Else if going down...
-        else if (rb.linearVelocity.y < -0.01f)
-        {
-
-            if (onGround)
-            //Don't change it if player is stood on something (such as a moving platform)
+            //Else if going down...
+            else if (rb.linearVelocity.y < -0.01f)
             {
+
+                if (onGround)
+                //Don't change it if player is stood on something (such as a moving platform)
+                {
+                    gravMultiplier = _defaultGravityScale;
+                }
+                else
+                {
+                    //Otherwise, apply the downward gravity multiplier as player comes back to Earth
+                    gravMultiplier = downwardMovementMultiplier;
+                }
+
+            }
+            //Else not moving vertically at all
+            else
+            {
+                if (onGround)
+                {
+                    _currentlyJumping = false;
+                }
+
                 gravMultiplier = _defaultGravityScale;
             }
-            else
-            {
-                //Otherwise, apply the downward gravity multiplier as player comes back to Earth
-                gravMultiplier = downwardMovementMultiplier;
-            }
 
+            //Set the character's Rigidbody's velocity
+            //But clamp the Y variable within the bounds of the speed limit, for the terminal velocity assist option
+            rb.linearVelocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, 100));
         }
-        //Else not moving vertically at all
-        else
+
+        private void DoAJump()
         {
-            if (onGround)
+
+            //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
+            if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime))
             {
-                _currentlyJumping = false;
+                //desiredJump = false;
+                //_desiredChargedJump = false;
+                jumpBufferCounter = 0;
+                _coyoteTimeCounter = 0;
+
+                //Determine the power of the jump, based on our gravity and stats
+                if (desiredJump)
+                {
+                    jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight);
+                }
+                else
+                {
+                    jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight * _jumpMultiplier);
+                }
+
+
+                //If player is moving up or down when she jumps (such as when doing a double jump), change the jumpSpeed;
+                //This will ensure the jump is the exact same strength, no matter your velocity.
+                if (velocity.y > 0f)
+                {
+                    jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
+                }
+                else if (velocity.y < 0f)
+                {
+                    jumpSpeed += Mathf.Abs(rb.linearVelocity.y);
+                }
+
+                //Apply the new jumpSpeed to the velocity. It will be sent to the Rigidbody in FixedUpdate;
+                velocity.y += jumpSpeed;
+                _currentlyJumping = true;
+
+
             }
 
-            gravMultiplier = _defaultGravityScale;
+            if (jumpBuffer == 0)
+            {
+                //If we don't have a jump buffer, then turn off desiredJump immediately after hitting jumping
+                desiredJump = false;
+                _desiredChargedJump = false;
+            }
         }
 
-        //Set the character's Rigidbody's velocity
-        //But clamp the Y variable within the bounds of the speed limit, for the terminal velocity assist option
-        rb.linearVelocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, 100));
-    }
-
-    private void DoAJump()
-    {
-
-        //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
-        if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime))
+        public void bounceUp(float bounceAmount)
         {
-            //desiredJump = false;
-            //_desiredChargedJump = false;
-            jumpBufferCounter = 0;
-            _coyoteTimeCounter = 0;
-
-            //Determine the power of the jump, based on our gravity and stats
-            if (desiredJump)
-            {
-                jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight);
-            }
-            else
-            {
-                jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * rb.gravityScale * jumpHeight * _jumpMultiplier);
-            }
-            
-
-            //If player is moving up or down when she jumps (such as when doing a double jump), change the jumpSpeed;
-            //This will ensure the jump is the exact same strength, no matter your velocity.
-            if (velocity.y > 0f)
-            {
-                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
-            }
-            else if (velocity.y < 0f)
-            {
-                jumpSpeed += Mathf.Abs(rb.linearVelocity.y);
-            }
-
-            //Apply the new jumpSpeed to the velocity. It will be sent to the Rigidbody in FixedUpdate;
-            velocity.y += jumpSpeed;
-            _currentlyJumping = true;
-
-
+            //Used by the spring y pad
+            rb.AddForce(Vector2.up * bounceAmount, ForceMode2D.Impulse);
         }
-
-        if (jumpBuffer == 0)
+        IEnumerator DelaySalto()
         {
-            //If we don't have a jump buffer, then turn off desiredJump immediately after hitting jumping
-            desiredJump = false;
-            _desiredChargedJump = false;
+            yield return new WaitForSeconds(0.1f);
+            desiredJump = true;
+            pressingJump = true;
         }
-    }
-
-    public void bounceUp(float bounceAmount)
-    {
-        //Used by the spring y pad
-        rb.AddForce(Vector2.up * bounceAmount, ForceMode2D.Impulse);
-    }
-    IEnumerator DelaySalto()
-    {
-        yield return new WaitForSeconds(0.1f);
-        desiredJump = true;
-        pressingJump = true;
-    }
-    IEnumerator DelayChargedSalto()
-    {
-        yield return new WaitForSeconds(0.2f);
-        rb.linearVelocityX = 0f;
-        yield return new WaitForSeconds(0.1f);
-        _desiredChargedJump = true;
-        //_pressingChargedJump = true;
-    }
+        IEnumerator DelayChargedSalto()
+        {
+            yield return new WaitForSeconds(0.2f);
+            rb.linearVelocityX = 0f;
+            yield return new WaitForSeconds(0.1f);
+            _desiredChargedJump = true;
+            //_pressingChargedJump = true;
+        }
 }
