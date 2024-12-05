@@ -42,7 +42,7 @@ public class EnemyMovementBehaviour : MonoBehaviour
         {
             //ejecutar muerte jugador, llama a DeathAndRespawn 
             DeathAndRespawnManager.instance.playerDeath = true;
-            DeathAndRespawnManager.instance.tonyGhost.transform.position = DeathAndRespawnManager.instance.player.transform.position;
+            DeathAndRespawnManager.instance.tonyGhost.transform.position = new Vector2(DeathAndRespawnManager.instance.player.transform.position.x, DeathAndRespawnManager.instance.player.transform.position.y + 2);
 
         }
     }
