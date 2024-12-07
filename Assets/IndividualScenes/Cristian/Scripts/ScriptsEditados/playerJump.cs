@@ -57,154 +57,21 @@ public class playerJump : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        //This function is called when one of the jump buttons (like space or the A button) is pressed.
-
         if (playerMovementLimiter.instance.CharacterCanMove)
         {
-            //When we press the jump button, tell the script that we desire a jump.
-            //Also, use the started and canceled contexts to know if we're currently holding the button
-
             if (context.canceled)
             {
-                Debug.Log(jumpBarBehaviour.instance.baseBarImage.fillAmount);
-                if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.1)
+                if (hudManager.instance.jumpImage.fillAmount >= 0.1)
                 {
-
+                    hudManager.instance.staminaImage.fillAmount = 0f;
                     if (onGround)
                     {
                         juice.chargedjumpEffects();
                         StartCoroutine(DelayChargedSalto());
                     }
-                    
-                    //Base Bar
-                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
-                    {
-                        _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
-                        Debug.Log("HalfBaseBar");
-                      
-}
-                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5)
-                    {
-                        //First bar
-                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5)
-                        {
-                            _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
-                            Debug.Log("HalfFirstBar");
-
-                        }
-                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5)
-                        {
-                            //Second bar
-                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5)
-                            {
-                                _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
-                                Debug.Log("HalfSecondBar");
-
-                            }
-                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount >= 0.5)
-                            {
-                                //Third bar
-                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5)
-                                {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
-                                    Debug.Log("HalfThirdBar");
-
-                                }
-                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
-                                {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
-                                    Debug.Log("MaxThirdBar");
-
-                                }
-                                else
-                                {
-                                    if (jumpBarBehaviour.instance.thirdBarImage)
-                                    {
-                                        _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
-                                        Debug.Log("maxSecondBar");
-                                    }
-                                        
-                                   
-                                }
-                            }
-                            else
-                            {
-                                if (jumpBarBehaviour.instance.secondBarImage)
-                                { 
-                                
-                                    _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
-                                    Debug.Log("maxFirstBar");
-                                }
-                               
-                            }
-                        }
-                        else
-                        {
-                            if(jumpBarBehaviour.instance.firstBarImage)
-                            {
-                                _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
-                                Debug.Log("maxBaseBar");
-                            }
-                            
-                        }
-                    }
-                    /*
-                    if (jumpBarBehaviour.instance.baseBarImage.fillAmount <= 0.5)
-                    {
-                        _jumpMultiplier = jumpBarBehaviour.instance.halfBaseBar;
-                        Debug.Log("HalfBaseBar");
-                        if (jumpBarBehaviour.instance.firstBarImage.fillAmount <= 0.5 && jumpBarBehaviour.instance.baseBarImage.fillAmount == 1)
-                        {
-                            Debug.Log("tramo1");
-                            _jumpMultiplier = jumpBarBehaviour.instance.halfFirstBar;
-                            Debug.Log("halfFirstBar");
-                            if (jumpBarBehaviour.instance.secondBarImage.fillAmount <= 0.5 && jumpBarBehaviour.instance.firstBarImage.fillAmount == 1)
-                            {
-                                _jumpMultiplier = jumpBarBehaviour.instance.halfSecondBar;
-                                Debug.Log("HalfSecondBar");
-                                if (jumpBarBehaviour.instance.thirdBarImage.fillAmount <= 0.5 && jumpBarBehaviour.instance.secondBarImage.fillAmount == 1)
-                                {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.halfThirdBar;
-                                    Debug.Log("halfThirdBar");
-                                }
-                            }
-                   
-                           
-                            if (jumpBarBehaviour.instance.thirdBarImage.fillAmount >= 0.5)
-                            {
-                                _jumpMultiplier = jumpBarBehaviour.instance.maxThirdBar;
-                                Debug.Log("maxThirdBar");
-                            }
-                            else 
-                            {
-                                if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5 && jumpBarBehaviour.instance.thirdBarImage.fillAmount == 0)
-                                {
-                                    _jumpMultiplier = jumpBarBehaviour.instance.maxSecondBar;
-                                    Debug.Log("maxSecondBar");
-                                }
-                                else
-                                {
-                                    if (jumpBarBehaviour.instance.firstBarImage.fillAmount >= 0.5 && jumpBarBehaviour.instance.secondBarImage.fillAmount == 0)
-                                    {
-                                        _jumpMultiplier = jumpBarBehaviour.instance.maxFirstBar;
-                                        Debug.Log("maxFirstbar");
-                                    }
-                                    else 
-                                    {
-                                        if (jumpBarBehaviour.instance.baseBarImage.fillAmount >= 0.5 && jumpBarBehaviour.instance.firstBarImage.fillAmount == 0)
-                                        {
-                                            _jumpMultiplier = jumpBarBehaviour.instance.maxBaseBar;
-                                            Debug.Log("maxBaseBar");
-
-                                        }
-                                    }
-                                }
-                            }
-                            
-                        }                   
-                    }*/
+                    float fillAmount = hudManager.instance.jumpImage.fillAmount;
+                    splitedChargedJump(fillAmount);                   
                 }
-
                 else
                 {
                     if (onGround)
@@ -212,14 +79,12 @@ public class playerJump : MonoBehaviour
                         juice.jumpEffects();
                         StartCoroutine(DelaySalto());
                     }
-
                 }
-                }
-            }
+            }    
         }
-    
-
-        void Update()
+        
+    }
+    void Update()
         {
             setPhysics();
 
@@ -447,4 +312,72 @@ public class playerJump : MonoBehaviour
             _desiredChargedJump = true;
             //_pressingChargedJump = true;
         }
+    void splitedChargedJump(float fillAmount)
+    {
+        if (fillAmount >= 1)
+        {
+            _jumpMultiplier = hudManager.instance.maxThirdBar;
+            Debug.Log("MaxThirdBar");
+            return; // Detiene el flujo
+        }
+        else if (fillAmount >= 0.875)
+        {
+            _jumpMultiplier = hudManager.instance.halfThirdBar;
+            Debug.Log("HalfThirdBar");
+            return; // Detiene el flujo
+        }
+        SecondShoe(fillAmount); // Llama a la siguiente función solo si no se cumple ninguna condición
+    }
+
+    void SecondShoe(float fillAmount)
+    {
+        if (fillAmount >= 0.75)
+        {
+            _jumpMultiplier = hudManager.instance.maxSecondBar;
+            Debug.Log("MaxSecondBar");
+            return; // Detiene el flujo
+        }
+        else if (fillAmount >= 0.625)
+        {
+            _jumpMultiplier = hudManager.instance.halfSecondBar;
+            Debug.Log("HalfSecondBar");
+            return; // Detiene el flujo
+        }
+        FirstShoe(fillAmount); // Llama a la siguiente función solo si no se cumple ninguna condición
+    }
+
+    void FirstShoe(float fillAmount)
+    {
+        if (fillAmount >= 0.5)
+        {
+            _jumpMultiplier = hudManager.instance.maxFirstBar;
+            Debug.Log("MaxFirstBar");
+            return; // Detiene el flujo
+        }
+        else if (fillAmount >= 0.375)
+        {
+            _jumpMultiplier = hudManager.instance.halfFirstBar;
+            Debug.Log("HalfFirstBar");
+            return; // Detiene el flujo
+        }
+        BaseShoe(fillAmount); // Llama a la siguiente función solo si no se cumple ninguna condición
+    }
+
+    void BaseShoe(float fillAmount)
+    {
+        if (fillAmount >= 0.25)
+        {
+            _jumpMultiplier = hudManager.instance.maxBaseBar;
+            Debug.Log("MaxBaseBar");
+            return; // Detiene el flujo
+        }
+        else if (fillAmount >= 0.125)
+        {
+            _jumpMultiplier = hudManager.instance.halfBaseBar;
+            Debug.Log("HalfBaseBar");
+            return; // Detiene el flujo
+        }
+    }
+
 }
+

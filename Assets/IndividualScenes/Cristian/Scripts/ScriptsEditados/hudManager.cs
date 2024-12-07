@@ -1,0 +1,159 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using System;
+public class hudManager : MonoBehaviour
+{
+    public static hudManager instance;
+    [Header("Base Image")]
+    public Image baseImage;
+    [Header("Stamina Image")]
+    public Image staminaImage;
+    [Header("Jump Image")]
+    public Image jumpImage;
+    [Header("Trameo de salto base")]
+    public float halfBaseBar = 0f;
+    public float maxBaseBar = 0f;
+    [Header("Trameo de primer tramo")]
+    public float halfFirstBar = 0f;
+    public float maxFirstBar = 0f;
+    [Header("Trameo de segundo tramo")]
+    public float halfSecondBar = 0f;
+    public float maxSecondBar = 0f;
+    [Header("Trameo de tercer tramo")]
+    public float halfThirdBar = 0f;
+    public float maxThirdBar = 0f;
+    [Header("Charged Jump Bars Variants")]
+    public Sprite firstBar;
+    public Sprite secondBar;
+    public Sprite thirdBar;
+    [Header("Empty Carrots")]
+    public Image firstCarrot;
+    public Image secondCarrot;
+    public Image thirdCarrot;
+    [Header("Colored Carrot")]
+    public Sprite coloredCarrot;
+
+    public int carrots;
+    public int shoesCounter;
+    private float _requiredHoldTime = 0.03f;
+
+    private bool _isBaseFilling = false; // Bandera para controlar el llenado
+    private float holdTime = 0f;
+    private float actualLimit = 0.25f;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;          
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Update Stamina Cap
+        if (shoesCounter == 1)
+        {
+            actualLimit = 0.5f;
+            baseImage.sprite = firstBar;
+            staminaImage.sprite = firstBar;
+            jumpImage.sprite = firstBar;
+        }
+        else if (shoesCounter == 2)
+        {
+            actualLimit = 0.75f;
+            baseImage.sprite = secondBar;
+            staminaImage.sprite = secondBar;
+            jumpImage.sprite = secondBar;
+        }
+        else if (shoesCounter == 3)
+        {
+            actualLimit = 1f;
+            baseImage.sprite = thirdBar;
+            staminaImage.sprite = thirdBar;
+            jumpImage.sprite = thirdBar;
+        }
+
+        //Refill Stamina Bar
+        if (staminaImage.fillAmount <= actualLimit)
+        {            
+            staminaImage.fillAmount += 0.1f * Time.deltaTime;
+        }
+        if (_isBaseFilling && playerGround.instance.GetOnGround() && Math.Round(staminaImage.fillAmount, 2) >= 0.25f)
+        {
+            holdTime += Time.deltaTime;
+            if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.25f && shoesCounter == 0)
+            {
+                if (jumpImage.fillAmount < staminaImage.fillAmount)
+                {
+                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                }
+            }
+            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.5f && shoesCounter == 1)
+            {
+                if (jumpImage.fillAmount < staminaImage.fillAmount)
+                {
+                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                }
+            }
+            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.75f && shoesCounter == 2)
+            {
+                if (jumpImage.fillAmount < staminaImage.fillAmount)
+                {
+                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                }
+            }
+            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 1f && shoesCounter == 3)
+            {
+                if (jumpImage.fillAmount < staminaImage.fillAmount)
+                {
+                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                }
+            }
+        }
+        //reset jumpBar
+        if (jumpImage.fillAmount >= 0 && _isBaseFilling == false)
+        {
+            jumpImage.fillAmount -= 0.8f * Time.deltaTime;
+        }
+    }
+
+    public void refillBar(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("entra");
+            _isBaseFilling = true; // Activa el temporizador de relleno
+            holdTime = 0f;
+            jumpImage.fillAmount = 0f;
+        }
+        if (context.canceled)
+        {
+            _isBaseFilling = false; // Detiene el relleno y reinicia
+            holdTime = 0f;
+            
+        }
+    }
+
+    public void updateCarrots()
+    {
+        if (carrots == 1)
+        {
+            firstCarrot.sprite = coloredCarrot;
+        }
+        if (carrots == 2)
+        {
+            secondCarrot.sprite = coloredCarrot;
+        }
+        if (carrots == 3)
+        {
+            thirdCarrot.sprite = coloredCarrot;
+        }
+    }
+}
