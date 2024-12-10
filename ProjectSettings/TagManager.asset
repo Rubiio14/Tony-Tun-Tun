@@ -19,7 +19,7 @@ TagManager:
   - PlayerLayer
   - Background
   - EnemyLayer
-  - 
+  - CollectableLayer
   - 
   - 
   - 
