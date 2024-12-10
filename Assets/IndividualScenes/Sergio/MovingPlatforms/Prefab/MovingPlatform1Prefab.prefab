@@ -46,10 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1dee0e8a61ddd548b9474ddee00005e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 8671551816923185973}
-  - {fileID: 3340409972825402211}
-  platformMovSpeed: 2.5
+  _waypoints: []
+  _platformMovSpeed: 2.5
 --- !u!61 &8379131295264034700
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -84,7 +82,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.42961, y: -0.015987486}
+  m_Offset: {x: -0.42961, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

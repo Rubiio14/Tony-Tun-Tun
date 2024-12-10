@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2256703411144245191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange4.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4510927106616626221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StretchAid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3303092500102752058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingControl.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8910356382483298964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange4.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 821821983589766314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1223486622893933312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stretch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3806152367967349963}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3861204390281290199}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange4.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149449009057048817}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732369322719565416}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598961247709905329}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099534923166741022}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange4.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5538012567510232508}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stretch_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4079129261604203538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StretchControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4247459614287783921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange4.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8825636410958797193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange4.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4242621657513104446}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 40984879404664447}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4607616932488855931}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HeadRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4603304033872027132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7844991394434034991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3913403167652467849}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange4.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -716,7 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7126362921827116693}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7513128139308439383}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9084160619491502878}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StretchAid_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3387313125885077971}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange4.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7622926453421442196}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -874,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6390721567273580628}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rotation_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285260170439008270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingControl.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3229787292117134495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2633828811505126824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WaypointDown
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 320651978089952022}
   - component: {fileID: 3462559958409788600}
   - component: {fileID: 1780485869434628249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemigoVolador_Final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1205617664388009719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StretchAid.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1185,7 +1185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3439902802047815410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange4.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1217,7 +1217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2780053389821155439}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange4.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1249,7 +1249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2696658111279375294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1282,7 +1282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3559859110298898657}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1314,7 +1314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340583944607734639}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,7 +1346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402042860908638248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1378,7 +1378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6211358469955013500}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2273057986412218436}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange3.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1441,7 +1441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473549228533264609}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,7 +1473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068996195496759996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1505,7 +1505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3202762366110348179}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3598264690739231514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +1570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3608744422569356554}
   - component: {fileID: 8012246246504042404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Liquido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1698,7 +1698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219508115427529876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange3.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1729,7 +1729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6621068985891689885}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1761,7 +1761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6135635779415906053}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1793,7 +1793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1239966549558448480}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1825,7 +1825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831169729531254638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange4.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1856,7 +1856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2300628972525862822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger4Falange2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,7 +1889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050779710636167285}
   - component: {fileID: 2660834837155570499}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Craneo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2017,7 +2017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1269813152487196977}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger3Falange1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2049,7 +2049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967628674323942704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFinger2Falange4.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2081,9 +2081,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2265920563730756344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnVoladorPREFAB
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2115,7 +2115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8265086593987709626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WaypointUp
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -2147,7 +2147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5126508192092532750}
   - component: {fileID: 3997173146608765220}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cristal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2275,7 +2275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4031529557962236040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2307,7 +2307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4280453305376087766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WingFingerFalange2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2340,7 +2340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657505117410207223}
   - component: {fileID: 3559767354421945750}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Alas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
