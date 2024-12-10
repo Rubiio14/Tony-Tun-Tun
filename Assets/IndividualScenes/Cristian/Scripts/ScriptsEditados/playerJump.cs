@@ -267,22 +267,22 @@ public class playerJump : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             _desiredChargedJump = true;
         }
-    void splitedChargedJump(float fillAmount)
+    void splitedChargedJump(float acumulatedJumpForce)
     {
         //If you have all the shoes
-        if (fillAmount >= 1)
+        if (acumulatedJumpForce >= 1)
         {
             _jumpMultiplier = hudManager.instance.maxThirdBar;
             Debug.Log("MaxThirdBar");
             return; //Stops the flow
         }
-        else if (fillAmount >= 0.875)
+        else if (acumulatedJumpForce >= 0.875)
         {
             _jumpMultiplier = hudManager.instance.halfThirdBar;
             Debug.Log("HalfThirdBar");
             return; //Stops the flow
         }
-        SecondShoe(fillAmount); //if there is no return jumps to the next function
+        SecondShoe(acumulatedJumpForce); //if there is no return jumps to the next function
     }
 
     void SecondShoe(float fillAmount)
