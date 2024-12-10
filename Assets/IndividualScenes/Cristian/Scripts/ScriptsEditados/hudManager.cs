@@ -34,7 +34,7 @@ public class hudManager : MonoBehaviour
     [Header("Colored Carrot")]
     public Sprite coloredCarrot;
 
-    public int carrots;
+    public int carrotsCounter;
     public int shoesCounter;
     private float _requiredHoldTime = 0.03f;
 
@@ -56,30 +56,7 @@ public class hudManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //Update Stamina Cap
-        if (shoesCounter == 1)
-        {
-            actualLimit = 0.5f;
-            baseImage.sprite = firstBar;
-            staminaImage.sprite = firstBar;
-            jumpImage.sprite = firstBar;
-        }
-        else if (shoesCounter == 2)
-        {
-            actualLimit = 0.75f;
-            baseImage.sprite = secondBar;
-            staminaImage.sprite = secondBar;
-            jumpImage.sprite = secondBar;
-        }
-        else if (shoesCounter == 3)
-        {
-            actualLimit = 1f;
-            baseImage.sprite = thirdBar;
-            staminaImage.sprite = thirdBar;
-            jumpImage.sprite = thirdBar;
-        }
-
+    {      
         //Refill Stamina Bar
         if (staminaImage.fillAmount <= actualLimit)
         {            
@@ -143,17 +120,48 @@ public class hudManager : MonoBehaviour
 
     public void updateCarrots()
     {
-        if (carrots == 1)
+        //Update Carrots Counter
+        carrotsCounter++;
+
+        if (carrotsCounter == 1)
         {
             firstCarrot.sprite = coloredCarrot;
         }
-        if (carrots == 2)
+        if (carrotsCounter == 2)
         {
             secondCarrot.sprite = coloredCarrot;
         }
-        if (carrots == 3)
+        if (carrotsCounter == 3)
         {
             thirdCarrot.sprite = coloredCarrot;
+        }
+    }
+
+    public void updateShoes()
+    {
+        //Update Stamina Cap
+        shoesCounter++;
+
+        if (shoesCounter == 1)
+        {
+            actualLimit = 0.5f;
+            baseImage.sprite = firstBar;
+            staminaImage.sprite = firstBar;
+            jumpImage.sprite = firstBar;
+        }
+        else if (shoesCounter == 2)
+        {
+            actualLimit = 0.75f;
+            baseImage.sprite = secondBar;
+            staminaImage.sprite = secondBar;
+            jumpImage.sprite = secondBar;
+        }
+        else if (shoesCounter == 3)
+        {
+            actualLimit = 1f;
+            baseImage.sprite = thirdBar;
+            staminaImage.sprite = thirdBar;
+            jumpImage.sprite = thirdBar;
         }
     }
 }

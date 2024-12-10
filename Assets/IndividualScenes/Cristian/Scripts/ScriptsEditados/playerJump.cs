@@ -282,7 +282,7 @@ public class playerJump : MonoBehaviour
             Debug.Log("HalfThirdBar");
             return; //Stops the flow
         }
-        SecondShoe(fillAmount); //if any condition is True jumps to the next function
+        SecondShoe(fillAmount); //if there is no return jumps to the next function
     }
 
     void SecondShoe(float fillAmount)
@@ -300,7 +300,7 @@ public class playerJump : MonoBehaviour
             Debug.Log("HalfSecondBar");
             return; //Stops the flow
         }
-        FirstShoe(fillAmount); //if any condition is True jumps to the next function
+        FirstShoe(fillAmount); //if there is no return jumps to the next function
     }
 
     void FirstShoe(float fillAmount)
@@ -318,7 +318,7 @@ public class playerJump : MonoBehaviour
             Debug.Log("HalfFirstBar");
             return; //Stops the flow
         }
-        BaseShoe(fillAmount); //if any condition is True jumps to the next function
+        BaseShoe(fillAmount); //if there is no return jumps to the next function
     }
 
     void BaseShoe(float fillAmount)
