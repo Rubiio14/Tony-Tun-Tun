@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
+using TMPro;
 public class hudManager : MonoBehaviour
 {
     public static hudManager instance;
@@ -37,6 +38,8 @@ public class hudManager : MonoBehaviour
     public int carrotsCounter;
     public int shoesCounter;
     private float _requiredHoldTime = 0.03f;
+    public int rayoCounter;
+    public TextMeshProUGUI rayoText;
 
     private bool _isBaseFilling = false; // Bandera para controlar el llenado
     private float holdTime = 0f;
@@ -163,5 +166,12 @@ public class hudManager : MonoBehaviour
             staminaImage.sprite = thirdBar;
             jumpImage.sprite = thirdBar;
         }
+    }
+
+    public void updateRayo(float stamina)
+    {
+        staminaImage.fillAmount += stamina * Time.deltaTime;
+        rayoCounter++;
+        rayoText.SetText(rayoCounter.ToString());
     }
 }

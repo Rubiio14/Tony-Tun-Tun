@@ -1,20 +1,18 @@
 using UnityEngine;
 
-public class CollectableRayo : MonoBehaviour, ICollectable
+public class CollectableRayo : ScriptableObject, ICollectable
 {
 
 
-    public int totalRayo = 0;
+    public float staminaCounter = 0;
 
 
     public void Collect()
     {
-        totalRayo++;
-        Destroy(gameObject);
     }
 
     public void collectingRayo()
-    {       
-
+    {
+        hudManager.instance.updateRayo(staminaCounter);
     }
 }
