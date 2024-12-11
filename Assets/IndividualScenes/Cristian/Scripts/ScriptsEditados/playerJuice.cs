@@ -12,7 +12,9 @@ public class playerJuice : MonoBehaviour
     public float runningSpeed;
     public bool playerGrounded;
     public bool endJump = false;
-
+    public float randomCheckInterval = 5f;
+    public float idleProbability = 0.3f;
+    private float _timer = 0f;
     void Start()
     {
         moveScript = GetComponent<playerMovement>();
@@ -20,6 +22,24 @@ public class playerJuice : MonoBehaviour
     }
     private void Update()
     {
+        _timer += Time.deltaTime;
+
+        if (_timer >= randomCheckInterval)
+        {
+            _timer = 0f;
+
+            if (Random.value < idleProbability)
+            {
+                myAnimator.SetBool("IsIdleB", true);
+            }
+        }
+
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|IDLE_B") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+
+            myAnimator.SetBool("IsIdleB", false);
+        }
+
         //We need to change the character's running animation to suit their current speed
         runningSpeed = Mathf.Clamp(Mathf.Abs(moveScript.velocity.x), 0, moveScript.maxSpeed);
         myAnimator.SetFloat("runSpeed", runningSpeed);

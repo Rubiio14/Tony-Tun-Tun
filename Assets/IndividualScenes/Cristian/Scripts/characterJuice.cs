@@ -47,12 +47,35 @@ namespace GMTK.PlatformerToolkit {
         [SerializeField] jumpTester jumpLine;
         public bool cameraFalling = false;
 
+        [Header("IdleB Stats")]
+        public float randomCheckInterval = 5f;
+        public float idleProbability = 0.3f;
+        private float _timer = 0f;
         void Start() {
             moveScript = GetComponent<characterMovement>();
             jumpScript = GetComponent<characterJump>();
         }
 
         void Update() {
+
+            //Swaps between Idle A & Idle B 
+            _timer += Time.deltaTime;
+
+            if (_timer >= randomCheckInterval)
+            {
+                _timer = 0f;
+
+                if (Random.value < idleProbability)
+                {
+                    myAnimator.SetBool("IsIdleB", true);
+                }
+            }
+
+            if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("IdleB") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                myAnimator.SetBool("IsIdleB", false);
+            }
+
             tiltCharacter();
 
             //We need to change the character's running animation to suit their current speed
