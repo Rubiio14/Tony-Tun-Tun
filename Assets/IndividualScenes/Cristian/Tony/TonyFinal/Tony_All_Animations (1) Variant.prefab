@@ -348,6 +348,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5219644631161708586, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
+      propertyPath: maxTurnSpeed
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219644631161708586, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
+      propertyPath: isFacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219644631161708586, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
+      propertyPath: maxAcceleration
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5299799402784138203, guid: fded77141e1f5e54db2ce662c4f721d6, type: 3}
       propertyPath: m_Layer
       value: 8
