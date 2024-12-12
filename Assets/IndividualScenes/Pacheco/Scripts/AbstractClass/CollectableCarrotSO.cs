@@ -1,7 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CollectableCarrotSO", menuName = "Scriptable Objects/CollectableCarrotSO")]
-public class CollectableCarrotSO : ScriptableObject
+[CreateAssetMenu(fileName = "New Carrot Collectable", menuName = "Collectable/Carrot")]
+public class CollectableCarrotSO : CollectableSOBase
 {
-    
+
+    public override void Collect(GameObject objectThatCollected)
+    {
+        CollectablesManager.instance.IncrementCarrot();
+    }
 }

@@ -7,6 +7,6 @@ public class CollectableRayoSO : CollectableSOBase
 
     public override void Collect(GameObject objectThatCollected)
     {
-        RayoManager.instance.IncrementRayo(staminaAmount);
+        CollectablesManager.instance.IncrementRayo(staminaAmount);
     }
 }
