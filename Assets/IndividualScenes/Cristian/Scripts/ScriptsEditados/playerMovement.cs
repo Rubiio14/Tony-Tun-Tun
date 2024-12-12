@@ -32,6 +32,8 @@ public class playerMovement : MonoBehaviour
     public bool pressingKey;
     public bool useAcceleration;
 
+    public bool isFacingRight;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -68,7 +70,28 @@ public class playerMovement : MonoBehaviour
         }
 
         _desiredVelocity = new Vector2(_directionX, 0f) * Mathf.Max(maxSpeed, 0f);
-    }
+
+        if (_directionX > 0)
+        {
+            isFacingRight = true;
+        }
+        else if (_directionX < 0)
+        {
+            isFacingRight = false;
+        }
+
+        if (playerJuice.instance.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SLIDETURN"))        
+        {
+            playerJuice.instance.myAnimator.SetBool("IsTurn", false);
+        }
+
+        if(velocity.x == 0)
+        {
+            playerJuice.instance.myAnimator.SetBool("IsTurn", false);
+        }
+
+
+    } 
     private void FixedUpdate()
     {
        
@@ -107,14 +130,18 @@ public class playerMovement : MonoBehaviour
         if (pressingKey)
         {
             //If the sign of our input direction doesn't match our movement, we're turning around so should use the turn speed stat.
-            if (Mathf.Sign(_directionX) != Mathf.Sign(velocity.x))
+            if (Mathf.Sign(_directionX) != Mathf.Sign(velocity.x) && _directionX != 0)
             {
                 _maxSpeedChange = _turnSpeed * Time.deltaTime;
-            }
+               
+                playerJuice.instance.myAnimator.SetBool("IsTurn", true);
+            }          
+
             else
             {
                 //If they match, it means we're running along and we use the acceleration stat
                 _maxSpeedChange = _acceleration * Time.deltaTime;
+                playerJuice.instance.myAnimator.SetBool("IsTurn", false);
             }
         }
         else

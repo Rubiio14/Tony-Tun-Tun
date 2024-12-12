@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerJuice : MonoBehaviour
 {
+    public static playerJuice instance;
     [Header("Components")]
     playerMovement moveScript;
     playerJump jumpScript;
@@ -15,6 +16,17 @@ public class playerJuice : MonoBehaviour
     public float randomCheckInterval = 5f;
     public float idleProbability = 0.3f;
     private float _timer = 0f;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
     void Start()
     {
         moveScript = GetComponent<playerMovement>();
