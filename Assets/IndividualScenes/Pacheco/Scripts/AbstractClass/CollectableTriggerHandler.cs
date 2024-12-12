@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class CollectableTriggerHandler : MonoBehaviour
 {
-    //[SerializeField] private LayerMask _whoCanCollect = LayerMaskHelper.CreateLayerMask(9);
 
     private Collectable _collectable;
 
@@ -15,7 +14,7 @@ public class CollectableTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("CollectableLayer"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerLayer"))
         {
             _collectable.Collect(collision.gameObject);
 
