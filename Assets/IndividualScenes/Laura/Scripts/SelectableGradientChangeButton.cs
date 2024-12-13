@@ -3,11 +3,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class SelectableTextButton : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class SelectableGradientChangeButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private TextMeshProUGUI _buttonText;
 
-    private void Start()
+    //Gradients
+    [SerializeField] private TMP_ColorGradient _primaryGradient;
+    [SerializeField] private TMP_ColorGradient _secondaryGradient;
+
+    public void Awake()
     {
         _buttonText = GetComponent<TextMeshProUGUI>();
     }
@@ -15,11 +19,11 @@ public class SelectableTextButton : MonoBehaviour, ISelectHandler, IDeselectHand
     //Do this when the selectable UI object is selected.
     public void OnSelect(BaseEventData eventData)
     {
-        _buttonText.colorGradientPreset = UIController.Instance.PinkGradient;
+        _buttonText.colorGradientPreset = _secondaryGradient;
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        _buttonText.colorGradientPreset = UIController.Instance.GreenGradient;
+        _buttonText.colorGradientPreset = _primaryGradient;
     }
 }

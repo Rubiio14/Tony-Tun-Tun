@@ -14,7 +14,7 @@ public class ControllerImageChange : MonoBehaviour
     void Start()
     {
         _imageReference = GetComponent<Image>();
-        UIController.Instance.OnControllerChange += OnControllerChange;
+        UIManager.Instance.OnControllerChange += OnControllerChange;
     }
 
     private void OnControllerChange(bool controller)

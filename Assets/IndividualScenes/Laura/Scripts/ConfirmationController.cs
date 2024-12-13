@@ -7,6 +7,7 @@ public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHa
 {
     [SerializeField]
     private TextMeshProUGUI _confirmationTxt;
+    public GameObject PreviousSelected { get; set; }
 
     private UnityAction _onConfirmation;
     private UnityAction _onCancelation;
@@ -18,7 +19,7 @@ public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHa
 
     public void FillForNewGameConfirmation(UnityAction ConfirmAction, UnityAction CancelationAction)
     {
-        _confirmationTxt.text = UIController.Instance.GetLocalizedUIText("NewGameConfirmation");
+        _confirmationTxt.text = UIManager.Instance.GetLocalizedUIText("NewGameConfirmation");
         _onConfirmation = ConfirmAction;
         _onCancelation = CancelationAction;
     }

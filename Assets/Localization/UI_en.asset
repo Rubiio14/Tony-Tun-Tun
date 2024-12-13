@@ -57,6 +57,22 @@ MonoBehaviour:
       save will be overwritten'
     m_Metadata:
       m_Items: []
+  - m_Id: 10110082328621056
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10115775475544064
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10115976462397440
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10116170478317568
+    m_Localized: Spanish
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

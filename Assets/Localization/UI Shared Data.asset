@@ -59,6 +59,22 @@ MonoBehaviour:
     m_Key: NewGameConfirmation
     m_Metadata:
       m_Items: []
+  - m_Id: 10110082328621056
+    m_Key: MusicOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10115775475544064
+    m_Key: SFXOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10115976462397440
+    m_Key: ResolutionOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10116170478317568
+    m_Key: LanguageSpanish
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

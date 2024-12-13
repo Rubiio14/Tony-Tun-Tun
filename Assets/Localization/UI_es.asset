@@ -51,6 +51,22 @@ MonoBehaviour:
       actual se sobreescribir\xE1"
     m_Metadata:
       m_Items: []
+  - m_Id: 10110082328621056
+    m_Localized: Musica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10115775475544064
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10115976462397440
+    m_Localized: Resolucion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10116170478317568
+    m_Localized: Castellano
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
