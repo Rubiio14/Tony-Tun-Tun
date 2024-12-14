@@ -1,67 +1,93 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class SliderRange : MonoBehaviour, IMoveHandler, ICancelHandler, ISubmitHandler { 
+public class SliderRange : SelectLeftRight { 
 
-    private Image _image;
-    [SerializeField] private Color _primaryColor;
-    [SerializeField] private Color _secondaryColor;
-
-    private OptionSlider _previousSelected;
     private Slider _slider;
     [SerializeField] private float _increment;
     [SerializeField] private TextMeshProUGUI _UISoundText;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Awake()
     {
-        _image = GetComponent<Image>();
+        //We assume this is going to be a prefab, configured specifically
         _slider = transform.GetChild(0).GetComponent<Slider>();
+        _image = GetComponent<Image>();
     }
 
-    public void Enable(OptionSlider optionSlider)
+    public void OnEnable()
     {
-        _image.color = _secondaryColor;
-        _previousSelected = optionSlider;
+        //Audio mixer, load initial values for _slider.value
+        OnLoadedComponent.Invoke();
     }
 
-    public void Disable()
-    {
-        _image.color = _primaryColor;
-    }
-
-    public void OnMove(AxisEventData eventData)
+    override public void OnMove(AxisEventData eventData)
     {
         if (eventData.moveDir == MoveDirection.Left)
         {
             _slider.value -= _increment;
-        }
-
-        if(eventData.moveDir == MoveDirection.Right)
+        }else if(eventData.moveDir == MoveDirection.Right)
         {
             _slider.value += _increment;
         }
     }
 
-    public string SoundValue()
+    override public void OnValueChanged()
     {
-        return _slider.value.ToString();
+        Apply();
+        //Sound or particle effect ?
     }
 
-    public void OnCancel(BaseEventData eventData)
+    override public void OnCancel(BaseEventData eventData)
     {
-        Disable();
-        _previousSelected.Submitted = false;
-        EventSystem.current.SetSelectedGameObject(_previousSelected.gameObject);
+        Deactivate();
     }
 
-    public void OnSubmit(BaseEventData eventData)
+    override public void OnSubmit(BaseEventData eventData)
     {
-        Disable();
-        _previousSelected.Submitted = false;
-        EventSystem.current.SetSelectedGameObject(_previousSelected.gameObject);
+        Deactivate();
+    }
+
+    override public void Activate(GameObject previousSelected)
+    {
+        base.Activate(previousSelected);
+        //If we want to do something else
+    }
+
+    override public void Deactivate()
+    {
+        base.Deactivate();
+        //If we want to do something else
+    }
+
+    public void Apply()
+    {
+        _UISoundText.text = (_slider.value).ToString();
+    }
+
+    public void ChangeMusicVolume(float volume)
+    {
+        AudioManager.Instance.ChangeMusicVolume(volume/_slider.maxValue);
+    }
+
+    public void LoadMusicFromSource()
+    {
+        _slider.value = AudioManager.Instance.GetCurrentMusicVolume() * _slider.maxValue;
+        Apply();
+    }
+
+    public void LoadSFXFromSource()
+    {
+        _slider.value = AudioManager.Instance.GetCurrentSFXVolume() * _slider.maxValue;
+        Apply();
+    }
+
+    public void ChangeSFXVolume(float volume)
+    {
+        AudioManager.Instance.ChangeSFXVolume(volume/_slider.maxValue);
     }
 }

@@ -3,17 +3,17 @@ using UnityEngine.EventSystems;
 
 public class MainMenuUIController : MonoBehaviour
 {
-    private ConfirmationController _confirmationContoller;
+    [SerializeField] private ConfirmationController _confirmationContoller;
     private GameObject _previousSelected;
 
     private void Start()
     {
-        _confirmationContoller = UIManager.Instance.Confirmation;
+
     }
 
     private void OnEnable()
     {
-        //EventSystem.current.SetSelectedGameObject(_previousSelected);
+        EventSystem.current.SetSelectedGameObject(_previousSelected);
     }
 
     public void StartNewGame()
@@ -45,20 +45,24 @@ public class MainMenuUIController : MonoBehaviour
     public void Options()
     {
         _previousSelected = EventSystem.current.currentSelectedGameObject;
-        UIManager.Instance.OptionsMenu.gameObject.SetActive(true);
+        UIManager.Instance.EnableOptionsMenu();
         gameObject.SetActive(false);
     }
 
     public void Credits()
     {
-
+        _previousSelected = EventSystem.current.currentSelectedGameObject;
+        UIManager.Instance.EnableCreditsMenu();
+        gameObject.SetActive(false);
     }
 
     public void Quit()
     {
+        //Can create confirmation message if we want
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
         Application.Quit();
     }
+
 }

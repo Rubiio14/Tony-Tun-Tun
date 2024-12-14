@@ -31,14 +31,29 @@ MonoBehaviour:
     m_Key: CancelButtonGamepad
     m_Metadata:
       m_Items: []
+  - m_Id: 8750218322046976
+    m_Key: OptionsBackground
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 3184717383960100865
+    - rid: 551441693514137727
   m_KeyGenerator:
     rid: 3184717200527458304
   references:
     version: 2
     RefIds:
+    - rid: 551441693514137727
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 8750218322046976
+          m_TableCodes:
+          - en
+          - es
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - rid: 3184717200527458304
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
