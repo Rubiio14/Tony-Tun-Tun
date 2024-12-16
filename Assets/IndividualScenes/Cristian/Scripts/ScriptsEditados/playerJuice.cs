@@ -34,7 +34,14 @@ public class playerJuice : MonoBehaviour
     }
     private void Update()
     {
-        _timer += Time.deltaTime;
+        if (!playerGrounded && !jumpScript._currentlyJumping && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun"))
+        {
+            myAnimator.SetBool("IsFalling", true);
+        }
+        else if(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|NormalJump_TonyTunTun") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            myAnimator.SetBool("IsFalling", true);
+        }
 
         if (_timer >= randomCheckInterval)
         {
@@ -67,7 +74,7 @@ public class playerJuice : MonoBehaviour
             playerGrounded = true;
             //Play an animation, some particles, and a sound effect when the player lands
             myAnimator.SetTrigger("Landed");
-
+            myAnimator.SetBool("IsFalling", false);
         }
         else if (playerGrounded && !jumpScript.onGround)
         {
@@ -82,21 +89,18 @@ public class playerJuice : MonoBehaviour
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
-        StartCoroutine(RestartIdle(0.01f, 0.5f));
+        //myAnimator.SetBool("IsFalling", true);
+        
     }
     public void chargedjumpEffects()
     {
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("ChargedJump");
-        StartCoroutine(RestartIdle(0.01f, 1f));
+        //myAnimator.SetBool("IsFalling", true);
+        
     }
 
-    IEnumerator RestartIdle(float time, float timelanded)
-    {
-        yield return new WaitForSeconds(time);
-        myAnimator.SetBool("IsFalling", true);
-        yield return new WaitForSeconds(timelanded);
-        myAnimator.SetBool("IsFalling", false);
-    }
+
+
 }
