@@ -35,7 +35,7 @@ public class playerJump : MonoBehaviour
     private float _coyoteTimeCounter = 0;
     public bool pressingJump;
     public bool onGround;
-    private bool _currentlyJumping;
+    public bool _currentlyJumping;
 
     [Header("Charged Jump Current State")]
     public bool _desiredChargedJump;
@@ -262,9 +262,9 @@ public class playerJump : MonoBehaviour
         IEnumerator DelayChargedJump()
         {   
             //Jump once charged squash animation ends
-            yield return new WaitForSeconds(0.2f);
-            rb.linearVelocityX = 0f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
+            rb.linearVelocityX = 4f;
+            yield return new WaitForSeconds(0.05f);
             _desiredChargedJump = true;
         }
     void splitedChargedJump(float acumulatedJumpForce)
