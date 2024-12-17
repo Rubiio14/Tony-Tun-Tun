@@ -34,15 +34,28 @@ public class playerJuice : MonoBehaviour
     }
     private void Update()
     {
+        /*
         if (!playerGrounded && !jumpScript._currentlyJumping && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun"))
         {
             myAnimator.SetBool("IsFalling", true);
+            myAnimator.ResetTrigger("Landed");
         }
-        else if(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|NormalJump_TonyTunTun") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        if(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|NormalJump_TonyTunTun") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            
+            //myAnimator.ResetTrigger("Landed");
+        }
+        */
+        if (moveScript.velocity.y < -5)
         {
             myAnimator.SetBool("IsFalling", true);
         }
-
+        /*
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Falling_TonyTunTun 1") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            myAnimator.SetBool("IsFalling", false);
+            //myAnimator.ResetTrigger("Landed");
+        }*/
         if (_timer >= randomCheckInterval)
         {
             _timer = 0f;
@@ -68,15 +81,17 @@ public class playerJuice : MonoBehaviour
 
     private void checkForLanding()
     {
-        if (!playerGrounded && jumpScript.onGround)
+        if (playerGround.instance.GetOnGround())
         {
             //By checking for this, and then immediately setting playerGrounded to true, we only run this code once when the player hits the ground 
             playerGrounded = true;
             //Play an animation, some particles, and a sound effect when the player lands
+            
             myAnimator.SetTrigger("Landed");
             myAnimator.SetBool("IsFalling", false);
+            
         }
-        else if (playerGrounded && !jumpScript.onGround)
+        else
         {
             // Player has left the ground, so stop playing the running particles
             playerGrounded = false;

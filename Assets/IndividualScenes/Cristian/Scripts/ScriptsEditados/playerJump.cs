@@ -65,12 +65,14 @@ public class playerJump : MonoBehaviour
                     hudManager.instance.staminaImage.fillAmount = 0f;
                     if (onGround)
                     {
-                        juice.chargedjumpEffects();
-                        StartCoroutine(DelayChargedJump());
+                        //juice.chargedjumpEffects();
+                        juice.jumpEffects();
+                        _desiredChargedJump = true;
+                        //StartCoroutine(DelayChargedJump());
+                        //Take the amount of jump charged
+                        float fillAmount = hudManager.instance.jumpImage.fillAmount;
+                        splitedChargedJump(fillAmount);//Assign _jumpMultiplier value              
                     }
-                    //Take the amount of jump charged
-                    float fillAmount = hudManager.instance.jumpImage.fillAmount;
-                    splitedChargedJump(fillAmount);//Assign _jumpMultiplier value              
                 }
                 //If is not being filled execute a normal jump
                 else
@@ -78,7 +80,9 @@ public class playerJump : MonoBehaviour
                     if (onGround)
                     {
                         juice.jumpEffects();
-                        StartCoroutine(DelayJump());
+                        desiredJump = true;
+                        pressingJump = true;
+                        //StartCoroutine(DelayJump());
                     }
                 }
             }    
