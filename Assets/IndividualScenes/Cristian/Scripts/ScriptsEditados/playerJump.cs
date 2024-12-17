@@ -40,8 +40,9 @@ public class playerJump : MonoBehaviour
     [Header("Charged Jump Current State")]
     public bool _desiredChargedJump;
     private float _jumpMultiplier;
-  
-   
+    private float _jumpPressTime = 0f; // Tiempo que el botón se mantiene presionado
+    private bool _isCharging = false; // Flag para saber si estamos cargando el salto
+
 
     void Awake()
     {
@@ -56,19 +57,29 @@ public class playerJump : MonoBehaviour
     {
         if (playerMovementLimiter.instance.CharacterCanMove)
         {
+            if (context.started) // Botón presionado
+            {            
+                _isCharging = true; // Inicialmente no estamos cargando el salto
+            }
+
+           
+
             if (context.canceled)
             {
+                _isCharging = false;
+                _jumpPressTime = 0f;
                 //If bar is being filled
-                if (hudManager.instance.jumpImage.fillAmount >= 0.1)
+                if (hudManager.instance.jumpImage.fillAmount >= 0.1f)
                 {
+                    
                     //Reset Stamina
                     hudManager.instance.staminaImage.fillAmount = 0f;
                     if (onGround)
                     {
-                        //juice.chargedjumpEffects();
+                        
                         juice.jumpEffects();
                         _desiredChargedJump = true;
-                        //StartCoroutine(DelayChargedJump());
+                        
                         //Take the amount of jump charged
                         float fillAmount = hudManager.instance.jumpImage.fillAmount;
                         splitedChargedJump(fillAmount);//Assign _jumpMultiplier value              
@@ -79,6 +90,8 @@ public class playerJump : MonoBehaviour
                 {
                     if (onGround)
                     {
+                        _isCharging = false;
+                        _jumpPressTime = 0f;
                         juice.jumpEffects();
                         desiredJump = true;
                         pressingJump = true;
@@ -92,7 +105,10 @@ public class playerJump : MonoBehaviour
     void Update()
         {
             setPhysics();
-
+            if(hudManager.instance.jumpImage.fillAmount >= 0.1f && !juice.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && playerGround.instance.GetOnGround())
+            {
+                juice.chargedjumpEffects();
+            }
             //Check if we're on ground, using player Ground script
             onGround = _ground.GetOnGround();
 
