@@ -40,8 +40,6 @@ public class playerJump : MonoBehaviour
     [Header("Charged Jump Current State")]
     public bool _desiredChargedJump;
     private float _jumpMultiplier;
-    private float _jumpPressTime = 0f; // Tiempo que el botón se mantiene presionado
-    private bool _isCharging = false; // Flag para saber si estamos cargando el salto
 
 
     void Awake()
@@ -56,18 +54,9 @@ public class playerJump : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (playerMovementLimiter.instance.CharacterCanMove)
-        {
-            if (context.started) // Botón presionado
-            {            
-                _isCharging = true; // Inicialmente no estamos cargando el salto
-            }
-
-           
-
+        {           
             if (context.canceled)
             {
-                _isCharging = false;
-                _jumpPressTime = 0f;
                 //If bar is being filled
                 if (hudManager.instance.jumpImage.fillAmount >= 0.1f)
                 {
@@ -90,12 +79,9 @@ public class playerJump : MonoBehaviour
                 {
                     if (onGround)
                     {
-                        _isCharging = false;
-                        _jumpPressTime = 0f;
                         juice.jumpEffects();
                         desiredJump = true;
                         pressingJump = true;
-                        //StartCoroutine(DelayJump());
                     }
                 }
             }    
@@ -105,7 +91,7 @@ public class playerJump : MonoBehaviour
     void Update()
         {
             setPhysics();
-            if(hudManager.instance.jumpImage.fillAmount >= 0.1f && !juice.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && playerGround.instance.GetOnGround())
+            if(hudManager.instance.jumpImage.fillAmount >= 0.1f && !juice.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && rb.linearVelocity == Vector2.zero)
             {
                 juice.chargedjumpEffects();
             }
