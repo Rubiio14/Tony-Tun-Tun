@@ -40,6 +40,7 @@ public class playerJump : MonoBehaviour
     [Header("Charged Jump Current State")]
     public bool _desiredChargedJump;
     private float _jumpMultiplier;
+    public bool pulsa;
 
 
     void Awake()
@@ -55,12 +56,16 @@ public class playerJump : MonoBehaviour
     {
         if (playerMovementLimiter.instance.CharacterCanMove)
         {           
+            if(context.performed)
+            {
+                pulsa = true;
+            }
             if (context.canceled)
             {
+                pulsa = false;
                 //If bar is being filled
                 if (hudManager.instance.jumpImage.fillAmount >= 0.1f)
-                {
-                    
+                {                    
                     //Reset Stamina
                     hudManager.instance.staminaImage.fillAmount = 0f;
                     if (onGround)
@@ -91,10 +96,11 @@ public class playerJump : MonoBehaviour
     void Update()
         {
             setPhysics();
-            if(hudManager.instance.jumpImage.fillAmount >= 0.1f && !juice.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && rb.linearVelocity == Vector2.zero)
+            if (hudManager.instance.jumpImage.fillAmount >= 0.1f && !juice.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && rb.linearVelocity == Vector2.zero && pulsa)
             {
                 juice.chargedjumpEffects();
             }
+
             //Check if we're on ground, using player Ground script
             onGround = _ground.GetOnGround();
 

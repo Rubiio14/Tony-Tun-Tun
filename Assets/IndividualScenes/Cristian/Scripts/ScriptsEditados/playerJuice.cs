@@ -93,7 +93,7 @@ public class playerJuice : MonoBehaviour
     public void chargedjumpEffects()
     {
         //Play these effects when the player jumps, courtesy of jump script
-        myAnimator.ResetTrigger("Landed");
+        //myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("ChargedJump");
         //myAnimator.SetBool("IsFalling", true);
         
