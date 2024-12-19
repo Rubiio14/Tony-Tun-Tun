@@ -47,6 +47,10 @@ public class playerJuice : MonoBehaviour
                 myAnimator.SetBool("IsIdleB", true);
             }
         }
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ChargedJump_TonyTunTun") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !jumpScript.pulsa)
+        {
+            myAnimator.SetBool("IsIdle", true);
+        }
 
         if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|IDLE_B") && myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
         {
@@ -87,6 +91,7 @@ public class playerJuice : MonoBehaviour
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
         myAnimator.ResetTrigger("ChargedJump");
+        
         //myAnimator.SetBool("IsFalling", true);
 
     }
@@ -94,6 +99,7 @@ public class playerJuice : MonoBehaviour
     {
         //Play these effects when the player jumps, courtesy of jump script
         //myAnimator.ResetTrigger("Landed");
+        myAnimator.SetBool("IsIdle", false);
         myAnimator.SetTrigger("ChargedJump");
         //myAnimator.SetBool("IsFalling", true);
         

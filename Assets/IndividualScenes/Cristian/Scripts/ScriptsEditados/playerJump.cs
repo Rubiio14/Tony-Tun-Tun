@@ -100,7 +100,7 @@ public class playerJump : MonoBehaviour
             {
                 juice.chargedjumpEffects();
             }
-
+           
             //Check if we're on ground, using player Ground script
             onGround = _ground.GetOnGround();
 
