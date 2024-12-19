@@ -22,10 +22,10 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     {
         //Rayo Debug en la escena
         Vector2 forward = transform.TransformDirection(Vector2.right) * raycastLength;
-        Debug.DrawRay(new Vector2(transform.position.x* _startRaycast, 1), forward, Color.green);
+        Debug.DrawRay(new Vector2(transform.position.x * _startRaycast, transform.position.y), forward, Color.green);
 
         //Crear raycast e impactar con el layer del jugador 
-        if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, 1), Vector2.right, raycastLength, _playerLayer))
+        if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, transform.position.y), Vector2.right, raycastLength, _playerLayer))
         {
             //activar animacion de disparo
             _meleeShooterAnimator.SetBool("playerDetected", true);

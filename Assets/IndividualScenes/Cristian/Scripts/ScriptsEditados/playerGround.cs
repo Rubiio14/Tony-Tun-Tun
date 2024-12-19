@@ -3,7 +3,7 @@ using UnityEngine;
 public class playerGround : MonoBehaviour
 {
     //This script is used by both movement and jump to detect when the character is touching the ground
-    private bool _isOnGround;
+    public bool _isOnGround;
     public static playerGround instance;
     [Header("Collider Settings")]
     [SerializeField] [Tooltip("Alineas con los pies del personaje")] private float _groundLength = 0.95f;
