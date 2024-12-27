@@ -15,29 +15,16 @@ MonoBehaviour:
   m_TableCollectionName: UIAsset
   m_TableCollectionNameGuidString: 8aca39b3e791d554a8df2337bad962f4
   m_Entries:
-  - m_Id: 2587946215075840
-    m_Key: ConfirmButtonKeyboard
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2934554161115136
-    m_Key: ConfirmButtonGamepad
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2588074485280768
-    m_Key: CancelButtonKeyboard
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2934591431700480
-    m_Key: CancelButtonGamepad
-    m_Metadata:
-      m_Items: []
   - m_Id: 8750218322046976
     m_Key: OptionsBackground
     m_Metadata:
       m_Items: []
+  - m_Id: 12418818471817216
+    m_Key: PauseBackground
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
-    - rid: 3184717383960100865
     - rid: 551441693514137727
   m_KeyGenerator:
     rid: 3184717200527458304
@@ -52,31 +39,13 @@ MonoBehaviour:
           m_TableCodes:
           - en
           - es
+        - m_KeyId: 12418818471817216
+          m_TableCodes:
+          - en
+          - es
         m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     - rid: 3184717200527458304
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1732096609423
-    - rid: 3184717383960100865
-      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries:
-        - m_KeyId: 2934554161115136
-          m_TableCodes:
-          - en
-          - es
-        - m_KeyId: 2934591431700480
-          m_TableCodes:
-          - en
-          - es
-        - m_KeyId: 2588074485280768
-          m_TableCodes:
-          - es
-          - en
-        - m_KeyId: 2587946215075840
-          m_TableCodes:
-          - en
-          - es
-        m_TypeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null

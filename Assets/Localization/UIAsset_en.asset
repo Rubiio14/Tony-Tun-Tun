@@ -18,24 +18,12 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 2934554161115136
-    m_Localized: 3e01df6f3422ded42977a40a708d40ba
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2934591431700480
-    m_Localized: 4c0acc2fb5437d347b32eb0b9ac87aee
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2588074485280768
-    m_Localized: c4e95655a4b689c4ba0644b7599b5422
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2587946215075840
-    m_Localized: 4c0acc2fb5437d347b32eb0b9ac87aee
-    m_Metadata:
-      m_Items: []
   - m_Id: 8750218322046976
-    m_Localized: 'e2dd8ce1e5522164e855ea68448888ee[OptionsBackground]'
+    m_Localized: '7001daf5f0b99e143b0b2b2435534dd6[OptionsBackground]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12418818471817216
+    m_Localized: '6e931e86c7b55734bab136e792441eca[PauseBackground]'
     m_Metadata:
       m_Items: []
   references:

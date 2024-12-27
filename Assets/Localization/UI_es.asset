@@ -19,60 +19,76 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 1014104649728
-    m_Localized: Nueva Partida
+    m_Localized: nueva Partida
     m_Metadata:
       m_Items: []
   - m_Id: 733849645056
-    m_Localized: Opciones
+    m_Localized: opciones
     m_Metadata:
       m_Items: []
   - m_Id: 3244016935694336
-    m_Localized: Creditos
+    m_Localized: creditos
     m_Metadata:
       m_Items: []
   - m_Id: 816297078784
-    m_Localized: Salir
+    m_Localized: salir
     m_Metadata:
       m_Items: []
   - m_Id: 3243683475943424
-    m_Localized: Continuar
+    m_Localized: continuar
     m_Metadata:
       m_Items: []
   - m_Id: 7229239478251520
-    m_Localized: Volver
+    m_Localized: volver
     m_Metadata:
       m_Items: []
   - m_Id: 7229795634573312
-    m_Localized: Confirmar
+    m_Localized: confirmar
     m_Metadata:
       m_Items: []
   - m_Id: 8343600754126848
-    m_Localized: "\xBFSeguro que quieres empezar una nueva partida ? \\n\\n\nEl progreso
+    m_Localized: "\xBFseguro que quieres empezar una nueva partida ? \\n\\n\nel progreso
       actual se sobreescribir\xE1"
     m_Metadata:
       m_Items: []
   - m_Id: 10110082328621056
-    m_Localized: Musica
+    m_Localized: musica
     m_Metadata:
       m_Items: []
   - m_Id: 10115775475544064
-    m_Localized: SFX
+    m_Localized: sfx
     m_Metadata:
       m_Items: []
   - m_Id: 10115976462397440
-    m_Localized: Resolucion
+    m_Localized: resolucion
     m_Metadata:
       m_Items: []
   - m_Id: 10116170478317568
-    m_Localized: Idioma
+    m_Localized: idioma
     m_Metadata:
       m_Items: []
   - m_Id: 11619755304349696
-    m_Localized: Ingles
+    m_Localized: Iigles
     m_Metadata:
       m_Items: []
   - m_Id: 11619769082638336
-    m_Localized: Castellano
+    m_Localized: castellano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272134927118336
+    m_Localized: controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272326883635200
+    m_Localized: volver al HUB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272670019645440
+    m_Localized: volver al menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272991416578048
+    m_Localized: guardar y salir
     m_Metadata:
       m_Items: []
   references:

@@ -18,67 +18,79 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 1836385366016
-    m_Localized: 
+  - m_Id: 15272134927118336
+    m_Localized: controls
     m_Metadata:
       m_Items: []
   - m_Id: 1014104649728
-    m_Localized: New Game
+    m_Localized: new Game
     m_Metadata:
       m_Items: []
   - m_Id: 733849645056
-    m_Localized: Options
+    m_Localized: options
     m_Metadata:
       m_Items: []
   - m_Id: 3244016935694336
-    m_Localized: Credits
+    m_Localized: credits
     m_Metadata:
       m_Items: []
   - m_Id: 816297078784
-    m_Localized: Quit
+    m_Localized: quit
     m_Metadata:
       m_Items: []
   - m_Id: 3243683475943424
-    m_Localized: Continue
+    m_Localized: continue
     m_Metadata:
       m_Items: []
   - m_Id: 7229239478251520
-    m_Localized: Back
+    m_Localized: back
     m_Metadata:
       m_Items: []
   - m_Id: 7229795634573312
-    m_Localized: Confirm
+    m_Localized: confirm
     m_Metadata:
       m_Items: []
   - m_Id: 8343600754126848
-    m_Localized: 'Are you sure you want to start a new game ?\n\n
+    m_Localized: 'are you sure you want to start a new game ?\n\n
 
-      Current
+      current
       save will be overwritten'
     m_Metadata:
       m_Items: []
   - m_Id: 10110082328621056
-    m_Localized: Music
+    m_Localized: music
     m_Metadata:
       m_Items: []
   - m_Id: 10115775475544064
-    m_Localized: SFX
+    m_Localized: sfx
     m_Metadata:
       m_Items: []
   - m_Id: 10115976462397440
-    m_Localized: Resolution
+    m_Localized: resolution
     m_Metadata:
       m_Items: []
   - m_Id: 10116170478317568
-    m_Localized: Language
+    m_Localized: language
     m_Metadata:
       m_Items: []
   - m_Id: 11619755304349696
-    m_Localized: English
+    m_Localized: english
     m_Metadata:
       m_Items: []
   - m_Id: 11619769082638336
-    m_Localized: Spanish
+    m_Localized: spanish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272326883635200
+    m_Localized: back to HUB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272670019645440
+    m_Localized: back to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272991416578048
+    m_Localized: quit & save
     m_Metadata:
       m_Items: []
   references:

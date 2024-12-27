@@ -3,11 +3,11 @@ using UnityEngine.EventSystems;
 
 public class OptionsUIController : MonoBehaviour
 {
-    public GameObject FirstSelected;
+    [SerializeField] private GameObject _firstSelected;
 
-    private void OnEnable()
+    public void SelectFirst()
     {
-        EventSystem.current.SetSelectedGameObject(FirstSelected);
+        EventSystem.current.SetSelectedGameObject(_firstSelected);
     }
     
 }

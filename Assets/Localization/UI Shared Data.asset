@@ -15,14 +15,6 @@ MonoBehaviour:
   m_TableCollectionName: UI
   m_TableCollectionNameGuidString: 0c8a99ffb14792547a8ea2f30375d099
   m_Entries:
-  - m_Id: 1836385366016
-    m_Key: PressAnyKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 902498414592
-    m_Key: LoadGame
-    m_Metadata:
-      m_Items: []
   - m_Id: 1014104649728
     m_Key: NewGame
     m_Metadata:
@@ -33,10 +25,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 816297078784
     m_Key: QuitGame
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7388612063232
-    m_Key: LegalNotice
     m_Metadata:
       m_Items: []
   - m_Id: 3243683475943424
@@ -73,6 +61,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 10116170478317568
     m_Key: LanguageOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272134927118336
+    m_Key: ControlsOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272326883635200
+    m_Key: BackToHUBOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272670019645440
+    m_Key: BackToMainMenuOption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272991416578048
+    m_Key: SaveAndQuitOption
     m_Metadata:
       m_Items: []
   - m_Id: 11619755304349696

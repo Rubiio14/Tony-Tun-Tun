@@ -6,11 +6,6 @@ public class MainMenuUIController : MonoBehaviour
     [SerializeField] private ConfirmationController _confirmationContoller;
     private GameObject _previousSelected;
 
-    private void Start()
-    {
-
-    }
-
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(_previousSelected);
@@ -45,15 +40,15 @@ public class MainMenuUIController : MonoBehaviour
     public void Options()
     {
         _previousSelected = EventSystem.current.currentSelectedGameObject;
-        UIManager.Instance.EnableOptionsMenu();
         gameObject.SetActive(false);
+        UIManager.Instance.EnableOptionsMenu();
     }
 
     public void Credits()
     {
         _previousSelected = EventSystem.current.currentSelectedGameObject;
-        UIManager.Instance.EnableCreditsMenu();
         gameObject.SetActive(false);
+        UIManager.Instance.EnableCreditsMenu();
     }
 
     public void Quit()
