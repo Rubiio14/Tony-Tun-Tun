@@ -5,6 +5,8 @@ public class BreakablePlatform : MonoBehaviour
 {
     BoxCollider2D _platformCollider;
     [SerializeField]
+    GameObject _shortcutColliderEmpty;
+    [SerializeField]
     GameObject piece1, piece2, piece3, piece4, piece5, piece6, piece7;
 
     [Header("Timer")]
@@ -49,6 +51,7 @@ public class BreakablePlatform : MonoBehaviour
     private Quaternion _piece6Rotation;
     private Quaternion _piece7Rotation;
 
+    public bool _isShortcut;
 
     void Start()
     {
@@ -92,6 +95,11 @@ public class BreakablePlatform : MonoBehaviour
         if (_needBreakingTimer == true)
         {
             _timer += Time.deltaTime;
+            //Temblor de la plataforma
+
+            //Partículas de rocas y polvo
+
+
             if (_timer >= _platformBreakingTime)
             {
                 _timer = 0f;
@@ -124,12 +132,18 @@ public class BreakablePlatform : MonoBehaviour
                 }
             }
         }
+        if (_isShortcut == true)
+        {
+            _shortcutColliderEmpty.SetActive(true);
+        }
+        else
+        {
+            _shortcutColliderEmpty.SetActive(false);
+        }
     }
     public void Hit()
     {
         _needBreakingTimer = true;
-        //Temblor de la plataforma
-        //particulas de polvo
     }
     public void Broke()
     {
