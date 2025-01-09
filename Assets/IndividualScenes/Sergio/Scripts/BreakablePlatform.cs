@@ -8,17 +8,20 @@ public class BreakablePlatform : MonoBehaviour
     GameObject _shortcutColliderEmpty;
     [SerializeField]
     GameObject piece1, piece2, piece3, piece4, piece5, piece6, piece7;
+    [SerializeField]
+    GameObject _platformMesh;
+
+    [Header("Temblor Plataforma")]
+    public bool _isShaking;
+    [Tooltip("La cantidad de distancia por la que tiembla la plataforma")] public float shakeDistance;
 
     [Header("Timer")]
     public float _timer = 0f;
+
     //Breaking y Despawn
-    [Header("Rotación piezas")]
+    [Header("Tiempo hasta romperse")]
     public bool _needBreakingTimer = false;
     public float _platformBreakingTime = 3f;
-
-    //Rotación de las piezas
-    private bool _needRotations;
-
     //Tiempo en el que tardan las piezas en desactivarse
     [Tooltip("Lo que tardan en desaparecer las piezas, debe ser INFERIOR al Platform Respawn Time")]  public float _despawnPieceTime = 2f;
 
@@ -27,11 +30,12 @@ public class BreakablePlatform : MonoBehaviour
     public bool _needRespawningTimer = false;
     [Tooltip("Lo que tarda en volver a aparecer la plataforma")] public float _platformRespawnTime = 5f;
 
-    [Header("Rotación piezas")]
+    //Rotación de las piezas
     Vector3 _pieceRotation;
+    private bool _needRotations;
+    [Header("Rotación piezas")]
     [Tooltip("Cantidad mínima de rotación")] public float _minRotationValue = -1f;
     [Tooltip("Cantidad máxima de rotación")] public float _maxRotationValue = 1f;
-
 
     //Posiciones de las piezas para volver a colocarlas
     private Vector3 _piece1Position;
@@ -51,6 +55,9 @@ public class BreakablePlatform : MonoBehaviour
     private Quaternion _piece6Rotation;
     private Quaternion _piece7Rotation;
 
+
+    //Para declarar si es un atajo, para activar el collider que bloquea al jugador por el lado contrario al que rompe la plataforma.
+    [Header("Es atajo")]
     public bool _isShortcut;
 
     void Start()
@@ -95,10 +102,19 @@ public class BreakablePlatform : MonoBehaviour
         if (_needBreakingTimer == true)
         {
             _timer += Time.deltaTime;
+
             //Temblor de la plataforma
+            StartCoroutine(ShakePlatform());
 
+            if(_isShaking)
+            {
+                Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * shakeDistance);
+                newPos.z = _platformMesh.transform.position.x;
+                newPos.y = _platformMesh.transform.position.y;
+
+                _platformMesh.transform.position = newPos;
+            }
             //Partículas de rocas y polvo
-
 
             if (_timer >= _platformBreakingTime)
             {
@@ -145,6 +161,21 @@ public class BreakablePlatform : MonoBehaviour
     {
         _needBreakingTimer = true;
     }
+
+    public IEnumerator ShakePlatform()
+    {
+        Vector3 originalPos = _platformMesh.transform.position;
+
+        if(_isShaking == false)
+        {
+            _isShaking = true;
+        }
+
+        yield return new WaitForSeconds(0.25f);
+
+        _isShaking = false;
+        _platformMesh.transform.position = originalPos;
+    }
     public void Broke()
     {
         //Desactiva Collider de la plataforma, caen las piezas y rotan
@@ -188,13 +219,14 @@ public class BreakablePlatform : MonoBehaviour
     public IEnumerator Waiting()
     {
          yield return new WaitForSeconds(_despawnPieceTime);
+
         piece1.SetActive(false);
         piece2.SetActive(false);
         piece3.SetActive(false);
         piece4.SetActive(false);
         piece5.SetActive(false);
         piece6.SetActive(false);
-        piece7.SetActive(false);
+        piece7.SetActive(false); 
     }
 
     //Vuelve a aparecer y a colocarse la pieza
