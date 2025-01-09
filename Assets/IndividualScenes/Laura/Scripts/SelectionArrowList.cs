@@ -129,6 +129,7 @@ public class SelectionArrowList : SelectLeftRight
                 LocalizationSettings.SelectedLocale = locale;
                 localizedObj.SetEntry(locale.Identifier.Code);
                 localizedObj.OnUpdateString.AddListener((string textChanged) => { _optionText.text = textChanged; });
+                UIManager.Instance.UpdateLanguage();
             });
 
             if (_optionsArray[index].Value == LocalizationSettings.SelectedLocale.Identifier.Code) { 

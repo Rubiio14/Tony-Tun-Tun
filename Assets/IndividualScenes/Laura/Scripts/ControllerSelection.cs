@@ -44,7 +44,7 @@ public class ControllerSelection : MonoBehaviour, IMoveHandler, ICancelHandler, 
     public void FillControllerOptions()
     {
         _optionsArray = new Option[2];
-        String keyboardName = UIManager.Instance.GetLocalizedUIText("Keyboard");
+        String keyboardName = UIManager.Instance.GetKeyboardLocalized();
         _optionsArray[0] = new Option(keyboardName, () =>
         {
             //Change image to keyboard one
@@ -53,7 +53,7 @@ public class ControllerSelection : MonoBehaviour, IMoveHandler, ICancelHandler, 
             _optionText.text = keyboardName;
         });
 
-        String gamepadName = UIManager.Instance.GetLocalizedUIText("Gamepad");
+        String gamepadName = UIManager.Instance.GetGamepadLocalized();
         _optionsArray[1] = new Option(gamepadName, () =>
         {
             //Change image to keyboard one
@@ -67,15 +67,11 @@ public class ControllerSelection : MonoBehaviour, IMoveHandler, ICancelHandler, 
     
     public void OnCancel(BaseEventData eventData)
     {
-        //_gamepadDiv.SetActive(false);
-        //_keyboardDiv.SetActive(false);
         OnCancellation?.Invoke();
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
-        //_gamepadDiv.SetActive(false);
-        //_keyboardDiv.SetActive(false);
         OnCancellation?.Invoke();
     }
 

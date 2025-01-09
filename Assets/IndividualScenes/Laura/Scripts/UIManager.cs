@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
 using UnityEngine.Localization;
 using System;
 using UnityEngine.Localization.Settings;
-using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -28,10 +25,16 @@ public class UIManager : MonoBehaviour
     public Resolution[] AvailableResolutions { get; private set; }
 
     //Controller
+    //TODO: Add removal of listeners at some point
     public event Action<bool> OnControllerChange;
 
+    //Global variables for UI localization
+    private string UITableName = "UI";
+    private string KeyboardKey = "Keyboard";
+    private string GamepadKey = "Gamepad";
 
-    private void Awake()
+
+    public void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -41,26 +44,34 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public void Start()
+    {
         AvailableResolutions = Screen.resolutions;
         //Localization initialization
         AvailableLocales = LocalizationSettings.AvailableLocales.Locales.ToArray();
         _localeIndex = 0;
         LocalizationSettings.SelectedLocale = AvailableLocales[_localeIndex];
-        UITextTable = LocalizationSettings.StringDatabase.GetTable("UI");
+        UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
         //LocalizationSettings.InitializationOperation.Completed += FinishLoadingLocalization;
+    }
+
+    public void UpdateLanguage()
+    {
+        UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
     }
 
     /*private void FinishLoadingLocalization(AsyncOperationHandle<LocalizationSettings> handle)
     {
         _localeIndex = 0;
         LocalizationSettings.SelectedLocale = _availableLocales[_localeIndex];
-        _uiTextsTable = LocalizationSettings.StringDatabase?.GetTable("UI");
+        _uiTextsTable = LocalizationSettings.StringDatabase?.GetTable(UITableName);
     }*/
 
     public String GetLocalizedUIText(String localizedKey)
     {
-        return LocalizationSettings.StringDatabase.GetTable("UI").GetEntry(localizedKey).LocalizedValue;
-        //return UITextTable.GetEntry(localizedKey).LocalizedValue;
+        return UITextTable.GetEntry(localizedKey).LocalizedValue;
     }
 
     public void EnableMainMenu()
@@ -88,6 +99,16 @@ public class UIManager : MonoBehaviour
         CreditsMenu.gameObject.SetActive(false);
     }
 
+    public string GetKeyboardLocalized()
+    {
+        return GetLocalizedUIText(KeyboardKey);
+    }
+
+    public string GetGamepadLocalized()
+    {
+        return GetLocalizedUIText(GamepadKey);
+    }
+
     public void ChangeToGamepad()
     {
         OnControllerChange?.Invoke(true);
@@ -97,5 +118,4 @@ public class UIManager : MonoBehaviour
     {
         OnControllerChange?.Invoke(false);
     }
-
 }

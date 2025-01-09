@@ -1,12 +1,12 @@
-using System;
-using UnityEditor.Overlays;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     public SaveData SavedData { get; private set; }
+
 
     internal SaveData LoadData()
     {
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
+
 }
