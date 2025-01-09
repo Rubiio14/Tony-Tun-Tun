@@ -27,9 +27,9 @@ public class UIManager : MonoBehaviour
     //Resolution
     public Resolution[] AvailableResolutions { get; private set; }
 
-
     //Controller
     public event Action<bool> OnControllerChange;
+
 
     private void Awake()
     {
@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
 
     public String GetLocalizedUIText(String localizedKey)
     {
-        return UITextTable.GetEntry(localizedKey)?.GetLocalizedString();
+        return UITextTable.GetEntry(localizedKey)?.GetLocalizedString(AvailableLocales, LocalizationSettings.SelectedLocale);
     }
 
     public void EnableMainMenu()

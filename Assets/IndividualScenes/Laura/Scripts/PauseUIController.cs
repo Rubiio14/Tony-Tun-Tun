@@ -11,8 +11,6 @@ public class PauseUIController : MonoBehaviour
     [SerializeField] private GameObject _controlsPanel;
     [SerializeField] private GameObject _controlsFirtsSelected;
 
-    //[SerializeField] private 
-
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(_previousSelected);
@@ -42,6 +40,12 @@ public class PauseUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_optionsFirtsSelected);
     }
 
+    public void DisableOptions()
+    {
+        _optionsPanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_previousSelected);
+    }
+
     public void Controls()
     {
         _previousSelected = EventSystem.current.currentSelectedGameObject;
@@ -50,4 +54,9 @@ public class PauseUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_controlsFirtsSelected);
     }
 
+    public void DisableControls()
+    {
+        _controlsPanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_previousSelected);
+    }
 }

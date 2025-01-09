@@ -68,7 +68,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11619755304349696
-    m_Localized: Iigles
+    m_Localized: ingles
     m_Metadata:
       m_Items: []
   - m_Id: 11619769082638336
@@ -89,6 +89,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 15272991416578048
     m_Localized: guardar y salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20678166315593728
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20678263132712960
+    m_Localized: Mover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20678282128715776
+    m_Localized: Saltar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20680468942352384
+    m_Localized: Teclado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20680370330071040
+    m_Localized: Mando
     m_Metadata:
       m_Items: []
   references:

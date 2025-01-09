@@ -1,5 +1,8 @@
+using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -12,6 +15,8 @@ public class OptionEnabling : MonoBehaviour, ISelectHandler, IDeselectHandler, I
     //Must implement IActivate, can also search for it, if they are going to be prefabs
     [SerializeField] private GameObject _elementToReference;
     private IActivate _elementToActivate;
+
+    public UnityEvent OnCancellation;
 
     public void Awake()
     {
@@ -53,8 +58,7 @@ public class OptionEnabling : MonoBehaviour, ISelectHandler, IDeselectHandler, I
     {
         //Return to main menu, animations if we want
         ChangeImageTo(_primaryImage);
-        UIManager.Instance.DisableOptionsMenu();
-        UIManager.Instance.EnableMainMenu();
+        OnCancellation?.Invoke();
     }
 
 }
