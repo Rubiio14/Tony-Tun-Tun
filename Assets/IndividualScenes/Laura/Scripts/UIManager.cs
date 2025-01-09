@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
         AvailableLocales = LocalizationSettings.AvailableLocales.Locales.ToArray();
         _localeIndex = 0;
         LocalizationSettings.SelectedLocale = AvailableLocales[_localeIndex];
-        UITextTable = LocalizationSettings.StringDatabase?.GetTable("UI");
+        UITextTable = LocalizationSettings.StringDatabase.GetTable("UI");
         //LocalizationSettings.InitializationOperation.Completed += FinishLoadingLocalization;
     }
 
@@ -59,7 +59,8 @@ public class UIManager : MonoBehaviour
 
     public String GetLocalizedUIText(String localizedKey)
     {
-        return UITextTable.GetEntry(localizedKey)?.GetLocalizedString(AvailableLocales, LocalizationSettings.SelectedLocale);
+        return LocalizationSettings.StringDatabase.GetTable("UI").GetEntry(localizedKey).LocalizedValue;
+        //return UITextTable.GetEntry(localizedKey).LocalizedValue;
     }
 
     public void EnableMainMenu()
