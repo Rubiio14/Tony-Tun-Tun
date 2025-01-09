@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6978266e-f67c-49a6-a1ff-e145ce7d50c8}">
+		<property name="assetPath">
+			<value>TTT FXs de Fa╠übrica.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>56.015623582766437</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a5ac086a-6eb0-4ff4-881d-37e12e0ca793}</destination>
+		</relationship>
+	</object>
+</objects>
