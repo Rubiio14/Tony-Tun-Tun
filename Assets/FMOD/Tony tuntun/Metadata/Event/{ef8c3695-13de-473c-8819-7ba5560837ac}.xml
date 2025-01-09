@@ -1288,7 +1288,7 @@
 			<value>4</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{ac5ab8de-5e0c-4f10-aa94-65b6a7cce309}">
@@ -1302,7 +1302,7 @@
 			<value>4</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{eaf06d2e-3fc7-42f5-b3be-410d99ec428e}">
@@ -1316,7 +1316,7 @@
 			<value>9.5</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{00d0200d-dc3c-4233-b6d3-569f033898f8}">
@@ -1333,7 +1333,7 @@
 			<value>-4.5</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{982d1c36-1d8d-458a-8e40-b2625202207f}">
@@ -1347,7 +1347,7 @@
 			<value>24</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{2096df65-c9a7-4cb1-8a62-41d184d258b7}">
@@ -1364,7 +1364,7 @@
 			<value>-4</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{f73870cf-5d2e-41e7-9445-1cfc758675ca}">
@@ -1378,7 +1378,7 @@
 			<value>40</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{47a803db-d4b5-4a8f-99ce-7e02d84629f4}</destination>
+			<destination>{f99d423a-9f1b-42f1-9acf-be83a142e42f}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{7b13aecd-9465-467e-b6bf-f0d4285b38f2}">
