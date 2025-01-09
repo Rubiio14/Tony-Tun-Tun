@@ -179,10 +179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6697217962652907693, guid: 86ca7556319b4d34fb7188cc530f5519, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5740436060709077716, guid: 86ca7556319b4d34fb7188cc530f5519, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 690982135}
   m_SourcePrefab: {fileID: 100100000, guid: 86ca7556319b4d34fb7188cc530f5519, type: 3}
 --- !u!1 &168136535 stripped
 GameObject:
@@ -263,6 +267,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7daa398ba9c2b6646bb00c3f040603b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &690982129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5740436060709077716, guid: 86ca7556319b4d34fb7188cc530f5519, type: 3}
+  m_PrefabInstance: {fileID: 148783575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &690982135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690982129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &924228698
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 768642191095241942, guid: d8e0a70289287d04c8ee05562418374d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.7
       objectReference: {fileID: 0}
     - target: {fileID: 768642191095241942, guid: d8e0a70289287d04c8ee05562418374d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -940,6 +963,10 @@ PrefabInstance:
     - target: {fileID: 2455366704218045374, guid: d8e0a70289287d04c8ee05562418374d, type: 3}
       propertyPath: _platformRespawnTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056903536522139057, guid: d8e0a70289287d04c8ee05562418374d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

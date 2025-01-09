@@ -60,6 +60,8 @@ public class BreakablePlatform : MonoBehaviour
     [Header("Es atajo")]
     public bool _isShortcut;
 
+    Vector3 originalPos;
+
     void Start()
     {
         _platformCollider = GetComponent<BoxCollider2D>();
@@ -82,6 +84,7 @@ public class BreakablePlatform : MonoBehaviour
         _piece6Rotation = piece6.transform.rotation;
         _piece7Rotation = piece7.transform.rotation;
 
+        originalPos = _platformMesh.transform.position; 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -108,9 +111,12 @@ public class BreakablePlatform : MonoBehaviour
 
             if(_isShaking)
             {
-                Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * shakeDistance);
-                newPos.z = _platformMesh.transform.position.x;
-                newPos.y = _platformMesh.transform.position.y;
+                Vector3 newPos = originalPos + Random.insideUnitSphere * (Time.deltaTime * shakeDistance);
+
+                //Los ejes NO comentados son aquellos que No se moverán
+               // newPos.x = _platformMesh.transform.position.x;
+               // newPos.y = _platformMesh.transform.position.y;
+               // newPos.z = _platformMesh.transform.position.z;
 
                 _platformMesh.transform.position = newPos;
             }
