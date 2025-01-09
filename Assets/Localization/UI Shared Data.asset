@@ -87,6 +87,26 @@ MonoBehaviour:
     m_Key: es
     m_Metadata:
       m_Items: []
+  - m_Id: 20678166315593728
+    m_Key: PauseControl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20678263132712960
+    m_Key: MoveControl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20678282128715776
+    m_Key: JumpControl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20680370330071040
+    m_Key: Gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20680468942352384
+    m_Key: Keyboard
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

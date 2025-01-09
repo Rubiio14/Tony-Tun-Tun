@@ -10,4 +10,9 @@ public class OptionsUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_firstSelected);
     }
     
+    public void BackToMenu()
+    {
+        UIManager.Instance.DisableOptionsMenu();
+        UIManager.Instance.EnableMainMenu();
+    }
 }

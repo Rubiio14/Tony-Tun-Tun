@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 
 public class SelectionArrowList : SelectLeftRight
 {
-    [SerializeField] private TextMeshProUGUI _OptionText;
+    [SerializeField] private TextMeshProUGUI _optionText;
     [SerializeField] private Image _leftArrow;
     [SerializeField] private Image _rightArrow;
 
@@ -23,7 +24,7 @@ public class SelectionArrowList : SelectLeftRight
 
     public void OnEnable()
     {
-        OnLoadedComponent.Invoke();
+        OnLoadedComponent?.Invoke();
     }
 
     override public void OnMove(AxisEventData eventData)
@@ -84,12 +85,12 @@ public class SelectionArrowList : SelectLeftRight
         for (int index = 0; index < resolutionSize; index++)
         {
             Resolution resolution = UIManager.Instance.AvailableResolutions[index];
-            string formattedResotion = FormatResolution(resolution);
+            string formattedResolution = FormatResolution(resolution);
 
-            _optionsArray[index] = new Option(formattedResotion, () =>
+            _optionsArray[index] = new Option(formattedResolution, () =>
             {
                 Screen.SetResolution(resolution.width, resolution.height, true);
-                _OptionText.text = formattedResotion;
+                _optionText.text = formattedResolution;
             });
 
             if (_optionsArray[index].Value == currentRes)
@@ -115,7 +116,7 @@ public class SelectionArrowList : SelectLeftRight
         int localeSize = UIManager.Instance.AvailableLocales.Length;
         _optionsArray = new Option[localeSize];
 
-        LocalizeStringEvent localizedObj = _OptionText.GetComponent<LocalizeStringEvent>();
+        LocalizeStringEvent localizedObj = _optionText.GetComponent<LocalizeStringEvent>();
         localizedObj.SetTable(UIManager.Instance.UITextTable.TableCollectionName);
 
         for (int index = 0; index < localeSize; index++)
@@ -124,13 +125,13 @@ public class SelectionArrowList : SelectLeftRight
 
             _optionsArray[index] = new Option(locale.Identifier.Code, () =>
             {
+                _optionText.text = UIManager.Instance.GetLocalizedUIText(LocalizationSettings.SelectedLocale.Identifier.Code);
                 LocalizationSettings.SelectedLocale = locale;
                 localizedObj.SetEntry(locale.Identifier.Code);
-                localizedObj.OnUpdateString.AddListener((string textChanged) => { _OptionText.text = textChanged; });
-
+                localizedObj.OnUpdateString.AddListener((string textChanged) => { _optionText.text = textChanged; });
             });
 
-            if (_optionsArray[index].Value == LocalizationSettings.SelectedLocale.LocaleName) { 
+            if (_optionsArray[index].Value == LocalizationSettings.SelectedLocale.Identifier.Code) { 
                 _currentIndex = index;
             }
         }
@@ -154,9 +155,8 @@ public class SelectionArrowList : SelectLeftRight
         _leftArrow.color = _leftTmpColor;
         _rightArrow.color = _rightTmpColor;
     }
-
     public override void OnValueChanged()
     {
-        throw new NotImplementedException();
+        //We are not doing anything for now
     }
 }

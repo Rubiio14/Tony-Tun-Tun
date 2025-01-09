@@ -6509,6 +6509,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -43.75
       objectReference: {fileID: 0}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 302220330}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269009308862024406, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4462561397320957453, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.37
@@ -6665,6 +6693,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -43.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 302220330}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687052162245552964, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6100387356853033339, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -6720,6 +6776,34 @@ PrefabInstance:
     - target: {fileID: 6182475223673619227, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -43.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 302220330}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404679863047418577, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6619132866550456032, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6972,6 +7056,34 @@ PrefabInstance:
     - target: {fileID: 8809933461495369593, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
       propertyPath: m_Name
       value: MiddleDiv
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 302220330}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896495180487336952, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
+      propertyPath: OnCancellation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8921334250761050280, guid: 698d8c63c3044b34bbc31ba7f1815de8, type: 3}
       propertyPath: m_AnchorMax.x
