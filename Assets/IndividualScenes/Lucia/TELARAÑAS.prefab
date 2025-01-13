@@ -43,7 +43,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5714642091394535972}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 6.826667, y: 6.826667, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedWhileInSpiderWeb: 5
+  jumpMultiplyerWhileInWeb: 5
 --- !u!1 &7704473190384333162
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6500941241923532951}
   m_Father: {fileID: 8738106739013651078}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &6009650906640208143
@@ -263,7 +265,69 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &6197262778596088831
+--- !u!1001 &991874894279740748
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7862244387931401036}
+    m_Modifications:
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.066668
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6683328408653770593, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+      propertyPath: m_Name
+      value: Tile3D_1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+--- !u!4 &6500941241923532951 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6337729521200264667, guid: 10d2eaa1b4144514193468d7e3eedfa5, type: 3}
+  m_PrefabInstance: {fileID: 991874894279740748}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7029219628793661877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
