@@ -1,9 +1,9 @@
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 public class FMODAudioManager : MonoBehaviour
 {
-    [SerializeField] private EventReference m_musica;
-    [SerializeField] private GameObject player;
+    
     public static FMODAudioManager instance { get; private set; }
 
     private void Awake()
@@ -14,13 +14,15 @@ public class FMODAudioManager : MonoBehaviour
         }
         instance = this;
     }
-    public void Start()
-    {
-        PlayOneShot(m_musica, player.transform.position);
-    }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+
+    public EventInstance CreateInstance(EventReference eventReference)
+    {
+        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
+        return eventInstance;
     }
 }
