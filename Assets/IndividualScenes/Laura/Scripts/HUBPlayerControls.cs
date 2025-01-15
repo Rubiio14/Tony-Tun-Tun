@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +14,7 @@ public class HUBPlayerControls : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private Animator _animationController;
     [SerializeField] private Level[] _levels;
-    private int _currentLevelIndex;
+    private int _currentLevelIndex = 0;
     private bool _isOnPlatform;
 
     private InputActionMap _hub;
@@ -19,6 +22,11 @@ public class HUBPlayerControls : MonoBehaviour
     private InputAction _submit;
     private InputAction _cancel;
     private bool _isLookingFront = true;
+
+    [SerializeField] private float _levelZOffset = 4f;
+    [SerializeField] private float _rotationSpeed;
+    private Quaternion _targetRotation;
+    private float _rotationCloseFactor = 0.9999f;
 
     public void Awake()
     {
@@ -53,23 +61,11 @@ public class HUBPlayerControls : MonoBehaviour
     {
         if (_isOnPlatform && !_isLookingFront)
         {
-            FaceTarget();
-            Debug.Log("Rotation: " + transform.rotation);
-        }
-    }
-
-    void FaceTarget()
-    {
-        Vector3 lookAtDirection = transform.position;
-        lookAtDirection.z = lookAtDirection.z - 1;
-        Vector3 direction = (lookAtDirection - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, direction.z, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-
-        if (Quaternion.Dot(transform.rotation, lookRotation) > 0.8f) 
-        {
-            _isLookingFront = true;
-            Debug.Log("Looking front");
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, _rotationSpeed * Time.deltaTime);
+            if(Quaternion.Dot(transform.rotation, _targetRotation) >= _rotationCloseFactor)
+            {
+                _isLookingFront = true;
+            }
         }
     }
 
@@ -94,14 +90,13 @@ public class HUBPlayerControls : MonoBehaviour
             tmpIndex = _currentLevelIndex - 1;
             if (IsLevelReachable(tmpIndex))
             {
-                Debug.Log("Reachable:" + tmpIndex);
                 _currentLevelIndex = tmpIndex;
                 _agent.isStopped = false;
                 MoveToLevel(_currentLevelIndex);
             }
             else
             {
-                Debug.Log("Left level not available");
+                
             }
 
        }
@@ -110,17 +105,26 @@ public class HUBPlayerControls : MonoBehaviour
             tmpIndex = _currentLevelIndex + 1;
             if (IsLevelReachable(tmpIndex))
             {
-                Debug.Log("Reachable:" + tmpIndex);
                 _currentLevelIndex = tmpIndex;
                 _agent.isStopped = false;
                 MoveToLevel(_currentLevelIndex);
             }
             else
             {
-                Debug.Log("Right level not available");
+                
             }
         }
         
+    }
+
+    private void SelectRotationTarget()
+    {
+        Vector3 lookAtDirection = _levels[_currentLevelIndex].transform.position;
+        lookAtDirection.z = lookAtDirection.z + _levelZOffset;
+
+        Vector3 direction = ( lookAtDirection - transform.position).normalized;
+        _targetRotation = Quaternion.LookRotation(direction);
+
     }
 
     public void Submit(InputAction.CallbackContext ctx)
@@ -146,6 +150,7 @@ public class HUBPlayerControls : MonoBehaviour
             _isOnPlatform = true;
             _agent.isStopped = true;
             _animationController.Play("IdleA");
+            SelectRotationTarget();
         }
     }
     public void OnTriggerExit(Collider other)
