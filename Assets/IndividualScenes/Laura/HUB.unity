@@ -4512,6 +4512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94f964001e6f4542904d3c1c6fdb784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyboardControlScheme: Keyboard&Mouse
+  gamepadControlScheme: Gamepad
 --- !u!114 &1808885363
 MonoBehaviour:
   m_ObjectHideFlags: 0

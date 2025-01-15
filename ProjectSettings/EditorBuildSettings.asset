@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GlobalScenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/IndividualScenes/Laura/HUBTest.unity
+    guid: 1a8ef7e63b06b3b4aa16d01bc5340125
+  - enabled: 1
+    path: Assets/IndividualScenes/Laura/MainMenu.unity
+    guid: 900749d5fc6b75a49ab443b36f144928
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 42399d0515c85fe41a0e4061c3e6ad58, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ff4fa61059d13cb4c96a3046306a5b81, type: 3}
