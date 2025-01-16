@@ -28,12 +28,11 @@ public class MainMenuUIController : MonoBehaviour
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("NewGameConfirmation"),
             () => {
                 /*Delete previous saved data values*/
-                //VideoPlayer for intro
-                //UIManager.Instance.PlayIntroVideo();
-                SceneManager.LoadScene("IntroVideo");
+                //Change to Intro Video Scene
+                SceneManager.LoadScene("IntroVideoScene");
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
             },
             () => {
-                EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
         UIManager.Instance.ShowConfirmationPanel(EventSystem.current.currentSelectedGameObject);

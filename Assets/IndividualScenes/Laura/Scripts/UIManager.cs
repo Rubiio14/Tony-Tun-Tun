@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
     //Video
     //TODO: Can be separated on another script if necessary
     [SerializeField] private VideoPlayer _videoPlayer;
-    [SerializeField] private VideoClip _introClip;
 
     public void Awake()
     {
@@ -143,8 +142,4 @@ public class UIManager : MonoBehaviour
         _videoPlayer.Play();
     }
 
-    public void PlayIntroVideo()
-    {
-        PlayVideo(_introClip);
-    }
 }

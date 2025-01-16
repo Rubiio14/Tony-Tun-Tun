@@ -111,6 +111,16 @@ MonoBehaviour:
     m_Localized: Mando
     m_Metadata:
       m_Items: []
+  - m_Id: 23574967527993344
+    m_Localized: "\xBFseguro que quieres vover al menu principal ? \\n\\n\nel progreso
+      actual se guardar\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23579077912358912
+    m_Localized: "\xBFseguro que quieres vover al hub ? \\n\\n\nel progreso actual
+      se guardar\xE1"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

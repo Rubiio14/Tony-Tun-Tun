@@ -17,6 +17,11 @@ public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHa
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
+    public void OnDisable()
+    {
+        EventSystem.current.SetSelectedGameObject(PreviousSelected);
+    }
+
     public void FillConfirmationPanel(string confirmMessage, UnityAction ConfirmAction, UnityAction CancelationAction)
     {
         _confirmationTxt.text = confirmMessage;
@@ -37,6 +42,7 @@ public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHa
     }
     public void OnDeselect(BaseEventData eventData)
     {
+        Debug.Log("Deselecting confirmation canvas");
         CleanConfirmationPanel();
     }
 

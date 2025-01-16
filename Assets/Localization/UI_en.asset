@@ -113,6 +113,20 @@ MonoBehaviour:
     m_Localized: Keyboard
     m_Metadata:
       m_Items: []
+  - m_Id: 23574967527993344
+    m_Localized: 'are you sure you want to go back to main menu ?\n\n
+
+      current
+      progress will be saved.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23579077912358912
+    m_Localized: 'are you sure you want to go back to the hub ?\n\n
+
+      current
+      progress will be saved.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

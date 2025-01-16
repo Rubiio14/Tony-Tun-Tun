@@ -107,6 +107,14 @@ MonoBehaviour:
     m_Key: Keyboard
     m_Metadata:
       m_Items: []
+  - m_Id: 23574967527993344
+    m_Key: BackToMainMenuConfirmation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23579077912358912
+    m_Key: BackToHubConfirmation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseUIController : MonoBehaviour
 {
-    [SerializeField] private ConfirmationController _confirmationContoller;
     private GameObject _previousSelected;
 
     [SerializeField] private GameObject _optionsPanel;
@@ -16,11 +16,29 @@ public class PauseUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_previousSelected);
     }
 
-    public void GenerateConfirmationPanel()
+    public void GenerateBackToHubConfirmationPanel()
     {
-        UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("NewGameConfirmation"),
+        UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToHubConfirmation"),
             () => {
                 /*On Confirmation*/
+                SceneManager.LoadScene("HUB");
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
+            },
+            () => {
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
+            });
+        UIManager.Instance.ShowConfirmationPanel(EventSystem.current.currentSelectedGameObject);
+
+    }
+
+    public void GenerateBackToMainMenuConfirmationPanel()
+    {
+        UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToMainMenuConfirmation"),
+            () => {
+                /*On Confirmation*/
+                SceneManager.LoadScene("MainMenu");
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
             },
             () => {
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
@@ -56,5 +74,15 @@ public class PauseUIController : MonoBehaviour
     {
         _controlsPanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(_previousSelected);
+    }
+
+    public void BackToHUB()
+    {
+        GenerateBackToHubConfirmationPanel();
+    }
+
+    public void BackToMainMenu()
+    {
+        GenerateBackToMainMenuConfirmationPanel();
     }
 }
