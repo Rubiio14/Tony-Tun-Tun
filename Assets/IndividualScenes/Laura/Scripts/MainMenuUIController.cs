@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUIController : MonoBehaviour
 {
-    [SerializeField] private ConfirmationController _confirmationContoller;
     private GameObject _previousSelected;
 
     private void OnEnable()
@@ -15,7 +16,7 @@ public class MainMenuUIController : MonoBehaviour
     {
         Debug.Log("Start new Game");
         //If there is an occupied slot, ask for confirmation
-        //if (GameManager.SavedData != null)
+        //if (GameManager.Instance.SavedData != null)
         //{
             GenerateNewSaveConfirmationPanel();
         //}
@@ -24,17 +25,18 @@ public class MainMenuUIController : MonoBehaviour
 
     public void GenerateNewSaveConfirmationPanel()
     {
-
-        _confirmationContoller.PreviousSelected = EventSystem.current.currentSelectedGameObject;
-        _confirmationContoller.FillForNewGameConfirmation(
+        UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("NewGameConfirmation"),
             () => {
                 /*Delete previous saved data values*/
+                //VideoPlayer for intro
+                //UIManager.Instance.PlayIntroVideo();
+                SceneManager.LoadScene("IntroVideo");
             },
             () => {
-                EventSystem.current.SetSelectedGameObject(_confirmationContoller.PreviousSelected);
-                _confirmationContoller.gameObject.SetActive(false);
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
-        _confirmationContoller.gameObject.SetActive(true);
+        UIManager.Instance.ShowConfirmationPanel(EventSystem.current.currentSelectedGameObject);
     }
 
     public void Options()

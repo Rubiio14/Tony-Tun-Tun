@@ -18,18 +18,16 @@ public class PauseUIController : MonoBehaviour
 
     public void GenerateConfirmationPanel()
     {
-
-        _confirmationContoller.PreviousSelected = EventSystem.current.currentSelectedGameObject;
-        _confirmationContoller.FillForNewGameConfirmation(
+        UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("NewGameConfirmation"),
             () => {
-                //On Submit
+                /*On Confirmation*/
             },
             () => {
-                //On Cancel
-                EventSystem.current.SetSelectedGameObject(_confirmationContoller.PreviousSelected);
-                _confirmationContoller.gameObject.SetActive(false);
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
-        _confirmationContoller.gameObject.SetActive(true);
+        UIManager.Instance.ShowConfirmationPanel(EventSystem.current.currentSelectedGameObject);
+
     }
 
     public void Options()

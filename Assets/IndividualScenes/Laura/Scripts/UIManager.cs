@@ -1,20 +1,23 @@
 using UnityEngine;
 using UnityEngine.Localization.Tables;
 using UnityEngine.Localization;
-using System;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Events;
+using System;
+using UnityEngine.EventSystems;
+using UnityEngine.Video;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
     //Menus
-    [SerializeField] private MainMenuUIController MainMenu;
-    [SerializeField] private OptionsUIController OptionsMenu;
-    [SerializeField] private CreditsUIController CreditsMenu;
+    [SerializeField] private MainMenuUIController _mainMenu;
+    [SerializeField] private OptionsUIController _optionsMenu;
+    [SerializeField] private CreditsUIController _creditsMenu;
 
     //Confirmation
-    [SerializeField] private ConfirmationController Confirmation;
+    [SerializeField] private ConfirmationController _confirmation;
 
     //Localization
     public Locale[] AvailableLocales { get; private set; }
@@ -33,6 +36,10 @@ public class UIManager : MonoBehaviour
     private string KeyboardKey = "Keyboard";
     private string GamepadKey = "Gamepad";
 
+    //Video
+    //TODO: Can be separated on another script if necessary
+    [SerializeField] private VideoPlayer _videoPlayer;
+    [SerializeField] private VideoClip _introClip;
 
     public void Awake()
     {
@@ -76,27 +83,27 @@ public class UIManager : MonoBehaviour
 
     public void EnableMainMenu()
     {
-        MainMenu.gameObject.SetActive(true);
+        _mainMenu.gameObject.SetActive(true);
     }
 
     public void EnableOptionsMenu()
     {
-        OptionsMenu.gameObject.SetActive(true);
-        OptionsMenu.SelectFirst();
+        _optionsMenu.gameObject.SetActive(true);
+        _optionsMenu.SelectFirst();
     }
 
     public void DisableOptionsMenu()
     {
-        OptionsMenu.gameObject.SetActive(false);
+        _optionsMenu.gameObject.SetActive(false);
     }
 
     public void EnableCreditsMenu()
     {
-        CreditsMenu.gameObject.SetActive(true);
+        _creditsMenu.gameObject.SetActive(true);
     }
     public void DisableCreditsMenu()
     {
-        CreditsMenu.gameObject.SetActive(false);
+        _creditsMenu.gameObject.SetActive(false);
     }
 
     public string GetKeyboardLocalized()
@@ -117,5 +124,27 @@ public class UIManager : MonoBehaviour
     public void ChangeToKeyboard()
     {
         OnControllerChange?.Invoke(false);
+    }
+
+    public void FillConfirmationPanel(string confirmationMessage, UnityAction OnSubmit, UnityAction OnCancel)
+    {
+        _confirmation.FillConfirmationPanel(confirmationMessage, OnSubmit, OnCancel);
+    }
+
+    public void ShowConfirmationPanel(GameObject currentSelectedGameObject)
+    {
+        _confirmation.PreviousSelected = EventSystem.current.currentSelectedGameObject;
+        _confirmation.gameObject.SetActive(true);
+    }
+
+    public void PlayVideo(VideoClip videoClip)
+    {
+        _videoPlayer.clip = videoClip;
+        _videoPlayer.Play();
+    }
+
+    public void PlayIntroVideo()
+    {
+        PlayVideo(_introClip);
     }
 }

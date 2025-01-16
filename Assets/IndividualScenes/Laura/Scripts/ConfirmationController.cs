@@ -17,9 +17,9 @@ public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHa
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
-    public void FillForNewGameConfirmation(UnityAction ConfirmAction, UnityAction CancelationAction)
+    public void FillConfirmationPanel(string confirmMessage, UnityAction ConfirmAction, UnityAction CancelationAction)
     {
-        _confirmationTxt.text = UIManager.Instance.GetLocalizedUIText("NewGameConfirmation");
+        _confirmationTxt.text = confirmMessage;
         _onConfirmation = ConfirmAction;
         _onCancelation = CancelationAction;
     }
