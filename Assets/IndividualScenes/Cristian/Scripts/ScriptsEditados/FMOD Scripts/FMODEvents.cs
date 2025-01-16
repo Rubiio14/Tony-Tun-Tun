@@ -13,6 +13,10 @@ public class FMODEvents : MonoBehaviour
     [field: Header("FootSteps")]
     [field: SerializeField] public EventReference playerFootSteps { get; private set; }
 
+    //Music
+    [field: Header("Music")]
+    [field: SerializeField] public EventReference music { get; private set; }
+
     private void Awake()
     {
         if (instance != null)
