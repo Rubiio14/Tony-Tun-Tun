@@ -76,6 +76,7 @@ public class SliderRange : SelectLeftRight {
 
     public void LoadMusicFromSource()
     {
+        //FMODEvents.instance.
         _slider.value = AudioManager.Instance.GetCurrentMusicVolume() * _slider.maxValue;
         Apply();
     }

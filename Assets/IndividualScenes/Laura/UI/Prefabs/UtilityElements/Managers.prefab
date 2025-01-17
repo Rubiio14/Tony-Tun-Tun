@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00597b1b211c5ac40b2b791e1ec0bb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenu: {fileID: 0}
-  OptionsMenu: {fileID: 0}
-  CreditsMenu: {fileID: 0}
-  Confirmation: {fileID: 0}
+  _mainMenu: {fileID: 0}
+  _optionsMenu: {fileID: 0}
+  _creditsMenu: {fileID: 0}
+  _confirmation: {fileID: 0}

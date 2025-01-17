@@ -103,7 +103,7 @@ public class SelectionArrowList : SelectLeftRight
 
     private string FormatResolution(Resolution resolution)
     {
-        return String.Format("{0} x {1} ", resolution.width, resolution.height);
+        return String.Format("{0} x {1} ({2})", resolution.width, resolution.height, resolution.refreshRateRatio);
     }
 
     public void FillLanguageOptions()

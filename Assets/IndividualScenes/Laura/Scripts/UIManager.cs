@@ -36,10 +36,6 @@ public class UIManager : MonoBehaviour
     private string KeyboardKey = "Keyboard";
     private string GamepadKey = "Gamepad";
 
-    //Video
-    //TODO: Can be separated on another script if necessary
-    [SerializeField] private VideoPlayer _videoPlayer;
-
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -134,12 +130,6 @@ public class UIManager : MonoBehaviour
     {
         _confirmation.PreviousSelected = EventSystem.current.currentSelectedGameObject;
         _confirmation.gameObject.SetActive(true);
-    }
-
-    public void PlayVideo(VideoClip videoClip)
-    {
-        _videoPlayer.clip = videoClip;
-        _videoPlayer.Play();
     }
 
 }
