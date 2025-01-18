@@ -7,9 +7,14 @@ public class MovingPlatformBehaviour : MonoBehaviour
     [SerializeField] private float _platformMovSpeed = 2.5f;
     private int _currentWaypoint;
 
+    //VFX partículas de movimiento
+    [SerializeField]
+    GameObject _vfxPlatformDust;
+
     private void Start()
     {
         _currentWaypoint = 0;
+        _vfxPlatformDust.SetActive(true);
     }
     void Update()
     {
