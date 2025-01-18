@@ -1672,6 +1672,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5847945429880025871, guid: cce9fe58b5e8b4141828a50bda8ecf84, type: 3}
+      propertyPath: maxTurnSpeed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7920352896889357919, guid: cce9fe58b5e8b4141828a50bda8ecf84, type: 3}
       propertyPath: rb
       value: 
