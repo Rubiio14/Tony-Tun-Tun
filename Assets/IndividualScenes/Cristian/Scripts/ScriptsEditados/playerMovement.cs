@@ -74,12 +74,28 @@ public class playerMovement : MonoBehaviour
         if (_directionX > 0)
         {
             isFacingRight = true;
+            if (Mathf.Clamp(Mathf.Abs(velocity.x), 0, maxSpeed) >= 17f)
+            {
+                maxTurnSpeed = 25f;
+            }
+            else
+            {
+                maxTurnSpeed = 90f;
+            }
         }
         else if (_directionX < 0)
         {
             isFacingRight = false;
+            if (Mathf.Clamp(Mathf.Abs(velocity.x), 0, maxSpeed) >= 17f)
+            {
+                maxTurnSpeed = 25f;
+            }
+            else
+            {
+                maxTurnSpeed = 90f;
+            }
         }
-
+        
         if (playerJuice.instance.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SLIDETURN"))        
         {
             playerJuice.instance.myAnimator.SetBool("IsTurn", false);

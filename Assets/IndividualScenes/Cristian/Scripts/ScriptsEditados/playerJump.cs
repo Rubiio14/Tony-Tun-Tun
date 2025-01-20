@@ -68,12 +68,12 @@ public class playerJump : MonoBehaviour
                 {                    
                     //Reset Stamina
                     hudManager.instance.staminaImage.fillAmount = 0f;
+                    this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1.680205f, 2.148567f);
                     if (onGround)
                     {
                         
                         juice.jumpEffects();
                         _desiredChargedJump = true;
-                        
                         //Take the amount of jump charged
                         float fillAmount = hudManager.instance.jumpImage.fillAmount;
                         splitedChargedJump(fillAmount);//Assign _jumpMultiplier value              
@@ -85,6 +85,7 @@ public class playerJump : MonoBehaviour
                     if (onGround)
                     {
                         juice.jumpEffects();
+                        this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1.680205f, 2.148567f);
                         desiredJump = true;
                         pressingJump = true;
                     }
@@ -189,7 +190,7 @@ public class playerJump : MonoBehaviour
             //Else if going down
             else if (rb.linearVelocity.y < -0.01f)
             {
-
+                this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1.680205f, 2.967794f);
                 if (onGround)
                 //Don't change it if player is stood on something (such as a moving platform)
                 {
@@ -207,7 +208,7 @@ public class playerJump : MonoBehaviour
             {
                 if (onGround)
                 {
-                    _currentlyJumping = false;
+                    _currentlyJumping = false;                
                 }
 
                 gravMultiplier = _defaultGravityScale;

@@ -3,13 +3,24 @@ using System.Collections;
 
 public class BreakablePlatform : MonoBehaviour
 {
+    //Collider para situarse sobre la plataforma
     BoxCollider2D _platformCollider;
     [SerializeField]
+
+    //Collider para usar el bloqueo del shortcut
     GameObject _shortcutColliderEmpty;
+
+    //Trozos de la plataforma para romperse
     [SerializeField]
     GameObject piece1, piece2, piece3, piece4, piece5, piece6, piece7;
     [SerializeField]
     GameObject _platformMesh;
+
+    //Partículas de polvo y explosión al romperse
+    [SerializeField]
+    GameObject _vfxPlatformBreakDust;
+    [SerializeField]
+    GameObject _vfxPlatformShakingDust;
 
     [Header("Temblor Plataforma")]
     public bool _isShaking;
@@ -62,9 +73,12 @@ public class BreakablePlatform : MonoBehaviour
 
     Vector3 originalPos;
 
+
     void Start()
     {
         _platformCollider = GetComponent<BoxCollider2D>();
+        _vfxPlatformBreakDust.SetActive(false);
+        _vfxPlatformShakingDust.SetActive(false);
 
         //Posiciones de las piezas para volver a colocarlas 
         _piece1Position = piece1.transform.position;
@@ -109,7 +123,10 @@ public class BreakablePlatform : MonoBehaviour
             //Temblor de la plataforma
             StartCoroutine(ShakePlatform());
 
-            if(_isShaking)
+            //Partículas de rocas y polvo mientras tiembla
+            _vfxPlatformShakingDust.SetActive(true);
+
+            if (_isShaking)
             {
                 Vector3 newPos = originalPos + Random.insideUnitSphere * (Time.deltaTime * shakeDistance);
 
@@ -120,7 +137,6 @@ public class BreakablePlatform : MonoBehaviour
 
                 _platformMesh.transform.position = newPos;
             }
-            //Partículas de rocas y polvo
 
             if (_timer >= _platformBreakingTime)
             {
@@ -196,6 +212,10 @@ public class BreakablePlatform : MonoBehaviour
 
         //Corrutina para que desaparezcan las piezas tras un tiempo
         StartCoroutine(Waiting());
+        _vfxPlatformBreakDust.SetActive(true);
+        _vfxPlatformShakingDust.SetActive(false);
+
+
     }
 
     //físicas de caída de las piezas
@@ -232,7 +252,8 @@ public class BreakablePlatform : MonoBehaviour
         piece4.SetActive(false);
         piece5.SetActive(false);
         piece6.SetActive(false);
-        piece7.SetActive(false); 
+        piece7.SetActive(false);
+        _vfxPlatformBreakDust.SetActive(false);
     }
 
     //Vuelve a aparecer y a colocarse la pieza
