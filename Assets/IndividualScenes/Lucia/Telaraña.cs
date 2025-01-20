@@ -6,27 +6,21 @@ public class Telaraña : MonoBehaviour
     float normalMaxSpeed = 20f;
     float normalAccele_Decele = 25f;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            print("entra");
-            other.GetComponent<playerJump>().enabled = false;
-            other.GetComponent<playerMovement>().maxSpeed = speedWhileInSpiderWeb;
-            other.GetComponent<playerMovement>().maxAcceleration = speedWhileInSpiderWeb;
-            other.GetComponent<playerMovement>().maxDecceleration = speedWhileInSpiderWeb;
-        }
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            print("estoy dentro de la tela de araña");
-            other.GetComponent<playerJump>().enabled = false;
-            other.GetComponent<playerMovement>().maxSpeed = speedWhileInSpiderWeb;
-            other.GetComponent<playerMovement>().maxAcceleration = speedWhileInSpiderWeb;
-            other.GetComponent<playerMovement>().maxDecceleration = speedWhileInSpiderWeb;
+            playerMovement tmpPlayerMvm = other.GetComponent<playerMovement>();
+            playerJump tmpJump = other.GetComponent<playerJump>();
+
+            print("Estoy dentro de la tela de araña");
+            tmpJump.enabled = false;
+            tmpPlayerMvm.maxSpeed = speedWhileInSpiderWeb;
+            tmpPlayerMvm.maxAcceleration = speedWhileInSpiderWeb;
+            tmpPlayerMvm.maxDecceleration = speedWhileInSpiderWeb;
+            tmpPlayerMvm.useAcceleration = false;
+
+            //Debug.LogFormat($"Max Speed: {tmpPlayerMvm.maxSpeed} , Max Acce: {tmpPlayerMvm.maxAcceleration} , Max Dec: {tmpPlayerMvm.maxDecceleration}");
         }
     }
 
@@ -34,10 +28,15 @@ public class Telaraña : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<playerJump>().enabled = true;
-            other.GetComponent<playerMovement>().maxSpeed = normalMaxSpeed;
-            other.GetComponent<playerMovement>().maxAcceleration = normalAccele_Decele;
-            other.GetComponent<playerMovement>().maxDecceleration = normalAccele_Decele;
+            playerMovement tmpPlayerMvm = other.GetComponent<playerMovement>();
+            playerJump tmpJump = other.GetComponent<playerJump>();
+
+            print("Sali de la telaraña");
+            tmpJump.enabled = true;
+            tmpPlayerMvm.maxSpeed = normalMaxSpeed;
+            tmpPlayerMvm.maxAcceleration = normalAccele_Decele;
+            tmpPlayerMvm.maxDecceleration = normalAccele_Decele;
+            tmpPlayerMvm.useAcceleration = true;
         }
     }
 }
