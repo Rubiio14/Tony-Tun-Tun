@@ -20,7 +20,7 @@ public class HubManager : MonoBehaviour
     private InputAction _cancel;
 
     //Level info
-    [SerializeField] private Waypoint[] _levels;
+    [SerializeField] private Level[] _levels;
     private int _currentLevelIndex = 0;
     private bool _isOnPlatform;
 
@@ -34,11 +34,9 @@ public class HubManager : MonoBehaviour
     //Load selection
     [SerializeField] private AudioClip _levelSelectionAudio;
     [SerializeField] private AudioClip _levelSelectionIncorrectAudio;
-    [SerializeField] private ParticleSystem _particleSystemStep;
 
-
-    [SerializeField] private Canvas _lockedCanvas;
-    [SerializeField] private Canvas _unlockedCanvas;
+    [SerializeField] private LockedLevelController _lockedLevelController;
+    [SerializeField] private UnlockedLevelController _unlockedLevelController;
 
     public void Awake()
     {
@@ -65,6 +63,11 @@ public class HubManager : MonoBehaviour
         _submit.Enable();
         _cancel.Enable();
         _hub.Enable();
+
+        //Move character to last saved position
+        //Update _currentLevelIndex
+        _currentLevelIndex = SaveGameManager.Instance.CurrentLevelIndex;
+        transform.position = _levels[_currentLevelIndex].transform.position;
     }
 
     void OnDisable()
@@ -135,13 +138,13 @@ public class HubManager : MonoBehaviour
 
     public void Submit(InputAction.CallbackContext ctx)
     {
-        Waypoint currentLevel = _levels[_currentLevelIndex];
+        Level currentLevel = _levels[_currentLevelIndex];
         if(_isOnPlatform)
         {
            PlayableLevel level = currentLevel as PlayableLevel;
            if(level != null)
             {
-                if (!level.IsLocked)
+                if (!SaveGameManager.Instance.RetrieveLockedLevelStatus(level.LevelIndex))
                 {
                     Debug.Log("Selecting level");
                     StartCoroutine(LoadLevel(level));
@@ -152,15 +155,21 @@ public class HubManager : MonoBehaviour
                     if(level.CanBeUnlocked())
                     {
                         //We can unlock the level.
-
-
+                        StartCoroutine(UnlockLevel(level));
                     }
-
-
                     SelectLockedLevel();
                 }
             }
         }
+    }
+
+    private IEnumerator UnlockLevel(PlayableLevel level)
+    {
+        
+        yield return new WaitForSeconds(1);
+        //Do a lot of things
+        level.UnLock();
+
     }
 
     private IEnumerator LoadLevel(PlayableLevel level)
@@ -187,41 +196,24 @@ public class HubManager : MonoBehaviour
     public void Cancel(InputAction.CallbackContext ctx)
     {
         //Open Pause Menu on HUB, disable 
+        UIManager.Instance.EnableHUBPauseMenu();
+        //Disable controls on hub
+        _playerInput.uiInputModule.ActivateModule();
+        _hub.Disable();
     }
+
+    public void ReturnControlsToPlayer()
+    {
+        _playerInput.uiInputModule.DeactivateModule();
+        _hub.Enable();
+    }
+
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Level"))
         {
-            
-            
-            //Show number of carrots needed to unlock.
-            //If level
-            //If unlocked
-            //If locked
-
-
-            //TODO: To Remove
-            Waypoint waypoint = _levels[_currentLevelIndex];
-            _particleSystemStep.transform.position = waypoint.transform.position + new Vector3(0, waypoint._yOffsetFloor, 0);
-            _particleSystemStep.gameObject.SetActive(true);
-            _particleSystemStep.Play();
-
             SelectRotationTarget();
-        }
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Level"))
-        {
-            _isOnPlatform = false;
-            //Stop showing number of carrots needed
-            //Stop showing 
-
-            //TODO: To Remove
-            _particleSystemStep.Stop();
-            _particleSystemStep.gameObject.SetActive(false);
-            
         }
     }
 
@@ -230,6 +222,7 @@ public class HubManager : MonoBehaviour
         _isOnPlatform = true;
         _agent.isStopped = true;
         _animationController.Play("IdleA");
+        SaveGameManager.Instance.CurrentLevelIndex = _currentLevelIndex;
     }
 
     public void MarkAsPlatformDeparture()
@@ -237,28 +230,24 @@ public class HubManager : MonoBehaviour
         _isOnPlatform = false;
     }
 
-    public void ShowNumberOfCarrotsToUnlock(int carrotsToUnlock)
+    public void ShowNumberOfCarrotsToUnlock(int carrotsToUnlock, Vector3 canvasPosition)
     {
-        //Canvas show carrotsToUnlock on top of current level.
-        
-        _lockedCanvas.gameObject.SetActive(true);
+        _lockedLevelController.ShowNumberOfCarrotsToUnlock(carrotsToUnlock, canvasPosition);
     }
 
-    public void ShowCurrentCarrotsInLevel(Carrot[] carrotsUnlocked)
+    public void ShowCurrentCarrotsInLevel(Vector3 canvasPosition)
     {
-        //Canvas show current carrots in level on top of current level, range from 0 to 2
-        _unlockedCanvas.gameObject.SetActive(true);
+        _unlockedLevelController.ShowCurrentCarrotsInLevel(SaveGameManager.Instance.CarrotsUnlockedInLevel.Count, canvasPosition);
     }
 
     public void HideNumberOfCarrotsToUnlock()
     {
-        //Canvas hide carrotsToUnlock.
-        _lockedCanvas.gameObject.SetActive(false);
+        _lockedLevelController.HideNumberOfCarrotsToUnlock();
     }
 
     public void HideCurrentCarrotsInLevel()
     {
-        //Canvas hide current carrots in level.
-        _unlockedCanvas.gameObject.SetActive(false);
+        _unlockedLevelController.HideCurrentCarrotsInLevel();
     }
+
 }

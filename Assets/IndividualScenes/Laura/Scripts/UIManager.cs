@@ -5,7 +5,6 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.Events;
 using System;
 using UnityEngine.EventSystems;
-using UnityEngine.Video;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private MainMenuUIController _mainMenu;
     [SerializeField] private OptionsUIController _optionsMenu;
     [SerializeField] private CreditsUIController _creditsMenu;
+    [SerializeField] private PauseUIController _pauseMenu;
 
     //Confirmation
     [SerializeField] private ConfirmationController _confirmation;
@@ -99,6 +99,16 @@ public class UIManager : MonoBehaviour
     public void DisableCreditsMenu()
     {
         _creditsMenu.gameObject.SetActive(false);
+    }
+    public void EnableHUBPauseMenu()
+    {
+        _pauseMenu.gameObject.SetActive(true);
+    }
+
+    public void DisableHUBPauseMenu()
+    {
+        _pauseMenu.gameObject.SetActive(false);
+        HubManager.Instance.ReturnControlsToPlayer();
     }
 
     public string GetKeyboardLocalized()

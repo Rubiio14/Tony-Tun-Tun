@@ -1,19 +1,20 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableLevel : Waypoint, ISaveable
+[System.Serializable]
+public class PlayableLevel : Level
 {
     //Will be used as an identifier for save/load functionality
-    [SerializeField] private int _levelIndex;
-    [field: SerializeField] public bool IsLocked { get; private set; }
+    public int LevelIndex;
+    public bool IsLocked;
     [field: SerializeField] public float LoadLevelDelay {  get; private set; }
     [field: SerializeField] public string SceneName { get; private set; }
 
     [Header("Carrot info")]
     [field: SerializeField] private int _carrotsToUnlock;
-    [field: SerializeField] public Carrot[] CarrotsUnlocked { get; private set; }
-    //level Carrot Canvas
+    public List<Carrot> CarrotsUnlocked;
+    
+    [SerializeField] private Vector3 _canvasPosition;
 
     [Header("Unlock")]
     [SerializeField] private GameObject _lockedLevelPrefab;
@@ -24,6 +25,11 @@ public class PlayableLevel : Waypoint, ISaveable
     [Header("Unlock")]
     [SerializeField] private string _accessAnimation;
 
+    public void Awake()
+    {
+        CarrotsUnlocked = new List<Carrot>();
+    }
+
     public override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -31,11 +37,11 @@ public class PlayableLevel : Waypoint, ISaveable
             HubManager.Instance.MarkAsPlatformArrival();
             if (IsLocked)
             {
-                HubManager.Instance.ShowNumberOfCarrotsToUnlock(_carrotsToUnlock);
+                HubManager.Instance.ShowNumberOfCarrotsToUnlock(_carrotsToUnlock, _canvasPosition);
             }
             else
             {
-                HubManager.Instance.ShowCurrentCarrotsInLevel(CarrotsUnlocked);
+                HubManager.Instance.ShowCurrentCarrotsInLevel(_canvasPosition);
             }
         }
     }
@@ -58,21 +64,14 @@ public class PlayableLevel : Waypoint, ISaveable
 
     public bool CanBeUnlocked()
     {
-        return GameManager.Instance.TotalCarrots >= _carrotsToUnlock;
+        return SaveGameManager.Instance.TotalCarrots >= _carrotsToUnlock;
     }
 
-    public void PopulateSaveData(SaveData saveData)
+    public void UnLock()
     {
-        SaveData.LevelData levelData = new SaveData.LevelData();
-        levelData.Index = _levelIndex;
-        levelData.IsLocked = IsLocked;
-        levelData.CarrotList = new List<SaveData.LevelData.Carrot>();
-
-        //levelData.CarrotList.Add();
-    }
-
-    public void LoadFromSaveData(SaveData saveData)
-    {
-
+        SaveGameManager.Instance.SaveLockedLevelStatus(false);
+        HubManager.Instance.HideNumberOfCarrotsToUnlock();
+        HubManager.Instance.ShowCurrentCarrotsInLevel( _canvasPosition);
+        IsLocked = false; 
     }
 }

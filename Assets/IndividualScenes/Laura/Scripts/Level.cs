@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Waypoint : MonoBehaviour
+public class Level : MonoBehaviour
 {
     public float _yOffsetTop;
     public float _yOffsetMid;

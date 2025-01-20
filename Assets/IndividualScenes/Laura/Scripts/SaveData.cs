@@ -2,27 +2,25 @@
 using UnityEngine;
 
 [System.Serializable]
-public class SaveData : ISaveable
+public class SaveData
 {
-    public int _lastLevelVisited;
+    public List<LevelData> Levels;
+    public int LastLevelVisited;
 
     [System.Serializable]
-    public struct LevelData
+    public class LevelData
     {
         //Carrot identifier
         public int Index;
         public bool IsLocked;
         
-        public struct Carrot {
+        public class Carrot {
             public int Index;
             public bool IsPicked;
         }
 
         public List<Carrot> CarrotList;
-            
     }
-
-    public List<LevelData> Levels = new List<LevelData>();
 
     public string ToJson()
     {
@@ -32,16 +30,5 @@ public class SaveData : ISaveable
     public void LoadFromJson(string jSon)
     {
         JsonUtility.FromJsonOverwrite(jSon, this);
-    }
-
-    public void PopulateSaveData(SaveData saveData)
-    {
-        
-        
-    }
-
-    public void LoadFromSaveData(SaveData saveData)
-    {
-        //
     }
 }

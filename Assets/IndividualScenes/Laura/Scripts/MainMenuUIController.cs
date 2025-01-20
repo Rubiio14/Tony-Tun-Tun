@@ -1,26 +1,47 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenuUIController : MonoBehaviour
 {
     private GameObject _previousSelected;
+    [SerializeField] private GameObject _continueButton;
+
 
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(_previousSelected);
     }
 
+    private void Start()
+    {
+        HideContinue();
+    }
+
+    public void HideContinue()
+    {
+        if (!SaveGameManager.Instance.IsDataSaved())
+        {
+            _continueButton.SetActive(false);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(_continueButton);
+        }
+    }
+
     public void StartNewGame()
     {
         Debug.Log("Start new Game");
         //If there is an occupied slot, ask for confirmation
-        //if (GameManager.Instance.SavedData != null)
-        //{
+        if (SaveGameManager.Instance.IsDataSaved())
+        {
             GenerateNewSaveConfirmationPanel();
-        //}
-
+        }
+        else
+        {
+            SceneManager.LoadScene("IntroVideoScene");
+        }
     }
 
     public void GenerateNewSaveConfirmationPanel()
@@ -29,13 +50,19 @@ public class MainMenuUIController : MonoBehaviour
             () => {
                 /*Delete previous saved data values*/
                 //Change to Intro Video Scene
+                SaveGameManager.Instance.DeleteSaveData();
                 SceneManager.LoadScene("IntroVideoScene");
-                EventSystem.current.currentSelectedGameObject.SetActive(false);
             },
             () => {
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
         UIManager.Instance.ShowConfirmationPanel(EventSystem.current.currentSelectedGameObject);
+    }
+
+    public void Continue()
+    {
+        //_firstTimeInHUB ??
+        SceneManager.LoadScene("HUB");
     }
 
     public void Options()

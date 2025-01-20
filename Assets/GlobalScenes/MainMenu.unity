@@ -240,6 +240,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &124750495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6997804338079782725, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+  m_PrefabInstance: {fileID: 1749504146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &177411603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1383,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 473434030370863811, guid: 9fcb3d768284099438b266aeb0d99c2e, type: 3}
+      propertyPath: _savegameFileName
+      value: TonyTunTunSaveData.dat
+      objectReference: {fileID: 0}
+    - target: {fileID: 473434030370863811, guid: 9fcb3d768284099438b266aeb0d99c2e, type: 3}
+      propertyPath: _currentSessionData
+      value: 
+      objectReference: {fileID: 11400000, guid: ae9dcdd377234ab4bb125e773e281a61, type: 2}
     - target: {fileID: 2630401457436764097, guid: 9fcb3d768284099438b266aeb0d99c2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1057.2109
@@ -5226,6 +5239,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2441633460011064568, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: _continueButton
+      value: 
+      objectReference: {fileID: 124750495}
     - target: {fileID: 3746783507453684706, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5366,6 +5383,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5948820114089723957, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: _primaryGradient
+      value: 
+      objectReference: {fileID: 11400000, guid: e28eeedd73884984294ab3f1da461596, type: 2}
+    - target: {fileID: 5948820114089723957, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: _secondaryGradient
+      value: 
+      objectReference: {fileID: 11400000, guid: a7ba6a0d3f266434082beef5f1914591, type: 2}
     - target: {fileID: 6436342385448750606, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5430,6 +5455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6997804338079782725, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7100057204769037003, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5455,6 +5484,34 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7100057204769037003, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896593045365925812, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -5485,6 +5542,34 @@ PrefabInstance:
     - target: {fileID: 8610208043092771435, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1749504148}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166177137590772575, guid: e19aa2a972ea4fe4386b4e9ca7fd3bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
