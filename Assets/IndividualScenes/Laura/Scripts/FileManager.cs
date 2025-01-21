@@ -4,9 +4,12 @@ using UnityEngine;
 
 public static class FileManager
 {
-    public static bool DoesFileExists(string filename)
+
+    private static readonly string _savegameFileName = "TonyTunTunSavedata.dat";
+
+    public static bool DoesSaveFileExists()
     {
-        var fullPath = Path.Combine(Application.persistentDataPath, filename);
+        var fullPath = Path.Combine(Application.persistentDataPath, _savegameFileName);
         try
         {
             return File.Exists(fullPath);
@@ -18,9 +21,9 @@ public static class FileManager
         }
     }
 
-    public static bool WriteToFile(string savegameFileName, string fileContents)
+    public static bool WriteToSaveFile(string fileContents)
     {
-        var fullPath = Path.Combine(Application.persistentDataPath, savegameFileName);
+        var fullPath = Path.Combine(Application.persistentDataPath, _savegameFileName);
 
         try
         {
@@ -34,9 +37,9 @@ public static class FileManager
         }
     }
 
-    public static bool LoadFromFile(string savegameFileName, out string result)
+    public static bool LoadFromSaveFile(out string result)
     {
-        var fullPath = Path.Combine(Application.persistentDataPath, savegameFileName);
+        var fullPath = Path.Combine(Application.persistentDataPath, _savegameFileName);
 
         try
         {
@@ -51,9 +54,9 @@ public static class FileManager
         }
     }
 
-    public static bool Delete(string savegameFileName)
+    public static bool DeleteSavefile()
     {
-        var fullPath = Path.Combine(Application.persistentDataPath, savegameFileName);
+        var fullPath = Path.Combine(Application.persistentDataPath, _savegameFileName);
         try
         {
             File.Delete(fullPath);

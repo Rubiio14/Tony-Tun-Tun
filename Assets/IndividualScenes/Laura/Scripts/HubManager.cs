@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -63,11 +63,6 @@ public class HubManager : MonoBehaviour
         _submit.Enable();
         _cancel.Enable();
         _hub.Enable();
-
-        //Move character to last saved position
-        //Update _currentLevelIndex
-        _currentLevelIndex = SaveGameManager.Instance.CurrentLevelIndex;
-        transform.position = _levels[_currentLevelIndex].transform.position;
     }
 
     void OnDisable()
@@ -76,6 +71,56 @@ public class HubManager : MonoBehaviour
         _submit.Disable();
         _cancel.Disable();
         _hub.Disable();
+    }
+
+    private void Start()
+    {
+        /*if (!SaveGameManager.CurrentSessionData)
+        {
+            if (SaveGameManager.Instance.IsDataSaved())
+            {
+                SaveGameManager.CurrentSessionData = ScriptableObject.CreateInstance<DataBetweenScenes>();
+                SaveGameManager.Instance.LoadJsonData(SaveGameManager.CurrentSessionData);
+            }
+            else
+            {
+                SaveGameManager.Instance.InitializeDataFromScene();
+            }
+        }
+        else
+        {
+            Debug.Log(SaveGameManager.CurrentSessionData);
+        }
+        transform.position = SaveGameManager.CurrentSessionData.LevelInfo[SaveGameManager.Instance.CurrentLevelIndex].transform.position;
+        */
+
+        if (SceneManager.GetActiveScene().name == "HUB")
+        {
+            //SaveGameManager.Instance.SessionData.CurrentLevelIndex = 1;
+            //SaveGameManager.Instance.SessionData.LevelInfo = new List<SaveData.LevelData>();
+            SaveData.LevelData level = new SaveData.LevelData();
+            level.IsLocked = true;
+            SaveGameManager.Instance.SessionData.LevelInfo.Add(level);
+
+            /*string json = JsonUtility.ToJson(SessionData);
+            Debug.Log(json);*/
+
+            //SaveGameManager.Instance.AnotherSessionData = ScriptableObject.CreateInstance<SessionData>();
+            //JsonUtility.FromJsonOverwrite(json, SaveGameManager.Instance.AnotherSessionData);
+
+            //Debug.Log(SaveGameManager.Instance.AnotherSessionData.LevelInfo[0].IsLocked);
+
+            //if (SaveGameManager.Instance.SessionData.LevelInfo[0].CarrotList != null)
+            //{
+            //Debug.Log($"Picked: {SaveGameManager.Instance.SessionData.LevelInfo[0].CarrotList[0].IsPicked}");
+            //}
+            string json = JsonUtility.ToJson(SaveGameManager.Instance.SessionData);
+            Debug.Log(json);
+
+            SceneManager.LoadScene("Level0");
+        }
+
+
     }
 
     private void Update()
@@ -92,12 +137,12 @@ public class HubManager : MonoBehaviour
 
     public bool IsLevelReachable(int levelIndex)
     {
-        return levelIndex >= 0 && levelIndex < _levels.Length;
+        return levelIndex >= 0 && levelIndex < SaveGameManager.CurrentSessionData.LevelInfo.Count;
     }
 
     public void MoveToLevel(int levelIndex)
     {
-       _agent.SetDestination(_levels[_currentLevelIndex].transform.position);
+       _agent.SetDestination(SaveGameManager.CurrentSessionData.LevelInfo[SaveGameManager.Instance.CurrentLevelIndex].transform.position);
        _animationController.Play("Walking");
        _isLookingFront = false;
     }
@@ -108,29 +153,29 @@ public class HubManager : MonoBehaviour
         int tmpIndex;
        if (move == Vector2.left)
        {
-            tmpIndex = _currentLevelIndex - 1;
+            tmpIndex = SaveGameManager.Instance.CurrentLevelIndex - 1;
             if (IsLevelReachable(tmpIndex))
             {
-                _currentLevelIndex = tmpIndex;
+                SaveGameManager.Instance.CurrentLevelIndex = tmpIndex;
                 _agent.isStopped = false;
-                MoveToLevel(_currentLevelIndex);
+                MoveToLevel(tmpIndex);
             }
        }
        else if (move == Vector2.right)
        {
-            tmpIndex = _currentLevelIndex + 1;
+            tmpIndex = SaveGameManager.Instance.CurrentLevelIndex + 1;
             if (IsLevelReachable(tmpIndex))
             {
-                _currentLevelIndex = tmpIndex;
+                SaveGameManager.Instance.CurrentLevelIndex = tmpIndex;
                 _agent.isStopped = false;
-                MoveToLevel(_currentLevelIndex);
+                MoveToLevel(tmpIndex);
             }
         }
     }
 
     private void SelectRotationTarget()
     {
-        Vector3 lookAtDirection = _levels[_currentLevelIndex].transform.position;
+        Vector3 lookAtDirection = SaveGameManager.CurrentSessionData.LevelInfo[SaveGameManager.Instance.CurrentLevelIndex].transform.position;
         lookAtDirection.z = lookAtDirection.z + _levelZOffset;
         Vector3 direction = ( lookAtDirection - transform.position).normalized;
         _targetRotation = Quaternion.LookRotation(direction);
@@ -138,13 +183,13 @@ public class HubManager : MonoBehaviour
 
     public void Submit(InputAction.CallbackContext ctx)
     {
-        Level currentLevel = _levels[_currentLevelIndex];
+        Level currentLevel = SaveGameManager.CurrentSessionData.LevelInfo[SaveGameManager.Instance.CurrentLevelIndex];
         if(_isOnPlatform)
         {
            PlayableLevel level = currentLevel as PlayableLevel;
            if(level != null)
             {
-                if (!SaveGameManager.Instance.RetrieveLockedLevelStatus(level.LevelIndex))
+                if (!level.IsLocked)
                 {
                     Debug.Log("Selecting level");
                     StartCoroutine(LoadLevel(level));
@@ -165,7 +210,6 @@ public class HubManager : MonoBehaviour
 
     private IEnumerator UnlockLevel(PlayableLevel level)
     {
-        
         yield return new WaitForSeconds(1);
         //Do a lot of things
         level.UnLock();
@@ -176,7 +220,7 @@ public class HubManager : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(level.LoadLevelDelay);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(level.SceneName);
         /*
         _animationController.Play("IdleB");
@@ -222,7 +266,6 @@ public class HubManager : MonoBehaviour
         _isOnPlatform = true;
         _agent.isStopped = true;
         _animationController.Play("IdleA");
-        SaveGameManager.Instance.CurrentLevelIndex = _currentLevelIndex;
     }
 
     public void MarkAsPlatformDeparture()
@@ -235,9 +278,9 @@ public class HubManager : MonoBehaviour
         _lockedLevelController.ShowNumberOfCarrotsToUnlock(carrotsToUnlock, canvasPosition);
     }
 
-    public void ShowCurrentCarrotsInLevel(Vector3 canvasPosition)
+    public void ShowCurrentCarrotsInLevel(int carrotsUnlocked, Vector3 canvasPosition)
     {
-        _unlockedLevelController.ShowCurrentCarrotsInLevel(SaveGameManager.Instance.CarrotsUnlockedInLevel.Count, canvasPosition);
+        _unlockedLevelController.ShowCurrentCarrotsInLevel(carrotsUnlocked, canvasPosition);
     }
 
     public void HideNumberOfCarrotsToUnlock()

@@ -4,8 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class PlayableLevel : Level
 {
-    //Will be used as an identifier for save/load functionality
-    public int LevelIndex;
     public bool IsLocked;
     [field: SerializeField] public float LoadLevelDelay {  get; private set; }
     [field: SerializeField] public string SceneName { get; private set; }
@@ -41,7 +39,7 @@ public class PlayableLevel : Level
             }
             else
             {
-                HubManager.Instance.ShowCurrentCarrotsInLevel(_canvasPosition);
+                HubManager.Instance.ShowCurrentCarrotsInLevel(CarrotsUnlocked.Count, _canvasPosition);
             }
         }
     }
@@ -69,9 +67,8 @@ public class PlayableLevel : Level
 
     public void UnLock()
     {
-        SaveGameManager.Instance.SaveLockedLevelStatus(false);
         HubManager.Instance.HideNumberOfCarrotsToUnlock();
-        HubManager.Instance.ShowCurrentCarrotsInLevel( _canvasPosition);
+        HubManager.Instance.ShowCurrentCarrotsInLevel(CarrotsUnlocked.Count, _canvasPosition);
         IsLocked = false; 
     }
 }

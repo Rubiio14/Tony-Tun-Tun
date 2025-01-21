@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.Overlays;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class SaveGameManager : MonoBehaviour
 {
     public static SaveGameManager Instance { get; private set; }
-
-    [SerializeField] private string _savegameFileName;
     public static SaveData SavedData { get; private set; }
 
-    public DataBetweenScenes _currentSessionData;
-    public static bool _firstTimeInHUB = true;
+    public static DataBetweenScenes CurrentSessionData;
 
-    public int CurrentLevelIndex { get { return _currentSessionData.CurrentLevelIndex; } set { _currentSessionData.CurrentLevelIndex = value; } }
-    public int TotalCarrots { get { return _currentSessionData.TotalNumberOfCarrots; } set { _currentSessionData.TotalNumberOfCarrots = value; } }
-    public List<Carrot> CarrotsUnlockedInLevel { get { return _currentSessionData.LevelInfo[_currentSessionData.CurrentLevelIndex].CarrotsUnlocked; } set { _currentSessionData.LevelInfo[_currentSessionData.CurrentLevelIndex].CarrotsUnlocked = value; } }
+    public SessionData SessionData;
+    public SessionData AnotherSessionData;
+
+    public int CurrentLevelIndex { get { return CurrentSessionData.CurrentLevelIndex; } set { CurrentSessionData.CurrentLevelIndex = value; } }
+    public int TotalCarrots { get { return CurrentSessionData.TotalNumberOfCarrots; } set { CurrentSessionData.TotalNumberOfCarrots = value; } }
+
 
     private void Awake()
     {
@@ -30,45 +30,16 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //Check if file exist
-        if (!IsDataSaved())
-        {   //There is no saved data file
-            if (_firstTimeInHUB && SceneManager.GetActiveScene().name == "HUB")
-            {
-                //First time you enter the HUB this session or you selected new game from main menu
-                InitializeDataFromScene();
-                _firstTimeInHUB = false;
-            }
-        }
-        else
-        {
-            //There is a data file
-            if (_firstTimeInHUB && SceneManager.GetActiveScene().name == "HUB")
-            {
-                //First time you enter the HUB this session
-                LoadJsonData(_currentSessionData);
-                _firstTimeInHUB = false;
-            }
-        }
-        
-        if(SceneManager.GetActiveScene().name == "Level0")
-        {
-            SceneManager.LoadScene("HUB");
-        }
-    }
 
     public bool IsDataSaved()
     {
-        return FileManager.DoesFileExists(_savegameFileName);
+        return FileManager.DoesSaveFileExists();
     }
 
     public void DeleteSaveData()
     {
-        if (FileManager.Delete(_savegameFileName))
+        if (FileManager.DeleteSavefile())
         {
-            _firstTimeInHUB = true;
             Debug.Log("Delete successful");
         }
     }
@@ -79,7 +50,7 @@ public class SaveGameManager : MonoBehaviour
         
         saveable.PopulateSaveData(savedData);
 
-        if (FileManager.WriteToFile(_savegameFileName, savedData.ToJson()))
+        if (FileManager.WriteToSaveFile(savedData.ToJson()))
         {
             Debug.Log("Save successful");
         }
@@ -87,7 +58,7 @@ public class SaveGameManager : MonoBehaviour
 
     public void LoadJsonData(ISaveable saveable)
     {
-        if (FileManager.LoadFromFile(_savegameFileName, out var json))
+        if (FileManager.LoadFromSaveFile(out var json))
         {
             SavedData = new SaveData();
 
@@ -98,44 +69,34 @@ public class SaveGameManager : MonoBehaviour
             Debug.Log("Load complete");
         }
     }
-
+    
     public void InitializeDataFromScene()
     {
         //Look in scene for PLayableLevel scripts
-        Level[] levels = GameObject.FindObjectsByType<Level>(FindObjectsSortMode.None);
-        PlayableLevel playableLevel;
-        _currentSessionData.Initialize();
-
-        for (int i = 0; i < levels.Length; i++)
-        {
-            Debug.LogFormat("Level info: {0}", levels[i].name);
-            playableLevel = levels[i] as PlayableLevel;
-            if(playableLevel != null)
-            {
-                Debug.LogFormat("Playable info: {0}", levels[i].name);
-                _currentSessionData.LevelInfo[playableLevel.LevelIndex] = playableLevel;
-            }
-        }
+        List<Level> levels = GameObject.FindObjectsByType<Level>(FindObjectsSortMode.None).OrderBy(level => level.LevelIndex).ToList();
+        CurrentSessionData = ScriptableObject.CreateInstance<DataBetweenScenes>();
+        CurrentSessionData.Initialize();
+        CurrentSessionData.LevelInfo = levels;
     }
 
-    public PlayableLevel RetrieveLevelData(int levelIndex)
+    /*public PlayableLevel RetrieveLevelData(int levelIndex)
     {
-        return _currentSessionData.LevelInfo[levelIndex];
-    }
+        return CurrentSessionData.LevelInfo[levelIndex];
+    }*/
 
-    public bool RetrieveLockedLevelStatus(int levelIndex)
+    /*public bool RetrieveLockedLevelStatus(int levelIndex)
     {
-        return _currentSessionData.LevelInfo[levelIndex].IsLocked;
-    }
+        return CurrentSessionData.LevelInfo[levelIndex].IsLocked;
+    }*/
 
-    public void SaveLockedLevelStatus(bool isLocked)
+    /*public void SaveLockedLevelStatus(bool isLocked)
     {
-        _currentSessionData.LevelInfo[_currentSessionData.CurrentLevelIndex].IsLocked = isLocked;
-    }
+        CurrentSessionData.LevelInfo[CurrentSessionData.CurrentLevelIndex].IsLocked = isLocked;
+    }*/
 
     public void SaveGame()
     {
-        SaveJsonData(_currentSessionData);
+        SaveJsonData(CurrentSessionData);
     }
 
 }

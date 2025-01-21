@@ -40,7 +40,8 @@ public class MainMenuUIController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("IntroVideoScene");
+            SceneManager.LoadScene("HUB");
+            //SceneManager.LoadScene("IntroVideoScene");
         }
     }
 

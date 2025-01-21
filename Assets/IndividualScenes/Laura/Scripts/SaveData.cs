@@ -4,22 +4,21 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    public List<LevelData> Levels;
     public int LastLevelVisited;
+    public List<LevelData> Levels;
 
     [System.Serializable]
     public class LevelData
     {
-        //Carrot identifier
         public int Index;
         public bool IsLocked;
-        
+        public List<Carrot> CarrotList;
+
+        [System.Serializable]
         public class Carrot {
             public int Index;
             public bool IsPicked;
         }
-
-        public List<Carrot> CarrotList;
     }
 
     public string ToJson()
