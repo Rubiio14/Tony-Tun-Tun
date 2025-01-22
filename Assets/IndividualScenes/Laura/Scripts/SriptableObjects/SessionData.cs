@@ -5,9 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class SessionData : ScriptableObject
 {
-    public List<SaveData.LevelData> LevelInfo;
+    public List<SessionLevel> SessionLevels;
     public int CurrentLevelIndex;
     public int TotalNumberOfCarrots;
 
-    public bool ChangeScene;
+    public string ToJson()
+    {
+        return JsonUtility.ToJson(this);
+    }
+
+    public void LoadFromJson(string jSon)
+    {
+        JsonUtility.FromJsonOverwrite(jSon, this);
+    }
 }

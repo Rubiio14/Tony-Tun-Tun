@@ -12,7 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd739b8500aac9d44a360dd6cdf8f9f5, type: 3}
   m_Name: SessionData
   m_EditorClassIdentifier: 
-  LevelInfo: []
+  SessionLevels:
+  - Identifier: 0
+    isPlayable: 0
+    IsLocked: 0
+    NumberOfCarrotsToUnlock: 0
+    SceneName: 
+    Position: {x: -12.739998, y: 0.05, z: 9.17}
+    SessionCarrots: []
+  - Identifier: 1
+    isPlayable: 1
+    IsLocked: 1
+    NumberOfCarrotsToUnlock: 0
+    SceneName: Level0
+    Position: {x: -25.649998, y: 0.15, z: 9.17}
+    SessionCarrots:
+    - Identifier: 0
+      IsPicked: 0
+    - Identifier: 1
+      IsPicked: 0
+    - Identifier: 2
+      IsPicked: 0
+  - Identifier: 2
+    isPlayable: 0
+    IsLocked: 0
+    NumberOfCarrotsToUnlock: 0
+    SceneName: 
+    Position: {x: -43.94, y: 0.3, z: 9.17}
+    SessionCarrots: []
+  - Identifier: 3
+    isPlayable: 1
+    IsLocked: 1
+    NumberOfCarrotsToUnlock: 3
+    SceneName: Level1
+    Position: {x: -66.17, y: 0.3, z: 9.17}
+    SessionCarrots:
+    - Identifier: 0
+      IsPicked: 0
+    - Identifier: 1
+      IsPicked: 0
+    - Identifier: 2
+      IsPicked: 0
   CurrentLevelIndex: 0
   TotalNumberOfCarrots: 0
-  ChangeScene: 1

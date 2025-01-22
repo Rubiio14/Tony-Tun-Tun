@@ -1384,6 +1384,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 473434030370863811, guid: 9fcb3d768284099438b266aeb0d99c2e, type: 3}
+      propertyPath: SessionData
+      value: 
+      objectReference: {fileID: 11400000, guid: aba8fa840feaf474ea6f0759042e3688, type: 2}
+    - target: {fileID: 473434030370863811, guid: 9fcb3d768284099438b266aeb0d99c2e, type: 3}
       propertyPath: _savegameFileName
       value: TonyTunTunSaveData.dat
       objectReference: {fileID: 0}

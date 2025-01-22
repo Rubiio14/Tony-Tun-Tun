@@ -21,7 +21,7 @@ public class PauseUIController : MonoBehaviour
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToHubConfirmation"),
             () => {
                 /*On Confirmation*/
-                SaveGameManager.Instance.SaveGame();
+                SaveGameManager.Instance.SaveSessionDataToFile();
                 SceneManager.LoadScene("HUB");
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             },
@@ -38,7 +38,7 @@ public class PauseUIController : MonoBehaviour
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToMainMenuConfirmation"),
             () => {
                 /*On Confirmation*/
-                SaveGameManager.Instance.SaveGame();
+                SaveGameManager.Instance.SaveSessionDataToFile();
                 SceneManager.LoadScene("MainMenu");
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             },
