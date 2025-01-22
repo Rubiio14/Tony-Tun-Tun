@@ -4,6 +4,7 @@ using UnityEngine;
 public class SaveGameManager : MonoBehaviour
 {
     public static SaveGameManager Instance { get; private set; }
+    public bool IsSessionStarted { get; internal set; }
 
     public SessionData SessionData;
 
@@ -19,7 +20,7 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    public bool IsDataSaved()
+    public bool IsDataSavedInFile()
     {
         return FileManager.DoesSaveFileExists();
     }
@@ -28,6 +29,7 @@ public class SaveGameManager : MonoBehaviour
     {
         if (FileManager.DeleteSavefile())
         {
+            IsSessionStarted = false;
             Debug.Log("Delete successful");
         }
     }

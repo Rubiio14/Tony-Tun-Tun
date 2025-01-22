@@ -11,7 +11,7 @@ public class HubManager : MonoBehaviour
 {
     public static HubManager Instance { get; private set;}
     
-
+    //Components
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private Animator _animationController;
@@ -32,15 +32,15 @@ public class HubManager : MonoBehaviour
     private float _rotationCloseFactor = 0.9999f;
 
     //Load selection
+    [SerializeField] private float _unlockLevelDelay;
+    [SerializeField] private float _loadLevelDelay;
     [SerializeField] private AudioClip _levelSelectionAudio;
     [SerializeField] private AudioClip _levelSelectionIncorrectAudio;
 
+    [SerializeField] private float _yOffset;
     [SerializeField] private LockedLevelController _lockedLevelController;
     [SerializeField] private UnlockedLevelController _unlockedLevelController;
-
-    [SerializeField] private float _yOffset;
-    private bool _inMotion;
-
+    
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -78,37 +78,20 @@ public class HubManager : MonoBehaviour
 
     private void Start()
     {
-        if (SaveGameManager.Instance.IsDataSaved())
+        if (!SaveGameManager.Instance.IsSessionStarted && SaveGameManager.Instance.IsDataSavedInFile())
         {
             //Load from save file
             SaveGameManager.Instance.LoadSessionDataFromFile();
+            SaveGameManager.Instance.IsSessionStarted = true;
         }
         transform.position = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex].Position;
+        _agent.SetDestination(transform.position);
+        _isOnPlatform = true;
+        _isLookingFront = true;
     }
 
     private void Update()
     {
-        if (!_isOnPlatform)
-        {
-            if (DestinationReached())
-            {
-                MarkAsPlatformArrival();
-                SelectRotationTarget();
-                SessionLevel level = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex];
-                if (level.isPlayable)
-                {
-                    if (level.IsLocked)
-                    {
-                        ShowNumberOfCarrotsToUnlock(level);
-                    }
-                    else
-                    {
-                        ShowCurrentCarrotsInLevel(level);
-                    }
-                }
-            }
-            
-        }
         if (_isOnPlatform && !_isLookingFront)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, _rotationSpeed * Time.deltaTime);
@@ -134,26 +117,29 @@ public class HubManager : MonoBehaviour
 
     public void Navigate(InputAction.CallbackContext ctx)
     {
-       Vector2 move = ctx.ReadValue<Vector2>();
-        int tmpIndex;
-       if (move == Vector2.left)
+       if (DestinationReached())
        {
-            tmpIndex = SaveGameManager.Instance.SessionData.CurrentLevelIndex - 1;
-            if (IsLevelReachable(tmpIndex))
+            Vector2 move = ctx.ReadValue<Vector2>();
+            int tmpIndex;
+            if (move == Vector2.left)
             {
-                SaveGameManager.Instance.SessionData.CurrentLevelIndex = tmpIndex;
-                _agent.isStopped = false;
-                MoveToLevel(tmpIndex);
+                tmpIndex = SaveGameManager.Instance.SessionData.CurrentLevelIndex - 1;
+                if (IsLevelReachable(tmpIndex))
+                {
+                    SaveGameManager.Instance.SessionData.CurrentLevelIndex = tmpIndex;
+                    _agent.isStopped = false;
+                    MoveToLevel(tmpIndex);
+                }
             }
-       }
-       else if (move == Vector2.right)
-       {
-            tmpIndex = SaveGameManager.Instance.SessionData.CurrentLevelIndex + 1;
-            if (IsLevelReachable(tmpIndex))
+            else if (move == Vector2.right)
             {
-                SaveGameManager.Instance.SessionData.CurrentLevelIndex = tmpIndex;
-                _agent.isStopped = false;
-                MoveToLevel(tmpIndex);
+                tmpIndex = SaveGameManager.Instance.SessionData.CurrentLevelIndex + 1;
+                if (IsLevelReachable(tmpIndex))
+                {
+                    SaveGameManager.Instance.SessionData.CurrentLevelIndex = tmpIndex;
+                    _agent.isStopped = false;
+                    MoveToLevel(tmpIndex);
+                }
             }
         }
     }
@@ -168,27 +154,30 @@ public class HubManager : MonoBehaviour
 
     public void Submit(InputAction.CallbackContext ctx)
     {
-        SessionLevel currentLevel = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex];
-        if(_isOnPlatform)
+        if (DestinationReached())
         {
-           if(currentLevel.isPlayable)
+            SessionLevel currentLevel = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex];
+            if(_isOnPlatform)
             {
-                if (!currentLevel.IsLocked)
+                if(currentLevel.isPlayable)
                 {
-                    Debug.Log("Selecting level");
-                    StartCoroutine(LoadLevel(currentLevel));
-                }
-                else
-                {
-                    //Check if number of carrots is enough to unlock the level
-                    if(CanBeUnlocked(currentLevel))
+                    if (!currentLevel.IsLocked)
                     {
-                        //We can unlock the level.
-                        StartCoroutine(UnlockLevel(currentLevel));
+                        Debug.Log("Selecting level");
+                        StartCoroutine(LoadLevel(currentLevel));
                     }
                     else
                     {
-                        SelectLockedLevel();
+                        //Check if number of carrots is enough to unlock the level
+                        if(CanBeUnlocked(currentLevel))
+                        {
+                            //We can unlock the level.
+                            StartCoroutine(UnlockLevel(currentLevel));
+                        }
+                        else
+                        {
+                            SelectLockedLevel();
+                        }
                     }
                 }
             }
@@ -202,8 +191,9 @@ public class HubManager : MonoBehaviour
 
     private IEnumerator UnlockLevel(SessionLevel level)
     {
-        yield return new WaitForSeconds(1);
-        //Do a lot of things
+        //TODO: Fix with correct audio sound
+        //FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.rayoCollectedSound, level.Position);
+        yield return new WaitForSeconds(_unlockLevelDelay);
         Unlock(level);
     }
 
@@ -226,7 +216,7 @@ public class HubManager : MonoBehaviour
 
     private IEnumerator LoadLevel(SessionLevel level)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_loadLevelDelay);
         SceneManager.LoadScene(level.SceneName);
         /*
         _animationController.Play("IdleB");
@@ -268,7 +258,6 @@ public class HubManager : MonoBehaviour
     public void MarkAsPlatformDeparture()
     {
         _isOnPlatform = false;
-        _inMotion = true;
         HideNumberOfCarrotsToUnlock();
         HideCurrentCarrotsInLevel();
     }
@@ -295,14 +284,14 @@ public class HubManager : MonoBehaviour
 
     public bool DestinationReached()
     {
-        return !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
+        return _agent && !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
     }
 
-    /*public void OnTriggerEnter(Collider collision)
+    public void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Level") && DestinationReached())
+        if (collision.CompareTag("Level"))
         {
-            //MarkAsPlatformArrival();
+            MarkAsPlatformArrival();
             SelectRotationTarget();
             SessionLevel level = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex];
             if (level.isPlayable)
@@ -317,9 +306,9 @@ public class HubManager : MonoBehaviour
                 }
             }
         }
-    }*/
+    }
 
-    /*public void OnTriggerExit(Collider collision)
+    public void OnTriggerExit(Collider collision)
     {
         if (collision.CompareTag("Level") )
         {
@@ -338,5 +327,5 @@ public class HubManager : MonoBehaviour
             }
 
         }
-    }*/
+    }
 }

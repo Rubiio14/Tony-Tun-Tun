@@ -20,7 +20,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void HideContinue()
     {
-        if (!SaveGameManager.Instance.IsDataSaved())
+        if (!SaveGameManager.Instance.IsDataSavedInFile())
         {
             _continueButton.SetActive(false);
         }
@@ -34,14 +34,14 @@ public class MainMenuUIController : MonoBehaviour
     {
         Debug.Log("Start new Game");
         //If there is an occupied slot, ask for confirmation
-        if (SaveGameManager.Instance.IsDataSaved())
+        if (SaveGameManager.Instance.IsDataSavedInFile())
         {
             GenerateNewSaveConfirmationPanel();
         }
         else
         {
-            SceneManager.LoadScene("HUB");
-            //SceneManager.LoadScene("IntroVideoScene");
+            //SceneManager.LoadScene("HUB");
+            SceneManager.LoadScene("IntroVideoScene");
         }
     }
 

@@ -18,14 +18,14 @@ MonoBehaviour:
     IsLocked: 0
     NumberOfCarrotsToUnlock: 0
     SceneName: 
-    Position: {x: -12.739998, y: 0.05, z: 9.17}
+    Position: {x: -12.739998, y: 0.24, z: 9.17}
     SessionCarrots: []
   - Identifier: 1
     isPlayable: 1
     IsLocked: 1
     NumberOfCarrotsToUnlock: 0
     SceneName: Level0
-    Position: {x: -25.649998, y: 0.15, z: 9.17}
+    Position: {x: -25.649998, y: 0.24, z: 9.17}
     SessionCarrots:
     - Identifier: 0
       IsPicked: 0
@@ -38,14 +38,14 @@ MonoBehaviour:
     IsLocked: 0
     NumberOfCarrotsToUnlock: 0
     SceneName: 
-    Position: {x: -43.94, y: 0.3, z: 9.17}
+    Position: {x: -43.94, y: 0.24, z: 9.17}
     SessionCarrots: []
   - Identifier: 3
     isPlayable: 1
     IsLocked: 1
     NumberOfCarrotsToUnlock: 3
     SceneName: Level1
-    Position: {x: -66.17, y: 0.3, z: 9.17}
+    Position: {x: -66.17, y: 0.24, z: 9.17}
     SessionCarrots:
     - Identifier: 0
       IsPicked: 0
