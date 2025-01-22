@@ -20,7 +20,8 @@ public class MainMenuUIController : MonoBehaviour
 
     public void HideContinue()
     {
-        if (!SaveGameManager.Instance.IsDataSavedInFile())
+        //Session not started and data not present
+        if (!SaveGameManager.IsSessionStarted && !SaveGameManager.Instance.IsDataSavedInFile())
         {
             _continueButton.SetActive(false);
         }
@@ -62,8 +63,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void Continue()
     {
-        //_firstTimeInHUB ??
-        SceneManager.LoadScene("HUB");
+        StartCoroutine(UIManager.Instance.LoadScene("HUB"));
     }
 
     public void Options()
@@ -82,11 +82,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void Quit()
     {
-        //Can create confirmation message if we want
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-        Application.Quit();
+        UIManager.Instance.SaveAndQuit();
     }
 
 }

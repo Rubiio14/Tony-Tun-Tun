@@ -20,10 +20,7 @@ public class PauseUIController : MonoBehaviour
     {
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToHubConfirmation"),
             () => {
-                /*On Confirmation*/
-                SaveGameManager.Instance.SaveSessionDataToFile();
-                SceneManager.LoadScene("HUB");
-                EventSystem.current.currentSelectedGameObject.SetActive(false);
+                StartCoroutine(UIManager.Instance.LoadScene("HUB"));
             },
             () => {
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
@@ -37,10 +34,7 @@ public class PauseUIController : MonoBehaviour
     {
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToMainMenuConfirmation"),
             () => {
-                /*On Confirmation*/
-                SaveGameManager.Instance.SaveSessionDataToFile();
-                SceneManager.LoadScene("MainMenu");
-                EventSystem.current.currentSelectedGameObject.SetActive(false);
+                StartCoroutine(UIManager.Instance.LoadScene("MainMenu"));
             },
             () => {
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
@@ -50,10 +44,31 @@ public class PauseUIController : MonoBehaviour
 
     }
 
-    public void Continue()
+    public void GenerateSaveAndExitConfirmationPanel()
+    {
+        UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("SaveAndQuitConfirmation"),
+            () => {
+                /*On Confirmation*/
+                UIManager.Instance.SaveAndQuit();
+            },
+            () => {
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
+                EventSystem.current.currentSelectedGameObject.SetActive(false);
+            });
+        UIManager.Instance.ShowConfirmationPanel(EventSystem.current.currentSelectedGameObject);
+
+    }
+
+    public void ContinueInHUB()
     {
         gameObject.SetActive(false);
         UIManager.Instance.DisableHUBPauseMenu();
+    }
+
+    public void ContinueInLevel()
+    {
+        gameObject.SetActive(false);
+        UIManager.Instance.DisableLevelPauseMenu();
     }
 
     public void Options()

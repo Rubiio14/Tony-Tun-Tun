@@ -24,7 +24,7 @@ MonoBehaviour:
     isPlayable: 1
     IsLocked: 1
     NumberOfCarrotsToUnlock: 0
-    SceneName: level0
+    SceneName: Level0
     Position: {x: -22.41, y: 0.3, z: 9.17}
     SessionCarrots:
     - Identifier: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     isPlayable: 1
     IsLocked: 1
     NumberOfCarrotsToUnlock: 3
-    SceneName: level1
+    SceneName: Level1
     Position: {x: -39.87, y: 0.3, z: 9.17}
     SessionCarrots:
     - Identifier: 0

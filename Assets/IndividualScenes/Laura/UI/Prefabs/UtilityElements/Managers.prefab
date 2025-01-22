@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eea019f2ce5f1844ae4caea7a6a067f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SessionData: {fileID: 11400000, guid: 62b8dcd4b65038547a7a03a8b4774038, type: 2}
 --- !u!114 &4425279769592639862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,4 +61,6 @@ MonoBehaviour:
   _mainMenu: {fileID: 0}
   _optionsMenu: {fileID: 0}
   _creditsMenu: {fileID: 0}
+  _pauseMenu: {fileID: 0}
   _confirmation: {fileID: 0}
+  _delayForSceneChange: 1

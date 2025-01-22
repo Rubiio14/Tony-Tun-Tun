@@ -4,7 +4,7 @@ using UnityEngine;
 public class SaveGameManager : MonoBehaviour
 {
     public static SaveGameManager Instance { get; private set; }
-    public bool IsSessionStarted { get; internal set; }
+    public static bool IsSessionStarted;
 
     public SessionData SessionData;
 

@@ -5,6 +5,8 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.Events;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class UIManager : MonoBehaviour
 
     //Confirmation
     [SerializeField] private ConfirmationController _confirmation;
+    
+    //Scene
+    [SerializeField] private float _delayForSceneChange;
 
     //Localization
     public Locale[] AvailableLocales { get; private set; }
@@ -56,7 +61,6 @@ public class UIManager : MonoBehaviour
         _localeIndex = 0;
         LocalizationSettings.SelectedLocale = AvailableLocales[_localeIndex];
         UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
-        //LocalizationSettings.InitializationOperation.Completed += FinishLoadingLocalization;
     }
 
     public void UpdateLanguage()
@@ -64,16 +68,15 @@ public class UIManager : MonoBehaviour
         UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
     }
 
-    /*private void FinishLoadingLocalization(AsyncOperationHandle<LocalizationSettings> handle)
-    {
-        _localeIndex = 0;
-        LocalizationSettings.SelectedLocale = _availableLocales[_localeIndex];
-        _uiTextsTable = LocalizationSettings.StringDatabase?.GetTable(UITableName);
-    }*/
-
     public String GetLocalizedUIText(String localizedKey)
     {
         return UITextTable.GetEntry(localizedKey).LocalizedValue;
+    }
+
+    public IEnumerator LoadScene(string sceneName)
+    {
+        yield return new WaitForSeconds(_delayForSceneChange);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void EnableMainMenu()
@@ -111,6 +114,17 @@ public class UIManager : MonoBehaviour
         HubManager.Instance.ReturnControlsToPlayer();
     }
 
+    public void EnableLevelPauseMenu()
+    {
+        _pauseMenu.gameObject.SetActive(true);
+    }
+
+    public void DisableLevelPauseMenu()
+    {
+        _pauseMenu.gameObject.SetActive(false);
+        //LevelManager.Instance.ReturnControlsToPlayer();
+    }
+
     public string GetKeyboardLocalized()
     {
         return GetLocalizedUIText(KeyboardKey);
@@ -142,4 +156,13 @@ public class UIManager : MonoBehaviour
         _confirmation.gameObject.SetActive(true);
     }
 
+    public void SaveAndQuit()
+    {
+        SaveGameManager.Instance.SaveSessionDataToFile();
+        //Can create confirmation message if we want
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
+    }
 }

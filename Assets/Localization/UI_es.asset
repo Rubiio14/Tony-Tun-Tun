@@ -112,12 +112,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23574967527993344
-    m_Localized: "\xBFseguro que quieres vover al menu principal ? \\n\\n\nel progreso
-      actual se guardar\xE1"
+    m_Localized: "\xBFseguro que quieres vover al menu principal ? \\n\\n"
     m_Metadata:
       m_Items: []
   - m_Id: 23579077912358912
-    m_Localized: "\xBFseguro que quieres vover al hub ? \\n\\n\nel progreso actual
+    m_Localized: "\xBFseguro que quieres vover al hub ? \\n\\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25843711381008384
+    m_Localized: "\xBFseguro que quieres salir del juego ? \\n\\n\nel progreso actual
       se guardar\xE1"
     m_Metadata:
       m_Items: []

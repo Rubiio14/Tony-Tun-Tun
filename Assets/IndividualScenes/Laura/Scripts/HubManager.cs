@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -40,7 +41,11 @@ public class HubManager : MonoBehaviour
     [SerializeField] private float _yOffset;
     [SerializeField] private LockedLevelController _lockedLevelController;
     [SerializeField] private UnlockedLevelController _unlockedLevelController;
-    
+
+    [SerializeField] private ParticleSystem _particleSystemUnlock;
+
+    private Dictionary<int, LevelModelSwitcher> _switchers = new Dictionary<int, LevelModelSwitcher>();
+
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -78,16 +83,39 @@ public class HubManager : MonoBehaviour
 
     private void Start()
     {
-        if (!SaveGameManager.Instance.IsSessionStarted && SaveGameManager.Instance.IsDataSavedInFile())
+        //Session not yet started and there is data in file
+        if (!SaveGameManager.IsSessionStarted)
         {
-            //Load from save file
-            SaveGameManager.Instance.LoadSessionDataFromFile();
-            SaveGameManager.Instance.IsSessionStarted = true;
+            if (SaveGameManager.Instance.IsDataSavedInFile())
+            {
+                //Load from save file
+                SaveGameManager.Instance.LoadSessionDataFromFile();
+                SaveGameManager.IsSessionStarted = true;
+            }
+            else
+            {
+                Debug.Log("Can only happen in editor");
+            }
+            
         }
         transform.position = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex].Position;
-        _agent.SetDestination(transform.position);
+        //Check if still necessary
+        //_agent.SetDestination(transform.position);
         _isOnPlatform = true;
         _isLookingFront = true;
+        SaveGameManager.IsSessionStarted = true;
+        LoadLevelRepresentation();
+    }
+
+    private void LoadLevelRepresentation()
+    {
+        LevelModelSwitcher[] switchersInHUB = GameObject.FindObjectsByType<LevelModelSwitcher>(FindObjectsSortMode.None);
+        for(int i = 0; i < switchersInHUB.Length; i++)
+        {
+            _switchers.Add(switchersInHUB[i].Identifier, switchersInHUB[i]);
+            switchersInHUB[i].SwitchRepresentation(SaveGameManager.Instance.SessionData.SessionLevels[switchersInHUB[i].Identifier].IsLocked);
+        }
+
     }
 
     private void Update()
@@ -193,8 +221,17 @@ public class HubManager : MonoBehaviour
     {
         //TODO: Fix with correct audio sound
         //FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.rayoCollectedSound, level.Position);
+        _particleSystemUnlock.transform.position = level.Position;
+        _particleSystemUnlock.gameObject.SetActive(true);
+        _particleSystemUnlock.Play();
+
         yield return new WaitForSeconds(_unlockLevelDelay);
+
         Unlock(level);
+
+        yield return new WaitForSeconds(_unlockLevelDelay);
+
+        _particleSystemUnlock.gameObject.SetActive(false);
     }
 
     private void Unlock(SessionLevel level)
@@ -202,6 +239,7 @@ public class HubManager : MonoBehaviour
         HideNumberOfCarrotsToUnlock();
         ShowCurrentCarrotsInLevel(level);
         level.IsLocked = false;
+        _switchers[level.Identifier].SwitchRepresentation(level.IsLocked);
     }
 
     public Vector3 GetCanvasPosition(SessionLevel level)
@@ -216,9 +254,11 @@ public class HubManager : MonoBehaviour
 
     private IEnumerator LoadLevel(SessionLevel level)
     {
+        //TODO: Change to correct animation
+        _animationController.Play("IdleB");
         yield return new WaitForSeconds(_loadLevelDelay);
         SceneManager.LoadScene(level.SceneName);
-        /*
+        /*        
         _animationController.Play("IdleB");
         _particleSystemSelect.transform.position = level.transform.position + new Vector3 (0, level._yOffsetTop, 0);
         _particleSystemSelect.gameObject.SetActive(true);

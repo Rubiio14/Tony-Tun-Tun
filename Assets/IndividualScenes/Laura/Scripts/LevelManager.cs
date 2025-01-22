@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
         /*string json = JsonUtility.ToJson(SaveGameManager.Instance.SessionData);
         Debug.Log(json);*/
 
-        SceneManager.LoadScene("HUB");
+        //SceneManager.LoadScene("HUB");
         /*if (SaveGameManager.Instance.SessionData.ChangeScene)
         {
             Debug.Log("Changing scene");

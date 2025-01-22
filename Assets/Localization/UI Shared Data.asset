@@ -115,6 +115,10 @@ MonoBehaviour:
     m_Key: BackToHubConfirmation
     m_Metadata:
       m_Items: []
+  - m_Id: 25843711381008384
+    m_Key: SaveAndQuitConfirmation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
