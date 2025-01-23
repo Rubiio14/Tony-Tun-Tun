@@ -3,7 +3,14 @@ using FMODUnity;
 using FMOD.Studio;
 public class FMODAudioManager : MonoBehaviour
 {
-    
+    [Header("Volume")]
+    [Range(0, 1)]
+    public float musicVolume = 1;
+    [Range(0, 1)]
+    public float sfxVolume = 1;
+
+    private Bus musicBus;
+    private Bus sfxBus;
     public static FMODAudioManager instance { get; private set; }
 
     private EventInstance musicEventInstance;
@@ -15,6 +22,9 @@ public class FMODAudioManager : MonoBehaviour
             Debug.LogError("Más de 1 AudioManager en la escena");
         }
         instance = this;
+
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
     }
 
     private void Start()
@@ -41,5 +51,11 @@ public class FMODAudioManager : MonoBehaviour
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         return eventInstance;
+    }
+
+    private void Update()
+    {
+        musicBus.setVolume(musicVolume);
+        sfxBus.setVolume(sfxVolume);
     }
 }
