@@ -835,7 +835,7 @@ MonoBehaviour:
     m_Bits: 256
   _vfxShot: {fileID: 0}
   _vfxShotWaypoint: {fileID: 8539863771393992257}
-  firstShotParticle: 5
+  firstShotParticle: 1
 --- !u!50 &3195452848976378466
 Rigidbody2D:
   serializedVersion: 5

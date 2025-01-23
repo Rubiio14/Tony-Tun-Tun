@@ -20,7 +20,8 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     GameObject _vfxShot;
     [SerializeField]
     GameObject _vfxShotWaypoint;
-    public float firstShotParticle;
+    public float firstShotParticle = 1;
+
 
     private void Start()
     {
@@ -34,25 +35,27 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
         Debug.DrawRay(new Vector2(transform.position.x * _startRaycast, transform.position.y), forward, Color.green);
 
         //Crear raycast e impactar con el layer del jugador 
-        if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, transform.position.y), Vector2.right, raycastLength, _playerLayer))
+        if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, transform.position.y), forward, raycastLength, _playerLayer))
         {
             //activar animacion de disparo y partículas
             _meleeShooterAnimator.SetBool("playerDetected", true);
-            _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
             StartCoroutine(ActivateShotVFX());
-
         }
         else
         {
             //Desactivar animacion de disparo y partículas
             _meleeShooterAnimator.SetBool("playerDetected", false);
             _vfxShot.SetActive(false);
+            StopAllCoroutines();
         }
     }
 
     public IEnumerator ActivateShotVFX()
     {
+        _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
+
         yield return new WaitForSeconds(firstShotParticle);
+
         _vfxShot.SetActive(true);
     }
 }
