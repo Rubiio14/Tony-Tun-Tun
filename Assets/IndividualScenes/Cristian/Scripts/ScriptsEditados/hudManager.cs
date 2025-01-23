@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 using TMPro;
+using FMODUnity;
 public class hudManager : MonoBehaviour
 {
     public static hudManager instance;
@@ -116,7 +117,7 @@ public class hudManager : MonoBehaviour
         {
             _isBaseFilling = false; // Detiene el relleno y reinicia
             holdTime = 0f;
-            
+           
         }
     }
 

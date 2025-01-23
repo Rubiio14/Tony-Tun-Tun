@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using FMODUnity;
 public class playerJump : MonoBehaviour
 {
     [Header("Components")]
@@ -221,7 +222,6 @@ public class playerJump : MonoBehaviour
 
         private void DoAJump()
         {
-
             //Create the jump, provided we are on the ground, in coyote time
             if (onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < coyoteTime))
             {

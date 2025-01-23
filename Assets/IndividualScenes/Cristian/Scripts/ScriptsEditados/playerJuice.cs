@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class playerJuice : MonoBehaviour
 {
     public static playerJuice instance;
@@ -91,12 +91,15 @@ public class playerJuice : MonoBehaviour
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
         myAnimator.ResetTrigger("ChargedJump");
-        
-        //myAnimator.SetBool("IsFalling", true);
+
+        //Audio
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.playerJump, this.gameObject.transform.position);
 
     }
     public void chargedjumpEffects()
     {
+        //Audio
+        FMODAudioManager.instance.PlayChargedJump();
         //Play these effects when the player jumps, courtesy of jump script
         //myAnimator.ResetTrigger("Landed");
         myAnimator.SetBool("IsIdle", false);

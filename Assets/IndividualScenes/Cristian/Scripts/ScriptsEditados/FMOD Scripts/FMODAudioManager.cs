@@ -14,6 +14,7 @@ public class FMODAudioManager : MonoBehaviour
     public static FMODAudioManager instance { get; private set; }
 
     private EventInstance musicEventInstance;
+    private EventInstance chargedJumpInstance;
 
     private void Awake()
     {
@@ -51,6 +52,33 @@ public class FMODAudioManager : MonoBehaviour
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         return eventInstance;
+    }
+    // Método para reproducir el sonido del salto cargado.
+    public void PlayChargedJump()
+    {
+        if (chargedJumpInstance.isValid())
+        {
+            chargedJumpInstance.release();
+        }
+        chargedJumpInstance = CreateInstance(FMODEvents.instance.playerChargedJump);
+        chargedJumpInstance.start();
+        Invoke(nameof(StopChargedJump), 0.5f);
+    }
+
+    // Método para detener el sonido del salto cargado.
+    public void StopChargedJump()
+    {
+        if (chargedJumpInstance.isValid())
+        {
+            chargedJumpInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            chargedJumpInstance.release();
+            chargedJumpInstance.clearHandle();
+            Debug.Log("Es Válido");
+        }
+        else
+        {
+            Debug.Log("No es Válido");
+        }
     }
 
     private void Update()
