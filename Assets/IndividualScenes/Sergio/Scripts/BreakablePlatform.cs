@@ -3,11 +3,14 @@ using System.Collections;
 
 public class BreakablePlatform : MonoBehaviour
 {
+    //PREFAB completo
+    [SerializeField]
+    GameObject _prefabBreakablePlatform;
     //Collider para situarse sobre la plataforma
     BoxCollider2D _platformCollider;
-    [SerializeField]
 
     //Collider para usar el bloqueo del shortcut
+    [SerializeField]
     GameObject _shortcutColliderEmpty;
 
     //Trozos de la plataforma para romperse
@@ -215,7 +218,6 @@ public class BreakablePlatform : MonoBehaviour
         _vfxPlatformBreakDust.SetActive(true);
         _vfxPlatformShakingDust.SetActive(false);
 
-
     }
 
     //físicas de caída de las piezas
@@ -254,6 +256,8 @@ public class BreakablePlatform : MonoBehaviour
         piece6.SetActive(false);
         piece7.SetActive(false);
         _vfxPlatformBreakDust.SetActive(false);
+        Destroy(_prefabBreakablePlatform);
+
     }
 
     //Vuelve a aparecer y a colocarse la pieza

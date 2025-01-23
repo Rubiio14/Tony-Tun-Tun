@@ -104,7 +104,15 @@ public class playerJuice : MonoBehaviour
         //myAnimator.SetBool("IsFalling", true);
         
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            //ejecutar muerte jugador, llama al script DeathAndRespawn 
+            DeathAndRespawnManager.instance.playerDeath = true;
+            DeathAndRespawnManager.instance.tonyGhost.transform.position = new Vector2(DeathAndRespawnManager.instance.player.transform.position.x, DeathAndRespawnManager.instance.player.transform.position.y + 2);
+        }
+    }
 
 
 }

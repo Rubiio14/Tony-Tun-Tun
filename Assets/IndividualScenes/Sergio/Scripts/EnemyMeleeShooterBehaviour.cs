@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyMeleeShooterBehaviour : MonoBehaviour
 {
@@ -14,9 +15,17 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     //Para detectar solo el collider del jugador
     [SerializeField] private LayerMask _playerLayer;
 
+    //VFX dìsparo
+    [SerializeField]
+    GameObject _vfxShot;
+    [SerializeField]
+    GameObject _vfxShotWaypoint;
+    public float firstShotParticle;
+
     private void Start()
     {
         _meleeShooterAnimator = GetComponent<Animator>();
+        _vfxShot.SetActive(false);
     }
     void FixedUpdate()
     {
@@ -27,24 +36,23 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
         //Crear raycast e impactar con el layer del jugador 
         if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, transform.position.y), Vector2.right, raycastLength, _playerLayer))
         {
-            //activar animacion de disparo
+            //activar animacion de disparo y partículas
             _meleeShooterAnimator.SetBool("playerDetected", true);
+            _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
+            StartCoroutine(ActivateShotVFX());
+
         }
         else
         {
-            //Desactivar animacion de disparo
+            //Desactivar animacion de disparo y partículas
             _meleeShooterAnimator.SetBool("playerDetected", false);
+            _vfxShot.SetActive(false);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public IEnumerator ActivateShotVFX()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //ejecutar muerte jugador, llama al script DeathAndRespawn 
-            DeathAndRespawnManager.instance.playerDeath = true;
-            DeathAndRespawnManager.instance.tonyGhost.transform.position = new Vector2(DeathAndRespawnManager.instance.player.transform.position.x, DeathAndRespawnManager.instance.player.transform.position.y + 2);
-
-        }
+        yield return new WaitForSeconds(firstShotParticle);
+        _vfxShot.SetActive(true);
     }
 }
