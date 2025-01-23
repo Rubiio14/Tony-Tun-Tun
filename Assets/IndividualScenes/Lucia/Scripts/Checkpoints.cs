@@ -1,16 +1,28 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Checkpoints : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Checkpoint_Manager checkpoint_Manager;
+
+    public GameObject checkpointPainted;
+    public GameObject checkpointNotPainted;
+
+    private void Start()
     {
-        
+        checkpointPainted.SetActive(false);
+        checkpointNotPainted.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D (Collider2D other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            checkpoint_Manager.ChangeCheckpointIndex(this.gameObject.transform);
+            checkpointPainted.SetActive(true);
+            checkpointNotPainted.SetActive(false);
+            //SFX
+        }
     }
 }
