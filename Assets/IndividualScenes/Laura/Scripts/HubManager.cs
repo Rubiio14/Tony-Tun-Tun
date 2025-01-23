@@ -67,13 +67,22 @@ public class HubManager : MonoBehaviour
 
     void OnEnable()
     {
+        EnableInput();
+    }
+
+    void OnDisable()
+    {
+        DisableInput();
+    }
+
+    public void EnableInput()
+    {
         _move.Enable();
         _submit.Enable();
         _cancel.Enable();
         _hub.Enable();
     }
-
-    void OnDisable()
+    public void DisableInput()
     {
         _move.Disable();
         _submit.Disable();
@@ -256,6 +265,7 @@ public class HubManager : MonoBehaviour
     {
         //TODO: Change to correct animation
         _animationController.Play("IdleB");
+        DisableInput();
         yield return new WaitForSeconds(_loadLevelDelay);
         SceneManager.LoadScene(level.SceneName);
         /*        

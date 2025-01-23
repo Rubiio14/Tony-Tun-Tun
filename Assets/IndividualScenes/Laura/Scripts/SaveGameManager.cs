@@ -7,6 +7,7 @@ public class SaveGameManager : MonoBehaviour
     public static bool IsSessionStarted;
 
     public SessionData SessionData;
+    public SessionData DefaultData;
 
     private void Awake()
     {
@@ -52,4 +53,17 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
+    public void ResetSessionData()
+    {
+        SessionData.CurrentLevelIndex = DefaultData.CurrentLevelIndex;
+        for(int i = 0; i < SessionData.SessionLevels.Count; i++)
+        {
+            SessionData.SessionLevels[i].IsLocked = DefaultData.SessionLevels[i].IsLocked;
+            for(int j = 0; j < SessionData.SessionLevels[i].SessionCarrots.Count; j++)
+            {
+                SessionData.SessionLevels[i].SessionCarrots[j].IsPicked = DefaultData.SessionLevels[i].SessionCarrots[j].IsPicked;
+            }
+        }
+        
+    }
 }

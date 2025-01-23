@@ -77,7 +77,8 @@ public class SelectionArrowList : SelectLeftRight
         {
             return;
         }
-        
+
+        Resolution[] filteredResolutions = UIManager.Instance.AvailableResolutions;
         int resolutionSize = UIManager.Instance.AvailableResolutions.Length;
         _optionsArray = new Option[resolutionSize];
 
@@ -103,7 +104,7 @@ public class SelectionArrowList : SelectLeftRight
 
     private string FormatResolution(Resolution resolution)
     {
-        return String.Format("{0} x {1} ({2})", resolution.width, resolution.height, resolution.refreshRateRatio);
+        return String.Format("{0} x {1}", resolution.width, resolution.height);
     }
 
     public void FillLanguageOptions()

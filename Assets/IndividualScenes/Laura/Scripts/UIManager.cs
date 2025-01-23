@@ -7,6 +7,7 @@ using System;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -55,7 +56,23 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
-        AvailableResolutions = Screen.resolutions;
+        if(AvailableResolutions == null)
+        {
+            //TODO: Check in testing
+            AvailableResolutions = Screen.resolutions.Where(res => {
+                Debug.Log($"Resolution: {res.width}x{res.height} ({res.refreshRateRatio})");
+                if (res.refreshRateRatio.value > 59)
+                    if (res.width == 1920 && res.height == 1080
+                    || res.width == 1366 && res.height == 768
+                    || res.width == 2560 && res.height == 1440
+                    || res.width == 3840 && res.height == 2160)
+                    {
+                        return true;
+                    }
+                return false;
+
+            }).ToArray();
+        }
         //Localization initialization
         AvailableLocales = LocalizationSettings.AvailableLocales.Locales.ToArray();
         _localeIndex = 0;

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SessionData: {fileID: 11400000, guid: 62b8dcd4b65038547a7a03a8b4774038, type: 2}
+  DefaultData: {fileID: 11400000, guid: 940399347b866614da3c8589dc61e422, type: 2}
 --- !u!114 &4425279769592639862
 MonoBehaviour:
   m_ObjectHideFlags: 0

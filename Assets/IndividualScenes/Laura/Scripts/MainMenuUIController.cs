@@ -42,6 +42,7 @@ public class MainMenuUIController : MonoBehaviour
         else
         {
             //SceneManager.LoadScene("HUB");
+            SaveGameManager.Instance.ResetSessionData();
             SceneManager.LoadScene("IntroVideoScene");
         }
     }
@@ -53,6 +54,7 @@ public class MainMenuUIController : MonoBehaviour
                 /*Delete previous saved data values*/
                 //Change to Intro Video Scene
                 SaveGameManager.Instance.DeleteSaveData();
+                SaveGameManager.Instance.ResetSessionData();
                 SceneManager.LoadScene("IntroVideoScene");
             },
             () => {
