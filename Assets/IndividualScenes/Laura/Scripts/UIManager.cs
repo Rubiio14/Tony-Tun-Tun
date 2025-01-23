@@ -60,7 +60,6 @@ public class UIManager : MonoBehaviour
         {
             //TODO: Check in testing
             AvailableResolutions = Screen.resolutions.Where(res => {
-                Debug.Log($"Resolution: {res.width}x{res.height} ({res.refreshRateRatio})");
                 if (res.refreshRateRatio.value > 59)
                     if (res.width == 1920 && res.height == 1080
                     || res.width == 1366 && res.height == 768
