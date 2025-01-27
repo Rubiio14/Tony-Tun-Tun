@@ -15,13 +15,16 @@ public class Checkpoints : MonoBehaviour
         checkpointNotPainted.SetActive(true);
     }
 
-    private void OnTriggerEnter2D (Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            checkpoint_Manager.ChangeCheckpointIndex(this.gameObject.transform);
+            checkpoint_Manager.ChangeCheckpointIndex(transform);
+
             checkpointPainted.SetActive(true);
             checkpointNotPainted.SetActive(false);
+
+            Debug.Log("Checkpoint activado.");
             //SFX
         }
     }
