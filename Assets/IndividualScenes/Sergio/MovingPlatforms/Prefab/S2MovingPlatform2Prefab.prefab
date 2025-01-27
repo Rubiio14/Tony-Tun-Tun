@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1251301844380398444}
   m_Layer: 7
-  m_Name: MovingPlatform2Prefab
+  m_Name: S2MovingPlatform2Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
