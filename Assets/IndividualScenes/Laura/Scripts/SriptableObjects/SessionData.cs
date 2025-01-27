@@ -7,7 +7,6 @@ public class SessionData : ScriptableObject
 {
     public List<SessionLevel> SessionLevels;
     public int CurrentLevelIndex;
-    public int TotalNumberOfCarrots;
 
     public string ToJson()
     {

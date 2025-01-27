@@ -5,5 +5,5 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "CollectableSOBase", menuName = "Scriptable Objects/CollectableSOBase")]
 public abstract class CollectableSOBase : ScriptableObject
 {
-    public abstract void Collect(GameObject objectThatCollected);
+    public abstract void Collect(GameObject objectThatCollected, int index);
 }

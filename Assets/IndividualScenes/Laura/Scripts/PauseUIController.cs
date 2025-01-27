@@ -61,12 +61,14 @@ public class PauseUIController : MonoBehaviour
 
     public void ContinueInHUB()
     {
+        _previousSelected = EventSystem.current.currentSelectedGameObject;
         gameObject.SetActive(false);
         UIManager.Instance.DisableHUBPauseMenu();
     }
 
     public void ContinueInLevel()
     {
+        _previousSelected = EventSystem.current.currentSelectedGameObject;
         gameObject.SetActive(false);
         UIManager.Instance.DisableLevelPauseMenu();
     }

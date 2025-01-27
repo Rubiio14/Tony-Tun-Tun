@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//Save system implementation from https://www.youtube.com/watch?v=uD7y4T4PVk0
 public class SaveGameManager : MonoBehaviour
 {
     public static SaveGameManager Instance { get; private set; }
@@ -19,6 +18,20 @@ public class SaveGameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public int GetTotalPickedCarrots()
+    {
+        int totalNumberOfCarrots = 0;
+        foreach (SessionLevel level in SessionData.SessionLevels)
+        {
+            foreach (SessionCarrot carrot in level.SessionCarrots)
+            {
+                if (carrot.IsPicked)
+                    totalNumberOfCarrots++;
+            }
+        }
+        return totalNumberOfCarrots;
     }
 
     public bool IsDataSavedInFile()

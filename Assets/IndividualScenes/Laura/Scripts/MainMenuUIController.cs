@@ -34,7 +34,7 @@ public class MainMenuUIController : MonoBehaviour
     public void StartNewGame()
     {
         Debug.Log("Start new Game");
-        //If there is an occupied slot, ask for confirmation
+        //If there is save data, ask for confirmation
         if (SaveGameManager.Instance.IsDataSavedInFile())
         {
             GenerateNewSaveConfirmationPanel();

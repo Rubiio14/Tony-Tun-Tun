@@ -1,27 +1,78 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    private void Start()
+    public static LevelManager Instance { get; private set; }
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private playerMovement _playerMovement;
+    [SerializeField] private playerJump _playerJump;
+
+    private InputActionMap _player;
+    private InputAction _move;
+    private InputAction _jump;
+    private InputAction _quit;
+
+    public void Awake()
     {
-        //SaveGameManager.CurrentSessionData.CurrentLevelIndex = 0;
-        //Debug.Log($"On Level: {SaveGameManager.Instance.SessionData.LevelInfo[0].IsLocked}");
-
-        SaveGameManager.Instance.SessionData.SessionLevels[1].SessionCarrots[0].IsPicked = true;
-
-        /*string json = JsonUtility.ToJson(SaveGameManager.Instance.SessionData);
-        Debug.Log(json);*/
-
-        //SceneManager.LoadScene("HUB");
-        /*if (SaveGameManager.Instance.SessionData.ChangeScene)
+        if (Instance != null && Instance != this)
         {
-            Debug.Log("Changing scene");
-            SaveGameManager.Instance.SessionData.ChangeScene = false;
-            SceneManager.LoadScene("HUB");
-        }*/
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        _player = _playerInput.actions.FindActionMap("Player");
+        _move = _player.FindAction("Move");
+        _jump = _player.FindAction("Jump");
+        _quit = _player.FindAction("Quit");
+    }
 
+    private void OnEnable()
+    {
+        EnableInput();
+    }
+
+    private void OnDisable()
+    {
+        DisableInput();
+    }
+
+    public void EnableInput()
+    {
+        /*_player.Enable();
+        _move.performed += _playerMovement.OnMovement;
+        _jump.performed += _playerJump.OnJump;
+        _jump.performed += hudManager.instance.refillBar;
+        _quit.performed += Cancel;*/
+    }
+
+    public void DisableInput()
+    {
+        /*_player.Disable();
+        _move.performed -= _playerMovement.OnMovement;
+        _jump.performed -= _playerJump.OnJump;
+        _jump.performed -= hudManager.instance.refillBar;
+        _quit.performed -= Cancel;*/
+    }
+
+    public void Cancel(InputAction.CallbackContext ctx)
+    {
+        UIManager.Instance.EnableLevelPauseMenu();
+        //Time.timeScale = 0;
+        DisableInput();
+        _playerInput.uiInputModule.ActivateModule();
+    }
+
+    public void ReturnControlsToPlayer()
+    {
+        _playerInput.uiInputModule.DeactivateModule();
+        //Time.timeScale = 1;
+        EnableInput();
     }
 
 }

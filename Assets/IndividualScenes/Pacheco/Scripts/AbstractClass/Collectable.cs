@@ -1,6 +1,5 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 
 
 [RequireComponent (typeof(BoxCollider2D))]
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 public class Collectable : MonoBehaviour
 {
     [SerializeField] private CollectableSOBase _collectable;
+    public int Index;
 
     private void Reset()
     {
@@ -16,6 +16,6 @@ public class Collectable : MonoBehaviour
 
     public void Collect(GameObject objectThatCollected)
     {
-        _collectable.Collect(objectThatCollected);
+        _collectable.Collect(objectThatCollected, Index);
     }
 }

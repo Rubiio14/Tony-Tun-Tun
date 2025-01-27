@@ -17,8 +17,6 @@ public class CollectableTriggerHandler : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerLayer"))
         {
             _collectable.Collect(collision.gameObject);
-
-
             Destroy(gameObject);
         }
     }

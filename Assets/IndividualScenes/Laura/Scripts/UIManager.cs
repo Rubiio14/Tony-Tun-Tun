@@ -126,7 +126,6 @@ public class UIManager : MonoBehaviour
 
     public void DisableHUBPauseMenu()
     {
-        _pauseMenu.gameObject.SetActive(false);
         HubManager.Instance.ReturnControlsToPlayer();
     }
 
@@ -137,8 +136,7 @@ public class UIManager : MonoBehaviour
 
     public void DisableLevelPauseMenu()
     {
-        _pauseMenu.gameObject.SetActive(false);
-        //LevelManager.Instance.ReturnControlsToPlayer();
+        LevelManager.Instance.ReturnControlsToPlayer();
     }
 
     public string GetKeyboardLocalized()

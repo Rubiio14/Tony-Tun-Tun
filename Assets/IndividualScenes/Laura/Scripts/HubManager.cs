@@ -18,7 +18,7 @@ public class HubManager : MonoBehaviour
     [SerializeField] private Animator _animationController;
 
     //Input
-    private InputActionMap _hub;
+    private InputActionMap _player;
     private InputAction _move;
     private InputAction _submit;
     private InputAction _cancel;
@@ -44,7 +44,11 @@ public class HubManager : MonoBehaviour
 
     [SerializeField] private ParticleSystem _particleSystemUnlock;
 
+    [SerializeField] private GameObject _enemyCinematic;
+    [SerializeField] private float _enemyWalkingDuration;
+
     private Dictionary<int, LevelModelSwitcher> _switchers = new Dictionary<int, LevelModelSwitcher>();
+    
 
     public void Awake()
     {
@@ -56,13 +60,10 @@ public class HubManager : MonoBehaviour
         {
             Instance = this;
         }
-        _hub = _playerInput.actions.FindActionMap("HUB");
-        _move = _hub.FindAction("Navigate");
-        _submit = _hub.FindAction("Submit");
-        _cancel = _hub.FindAction("Cancel");
-        _move.performed += Navigate;
-        _submit.performed += Submit;
-        _cancel.performed += Cancel;
+        _player = _playerInput.actions.FindActionMap("Player");
+        _move = _player.FindAction("Move");
+        _submit = _player.FindAction("Jump");
+        _cancel = _player.FindAction("Quit");
     }
 
     void OnEnable()
@@ -77,17 +78,24 @@ public class HubManager : MonoBehaviour
 
     public void EnableInput()
     {
-        _move.Enable();
-        _submit.Enable();
-        _cancel.Enable();
-        _hub.Enable();
+        _player.Enable();
+        _move.performed += Move;
+        _submit.performed += Submit;
+        _cancel.performed += Cancel;
     }
+    
+    public IEnumerator EnableAfterDelay()
+    {
+        yield return new WaitForSeconds(_enemyWalkingDuration);
+        EnableInput();
+    }
+    
     public void DisableInput()
     {
-        _move.Disable();
-        _submit.Disable();
-        _cancel.Disable();
-        _hub.Disable();
+        _player.Disable();
+        _move.performed -= Move;
+        _submit.performed -= Submit;
+        _cancel.performed -= Cancel;
     }
 
     private void Start()
@@ -103,13 +111,13 @@ public class HubManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Can only happen in editor");
+                //First time in hub and there was no saved data
+                _enemyCinematic.SetActive(true);
+                DisableInput();
+                StartCoroutine(EnableAfterDelay());
             }
-            
         }
         transform.position = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex].Position;
-        //Check if still necessary
-        //_agent.SetDestination(transform.position);
         _isOnPlatform = true;
         _isLookingFront = true;
         SaveGameManager.IsSessionStarted = true;
@@ -152,13 +160,13 @@ public class HubManager : MonoBehaviour
        _isLookingFront = false;
     }
 
-    public void Navigate(InputAction.CallbackContext ctx)
+    public void Move(InputAction.CallbackContext ctx)
     {
        if (DestinationReached())
        {
-            Vector2 move = ctx.ReadValue<Vector2>();
+            float move = ctx.ReadValue<float>();
             int tmpIndex;
-            if (move == Vector2.left)
+            if (move == Vector2.left.x)
             {
                 tmpIndex = SaveGameManager.Instance.SessionData.CurrentLevelIndex - 1;
                 if (IsLevelReachable(tmpIndex))
@@ -168,7 +176,7 @@ public class HubManager : MonoBehaviour
                     MoveToLevel(tmpIndex);
                 }
             }
-            else if (move == Vector2.right)
+            else if (move == Vector2.right.x)
             {
                 tmpIndex = SaveGameManager.Instance.SessionData.CurrentLevelIndex + 1;
                 if (IsLevelReachable(tmpIndex))
@@ -223,7 +231,7 @@ public class HubManager : MonoBehaviour
 
     private bool CanBeUnlocked(SessionLevel currentLevel)
     {
-        return currentLevel.NumberOfCarrotsToUnlock <= SaveGameManager.Instance.SessionData.TotalNumberOfCarrots;
+        return currentLevel.NumberOfCarrotsToUnlock <= SaveGameManager.Instance.GetTotalPickedCarrots();
     }
 
     private IEnumerator UnlockLevel(SessionLevel level)
@@ -263,19 +271,10 @@ public class HubManager : MonoBehaviour
 
     private IEnumerator LoadLevel(SessionLevel level)
     {
-        //TODO: Change to correct animation
         _animationController.Play("IdleB");
         DisableInput();
         yield return new WaitForSeconds(_loadLevelDelay);
         SceneManager.LoadScene(level.SceneName);
-        /*        
-        _animationController.Play("IdleB");
-        _particleSystemSelect.transform.position = level.transform.position + new Vector3 (0, level._yOffsetTop, 0);
-        _particleSystemSelect.gameObject.SetActive(true);
-        _particleSystemSelect.Play();
-        yield return new WaitForSeconds(level.LoadLevelDelay);
-        //AudioManager.Instance.PlaySFX(_selectionAudio);
-        SceneManager.LoadScene(level.SceneName);*/
     }
 
     private void SelectLockedLevel()
@@ -285,17 +284,15 @@ public class HubManager : MonoBehaviour
 
     public void Cancel(InputAction.CallbackContext ctx)
     {
-        //Open Pause Menu on HUB, disable 
         UIManager.Instance.EnableHUBPauseMenu();
-        //Disable controls on hub
         _playerInput.uiInputModule.ActivateModule();
-        _hub.Disable();
+        DisableInput();
     }
 
     public void ReturnControlsToPlayer()
     {
         _playerInput.uiInputModule.DeactivateModule();
-        _hub.Enable();
+        EnableInput();
     }
 
     public void MarkAsPlatformArrival()
