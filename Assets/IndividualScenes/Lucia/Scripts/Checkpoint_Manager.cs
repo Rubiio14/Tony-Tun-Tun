@@ -42,7 +42,7 @@ public class Checkpoint_Manager : MonoBehaviour
 
     public void ReSpawn()
     {
-        if (deathAndRespawnManager.playerDeath == true)
+        if (deathAndRespawnManager.prosesingDeath)
         {
             tony.transform.position = spawnPoint.position;
             Debug.Log("Jugador respawneado en: " + spawnPoint.position);

@@ -41,7 +41,7 @@ public class EnemyMovementBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //ejecutar muerte jugador, llama a DeathAndRespawn 
-            DeathAndRespawnManager.instance.playerDeath = true;
+            DeathAndRespawnManager.instance.OnPlayerDeath();
             DeathAndRespawnManager.instance.tonyGhost.transform.position = new Vector2(DeathAndRespawnManager.instance.player.transform.position.x, DeathAndRespawnManager.instance.player.transform.position.y + 2);
 
         }

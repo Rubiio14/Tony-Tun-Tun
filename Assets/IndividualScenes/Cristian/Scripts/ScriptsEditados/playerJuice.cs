@@ -111,8 +111,9 @@ public class playerJuice : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("choque con el enemigo");
             //ejecutar muerte jugador, llama al script DeathAndRespawn 
-            DeathAndRespawnManager.instance.playerDeath = true;
+            DeathAndRespawnManager.instance.OnPlayerDeath();
             DeathAndRespawnManager.instance.tonyGhost.transform.position = new Vector2(DeathAndRespawnManager.instance.player.transform.position.x, DeathAndRespawnManager.instance.player.transform.position.y + 2);
         }
     }

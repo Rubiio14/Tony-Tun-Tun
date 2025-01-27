@@ -8,17 +8,16 @@ public class DeathAndRespawnManager : MonoBehaviour
     [SerializeField] public Checkpoint_Manager checkpoint_Manager;
 
     [SerializeField] public CanvasGroup deathBackground;
-    [SerializeField] public bool playerDeath = false;
-    [SerializeField] public bool readyToRespawn = false;
-
+    [SerializeField] public bool prosesingDeath = false;
+    
     [SerializeField] public GameObject player;
     [SerializeField] public GameObject tonyGhost;
 
     [SerializeField] private float fadeInOutSpeed = 1f;
-    [SerializeField] private float deathAnimationDuration = 3f;
+    [SerializeField] private float deathAnimationDuration = .1f;
     [SerializeField] private float secondsToRespawn = 2f;
+    [SerializeField] float waitForFade = 0.5f;
 
-    private float time;
 
     private void Awake()
     {
@@ -32,76 +31,73 @@ public class DeathAndRespawnManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void OnPlayerDeath()
     {
-        if (playerDeath)
-        {
-            tonyGhost.SetActive(true);
-            tonyGhost.transform.position = Vector2.MoveTowards
-            (
-                tonyGhost.transform.position,
-                new Vector2(tonyGhost.transform.position.x, tonyGhost.transform.position.y + 3),
-                deathAnimationDuration * Time.deltaTime
-            );
-
-            StartCoroutine(Death());
-            time += Time.deltaTime;
-
-            if (time >= secondsToRespawn)
-            {
-                readyToRespawn = true;
-
-                if (readyToRespawn)
-                {
-                    RespawnPlayer();
-                }
-            }
-        }
-        else
-        {
-            deathBackground.alpha = 0f;
-        }
+        Debug.Log("Jugador ha muerto, iniciando proceso de muerte.");
+        prosesingDeath = true;
+        StartCoroutine(HandleDeath());
     }
 
-    IEnumerator Death()
+    private IEnumerator HandleDeath()
     {
+        Debug.Log("Comienza la animación de muerte.");
         player.SetActive(false);
+        tonyGhost.SetActive(true);
 
-        yield return new WaitForSeconds(deathAnimationDuration);
-
-        while (deathBackground.alpha < 1f)
+        while (tonyGhost.transform.position.y < 3)
         {
-            deathBackground.alpha += Time.deltaTime * fadeInOutSpeed;
-
-            if (!playerDeath)
-            {
-                yield break;
-            }
-
+            tonyGhost.transform.position = Vector2.MoveTowards(
+                tonyGhost.transform.position,
+                new Vector2(tonyGhost.transform.position.x, tonyGhost.transform.position.y + 3),
+                deathAnimationDuration
+            );
             yield return null;
         }
+
+        Debug.Log("Animación de muerte completada, comenzando fade-in.");
+
+        yield return StartCoroutine(FadeCanvasGroup(deathBackground, 1f, fadeInOutSpeed));
+
+        yield return new WaitForSeconds(secondsToRespawn);
+
+        RespawnPlayer();
     }
 
     private void RespawnPlayer()
     {
+        Debug.Log("Responiendo al jugador en el último checkpoint.");
         checkpoint_Manager.ReSpawn();
-
         FadeOut();
-
-        playerDeath = false;
-        readyToRespawn = false;
-        time = 0f;
 
         Debug.Log("Jugador respawneado y listo para continuar.");
     }
 
-    public void FadeOut()
+    private void FadeOut()
     {
-        deathBackground.alpha = 0f;
+        Debug.Log("Comenzando fade-out.");
+        StartCoroutine(FadeCanvasGroup(deathBackground, 0f, fadeInOutSpeed));
+
+        prosesingDeath = false;
 
         player.SetActive(true);
         tonyGhost.SetActive(false);
 
         Debug.Log("FadeOut completado, fondo restablecido.");
+    }
+
+    IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float endAlpha, float duration)
+    {
+        yield return new WaitForSeconds(waitForFade);
+        float startAlpha = canvasGroup.alpha;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += .1f;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime);
+            yield return new WaitForSeconds(.05f);
+        }
+
+        canvasGroup.alpha = endAlpha;
     }
 }
