@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - FxTemporaire
   - Level
+  - EnemyHub
   layers:
   - Default
   - TransparentFX
