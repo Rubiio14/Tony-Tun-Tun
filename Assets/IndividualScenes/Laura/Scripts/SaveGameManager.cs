@@ -31,25 +31,19 @@ public class SaveGameManager : MonoBehaviour
         if (FileManager.DeleteSavefile())
         {
             IsSessionStarted = false;
-            Debug.Log("Delete successful");
         }
     }
 
     public void SaveSessionDataToFile()
     {
-        if (FileManager.WriteToSaveFile(SessionData.ToJson()))
-        {
-            Debug.Log("Save successful");
-        }
+        FileManager.WriteToSaveFile(SessionData.ToJson());
     }
 
     public void LoadSessionDataFromFile()
     {
-        if (FileManager.LoadFromSaveFile(out var json))
+        if (FileManager.LoadFromSaveFile(out string json))
         {
-            Debug.Log(json);
-
-            Debug.Log("Load successful");
+            SessionData.LoadFromJson(json);
         }
     }
 
