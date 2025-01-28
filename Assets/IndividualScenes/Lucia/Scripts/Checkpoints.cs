@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Checkpoints : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class Checkpoints : MonoBehaviour
 
     public GameObject checkpointPainted;
     public GameObject checkpointNotPainted;
+    public GameObject spray;
 
     private void Start()
     {
         checkpointPainted.SetActive(false);
+        spray.SetActive(false);
         checkpointNotPainted.SetActive(true);
     }
 
@@ -21,11 +24,42 @@ public class Checkpoints : MonoBehaviour
         {
             checkpoint_Manager.ChangeCheckpointIndex(transform);
 
-            checkpointPainted.SetActive(true);
-            checkpointNotPainted.SetActive(false);
+            // SFX
+            // VFX
 
-            Debug.Log("Checkpoint activado.");
-            //SFX
+            if (!checkpointPainted.activeSelf)
+            {
+                spray.SetActive(true);
+
+
+                Animator sprayAnimator = spray.GetComponent<Animator>();
+                if (sprayAnimator != null)
+                {
+                    StartCoroutine(WaitForAnimationToEnd(sprayAnimator, spray));
+                }
+                else
+                {
+                    Debug.LogWarning("El objeto 'spray' no tiene un componente Animator.");
+                }
+
+                checkpointPainted.SetActive(true);
+                checkpointNotPainted.SetActive(false);
+
+                Debug.Log("Checkpoint activado.");
+            }
         }
+    }
+
+    private IEnumerator WaitForAnimationToEnd(Animator animator, GameObject sprayObject)
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        while (stateInfo.normalizedTime < 1.0f || !stateInfo.IsName("Spray"))
+        {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            yield return null;
+        }
+
+        sprayObject.SetActive(false);
     }
 }
