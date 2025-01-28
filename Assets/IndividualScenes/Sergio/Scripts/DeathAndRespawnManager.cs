@@ -16,7 +16,9 @@ public class DeathAndRespawnManager : MonoBehaviour
     [SerializeField] private float fadeInOutSpeed = 1f;
     [SerializeField] private float deathAnimationDuration = .1f;
     [SerializeField] private float secondsToRespawn = 2f;
-    [SerializeField] float waitForFade = 0.5f;
+
+    [SerializeField] float waitForFade = 2f;
+    [SerializeField] float whereToMoveGhost = 20f;
 
 
     private void Awake()
@@ -41,16 +43,21 @@ public class DeathAndRespawnManager : MonoBehaviour
     private IEnumerator HandleDeath()
     {
         Debug.Log("Comienza la animación de muerte.");
+
+        Vector2 playerPosition = player.transform.position;
+        float clampedY = Mathf.Max(playerPosition.y, 10f);
+        tonyGhost.transform.position = new Vector2(playerPosition.x, clampedY);
+
         player.SetActive(false);
         tonyGhost.SetActive(true);
 
-        while (tonyGhost.transform.position.y < 3)
+        Vector2 targetPosition = new Vector2(playerPosition.x, playerPosition.y + whereToMoveGhost);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < deathAnimationDuration)
         {
-            tonyGhost.transform.position = Vector2.MoveTowards(
-                tonyGhost.transform.position,
-                new Vector2(tonyGhost.transform.position.x, tonyGhost.transform.position.y + 3),
-                deathAnimationDuration
-            );
+            elapsedTime += Time.deltaTime;
+            tonyGhost.transform.position = Vector2.Lerp(playerPosition, targetPosition, elapsedTime / deathAnimationDuration);
             yield return null;
         }
 

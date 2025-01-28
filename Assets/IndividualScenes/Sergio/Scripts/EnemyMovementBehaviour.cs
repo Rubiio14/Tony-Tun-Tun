@@ -23,7 +23,7 @@ public class EnemyMovementBehaviour : MonoBehaviour
         }
         else
         {
-            if(enemyFlying == false)
+            if (enemyFlying == false)
             {
                 needRotation = true;
             }
@@ -32,23 +32,21 @@ public class EnemyMovementBehaviour : MonoBehaviour
                 transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y * -1, transform.rotation.z, transform.rotation.w);
             }
             currentWaypoint = (currentWaypoint + 1) % _waypoints.Length;
-            if(needRotation == true)
+            if (needRotation == true)
             {
                 transform.Rotate(0, 180, 0);
                 needRotation = false;
             }
-        } 
+        }
     }
     //Matar al jugador
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //ejecutar muerte jugador, llama a DeathAndRespawn 
             DeathAndRespawnManager.instance.OnPlayerDeath();
-            DeathAndRespawnManager.instance.tonyGhost.transform.position = new Vector2(DeathAndRespawnManager.instance.player.transform.position.x, DeathAndRespawnManager.instance.player.transform.position.y + 2);
 
+            Debug.Log("Instanced position of Tony Ghost is " + DeathAndRespawnManager.instance.tonyGhost.transform.position);
         }
     }
-
 }
