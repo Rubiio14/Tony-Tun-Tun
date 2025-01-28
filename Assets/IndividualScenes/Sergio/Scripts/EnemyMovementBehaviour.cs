@@ -27,6 +27,10 @@ public class EnemyMovementBehaviour : MonoBehaviour
             {
                 needRotation = true;
             }
+            else
+            {
+                transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y * -1, transform.rotation.z, transform.rotation.w);
+            }
             currentWaypoint = (currentWaypoint + 1) % _waypoints.Length;
             if(needRotation == true)
             {
