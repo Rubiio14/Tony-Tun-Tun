@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 3340409972825402211}
   - {fileID: 8671551816923185973}
   _platformMovSpeed: 2.5
+  _vfxPlatformDust: {fileID: 0}
 --- !u!61 &8379131295264034700
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 6758894108801471812}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.34, y: 0, z: 0}
+  m_LocalPosition: {x: -5.34, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:

@@ -973,7 +973,7 @@ Transform:
   m_GameObject: {fileID: 8573522643403263755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1041,6 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c3ca4e7fdea0048bd3e0f061d0908d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefabBreakablePlatform: {fileID: 0}
   _shortcutColliderEmpty: {fileID: 2600877099352305244}
   piece1: {fileID: 4610857365038056739}
   piece2: {fileID: 4124516093712014408}
