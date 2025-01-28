@@ -3,7 +3,6 @@ using System;
 
 
 [RequireComponent (typeof(BoxCollider2D))]
-[RequireComponent(typeof(CollectableTriggerHandler))]
 public class Collectable : MonoBehaviour
 {
     [SerializeField] private CollectableSOBase _collectable;
@@ -14,8 +13,12 @@ public class Collectable : MonoBehaviour
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
-    public void Collect(GameObject objectThatCollected)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _collectable.Collect(objectThatCollected, Index);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerLayer"))
+        {
+            _collectable.Collect(collision.gameObject, Index);
+            Destroy(gameObject);
+        }
     }
 }

@@ -47,8 +47,8 @@ public class LevelManager : MonoBehaviour
         /*_player.Enable();
         _move.performed += _playerMovement.OnMovement;
         _jump.performed += _playerJump.OnJump;
-        _jump.performed += hudManager.instance.refillBar;
-        _quit.performed += Cancel;*/
+        _jump.performed += hudManager.instance.refillBar;*/
+        _quit.performed += Cancel;
     }
 
     public void DisableInput()
@@ -56,8 +56,8 @@ public class LevelManager : MonoBehaviour
         /*_player.Disable();
         _move.performed -= _playerMovement.OnMovement;
         _jump.performed -= _playerJump.OnJump;
-        _jump.performed -= hudManager.instance.refillBar;
-        _quit.performed -= Cancel;*/
+        _jump.performed -= hudManager.instance.refillBar;*/
+        _quit.performed -= Cancel;
     }
 
     public void Cancel(InputAction.CallbackContext ctx)

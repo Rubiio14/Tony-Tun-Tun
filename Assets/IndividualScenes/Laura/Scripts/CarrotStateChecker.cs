@@ -13,6 +13,7 @@ public class CarrotStateChecker : MonoBehaviour
         foreach (Collectable collectable in _collectables) {
             if(SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex].SessionCarrots[collectable.Index].IsPicked) {
                 CollectablesManager.instance.IncrementCarrot();
+                //Change for the other prefab
                 collectable.gameObject.SetActive(false);
             }
         }

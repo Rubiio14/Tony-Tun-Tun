@@ -46,4 +46,4 @@ MonoBehaviour:
       IsPicked: 0
     - Identifier: 2
       IsPicked: 0
-  CurrentLevelIndex: 0
+  CurrentLevelIndex: 1
