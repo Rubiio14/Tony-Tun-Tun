@@ -63,7 +63,7 @@ public class hudManager : MonoBehaviour
         //Refill Stamina Bar
         if (staminaImage.fillAmount <= actualLimit)
         {            
-            staminaImage.fillAmount += 0.1f * Time.deltaTime;
+            staminaImage.fillAmount += 0.2f * Time.deltaTime;
         }
         if (_isBaseFilling && playerGround.instance.GetOnGround() && Math.Round(staminaImage.fillAmount, 2) >= 0.25f)
         {
