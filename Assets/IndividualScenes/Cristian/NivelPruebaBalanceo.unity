@@ -5896,6 +5896,7 @@ MonoBehaviour:
   checkpoint_Manager: {fileID: 1129600599}
   checkpointPainted: {fileID: 513216404}
   checkpointNotPainted: {fileID: 1023943054}
+  spray: {fileID: 0}
 --- !u!61 &395807597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48621,12 +48622,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAndRespawnManager: {fileID: 1252906359}
-  checkpoints:
-  - {fileID: 395807595}
-  - {fileID: 1876747232}
-  - {fileID: 1686345241}
-  - {fileID: 1358250856}
+  checkpoints_List: []
   currentIndexCheckpoint: 0
+  spawnPoint: {fileID: 0}
   tony: {fileID: 1169559189}
 --- !u!4 &1129600600
 Transform:
@@ -54571,13 +54569,62 @@ MonoBehaviour:
       Data3: -1154078030
       Data4: -974438394
     Path: event:/SFX/ChargedJump
-  <music>k__BackingField:
+  <levelMusic>k__BackingField:
     Guid:
       Data1: 1917335986
       Data2: 1220758511
       Data3: -1790078801
       Data4: 552628766
     Path: event:/Musica/New Event
+  <hubMusic>k__BackingField:
+    Guid:
+      Data1: -1531051319
+      Data2: 1138028242
+      Data3: -840408952
+      Data4: 2124793963
+    Path: event:/Musica/Hub
+  <openPause>k__BackingField:
+    Guid:
+      Data1: 748108337
+      Data2: 1297932324
+      Data3: -1187512419
+      Data4: -931342357
+    Path: event:/SFX/OpenPause
+  <closePause>k__BackingField:
+    Guid:
+      Data1: -778425870
+      Data2: 1253882441
+      Data3: -833810505
+      Data4: 575257350
+    Path: event:/SFX/ClosePause
+  <confirm>k__BackingField:
+    Guid:
+      Data1: 1126823056
+      Data2: 1166744746
+      Data3: -172557655
+      Data4: 612151409
+    Path: event:/SFX/Confirm
+  <goBack>k__BackingField:
+    Guid:
+      Data1: 1494661215
+      Data2: 1169215287
+      Data3: 1012273555
+      Data4: -732744426
+    Path: event:/SFX/GoBack
+  <select>k__BackingField:
+    Guid:
+      Data1: 1700271167
+      Data2: 1178803042
+      Data3: -241899634
+      Data4: 1251500067
+    Path: event:/SFX/Select
+  <enterLevel>k__BackingField:
+    Guid:
+      Data1: 1512611183
+      Data2: 1314701185
+      Data3: 609691816
+      Data4: 1163968484
+    Path: event:/SFX/EntarNivel
 --- !u!1001 &1468268317
 PrefabInstance:
   m_ObjectHideFlags: 0

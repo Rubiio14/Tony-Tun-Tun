@@ -6,20 +6,28 @@ public class FMODEvents : MonoBehaviour
     public static FMODEvents instance { get; private set; }
 
     //rayoSound
-    [field: Header("Rayo SFX")]
+    [field: Header("Colectables")]
     [field: SerializeField] public EventReference rayoCollectedSound { get; private set; }
     //ZanahoriaSound
-    [field: Header("Rayo SFX")]
     [field: SerializeField] public EventReference zanahoriaCollectedSound { get; private set; }
     //Jump
-    [field: Header("Jump")]
+    [field: Header("Player")]
     [field: SerializeField] public EventReference playerJump { get; private set; }
-    //Jump
-    [field: Header("ChargedJump")]
+    //ChargedJump
     [field: SerializeField] public EventReference playerChargedJump { get; private set; }
     //Music
     [field: Header("Music")]
-    [field: SerializeField] public EventReference music { get; private set; }
+    [field: SerializeField] public EventReference levelMusic { get; private set; }
+    [field: SerializeField] public EventReference hubMusic { get; private set; }
+
+    [field: Header("UI")]
+    [field: SerializeField] public EventReference openPause { get; private set; }
+    [field: SerializeField] public EventReference closePause { get; private set; }
+    [field: SerializeField] public EventReference confirm { get; private set; }
+    [field: SerializeField] public EventReference goBack { get; private set; }
+    [field: SerializeField] public EventReference select { get; private set; }
+    [field: SerializeField] public EventReference enterLevel { get; private set; }
+
 
     private void Awake()
     {

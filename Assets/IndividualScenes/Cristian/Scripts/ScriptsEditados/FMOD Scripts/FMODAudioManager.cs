@@ -30,7 +30,7 @@ public class FMODAudioManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeMusic(FMODEvents.instance.music);
+        InitializeMusic(FMODEvents.instance.levelMusic);
     }
     private void InitializeMusic(EventReference musicEventReference)
     {
