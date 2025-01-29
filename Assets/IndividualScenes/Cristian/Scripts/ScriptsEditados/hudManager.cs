@@ -45,6 +45,7 @@ public class hudManager : MonoBehaviour
     private bool _isBaseFilling = false; // Bandera para controlar el llenado
     private float holdTime = 0f;
     private float actualLimit = 0.25f;
+    public float staminaRecharge = 0.1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -63,7 +64,7 @@ public class hudManager : MonoBehaviour
         //Refill Stamina Bar
         if (staminaImage.fillAmount <= actualLimit)
         {            
-            staminaImage.fillAmount += 0.2f * Time.deltaTime;
+            staminaImage.fillAmount += staminaRecharge * Time.deltaTime;
         }
         if (_isBaseFilling && playerGround.instance.GetOnGround() && Math.Round(staminaImage.fillAmount, 2) >= 0.25f)
         {
