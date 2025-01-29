@@ -43,21 +43,24 @@ public class DeathAndRespawnManager : MonoBehaviour
     private IEnumerator HandleDeath()
     {
         Debug.Log("Comienza la animación de muerte.");
+        float positionInZ = 3.25f;
+        float positionInY = 3f;
 
-        Vector2 playerPosition = player.transform.position;
+        Vector3 playerPosition = player.transform.position;
+        Vector3 tonyGhostPosition = new Vector3 (playerPosition.x, playerPosition.y + positionInY, playerPosition.z - positionInZ);
         float clampedY = Mathf.Max(playerPosition.y, 10f);
-        tonyGhost.transform.position = new Vector2(playerPosition.x, clampedY);
+        //tonyGhost.transform.position = new Vector3(playerPosition.x, clampedY, positionInZ);
 
         player.SetActive(false);
         tonyGhost.SetActive(true);
 
-        Vector2 targetPosition = new Vector2(playerPosition.x, playerPosition.y + whereToMoveGhost);
+        Vector3 targetPosition = new Vector3 (tonyGhostPosition.x, tonyGhostPosition.y + whereToMoveGhost, tonyGhostPosition.z);
         float elapsedTime = 0f;
 
         while (elapsedTime < deathAnimationDuration)
         {
             elapsedTime += Time.deltaTime;
-            tonyGhost.transform.position = Vector2.Lerp(playerPosition, targetPosition, elapsedTime / deathAnimationDuration);
+            tonyGhost.transform.position = Vector3.Lerp (tonyGhostPosition, targetPosition, elapsedTime / deathAnimationDuration);
             yield return null;
         }
 
@@ -100,9 +103,9 @@ public class DeathAndRespawnManager : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            elapsedTime += .1f;
+            elapsedTime += 0.1f;
             canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime);
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         canvasGroup.alpha = endAlpha;
