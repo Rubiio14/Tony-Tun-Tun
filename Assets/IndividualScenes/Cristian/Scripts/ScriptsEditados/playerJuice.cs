@@ -98,8 +98,6 @@ public class playerJuice : MonoBehaviour
     }
     public void chargedjumpEffects()
     {
-        //Audio
-        FMODAudioManager.instance.PlayChargedJump();
         //Play these effects when the player jumps, courtesy of jump script
         //myAnimator.ResetTrigger("Landed");
         myAnimator.SetBool("IsIdle", false);

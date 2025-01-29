@@ -56,28 +56,24 @@ public class FMODAudioManager : MonoBehaviour
     // Método para reproducir el sonido del salto cargado.
     public void PlayChargedJump()
     {
-        if (chargedJumpInstance.isValid())
+        // Si el sonido no está en reproducción, iniciarlo
+        if (!chargedJumpInstance.isValid())
         {
-            chargedJumpInstance.release();
+            chargedJumpInstance = CreateInstance(FMODEvents.instance.playerChargedJump);
+            chargedJumpInstance.start();
+            Debug.Log("Sonido de salto cargado iniciado.");
         }
-        chargedJumpInstance = CreateInstance(FMODEvents.instance.playerChargedJump);
-        chargedJumpInstance.start();
-        Invoke(nameof(StopChargedJump), 0.5f);
     }
 
-    // Método para detener el sonido del salto cargado.
     public void StopChargedJump()
     {
+        // Si el sonido está en reproducción, detenerlo y liberar la instancia
         if (chargedJumpInstance.isValid())
         {
             chargedJumpInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             chargedJumpInstance.release();
             chargedJumpInstance.clearHandle();
-            Debug.Log("Es Válido");
-        }
-        else
-        {
-            Debug.Log("No es Válido");
+            Debug.Log("Sonido de salto cargado detenido.");
         }
     }
 
