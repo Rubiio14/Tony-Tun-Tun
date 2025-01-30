@@ -1,13 +1,15 @@
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.Rendering;
+
 public class FMODAudioManager : MonoBehaviour
 {
     [Header("Volume")]
     [Range(0, 1)]
-    public float musicVolume = 1;
+    public float musicVolume = 0.1f;
     [Range(0, 1)]
-    public float sfxVolume = 1;
+    public float sfxVolume = 0.1f;
 
     private Bus musicBus;
     private Bus sfxBus;
@@ -18,29 +20,49 @@ public class FMODAudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogError("Más de 1 AudioManager en la escena");
+            Destroy(this);
         }
-        instance = this;
+        else
+        {
+            instance = this;
+        }
 
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
     }
 
-    private void Start()
-    {
-        InitializeMusic(FMODEvents.instance.levelMusic);
-    }
-    private void InitializeMusic(EventReference musicEventReference)
+    public void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
+        musicBus.setVolume(musicVolume);
+        sfxBus.setVolume(sfxVolume);
         musicEventInstance.start();
+    }
+
+    public void StopMusic()
+    {
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public void MusicVolumeChange(float volume)
+    {
+        musicBus.setVolume(volume);
+    }
+
+    public void SFXVolumeChange(float volume)
+    {
+        sfxBus.setVolume(volume);
     }
 
     public void SetMusicParameter(string parameterName, float parameterValue)
     {
         musicEventInstance.setParameterByName(parameterName, parameterValue);
+    }
+    public void PlayOneShot(EventReference sound)
+    {
+        RuntimeManager.PlayOneShot(sound);
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
@@ -79,11 +101,5 @@ public class FMODAudioManager : MonoBehaviour
         {
             Debug.Log("No es Válido");
         }
-    }
-
-    private void Update()
-    {
-        musicBus.setVolume(musicVolume);
-        sfxBus.setVolume(sfxVolume);
     }
 }

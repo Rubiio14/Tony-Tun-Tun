@@ -50,6 +50,7 @@ public class OptionEnabling : MonoBehaviour, ISelectHandler, IDeselectHandler, I
 
     public void OnSubmit(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _elementToActivate.Submitted = true;
         _elementToActivate.Activate(gameObject);
     }
@@ -57,6 +58,7 @@ public class OptionEnabling : MonoBehaviour, ISelectHandler, IDeselectHandler, I
     public void OnCancel(BaseEventData eventData)
     {
         //Return to main menu, animations if we want
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         ChangeImageTo(_primaryImage);
         OnCancellation?.Invoke();
     }

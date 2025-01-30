@@ -16,6 +16,7 @@ public class MainMenuUIController : MonoBehaviour
     private void Start()
     {
         HideContinue();
+        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.hubMusic);
     }
 
     public void HideContinue()
@@ -41,7 +42,6 @@ public class MainMenuUIController : MonoBehaviour
         }
         else
         {
-            //SceneManager.LoadScene("HUB");
             SaveGameManager.Instance.ResetSessionData();
             SceneManager.LoadScene("IntroVideoScene");
         }
@@ -51,8 +51,8 @@ public class MainMenuUIController : MonoBehaviour
     {
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("NewGameConfirmation"),
             () => {
-                /*Delete previous saved data values*/
-                //Change to Intro Video Scene
+                FMODAudioManager.instance.StopMusic();
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
                 SaveGameManager.Instance.DeleteSaveData();
                 SaveGameManager.Instance.ResetSessionData();
                 SceneManager.LoadScene("IntroVideoScene");
@@ -65,11 +65,14 @@ public class MainMenuUIController : MonoBehaviour
 
     public void Continue()
     {
+        FMODAudioManager.instance.StopMusic();
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         StartCoroutine(UIManager.Instance.LoadScene("HUB"));
     }
 
     public void Options()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _previousSelected = EventSystem.current.currentSelectedGameObject;
         gameObject.SetActive(false);
         UIManager.Instance.EnableOptionsMenu();
@@ -77,6 +80,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void Credits()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _previousSelected = EventSystem.current.currentSelectedGameObject;
         gameObject.SetActive(false);
         UIManager.Instance.EnableCreditsMenu();
@@ -84,6 +88,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void Quit()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         UIManager.Instance.SaveAndQuit();
     }
 

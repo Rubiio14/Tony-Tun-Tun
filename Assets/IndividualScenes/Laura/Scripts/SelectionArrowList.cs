@@ -43,17 +43,20 @@ public class SelectionArrowList : SelectLeftRight
 
     public void Apply()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.select);
         int index = Math.Abs(_currentIndex) % _optionsArray.Length;
         _optionsArray[index].OnOptionSelected?.Invoke();
     }
 
     override public void OnCancel(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         Deactivate();
     }
 
     override public void OnSubmit(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         Deactivate();
     }
 

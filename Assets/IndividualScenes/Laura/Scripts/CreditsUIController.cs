@@ -16,10 +16,12 @@ public class CreditsUIController : MonoBehaviour, ISubmitHandler, ICancelHandler
 
     public void OnSubmit(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         GoBackToMainMenu();
     }
     public void OnCancel(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         GoBackToMainMenu();
     }
 }

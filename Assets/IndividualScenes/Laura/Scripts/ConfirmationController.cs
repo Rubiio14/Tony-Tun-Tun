@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler, ICancelHandler
+public class ConfirmationController : MonoBehaviour, IDeselectHandler, ISubmitHandler, ICancelHandler
 {
     [SerializeField]
     private TextMeshProUGUI _confirmationTxt;
@@ -36,25 +36,20 @@ public class ConfirmationController : MonoBehaviour, ISelectHandler, IDeselectHa
         _onCancelation = null;
     }
 
-    public void OnSelect(BaseEventData eventData)
-    {
-        Debug.Log("Changing to confirmation canvas");
-    }
     public void OnDeselect(BaseEventData eventData)
     {
-        Debug.Log("Deselecting confirmation canvas");
         CleanConfirmationPanel();
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
-        Debug.Log("Clicking submit");
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.select);
         _onConfirmation?.Invoke();
     }
 
     public void OnCancel(BaseEventData eventData)
     {
-        Debug.Log("Clicking cancel");
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         _onCancelation?.Invoke();
     }
 }

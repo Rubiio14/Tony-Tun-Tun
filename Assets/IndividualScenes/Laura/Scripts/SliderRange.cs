@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -30,7 +28,8 @@ public class SliderRange : SelectLeftRight {
         if (eventData.moveDir == MoveDirection.Left)
         {
             _slider.value -= _increment;
-        }else if(eventData.moveDir == MoveDirection.Right)
+        }
+        else if(eventData.moveDir == MoveDirection.Right)
         {
             _slider.value += _increment;
         }
@@ -38,17 +37,20 @@ public class SliderRange : SelectLeftRight {
 
     override public void OnValueChanged()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.select);
         Apply();
-        //Sound or particle effect ?
     }
 
     override public void OnCancel(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         Deactivate();
     }
 
     override public void OnSubmit(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
+
         Deactivate();
     }
 
@@ -71,24 +73,23 @@ public class SliderRange : SelectLeftRight {
 
     public void ChangeMusicVolume(float volume)
     {
-        AudioManager.Instance.ChangeMusicVolume(volume/_slider.maxValue);
+        FMODAudioManager.instance.MusicVolumeChange(volume / _slider.maxValue);
+    }
+    public void ChangeSFXVolume(float volume)
+    {
+        FMODAudioManager.instance.SFXVolumeChange(volume / _slider.maxValue);
     }
 
     public void LoadMusicFromSource()
     {
-        //FMODEvents.instance.
-        //_slider.value = AudioManager.Instance.GetCurrentMusicVolume() * _slider.maxValue;
+        _slider.value = FMODAudioManager.instance.musicVolume * _slider.maxValue;
         Apply();
     }
 
     public void LoadSFXFromSource()
     {
-        //_slider.value = AudioManager.Instance.GetCurrentSFXVolume() * _slider.maxValue;
+        _slider.value = FMODAudioManager.instance.sfxVolume * _slider.maxValue;
         Apply();
     }
 
-    public void ChangeSFXVolume(float volume)
-    {
-        AudioManager.Instance.ChangeSFXVolume(volume/_slider.maxValue);
-    }
 }
