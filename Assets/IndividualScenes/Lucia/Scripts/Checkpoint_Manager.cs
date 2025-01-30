@@ -12,7 +12,9 @@ public class Checkpoint_Manager : MonoBehaviour
 
     public Transform spawnPoint;
     public GameObject tony;
-    public float stValueUpdate = 0.1f;
+    public float ch1updateJump = 0.1f;
+    public float ch2updateJump = 0.02f;
+    public float ch3updateJump = 0.03f;
 
     private void Awake()
     {
@@ -30,12 +32,28 @@ public class Checkpoint_Manager : MonoBehaviour
     {
         int newCheckPointIndex = checkpoints_List.IndexOf(checkPoint);
 
-        if (newCheckPointIndex != -1 && newCheckPointIndex >= currentIndexCheckpoint)
+        if (newCheckPointIndex != -1 && newCheckPointIndex > currentIndexCheckpoint)
         {
             currentIndexCheckpoint = newCheckPointIndex;
             spawnPoint.position = checkpoints_List[currentIndexCheckpoint].position;
-            hudManager.staminaRecharge = hudManager.staminaRecharge + stValueUpdate;
+
             Debug.Log($"Checkpoint actualizado a índice {currentIndexCheckpoint}, posición del spawn: {spawnPoint.position}");
+
+            if (currentIndexCheckpoint == 1)
+            {
+                hudManager.staminaRecharge += ch1updateJump;
+                Debug.Log("Tony tiene esta stamina actualmente " + hudManager.staminaRecharge);
+            }
+            else if (currentIndexCheckpoint == 2)
+            {
+                hudManager.staminaRecharge += ch2updateJump;
+                Debug.Log("Tony tiene esta stamina actualmente " + hudManager.staminaRecharge);
+            }
+            else if (currentIndexCheckpoint == 3)
+            {
+                hudManager.staminaRecharge += ch3updateJump;
+                Debug.Log("Tony tiene esta stamina actualmente " + hudManager.staminaRecharge);
+            }
         }
         else
         {
