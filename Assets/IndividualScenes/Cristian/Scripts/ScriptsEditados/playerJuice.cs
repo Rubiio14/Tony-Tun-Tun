@@ -24,9 +24,7 @@ public class playerJuice : MonoBehaviour
     //Salto
     [SerializeField]
     GameObject _vfxJump;
-    //Salto Cargado
-    [SerializeField]
-    GameObject _vfxChargedJump;
+
     //Caída
     [SerializeField]
     GameObject _vfxHitGround;
@@ -96,17 +94,6 @@ public class playerJuice : MonoBehaviour
         {
             _vfxJump.SetActive(false);
         }
-
-        if (playerJump.instance._desiredChargedJump == true)
-        {
-            _vfxChargedJump.SetActive(true);
-        }
-        else
-        {
-            _vfxChargedJump.SetActive(false);
-        }
-
-
 
     }
 

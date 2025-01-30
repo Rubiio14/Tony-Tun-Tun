@@ -46,6 +46,11 @@ public class hudManager : MonoBehaviour
     private float holdTime = 0f;
     private float actualLimit = 0.25f;
     public float staminaRecharge = 0.1f;
+
+    //VFX Salto Cargado
+    [SerializeField]
+    GameObject _vfxChargedJump;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -70,6 +75,10 @@ public class hudManager : MonoBehaviour
         {
             holdTime += Time.deltaTime;
             FMODAudioManager.instance.PlayChargedJump();
+            _vfxChargedJump.SetActive(true);
+
+            //ActivarVFX
+
             if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.25f && shoesCounter == 0)
             {
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
@@ -120,6 +129,8 @@ public class hudManager : MonoBehaviour
             _isBaseFilling = false; // Detiene el relleno y reinicia
             holdTime = 0f;
             FMODAudioManager.instance.StopChargedJump();
+            //Desactivar VFX
+            _vfxChargedJump.SetActive(false);
         }
     }
 
