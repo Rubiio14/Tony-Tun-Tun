@@ -6,6 +6,8 @@ using UnityEngine.InputSystem.Interactions;
 using FMODUnity;
 public class playerJump : MonoBehaviour
 {
+    public static playerJump instance;
+
     [Header("Components")]
     [HideInInspector] public Rigidbody2D rb;
     private playerGround _ground;
@@ -51,6 +53,15 @@ public class playerJump : MonoBehaviour
         _ground = GetComponent<playerGround>();
         _defaultGravityScale = 1f;
         juice = GetComponentInChildren<playerJuice>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)

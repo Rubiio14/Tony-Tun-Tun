@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 public class playerMovement : MonoBehaviour
 {
+    public static playerMovement instance;
+
     [Header("Components")]
 
     private Rigidbody2D _rb;
@@ -38,6 +40,15 @@ public class playerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         groundScript = GetComponent<playerGround>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
     public void OnMovement(InputAction.CallbackContext context)
     {

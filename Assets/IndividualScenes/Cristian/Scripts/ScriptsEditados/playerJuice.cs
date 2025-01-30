@@ -16,6 +16,21 @@ public class playerJuice : MonoBehaviour
     public float randomCheckInterval = 5f;
     public float idleProbability = 0.3f;
     private float _timer = 0f;
+
+    //VFXs Tony
+    //Movimiento
+    [SerializeField]
+    GameObject _vfxMove;
+    //Salto
+    [SerializeField]
+    GameObject _vfxJump;
+    //Salto Cargado
+    [SerializeField]
+    GameObject _vfxChargedJump;
+    //Caída
+    [SerializeField]
+    GameObject _vfxHitGround;
+
     private void Awake()
     {
         if (instance == null)
@@ -62,7 +77,37 @@ public class playerJuice : MonoBehaviour
         runningSpeed = Mathf.Clamp(Mathf.Abs(moveScript.velocity.x), 0, moveScript.maxSpeed);
         myAnimator.SetFloat("runSpeed", runningSpeed);
         checkForLanding();
-       
+
+        //VFX
+        if (playerMovement.instance.pressingKey == true && playerGrounded)
+        {
+            _vfxMove.SetActive(true);
+        }
+        else
+        {
+            _vfxMove.SetActive(false);
+        }
+
+        if (playerJump.instance._currentlyJumping == true)
+        {
+            _vfxJump.SetActive(true);
+        }
+        else
+        {
+            _vfxJump.SetActive(false);
+        }
+
+        if (playerJump.instance._desiredChargedJump == true)
+        {
+            _vfxChargedJump.SetActive(true);
+        }
+        else
+        {
+            _vfxChargedJump.SetActive(false);
+        }
+
+
+
     }
 
     private void checkForLanding()
@@ -76,11 +121,17 @@ public class playerJuice : MonoBehaviour
             myAnimator.SetTrigger("Landed");
             myAnimator.SetBool("IsFalling", false);
             
+
+            _vfxHitGround.SetActive(true);
+
         }
         else
         {
             // Player has left the ground, so stop playing the running particles
             playerGrounded = false;
+
+            _vfxHitGround.SetActive(false);
+
         }
     }
 
@@ -92,14 +143,13 @@ public class playerJuice : MonoBehaviour
         myAnimator.SetTrigger("Jump");
         myAnimator.ResetTrigger("ChargedJump");
 
+
         //Audio
         FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.playerJump, this.gameObject.transform.position);
 
     }
     public void chargedjumpEffects()
     {
-        //Audio
-        FMODAudioManager.instance.PlayChargedJump();
         //Play these effects when the player jumps, courtesy of jump script
         //myAnimator.ResetTrigger("Landed");
         myAnimator.SetBool("IsIdle", false);

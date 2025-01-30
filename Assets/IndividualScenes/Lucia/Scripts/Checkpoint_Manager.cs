@@ -5,12 +5,14 @@ public class Checkpoint_Manager : MonoBehaviour
 {
     public static Checkpoint_Manager instance;
     public DeathAndRespawnManager deathAndRespawnManager;
+    public hudManager hudManager;
 
     public List<Transform> checkpoints_List;
     public int currentIndexCheckpoint = 0;
 
     public Transform spawnPoint;
     public GameObject tony;
+    public float stValueUpdate = 0.1f;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class Checkpoint_Manager : MonoBehaviour
         {
             currentIndexCheckpoint = newCheckPointIndex;
             spawnPoint.position = checkpoints_List[currentIndexCheckpoint].position;
+            hudManager.staminaRecharge = hudManager.staminaRecharge + stValueUpdate;
             Debug.Log($"Checkpoint actualizado a índice {currentIndexCheckpoint}, posición del spawn: {spawnPoint.position}");
         }
         else
