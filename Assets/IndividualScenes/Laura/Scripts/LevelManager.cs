@@ -32,6 +32,11 @@ public class LevelManager : MonoBehaviour
         _quit = _player.FindAction("Quit");
     }
 
+    public void Start()
+    {
+        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.levelMusic);
+    }
+
     private void OnEnable()
     {
         EnableInput();
@@ -62,6 +67,7 @@ public class LevelManager : MonoBehaviour
 
     public void Cancel(InputAction.CallbackContext ctx)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.openPause);
         UIManager.Instance.EnableLevelPauseMenu();
         //Time.timeScale = 0;
         DisableInput();
@@ -70,6 +76,7 @@ public class LevelManager : MonoBehaviour
 
     public void ReturnControlsToPlayer()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.closePause);
         _playerInput.uiInputModule.DeactivateModule();
         //Time.timeScale = 1;
         EnableInput();

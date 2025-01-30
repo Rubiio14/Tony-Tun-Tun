@@ -20,9 +20,11 @@ public class PauseUIController : MonoBehaviour
     {
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToHubConfirmation"),
             () => {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
                 StartCoroutine(UIManager.Instance.LoadScene("HUB"));
             },
             () => {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
@@ -34,9 +36,11 @@ public class PauseUIController : MonoBehaviour
     {
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToMainMenuConfirmation"),
             () => {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
                 StartCoroutine(UIManager.Instance.LoadScene("MainMenu"));
             },
             () => {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
@@ -48,10 +52,11 @@ public class PauseUIController : MonoBehaviour
     {
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("SaveAndQuitConfirmation"),
             () => {
-                /*On Confirmation*/
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
                 UIManager.Instance.SaveAndQuit();
             },
             () => {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
                 EventSystem.current.currentSelectedGameObject.SetActive(false);
             });
@@ -61,6 +66,7 @@ public class PauseUIController : MonoBehaviour
 
     public void ContinueInHUB()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _previousSelected = EventSystem.current.currentSelectedGameObject;
         gameObject.SetActive(false);
         UIManager.Instance.DisableHUBPauseMenu();
@@ -68,6 +74,7 @@ public class PauseUIController : MonoBehaviour
 
     public void ContinueInLevel()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _previousSelected = EventSystem.current.currentSelectedGameObject;
         gameObject.SetActive(false);
         UIManager.Instance.DisableLevelPauseMenu();
@@ -75,6 +82,7 @@ public class PauseUIController : MonoBehaviour
 
     public void Options()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _previousSelected = EventSystem.current.currentSelectedGameObject;
         _controlsPanel.SetActive(false);
         _optionsPanel.SetActive(true);
@@ -89,6 +97,7 @@ public class PauseUIController : MonoBehaviour
 
     public void Controls()
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
         _previousSelected = EventSystem.current.currentSelectedGameObject;
         _optionsPanel.SetActive(false);
         _controlsPanel.SetActive(true);

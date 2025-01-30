@@ -48,11 +48,13 @@ public class FMODAudioManager : MonoBehaviour
 
     public void MusicVolumeChange(float volume)
     {
+        musicVolume = volume;
         musicBus.setVolume(volume);
     }
 
     public void SFXVolumeChange(float volume)
     {
+        sfxVolume = volume;
         sfxBus.setVolume(volume);
     }
 
@@ -75,10 +77,9 @@ public class FMODAudioManager : MonoBehaviour
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         return eventInstance;
     }
-    // Método para reproducir el sonido del salto cargado.
+
     public void PlayChargedJump()
     {
-        // Si el sonido no está en reproducción, iniciarlo
         if (!chargedJumpInstance.isValid())
         {
             chargedJumpInstance = CreateInstance(FMODEvents.instance.playerChargedJump);
@@ -89,7 +90,6 @@ public class FMODAudioManager : MonoBehaviour
 
     public void StopChargedJump()
     {
-        // Si el sonido está en reproducción, detenerlo y liberar la instancia
         if (chargedJumpInstance.isValid())
         {
             chargedJumpInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

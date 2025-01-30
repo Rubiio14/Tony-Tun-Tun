@@ -122,6 +122,7 @@ public class HubManager : MonoBehaviour
         _isLookingFront = true;
         SaveGameManager.IsSessionStarted = true;
         LoadLevelRepresentation();
+        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.levelMusic);
     }
 
     private void LoadLevelRepresentation()
@@ -284,6 +285,7 @@ public class HubManager : MonoBehaviour
 
     public void Cancel(InputAction.CallbackContext ctx)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.openPause);
         UIManager.Instance.EnableHUBPauseMenu();
         _playerInput.uiInputModule.ActivateModule();
         DisableInput();

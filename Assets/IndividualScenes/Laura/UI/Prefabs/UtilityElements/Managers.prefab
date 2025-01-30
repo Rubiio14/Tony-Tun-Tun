@@ -64,4 +64,4 @@ MonoBehaviour:
   _creditsMenu: {fileID: 0}
   _pauseMenu: {fileID: 0}
   _confirmation: {fileID: 0}
-  _delayForSceneChange: 1
+  _delayForSceneChange: 0.5
