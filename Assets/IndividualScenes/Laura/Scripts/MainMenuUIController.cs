@@ -15,11 +15,10 @@ public class MainMenuUIController : MonoBehaviour
 
     private void Start()
     {
-        HideContinue();
-        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.hubMusic);
+        InitializeMenuBasedOnSavedData();
     }
 
-    public void HideContinue()
+    public void InitializeMenuBasedOnSavedData()
     {
         //Session not started and data not present
         if (!SaveGameManager.IsSessionStarted && !SaveGameManager.Instance.IsDataSavedInFile())
@@ -29,7 +28,10 @@ public class MainMenuUIController : MonoBehaviour
         else
         {
             EventSystem.current.SetSelectedGameObject(_continueButton);
+            FMODAudioManager.instance.LoadVolumesFromFile();
         }
+        FMODAudioManager.instance.LoadVolumes();
+        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.hubMusic);
     }
 
     public void StartNewGame()
@@ -42,6 +44,7 @@ public class MainMenuUIController : MonoBehaviour
         }
         else
         {
+            FMODAudioManager.instance.StopMusic();
             SaveGameManager.Instance.ResetSessionData();
             SceneManager.LoadScene("IntroVideoScene");
         }

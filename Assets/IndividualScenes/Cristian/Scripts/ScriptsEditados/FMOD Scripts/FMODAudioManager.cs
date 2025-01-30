@@ -2,15 +2,10 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using UnityEngine.Rendering;
+using System;
 
 public class FMODAudioManager : MonoBehaviour
 {
-    [Header("Volume")]
-    [Range(0, 1)]
-    public float musicVolume = 0.1f;
-    [Range(0, 1)]
-    public float sfxVolume = 0.1f;
-
     private Bus musicBus;
     private Bus sfxBus;
     public static FMODAudioManager instance { get; private set; }
@@ -36,25 +31,27 @@ public class FMODAudioManager : MonoBehaviour
     public void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
-        musicBus.setVolume(musicVolume);
-        sfxBus.setVolume(sfxVolume);
         musicEventInstance.start();
+    }
+
+    public void LoadVolumes()
+    {
+        MusicVolumeChange(SaveGameManager.Instance.SessionData.MusicVolume);
+        SFXVolumeChange(SaveGameManager.Instance.SessionData.SFXVolume);
     }
 
     public void StopMusic()
     {
-        musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     public void MusicVolumeChange(float volume)
     {
-        musicVolume = volume;
         musicBus.setVolume(volume);
     }
 
     public void SFXVolumeChange(float volume)
     {
-        sfxVolume = volume;
         sfxBus.setVolume(volume);
     }
 
@@ -96,6 +93,16 @@ public class FMODAudioManager : MonoBehaviour
             chargedJumpInstance.release();
             chargedJumpInstance.clearHandle();
             Debug.Log("Sonido de salto cargado detenido.");
+        }
+    }
+
+    public void LoadVolumesFromFile()
+    {
+        SessionData tmp = SaveGameManager.Instance.GetSessionData();
+        if (tmp)
+        {
+            SaveGameManager.Instance.SessionData.MusicVolume = tmp.MusicVolume;
+            SaveGameManager.Instance.SessionData.SFXVolume = tmp.SFXVolume;
         }
     }
 }

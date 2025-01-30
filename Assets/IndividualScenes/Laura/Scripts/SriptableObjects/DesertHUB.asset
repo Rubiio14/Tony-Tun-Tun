@@ -47,3 +47,5 @@ MonoBehaviour:
     - Identifier: 2
       IsPicked: 0
   CurrentLevelIndex: 0
+  MusicVolume: 0.4
+  SFXVolume: 0.4

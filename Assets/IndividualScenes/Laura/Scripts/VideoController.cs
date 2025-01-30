@@ -12,7 +12,7 @@ public class VideoController : MonoBehaviour
     void Start()
     {
         _videoPlayer = GetComponent<VideoPlayer>();
-        _videoPlayer.SetDirectAudioVolume(0, FMODAudioManager.instance.musicVolume);
+        _videoPlayer.SetDirectAudioVolume(0, SaveGameManager.Instance.SessionData.MusicVolume);
         _videoPlayer.loopPointReached += OnMovieFinished;
     }
 

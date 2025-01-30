@@ -47,4 +47,5 @@ MonoBehaviour:
     - Identifier: 2
       IsPicked: 0
   CurrentLevelIndex: 0
-  TotalNumberOfCarrots: 0
+  MusicVolume: 0.5
+  SFXVolume: 0.3

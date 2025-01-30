@@ -24,7 +24,6 @@ public static class FileManager
     public static bool WriteToSaveFile(string fileContents)
     {
         var fullPath = Path.Combine(Application.persistentDataPath, _savegameFileName);
-
         try
         {
             File.WriteAllText(fullPath, fileContents);

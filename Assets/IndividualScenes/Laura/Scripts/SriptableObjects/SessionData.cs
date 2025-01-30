@@ -7,6 +7,8 @@ public class SessionData : ScriptableObject
 {
     public List<SessionLevel> SessionLevels;
     public int CurrentLevelIndex;
+    public float MusicVolume;
+    public float SFXVolume;
 
     public string ToJson()
     {

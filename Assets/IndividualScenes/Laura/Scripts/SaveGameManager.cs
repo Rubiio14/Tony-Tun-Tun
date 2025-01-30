@@ -60,6 +60,17 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
+    public SessionData GetSessionData()
+    {
+        if (FileManager.LoadFromSaveFile(out string json))
+        {
+            SessionData tmp = ScriptableObject.CreateInstance<SessionData>();
+            tmp.LoadFromJson(json);
+            return tmp;
+        }
+        return null;
+    }
+
     public void ResetSessionData()
     {
         SessionData.CurrentLevelIndex = DefaultData.CurrentLevelIndex;

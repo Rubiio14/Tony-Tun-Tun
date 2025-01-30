@@ -73,22 +73,26 @@ public class SliderRange : SelectLeftRight {
 
     public void ChangeMusicVolume(float volume)
     {
-        FMODAudioManager.instance.MusicVolumeChange(volume / _slider.maxValue);
+        float musicVolume = volume / _slider.maxValue;
+        SaveGameManager.Instance.SessionData.MusicVolume = musicVolume;
+        FMODAudioManager.instance.MusicVolumeChange(musicVolume);
     }
     public void ChangeSFXVolume(float volume)
     {
-        FMODAudioManager.instance.SFXVolumeChange(volume / _slider.maxValue);
+        float sfxVolume = volume / _slider.maxValue;
+        SaveGameManager.Instance.SessionData.SFXVolume = sfxVolume;
+        FMODAudioManager.instance.SFXVolumeChange(sfxVolume);
     }
 
     public void LoadMusicFromSource()
     {
-        _slider.value = FMODAudioManager.instance.musicVolume * _slider.maxValue;
+        _slider.value = SaveGameManager.Instance.SessionData.MusicVolume * _slider.maxValue;
         Apply();
     }
 
     public void LoadSFXFromSource()
     {
-        _slider.value = FMODAudioManager.instance.sfxVolume * _slider.maxValue;
+        _slider.value = SaveGameManager.Instance.SessionData.SFXVolume * _slider.maxValue;
         Apply();
     }
 

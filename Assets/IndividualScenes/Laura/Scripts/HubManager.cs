@@ -133,7 +133,6 @@ public class HubManager : MonoBehaviour
             _switchers.Add(switchersInHUB[i].Identifier, switchersInHUB[i]);
             switchersInHUB[i].SwitchRepresentation(SaveGameManager.Instance.SessionData.SessionLevels[switchersInHUB[i].Identifier].IsLocked);
         }
-
     }
 
     private void Update()
@@ -209,7 +208,7 @@ public class HubManager : MonoBehaviour
                 {
                     if (!currentLevel.IsLocked)
                     {
-                        Debug.Log("Selecting level");
+                        FMODAudioManager.instance.StopMusic();
                         StartCoroutine(LoadLevel(currentLevel));
                     }
                     else
