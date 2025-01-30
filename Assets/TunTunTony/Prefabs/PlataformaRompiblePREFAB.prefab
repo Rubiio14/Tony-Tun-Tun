@@ -1057,7 +1057,7 @@ MonoBehaviour:
   shakeDistance: 25
   _timer: 0
   _needBreakingTimer: 0
-  _platformBreakingTime: 3
+  _platformBreakingTime: 1
   _despawnPieceTime: 1
   _canRespawn: 0
   _needRespawningTimer: 0
