@@ -7,6 +7,7 @@ public class PipeTrap : MonoBehaviour
     [SerializeField] private float cooldownTimer;
 
     public float speed;
+    public bool inRange, isGas, isDrop;
     public Transform acidPosition;
 
 
@@ -18,47 +19,59 @@ public class PipeTrap : MonoBehaviour
 
     private void PipeDropInstance()
     {
-        GameObject Drop = ObjectPool.SharedInstance.GetDropPooledObject();
-        AcidDrop InstancedAcidDrop = null;
-        if(Drop && Drop.TryGetComponent<AcidDrop>(out InstancedAcidDrop))
+        if (inRange && isDrop)
         {
-            InstancedAcidDrop.transform.position = acidPosition.transform.position;
-            InstancedAcidDrop.transform.rotation = acidPosition.transform.rotation;
-            InstancedAcidDrop.Speed = speed;
-            InstancedAcidDrop.Direction = acidPosition.forward;
-            InstancedAcidDrop.gameObject.SetActive(true);
+            GameObject Drop = ObjectPool.SharedInstance.GetDropPooledObject();
+            AcidDrop InstancedAcidDrop = null;
+            if (Drop && Drop.TryGetComponent<AcidDrop>(out InstancedAcidDrop))
+            {
+                InstancedAcidDrop.transform.position = acidPosition.transform.position;
+                InstancedAcidDrop.transform.rotation = acidPosition.transform.rotation;
+                InstancedAcidDrop.Speed = speed;
+                InstancedAcidDrop.Direction = acidPosition.forward;
+                InstancedAcidDrop.gameObject.SetActive(true);
+            }
+            StartCoroutine(DropCooldown(InstancedAcidDrop.gameObject, cooldownTimer));
         }
-        StartCoroutine(DropCooldown(InstancedAcidDrop.gameObject, cooldownTimer));
     }
 
     private void PipeGasInstance()
     {
-        GameObject Gas = ObjectPool.SharedInstance.GetGasPooledObject();
-        if (Gas)
+        if (inRange && isGas)
         {
-            Gas.transform.position = acidPosition.transform.position;
-            Gas.transform.rotation = acidPosition.transform.rotation;
-            Gas.gameObject.SetActive(true);
+            GameObject Gas = ObjectPool.SharedInstance.GetGasPooledObject();
+            if (Gas)
+            {
+                Gas.transform.position = acidPosition.transform.position;
+                Gas.transform.rotation = acidPosition.transform.rotation;
+                Gas.gameObject.SetActive(true);
+            }
+            StartCoroutine(GasCooldown(Gas, cooldownTimer));
         }
-        StartCoroutine(GasCooldown(Gas,cooldownTimer));
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player") 
         {
+            inRange = true;
             PipeDropInstance();
+            PipeGasInstance();
         }
         
+    }
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            PipeGasInstance();
-        }
+        
     }
 
     public IEnumerator DropCooldown(GameObject drop, float timer)
@@ -71,6 +84,7 @@ public class PipeTrap : MonoBehaviour
 
     public IEnumerator GasCooldown(GameObject gas, float timer)
     {
+        Debug.Log("Paso 3");
         yield return new WaitForSeconds(timer);
         gas.SetActive(false);
         yield return new WaitForSeconds(timer);

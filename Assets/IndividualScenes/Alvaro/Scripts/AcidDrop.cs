@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AcidDrop : MonoBehaviour
 {
-    Rigidbody dropRigidbody;
+    Rigidbody2D dropRigidbody;
 
     public Vector3 Direction {  get; set; }
     public float Speed { get; set; }
@@ -10,11 +10,11 @@ public class AcidDrop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dropRigidbody = GetComponent<Rigidbody>();
+        dropRigidbody = GetComponent<Rigidbody2D>();
         dropRigidbody.linearVelocity = Direction * Speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         dropRigidbody.linearVelocity = Direction * 0;
         gameObject.SetActive(false);

@@ -4,7 +4,6 @@ using UnityEngine;
 public class Checkpoint_Manager : MonoBehaviour
 {
     public static Checkpoint_Manager instance;
-    public DeathAndRespawnManager deathAndRespawnManager;
     public hudManager hudManager;
 
     public List<Transform> checkpoints_List;
@@ -63,7 +62,7 @@ public class Checkpoint_Manager : MonoBehaviour
 
     public void ReSpawn()
     {
-        if (deathAndRespawnManager.prosesingDeath)
+        if (DeathAndRespawnManager.instance.prosesingDeath)
         {
             tony.transform.position = spawnPoint.position;
             Debug.Log("Jugador respawneado en: " + spawnPoint.position);
