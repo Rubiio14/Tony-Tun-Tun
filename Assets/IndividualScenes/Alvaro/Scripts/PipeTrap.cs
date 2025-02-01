@@ -65,13 +65,11 @@ public class PipeTrap : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
+            if (isDrop)
+            {
+                StopAllCoroutines();
+            }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public IEnumerator DropCooldown(GameObject drop, float timer)
@@ -84,7 +82,6 @@ public class PipeTrap : MonoBehaviour
 
     public IEnumerator GasCooldown(GameObject gas, float timer)
     {
-        Debug.Log("Paso 3");
         yield return new WaitForSeconds(timer);
         gas.SetActive(false);
         yield return new WaitForSeconds(timer);
