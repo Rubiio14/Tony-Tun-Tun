@@ -10,11 +10,19 @@ public class ControllerImageChange : MonoBehaviour
     [SerializeField]
     private Sprite _keyboardSprite;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         _imageReference = GetComponent<Image>();
+    }
+
+    private void OnEnable()
+    {
         UIManager.Instance.OnControllerChange += OnControllerChange;
+    }
+
+    private void OnDisable()
+    {
+        UIManager.Instance.OnControllerChange -= OnControllerChange;
     }
 
     private void OnControllerChange(bool controller)
@@ -22,8 +30,4 @@ public class ControllerImageChange : MonoBehaviour
         _imageReference.sprite = controller ? _gamepadSprite : _keyboardSprite;
     }
 
-    private void OnDisable()
-    {
-        UIManager.Instance.OnControllerChange -= OnControllerChange;
-    }
 }

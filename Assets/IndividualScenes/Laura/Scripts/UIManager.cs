@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,7 +29,6 @@ public class UIManager : MonoBehaviour
 
     //Localization
     public static Locale[] AvailableLocales { get; private set; }
-    private int _localeIndex;
     public StringTable UITextTable { get; private set; }
 
     //Resolution
@@ -41,6 +42,11 @@ public class UIManager : MonoBehaviour
     private string UITableName = "UI";
     private string KeyboardKey = "Keyboard";
     private string GamepadKey = "Gamepad";
+
+    //Icon change
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private string keyboardControlScheme = "Keyboard&Mouse";
+    [SerializeField] private string gamepadControlScheme = "Gamepad";
 
     public void Awake()
     {
@@ -78,6 +84,25 @@ public class UIManager : MonoBehaviour
         FMODAudioManager.instance.LoadVolumes();
 
         UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
+
+        _playerInput.onControlsChanged += OnControlsChanged;
+    }
+
+    private void OnDestroy()
+    {
+        _playerInput.onControlsChanged -= OnControlsChanged;
+    }
+
+    public void OnControlsChanged(PlayerInput input)
+    {
+        if (input.currentControlScheme == keyboardControlScheme)
+        {
+            ChangeToKeyboard();
+        }
+        else if (input.currentControlScheme == gamepadControlScheme)
+        {
+            ChangeToGamepad();
+        }
     }
 
     private void LoadLocale()
