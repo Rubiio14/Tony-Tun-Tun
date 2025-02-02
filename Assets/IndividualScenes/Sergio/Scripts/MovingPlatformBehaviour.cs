@@ -38,7 +38,7 @@ public class MovingPlatformBehaviour : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || DeathAndRespawnManager.instance.prosesingDeath == true)
         {
             collision.transform.SetParent(null);
         }

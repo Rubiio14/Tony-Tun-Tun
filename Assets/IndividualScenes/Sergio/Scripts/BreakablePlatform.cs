@@ -205,6 +205,7 @@ public class BreakablePlatform : MonoBehaviour
     {
         //Desactiva Collider de la plataforma, caen las piezas y rotan
         _platformCollider.enabled = false;
+        _isShortcut = false;
         _needRotations = true;
         FallingPhysics();
         //Se necesita el timer para respawnear la plataforma
