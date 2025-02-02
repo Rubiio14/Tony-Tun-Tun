@@ -49,3 +49,7 @@ MonoBehaviour:
   CurrentLevelIndex: 0
   MusicVolume: 0.4
   SFXVolume: 0.4
+  Locale: es
+  SessionResolution:
+    Width: 1920
+    Height: 1080

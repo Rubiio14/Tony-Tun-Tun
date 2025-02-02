@@ -4,6 +4,7 @@ public class SaveGameManager : MonoBehaviour
 {
     public static SaveGameManager Instance { get; private set; }
     public static bool IsSessionStarted;
+    public static bool HUBVisitedInCurrentSession;
 
     public SessionData SessionData;
     public SessionData DefaultData;
@@ -44,6 +45,7 @@ public class SaveGameManager : MonoBehaviour
         if (FileManager.DeleteSavefile())
         {
             IsSessionStarted = false;
+            HUBVisitedInCurrentSession = false;
         }
     }
 
@@ -60,7 +62,7 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    public SessionData GetSessionData()
+    /*public SessionData GetSessionData()
     {
         if (FileManager.LoadFromSaveFile(out string json))
         {
@@ -69,7 +71,7 @@ public class SaveGameManager : MonoBehaviour
             return tmp;
         }
         return null;
-    }
+    }*/
 
     public void ResetSessionData()
     {

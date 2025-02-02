@@ -9,6 +9,8 @@ public class SessionData : ScriptableObject
     public int CurrentLevelIndex;
     public float MusicVolume;
     public float SFXVolume;
+    public string Locale;
+    public SessionResolution SessionResolution;
 
     public string ToJson()
     {

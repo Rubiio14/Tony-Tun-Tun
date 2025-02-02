@@ -26,12 +26,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float _delayForSceneChange;
 
     //Localization
-    public Locale[] AvailableLocales { get; private set; }
+    public static Locale[] AvailableLocales { get; private set; }
     private int _localeIndex;
     public StringTable UITextTable { get; private set; }
 
     //Resolution
-    public Resolution[] AvailableResolutions { get; private set; }
+    public static Resolution[] AvailableResolutions { get; private set; }
 
     //Controller
     //TODO: Add removal of listeners at some point
@@ -56,27 +56,38 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
-        if(AvailableResolutions == null)
+        if (!SaveGameManager.IsSessionStarted)
         {
-            //TODO: Check in testing
-            AvailableResolutions = Screen.resolutions.Where(res => {
-                if (res.refreshRateRatio.value > 59)
-                    if (res.width == 1920 && res.height == 1080
-                    || res.width == 1366 && res.height == 768
-                    || res.width == 2560 && res.height == 1440
-                    || res.width == 3840 && res.height == 2160)
-                    {
-                        return true;
-                    }
-                return false;
-
-            }).ToArray();
+            if (SaveGameManager.Instance.IsDataSavedInFile())
+            {
+                //Load from save file
+                SaveGameManager.Instance.LoadSessionDataFromFile();
+            }
+            SaveGameManager.IsSessionStarted = true;
+            AvailableResolutions = Screen.resolutions.Where(res => res.refreshRateRatio.value >= 60f).ToArray();
+            AvailableLocales = LocalizationSettings.AvailableLocales.Locales.ToArray();
         }
+
+        //Resolution initialization
+        LoadResolution();
+
         //Localization initialization
-        AvailableLocales = LocalizationSettings.AvailableLocales.Locales.ToArray();
-        _localeIndex = 0;
-        LocalizationSettings.SelectedLocale = AvailableLocales[_localeIndex];
+        LoadLocale();
+
+        //Volume initialization
+        FMODAudioManager.instance.LoadVolumes();
+
         UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
+    }
+
+    private void LoadLocale()
+    {
+        LocalizationSettings.SelectedLocale = AvailableLocales.First(locale => locale.Identifier.Code == SaveGameManager.Instance.SessionData.Locale);
+    }
+
+    private void LoadResolution()
+    {
+        Screen.SetResolution(SaveGameManager.Instance.SessionData.SessionResolution.Width, SaveGameManager.Instance.SessionData.SessionResolution.Height, FullScreenMode.FullScreenWindow);
     }
 
     public void UpdateLanguage()

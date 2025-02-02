@@ -21,6 +21,7 @@ public class PauseUIController : MonoBehaviour
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToHubConfirmation"),
             () => {
                 FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
+                FMODAudioManager.instance.StopMusic();
                 StartCoroutine(UIManager.Instance.LoadScene("HUB"));
             },
             () => {
@@ -37,6 +38,7 @@ public class PauseUIController : MonoBehaviour
         UIManager.Instance.FillConfirmationPanel(UIManager.Instance.GetLocalizedUIText("BackToMainMenuConfirmation"),
             () => {
                 FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
+                FMODAudioManager.instance.StopMusic();
                 StartCoroutine(UIManager.Instance.LoadScene("MainMenu"));
             },
             () => {

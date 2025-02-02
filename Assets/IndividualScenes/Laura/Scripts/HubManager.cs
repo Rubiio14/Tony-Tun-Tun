@@ -84,7 +84,7 @@ public class HubManager : MonoBehaviour
         _cancel.performed += Cancel;
     }
     
-    public IEnumerator EnableAfterDelay()
+    public IEnumerator EnableInputAfterDelay()
     {
         yield return new WaitForSeconds(_enemyWalkingDuration);
         EnableInput();
@@ -100,29 +100,18 @@ public class HubManager : MonoBehaviour
 
     private void Start()
     {
-        //Session not yet started and there is data in file
-        if (!SaveGameManager.IsSessionStarted)
+        if (!SaveGameManager.HUBVisitedInCurrentSession && !SaveGameManager.Instance.IsDataSavedInFile())
         {
-            if (SaveGameManager.Instance.IsDataSavedInFile())
-            {
-                //Load from save file
-                SaveGameManager.Instance.LoadSessionDataFromFile();
-                SaveGameManager.IsSessionStarted = true;
-            }
-            else
-            {
-                //First time in hub and there was no saved data
-                _enemyCinematic.SetActive(true);
-                DisableInput();
-                StartCoroutine(EnableAfterDelay());
-            }
+            _enemyCinematic.SetActive(true);
+            DisableInput();
+            StartCoroutine(EnableInputAfterDelay());
         }
         transform.position = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex].Position;
         _isOnPlatform = true;
         _isLookingFront = true;
-        SaveGameManager.IsSessionStarted = true;
+        SaveGameManager.HUBVisitedInCurrentSession = true;
         LoadLevelRepresentation();
-        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.levelMusic);
+        FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.hubMusic);
     }
 
     private void LoadLevelRepresentation()

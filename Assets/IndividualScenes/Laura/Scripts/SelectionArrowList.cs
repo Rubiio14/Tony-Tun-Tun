@@ -81,33 +81,34 @@ public class SelectionArrowList : SelectLeftRight
             return;
         }
 
-        Resolution[] filteredResolutions = UIManager.Instance.AvailableResolutions;
-        int resolutionSize = UIManager.Instance.AvailableResolutions.Length;
+        int resolutionSize = UIManager.AvailableResolutions.Length;
         _optionsArray = new Option[resolutionSize];
 
         string currentRes = FormatResolution(Screen.currentResolution);
         for (int index = 0; index < resolutionSize; index++)
         {
-            Resolution resolution = UIManager.Instance.AvailableResolutions[index];
+            Resolution resolution = UIManager.AvailableResolutions[index];
             string formattedResolution = FormatResolution(resolution);
 
             _optionsArray[index] = new Option(formattedResolution, () =>
             {
-                Screen.SetResolution(resolution.width, resolution.height, true);
                 _optionText.text = formattedResolution;
+                Screen.SetResolution(resolution.width, resolution.height, true);
+                SaveGameManager.Instance.SessionData.SessionResolution.Width = resolution.width;
+                SaveGameManager.Instance.SessionData.SessionResolution.Height = resolution.height;
             });
-
-            if (_optionsArray[index].Value == currentRes)
+            //Change index to current resolution
+            if (SaveGameManager.Instance.SessionData.SessionResolution.Width == resolution.width && SaveGameManager.Instance.SessionData.SessionResolution.Height == resolution.height)
             {
                 _currentIndex = index;
             }
         }
-        Apply();
+        _optionText.text = _optionsArray[_currentIndex].Value;
     }
 
     private string FormatResolution(Resolution resolution)
     {
-        return String.Format("{0} x {1}", resolution.width, resolution.height);
+        return String.Format("{0}x{1} {2}H", resolution.width, resolution.height, Math.Floor(resolution.refreshRateRatio.value));
     }
 
     public void FillLanguageOptions()
@@ -117,33 +118,37 @@ public class SelectionArrowList : SelectLeftRight
             return;
         }
 
-        int localeSize = UIManager.Instance.AvailableLocales.Length;
+        int localeSize = UIManager.AvailableLocales.Length;
         _optionsArray = new Option[localeSize];
 
         LocalizeStringEvent localizedObj = _optionText.GetComponent<LocalizeStringEvent>();
         localizedObj.SetTable(UIManager.Instance.UITextTable.TableCollectionName);
+        localizedObj.OnUpdateString.AddListener((string textChanged) => CallingChange(textChanged));
 
         for (int index = 0; index < localeSize; index++)
         {
-            Locale locale = UIManager.Instance.AvailableLocales[index];
+            Locale locale = UIManager.AvailableLocales[index];
 
             _optionsArray[index] = new Option(locale.Identifier.Code, () =>
             {
-                _optionText.text = UIManager.Instance.GetLocalizedUIText(LocalizationSettings.SelectedLocale.Identifier.Code);
                 LocalizationSettings.SelectedLocale = locale;
                 localizedObj.SetEntry(locale.Identifier.Code);
-                localizedObj.OnUpdateString.AddListener((string textChanged) => { _optionText.text = textChanged; });
                 UIManager.Instance.UpdateLanguage();
+                SaveGameManager.Instance.SessionData.Locale = locale.Identifier.Code;
             });
 
-            if (_optionsArray[index].Value == LocalizationSettings.SelectedLocale.Identifier.Code) { 
+            if (SaveGameManager.Instance.SessionData.Locale == locale.Identifier.Code)
+            {
                 _currentIndex = index;
             }
         }
-        Apply();
-        
+        _optionText.text = UIManager.Instance.GetLocalizedUIText(_optionsArray[_currentIndex].Value);
     }
 
+    public void CallingChange(string text)
+    {
+        _optionText.text = text;
+    }
     public void ShowArrows(bool show)
     {
         Color _leftTmpColor = _leftArrow.color;

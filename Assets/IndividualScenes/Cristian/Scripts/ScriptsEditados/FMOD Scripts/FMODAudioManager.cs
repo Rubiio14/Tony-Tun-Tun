@@ -100,14 +100,4 @@ public class FMODAudioManager : MonoBehaviour
             Debug.Log("Sonido de salto cargado detenido.");
         }
     }
-
-    public void LoadVolumesFromFile()
-    {
-        SessionData tmp = SaveGameManager.Instance.GetSessionData();
-        if (tmp)
-        {
-            SaveGameManager.Instance.SessionData.MusicVolume = tmp.MusicVolume;
-            SaveGameManager.Instance.SessionData.SFXVolume = tmp.SFXVolume;
-        }
-    }
 }
