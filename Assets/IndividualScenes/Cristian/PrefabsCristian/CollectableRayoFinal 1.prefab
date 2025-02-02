@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2724345584360411399}
+  - component: {fileID: 3031211247800249573}
   m_Layer: 0
   m_Name: Rayo
   m_TagString: Untagged
@@ -120,6 +121,23 @@ Transform:
   - {fileID: 870892104948268351}
   m_Father: {fileID: 4058934094506904594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3031211247800249573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310420251244486014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c07b5282f5c754d93305913b104bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationSpeed: 50
+  verticalSpeed: 4
+  verticalAmplitude: 0.2
+  canGoUp: 1
 --- !u!1 &2178929042147386461
 GameObject:
   m_ObjectHideFlags: 0
