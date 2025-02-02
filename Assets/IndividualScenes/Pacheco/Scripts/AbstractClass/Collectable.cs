@@ -12,7 +12,7 @@ public class Collectable : MonoBehaviour
 
     //Para desactivar malla
     [SerializeField] 
-    MeshRenderer _CollectableRenderer;
+    GameObject _CollectableRenderer;
     public float _destroyCollectable = 2f;
     [SerializeField]
     GameObject _vfxCollect;
@@ -20,10 +20,6 @@ public class Collectable : MonoBehaviour
 
     //IMPORTANTE: arrastrar MeshRenderer y el VFX del prefab al script
 
-    private void Start()
-    {
-        _CollectableRenderer = GetComponent<MeshRenderer>(); 
-    }
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
@@ -36,7 +32,7 @@ public class Collectable : MonoBehaviour
             _collectable.Collect(collision.gameObject, Index);
 
             GetComponent<BoxCollider2D>().enabled = false;
-            _CollectableRenderer.enabled = false;
+            _CollectableRenderer.SetActive(false);
             _vfxCollect.SetActive(true);
             Destroy();
         }

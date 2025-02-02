@@ -830,10 +830,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastLength: 5
+  bulletPosition: {fileID: 5695961044855291970}
+  speed: 5
   _playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  _vfxShot: {fileID: 0}
+  _vfxShot: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
   _vfxShotWaypoint: {fileID: 8539863771393992257}
   firstShotParticle: 1
 --- !u!50 &3195452848976378466

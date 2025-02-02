@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collectable: {fileID: 11400000, guid: e9ddda9f66f8031499af660ed4b383bd, type: 2}
   Index: 0
-  _CollectableRenderer: {fileID: 7093826256739897780}
+  _CollectableRenderer: {fileID: 1003420073231135157}
   _destroyCollectable: 2
   _vfxCollect: {fileID: 3440543065377613129}
 --- !u!1001 &3439129810095307739

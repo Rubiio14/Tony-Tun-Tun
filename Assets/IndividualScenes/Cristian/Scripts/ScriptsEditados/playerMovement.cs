@@ -137,10 +137,7 @@ public class playerMovement : MonoBehaviour
     }
 
     private void slideTony()
-    {
-        /*
-         
-         */
+    {    
         if (_directionX != 0)
         {
             transform.localScale = new Vector3(_directionX > 0 ? 1 : -1, 1, 1);
@@ -156,28 +153,17 @@ public class playerMovement : MonoBehaviour
         if (_directionX > 0)
         {
             isFacingRight = true;
-            if (Mathf.Clamp(Mathf.Abs(velocity.x), 0, maxSpeed) >= 17f)
-            {
-                maxTurnSpeed = 25f;
-            }
-            else
-            {
-                maxTurnSpeed = 90f;
-            }
         }
         else if (_directionX < 0)
         {
             isFacingRight = false;
-            if (Mathf.Clamp(Mathf.Abs(velocity.x), 0, maxSpeed) >= 17f)
-            {
-                maxTurnSpeed = 25f;
-            }
-            else
-            {
-                maxTurnSpeed = 90f;
-            }
         }
 
+        resetSlideAnimation();
+    }
+
+    private void resetSlideAnimation()
+    {
         if (playerJuice.instance.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SLIDETURN"))
         {
             playerJuice.instance.myAnimator.SetBool("IsTurn", false);

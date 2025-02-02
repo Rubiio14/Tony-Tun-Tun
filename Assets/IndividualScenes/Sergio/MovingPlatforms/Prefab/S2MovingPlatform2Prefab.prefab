@@ -112,7 +112,7 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 1211625497759103900}
   - {fileID: 5911495031785449711}
-  _platformMovSpeed: 2.5
+  _platformMovSpeed: 10
   _vfxPlatformDust: {fileID: 5186175797435281660}
 --- !u!61 &3571320503468754315
 BoxCollider2D:

@@ -1,14 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class EnemyMeleeShooterBehaviour : MonoBehaviour
 {
-    //Para ajustar la distancia del raycast desde el inspector
-    [Header("Detection")]
-    [SerializeField, Range(1f, 50f)] [Tooltip("Longitud maxima de deteccion")] public float raycastLength = 5f;
-
-    //Para que el raycast empiece desde el enemigo pero no impacte con su propio collider. No es modificable en el inspectos para ahorrarnos errores.
-    private float _startRaycast = 0.9f;
+    //Variables para instanciar la bala
+    public Transform bulletPosition;
+    public float speed;
 
     //Animaciones del shooter
     private Animator _meleeShooterAnimator;
@@ -20,42 +18,78 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     GameObject _vfxShot;
     [SerializeField]
     GameObject _vfxShotWaypoint;
-    public float firstShotParticle = 1;
 
+    [Header("La cantidad de veces que ejecuta la animación de disparo por segundo")]
+    public float _shootAnimMulti = 2;
+    [Header("Cuántos segundos espera hasta el próximo disparo NOTA: Si se anima a 2/s, el delay deberá ser de 0.5, si se anima a 0.5/s el delay deberá de ser de 2")]
+    public float _shootDelay = 1;
+
+    //El tiempo que tarda la animación de detección en hacerse, dura 1 segundo, no tocar este valor.
+    private float _waitForDetection = 1;
+
+    public bool _playerDetected = false;
 
     private void Start()
     {
         _meleeShooterAnimator = GetComponent<Animator>();
+        //Ejecuta X animaciones por segundo, es decir, 2 = 2 animaciones por segundo
+        _meleeShooterAnimator.SetFloat("_shootAnimSpeed", _shootAnimMulti);
         _vfxShot.SetActive(false);
     }
-    void FixedUpdate()
-    {
-        //Rayo Debug en la escena
-        Vector2 forward = transform.TransformDirection(Vector2.right) * raycastLength;
-        Debug.DrawRay(new Vector2(transform.position.x * _startRaycast, transform.position.y), forward, Color.green);
 
-        //Crear raycast e impactar con el layer del jugador 
-        if (Physics2D.Raycast(new Vector2(transform.position.x * _startRaycast, transform.position.y), forward, raycastLength, _playerLayer))
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
         {
-            //activar animacion de disparo y partículas
+            //activar animacion de disparo
             _meleeShooterAnimator.SetBool("playerDetected", true);
-            StartCoroutine(ActivateShotVFX());
-        }
-        else
-        {
-            //Desactivar animacion de disparo y partículas
-            _meleeShooterAnimator.SetBool("playerDetected", false);
-            _vfxShot.SetActive(false);
-            StopAllCoroutines();
+            _playerDetected = true;
+
+            //Espera X segundos para el siguiente disparo, es decir, 2 = 2 segundos hasta el siguiente disparo
+            StartCoroutine(FirstShotDelay(_waitForDetection));
         }
     }
-
-    public IEnumerator ActivateShotVFX()
+    public void OnTriggerExit2D(Collider2D other)
     {
-        _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
+        if (other.tag == "Player")
+        {
+            _playerDetected = false;
+            _meleeShooterAnimator.SetBool("playerDetected", false);
+        }
+    }
+    private void BulletInstance()
+    {
+        if (_playerDetected == true)
+        {
+            GameObject Bullet = ObjectPool.SharedInstance.GetBulletPooledObject();
+            Bullet InstancedBullet = null;
+            if (Bullet && Bullet.TryGetComponent<Bullet>(out InstancedBullet))
+            {
+                InstancedBullet.transform.position = bulletPosition.transform.position;
+                InstancedBullet.transform.rotation = bulletPosition.transform.rotation;
+                InstancedBullet.Speed = speed;
+                InstancedBullet.Direction = bulletPosition.right;
+                InstancedBullet.gameObject.SetActive(true);
+                _vfxShot.SetActive(true);
+                _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
+            }
 
-        yield return new WaitForSeconds(firstShotParticle);
+            StartCoroutine(ActivateShot(_shootDelay));
+        }
+    }
+    
+    public IEnumerator ActivateShot(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        _vfxShot.SetActive(false);
 
-        _vfxShot.SetActive(true);
+        Debug.Log("Disparo");
+        BulletInstance();
+    }
+
+    public IEnumerator FirstShotDelay(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        BulletInstance();
     }
 }

@@ -57,14 +57,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7203997326080351716}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.76, y: 1, z: 0.67}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8304503165190422170}
   m_Father: {fileID: 9135204843310410332}
-  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &21317212775746356
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -127,8 +127,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9135204843310410332}
-  - component: {fileID: 8993764469421943654}
   - component: {fileID: 126588767065477822}
+  - component: {fileID: 506540670848522365}
   m_Layer: 10
   m_Name: Tuberia vertical
   m_TagString: Untagged
@@ -144,16 +144,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7210663173899733030}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -10.8, y: 62.8, z: 1.72}
   m_LocalScale: {x: 47.050007, y: 47.04999, z: 33}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4895748093099061713}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8993764469421943654
-CircleCollider2D:
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &126588767065477822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210663173899733030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405507edf2f0ede45a990c8bdfc239b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTimer: 2
+  speed: 1
+  inRange: 0
+  isGas: 1
+  isDrop: 0
+  acidPosition: {fileID: 8304503165190422170}
+--- !u!61 &506540670848522365
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -186,23 +204,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0009944559, y: 0}
-  m_Radius: 0.7
---- !u!114 &126588767065477822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7210663173899733030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405507edf2f0ede45a990c8bdfc239b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTimer: 2
-  speed: 1
-  inRange: 0
-  isGas: 1
-  isDrop: 0
-  acidPosition: {fileID: 8304503165190422170}
+  m_Offset: {x: 0, y: 0.36}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.24, y: 0.79}
+  m_EdgeRadius: 0

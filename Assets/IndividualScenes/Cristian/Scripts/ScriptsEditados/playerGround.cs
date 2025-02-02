@@ -7,10 +7,10 @@ public class playerGround : MonoBehaviour
     public static playerGround instance;
     [Header("Collider Settings")]
     [SerializeField] [Tooltip("Alineas con los pies del personaje")] private float _groundLength = 0.95f;
-    [SerializeField] [Tooltip("Distance between the ground-checking colliders")] private Vector3 colliderOffset;
+    [SerializeField] [Tooltip("Distancia entre los rayos que detectan el suelo")] private Vector3 colliderOffset;
 
     [Header("Layer Masks")]
-    [SerializeField] [Tooltip("Which layers are read as the ground")] private LayerMask _groundLayer;
+    [SerializeField] [Tooltip("Layers que lee como suelo")] private LayerMask _groundLayer;
 
     public void Awake()
     {
@@ -36,7 +36,6 @@ public class playerGround : MonoBehaviour
         Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + Vector3.down * _groundLength);
         Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + Vector3.down * _groundLength);
     }
-
     //Send ground detection to other scripts
     public bool GetOnGround() { return _isOnGround; }
 }
