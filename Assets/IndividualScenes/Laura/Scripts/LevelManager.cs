@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     private InputAction _jump;
     private InputAction _quit;
 
+    //TODO: TO DELETE
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -67,19 +68,19 @@ public class LevelManager : MonoBehaviour
 
     public void Cancel(InputAction.CallbackContext ctx)
     {
-        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.openPause);
+        /*FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.openPause);
         UIManager.Instance.EnableLevelPauseMenu();
         //Time.timeScale = 0;
         DisableInput();
-        _playerInput.uiInputModule.ActivateModule();
+        _playerInput.uiInputModule.ActivateModule();*/
     }
 
     public void ReturnControlsToPlayer()
     {
-        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.closePause);
+        /*FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.closePause);
         _playerInput.uiInputModule.DeactivateModule();
         //Time.timeScale = 1;
-        EnableInput();
+        EnableInput();*/
     }
 
 }

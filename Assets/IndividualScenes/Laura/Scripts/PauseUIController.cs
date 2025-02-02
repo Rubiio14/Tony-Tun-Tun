@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class PauseUIController : MonoBehaviour
 {
+    [SerializeField] private GameObject _firstToSelect;
+
     private GameObject _previousSelected;
 
     [SerializeField] private GameObject _optionsPanel;
@@ -13,6 +15,11 @@ public class PauseUIController : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(_previousSelected);
+    }
+
+    public void SelectFirstElement()
+    {
+        EventSystem.current.SetSelectedGameObject(_firstToSelect);
     }
 
     public void GenerateBackToHubConfirmationPanel()

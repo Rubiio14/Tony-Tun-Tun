@@ -10,6 +10,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIManager : MonoBehaviour
 {
@@ -165,14 +166,26 @@ public class UIManager : MonoBehaviour
         HubManager.Instance.ReturnControlsToPlayer();
     }
 
-    public void EnableLevelPauseMenu()
+    public void EnableLevelPauseMenu(InputAction.CallbackContext context)
     {
-        _pauseMenu.gameObject.SetActive(true);
+        if (context.performed)
+        {
+            FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.openPause);
+            _playerInput.uiInputModule.ActivateModule();
+            _playerInput.currentActionMap.Disable();
+            _pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            _pauseMenu.SelectFirstElement();
+        }
     }
 
     public void DisableLevelPauseMenu()
     {
-        LevelManager.Instance.ReturnControlsToPlayer();
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.closePause);
+        _playerInput.uiInputModule.DeactivateModule();
+        _playerInput.currentActionMap.Enable();
+        Time.timeScale = 1;
+        _pauseMenu.gameObject.SetActive(false);
     }
 
     public string GetKeyboardLocalized()

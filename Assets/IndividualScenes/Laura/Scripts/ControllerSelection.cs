@@ -25,11 +25,13 @@ public class ControllerSelection : MonoBehaviour, IMoveHandler, ICancelHandler, 
     {
         if (eventData.moveDir == MoveDirection.Left)
         {
+            FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.select);
             _currentIndex++;
             Apply();
         }
         else if (eventData.moveDir == MoveDirection.Right)
         {
+            FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.select);
             _currentIndex--;
             Apply();
         }
@@ -67,11 +69,13 @@ public class ControllerSelection : MonoBehaviour, IMoveHandler, ICancelHandler, 
     
     public void OnCancel(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         OnCancellation?.Invoke();
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.goBack);
         OnCancellation?.Invoke();
     }
 
