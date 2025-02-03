@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,8 +36,8 @@ public class HubManager : MonoBehaviour
     //Load selection
     [SerializeField] private float _unlockLevelDelay;
     [SerializeField] private float _loadLevelDelay;
-    [SerializeField] private AudioClip _levelSelectionAudio;
-    [SerializeField] private AudioClip _levelSelectionIncorrectAudio;
+    [SerializeField] private EventReference _levelSelectionAudio;
+    [SerializeField] private EventReference _levelSelectionIncorrectAudio;
 
     [SerializeField] private float _yOffset;
     [SerializeField] private LockedLevelController _lockedLevelController;
@@ -225,8 +226,6 @@ public class HubManager : MonoBehaviour
 
     private IEnumerator UnlockLevel(SessionLevel level)
     {
-        //TODO: Fix with correct audio sound
-        //FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.rayoCollectedSound, level.Position);
         _particleSystemUnlock.transform.position = level.Position;
         _particleSystemUnlock.gameObject.SetActive(true);
         _particleSystemUnlock.Play();
@@ -261,6 +260,7 @@ public class HubManager : MonoBehaviour
     private IEnumerator LoadLevel(SessionLevel level)
     {
         _animationController.Play("IdleB");
+        FMODAudioManager.instance.PlayOneShot(_levelSelectionAudio);
         DisableInput();
         yield return new WaitForSeconds(_loadLevelDelay);
         SceneManager.LoadScene(level.SceneName);
@@ -268,7 +268,7 @@ public class HubManager : MonoBehaviour
 
     private void SelectLockedLevel()
     {
-        //AudioManager.Instance.PlaySFX(_selectionIncorrectAudio);
+        FMODAudioManager.instance.PlayOneShot(_levelSelectionIncorrectAudio);
     }
 
     public void Cancel(InputAction.CallbackContext ctx)
