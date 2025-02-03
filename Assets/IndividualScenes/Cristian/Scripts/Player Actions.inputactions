@@ -42,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Continue",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "3893fa41-0ffb-48db-9613-b47c580c6752",
                     "expectedControlType": "",
@@ -271,22 +271,22 @@
                 {
                     "name": "",
                     "id": "6e26ed52-e433-435f-8843-05eb616da732",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Continue",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "0fa0df65-efb8-456f-aa9c-e28cc82e022b",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Continue",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
