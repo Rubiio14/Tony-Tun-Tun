@@ -12,7 +12,7 @@ public class Checkpoints : MonoBehaviour
     public GameObject spray;
 
     [SerializeField]
-    //GameObject _vfxCheckpoint;
+    GameObject _vfxCheckpoint;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class Checkpoints : MonoBehaviour
             if (!checkpointPainted.activeSelf)
             {
                 spray.SetActive(true);
-                //_vfxCheckpoint.SetActive(true);
+                _vfxCheckpoint.SetActive(true);
 
 
                 Animator sprayAnimator = spray.GetComponent<Animator>();
@@ -65,6 +65,6 @@ public class Checkpoints : MonoBehaviour
         }
 
         sprayObject.SetActive(false);
-        //_vfxCheckpoint.SetActive(false);
+        _vfxCheckpoint.SetActive(false);
     }
 }

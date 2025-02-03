@@ -128,6 +128,7 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator LoadScene(string sceneName)
     {
+        //meter fundido a negro
         yield return new WaitForSeconds(_delayForSceneChange);
         SceneManager.LoadScene(sceneName);
     }
