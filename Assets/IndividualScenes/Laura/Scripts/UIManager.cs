@@ -11,6 +11,7 @@ using System.Linq;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -49,6 +50,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private string keyboardControlScheme = "Keyboard&Mouse";
     [SerializeField] private string gamepadControlScheme = "Gamepad";
 
+    //BlackFade 
+    public Image fadeImage;
+    public float fadeDuration = 1f;
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -129,7 +133,9 @@ public class UIManager : MonoBehaviour
     public IEnumerator LoadScene(string sceneName)
     {
         //meter fundido a negro
-        yield return new WaitForSeconds(_delayForSceneChange);
+        
+        StartCoroutine(FadeToBlack());
+        yield return new WaitForSeconds(_delayForSceneChange * 4);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -228,5 +234,18 @@ public class UIManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
         Application.Quit();
+    }
+
+    private IEnumerator FadeToBlack()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            Color temporalColor = fadeImage.color;
+            temporalColor.a = Mathf.Clamp01(elapsedTime / fadeDuration);
+            fadeImage.color = temporalColor;
+            yield return null;
+        }
     }
 }

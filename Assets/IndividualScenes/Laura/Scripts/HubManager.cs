@@ -262,8 +262,7 @@ public class HubManager : MonoBehaviour
         _animationController.Play("IdleB");
         FMODAudioManager.instance.PlayOneShot(_levelSelectionAudio);
         DisableInput();
-        yield return new WaitForSeconds(_loadLevelDelay);
-        SceneManager.LoadScene(level.SceneName);
+        yield return StartCoroutine(UIManager.Instance.LoadScene(level.SceneName));
     }
 
     private void SelectLockedLevel()
