@@ -9,24 +9,22 @@ public class finalLevelChecker : MonoBehaviour
     [SerializeField] private GameObject _Bloqueo;
     [SerializeField] private bool _Unlocked = false;
 
+    [SerializeField] Animator doorController;
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        ShowNumberOfCarrots(transform.position);
 
-        ShowNumberOfCarrotsToUnlock(transform.position);
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Game_End"))
         {
-            if (hudManager.instance.carrotsCounter == 3)
-            {
-                Debug.Log("Final");
-            }           
+            doorController.SetBool("OpenDoor", true);
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-
-        HideNumberOfCarrotsToUnlock();
-        //Animacion se cierra
+        HideNumberOfCarrots();
+        doorController.SetBool("OpenDoor", false);
     }
 
     public void UpdateCarrotNumber()
@@ -40,21 +38,12 @@ public class finalLevelChecker : MonoBehaviour
                 if (hudManager.instance.carrotsCounter == 3)
                 {
                     _CarrotUnlocked3.SetActive(true);                   
-                    DesactivateDoor();
-                    //Animación se abre
                 }
             }
-            
         }
-        
     }
 
-    public void DesactivateDoor()
-    {
-        _Bloqueo.SetActive(false);
-        _Unlocked = false;
-    }
-    public void ShowNumberOfCarrotsToUnlock(Vector3 position)
+    public void ShowNumberOfCarrots(Vector3 position)
     {
         //Canvas show carrotsToUnlock on top of current level.
         _canvas.gameObject.SetActive(true);
@@ -62,7 +51,7 @@ public class finalLevelChecker : MonoBehaviour
         UpdateCarrotNumber();
     }
 
-    public void HideNumberOfCarrotsToUnlock()
+    public void HideNumberOfCarrots()
     {
         //Canvas hide carrotsToUnlock.
         //Could be animated
