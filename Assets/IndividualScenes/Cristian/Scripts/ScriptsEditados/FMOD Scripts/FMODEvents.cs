@@ -27,6 +27,13 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference goBack { get; private set; }
     [field: SerializeField] public EventReference select { get; private set; }
     [field: SerializeField] public EventReference enterLevel { get; private set; }
+    [field: Header("Props")]
+    [field: SerializeField] public EventReference AcidLeak { get; private set; }
+    [field: SerializeField] public EventReference AcidGas { get; private set; }
+    [field: Header("Enemies")]
+    [field: SerializeField] public EventReference WalkingEnemy { get; private set; }
+    [field: SerializeField] public EventReference FlyingEnemy { get; private set; }
+    [field: SerializeField] public EventReference Shooter { get; private set; }
 
 
     private void Awake()
