@@ -17,6 +17,9 @@ public class playerJuice : MonoBehaviour
     public float idleProbability = 0.3f;
     private float _timer = 0f;
 
+
+    //Audio Tony
+    private bool _hasJumped = false;
     //VFXs Tony
     //Movimiento
     [SerializeField]
@@ -99,32 +102,30 @@ public class playerJuice : MonoBehaviour
 
     private void checkForLanding()
     {
+
         if (playerGround.instance.GetOnGround())
         {
+
             //By checking for this, and then immediately setting playerGrounded to true, we only run this code once when the player hits the ground 
             playerGrounded = true;
             //Play an animation, some particles, and a sound effect when the player lands
             
             myAnimator.SetTrigger("Landed");
-            myAnimator.SetBool("IsFalling", false);
-            
-
+            myAnimator.SetBool("IsFalling", false);           
             _vfxHitGround.SetActive(true);
-
         }
         else
         {
             // Player has left the ground, so stop playing the running particles
             playerGrounded = false;
-
             _vfxHitGround.SetActive(false);
-
         }
     }
 
 
     public void jumpEffects()
     {
+        _hasJumped = true;
         //Play these effects when the player jumps, courtesy of jump script
         myAnimator.ResetTrigger("Landed");
         myAnimator.SetTrigger("Jump");
@@ -143,4 +144,16 @@ public class playerJuice : MonoBehaviour
         myAnimator.SetTrigger("ChargedJump");
         //myAnimator.SetBool("IsFalling", true);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            if (_hasJumped)
+            {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.playerLand, this.gameObject.transform.position);
+                _hasJumped = false;
+            }
+        }
+    }
+
 }

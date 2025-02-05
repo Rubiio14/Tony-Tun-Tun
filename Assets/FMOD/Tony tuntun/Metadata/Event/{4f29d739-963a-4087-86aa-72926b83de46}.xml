@@ -5,7 +5,7 @@
 			<value>TuberiaGasNuevo</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d06d77d8-1920-4239-8d3b-a6c8dde81427}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{e3afb32b-ac91-4dfc-ab2b-1cff6b8f3b9b}">
 		<relationship name="effects">
 			<destination>{03536c9a-5a84-4ef4-8897-8740edce53df}</destination>
-			<destination>{3167dddd-5578-480a-b4c9-9f8fb4ec984d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b01cf91e-0c27-4a3e-b3b2-244aa9984908}" />
@@ -128,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{7d4790f7-5f0e-4951-9202-4f1eaf008150}" />
 	<object class="MixerBusFader" id="{03536c9a-5a84-4ef4-8897-8740edce53df}" />
-	<object class="SpatialiserEffect" id="{3167dddd-5578-480a-b4c9-9f8fb4ec984d}" />
 	<object class="MixerBusFader" id="{2a36d13c-43cd-4b4c-ac42-bcd763def311}" />
 </objects>

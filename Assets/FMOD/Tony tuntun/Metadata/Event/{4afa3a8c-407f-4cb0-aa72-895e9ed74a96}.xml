@@ -5,7 +5,7 @@
 			<value>GotaAcidoNuevo</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d06d77d8-1920-4239-8d3b-a6c8dde81427}</destination>
@@ -113,7 +113,6 @@
 	<object class="MixerBusEffectChain" id="{5888a741-1317-4017-8519-b9bed2027200}">
 		<relationship name="effects">
 			<destination>{f6433c52-65c9-45d5-a899-5e62be001b60}</destination>
-			<destination>{56a8f006-2962-4312-8419-e2e82a0cbf5c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ac7b05e6-8a24-4ee3-8722-129ef0cba66f}" />
@@ -125,6 +124,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{59995b55-8603-48e7-9551-a0d80a8f309c}" />
 	<object class="MixerBusFader" id="{f6433c52-65c9-45d5-a899-5e62be001b60}" />
-	<object class="SpatialiserEffect" id="{56a8f006-2962-4312-8419-e2e82a0cbf5c}" />
 	<object class="MixerBusFader" id="{607a644c-b9bb-46a4-8f1a-f1aa7dcf9e82}" />
 </objects>

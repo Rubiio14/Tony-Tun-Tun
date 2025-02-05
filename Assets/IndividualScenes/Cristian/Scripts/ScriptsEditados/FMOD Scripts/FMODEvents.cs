@@ -13,6 +13,7 @@ public class FMODEvents : MonoBehaviour
     //Jump
     [field: Header("Player")]
     [field: SerializeField] public EventReference playerJump { get; private set; }
+    [field: SerializeField] public EventReference playerLand { get; private set; }
     //ChargedJump
     [field: SerializeField] public EventReference playerChargedJump { get; private set; }
     //Music
