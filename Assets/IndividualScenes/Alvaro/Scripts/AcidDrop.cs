@@ -18,5 +18,6 @@ public class AcidDrop : MonoBehaviour
     {
         dropRigidbody.linearVelocity = Direction * 0;
         gameObject.SetActive(false);
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidLeak, this.gameObject.transform.position);
     }
 }

@@ -72,6 +72,7 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
                 InstancedBullet.gameObject.SetActive(true);
                 _vfxShot.SetActive(true);
                 _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.Shooter, this.gameObject.transform.position);
             }
 
             StartCoroutine(ActivateShot(_shootDelay));

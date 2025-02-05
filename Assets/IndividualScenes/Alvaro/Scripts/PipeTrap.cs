@@ -30,6 +30,7 @@ public class PipeTrap : MonoBehaviour
                 InstancedAcidDrop.Speed = speed;
                 InstancedAcidDrop.Direction = acidPosition.forward;
                 InstancedAcidDrop.gameObject.SetActive(true);
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidDrop, this.gameObject.transform.position);
             }
             StartCoroutine(DropCooldown(InstancedAcidDrop.gameObject, cooldownTimer));
         }
@@ -42,6 +43,7 @@ public class PipeTrap : MonoBehaviour
             GameObject Gas = ObjectPool.SharedInstance.GetGasPooledObject();
             if (Gas)
             {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidGas, this.gameObject.transform.position);
                 Gas.transform.position = acidPosition.transform.position;
                 Gas.transform.rotation = acidPosition.transform.rotation;
                 Gas.gameObject.SetActive(true);
