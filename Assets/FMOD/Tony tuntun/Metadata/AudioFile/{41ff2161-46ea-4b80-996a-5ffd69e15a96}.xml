@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{41ff2161-46ea-4b80-996a-5ffd69e15a96}">
+		<property name="assetPath">
+			<value>acidDrop_sound.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.8610430839002268</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a5ac086a-6eb0-4ff4-881d-37e12e0ca793}</destination>
+		</relationship>
+	</object>
+</objects>
