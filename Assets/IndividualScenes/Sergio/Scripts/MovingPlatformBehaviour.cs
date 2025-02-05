@@ -14,9 +14,12 @@ public class MovingPlatformBehaviour : MonoBehaviour
     private void Start()
     {
         _currentWaypoint = 0;
-        _vfxPlatformDust.SetActive(true);
+        if (_vfxPlatformDust != null )
+        {
+            _vfxPlatformDust.SetActive(true);
+        }
     }
-    void Update()
+    void FixedUpdate()
     {
         if (transform.position != _waypoints[_currentWaypoint].position)
         {
@@ -34,6 +37,7 @@ public class MovingPlatformBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.transform.SetParent(this.transform);
+            playerJuice.instance.myAnimator.SetBool("IsOnPlatform", true);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -41,6 +45,7 @@ public class MovingPlatformBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || DeathAndRespawnManager.instance.prosesingDeath == true)
         {
             collision.transform.SetParent(null);
+            playerJuice.instance.myAnimator.SetBool("IsOnPlatform", false);
         }
     }
 }
