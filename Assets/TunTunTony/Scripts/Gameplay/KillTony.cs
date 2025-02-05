@@ -8,7 +8,7 @@ public class KillTony : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             DeathAndRespawnManager.instance.OnPlayerDeath();
-
+            FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.playerDeath, this.gameObject.transform.position);
             Debug.Log("Instanced position of Tony Ghost is " + DeathAndRespawnManager.instance.tonyGhost.transform.position);
         }
     }

@@ -61890,8 +61890,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <AcidDrop>k__BackingField.Path
+      value: event:/SFX/GotaAcidoNuevo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: <playerLand>k__BackingField.Path
       value: event:/SFX/Player/Land
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <playerDeath>k__BackingField.Path
+      value: event:/SFX/Die
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <AcidDrop>k__BackingField.Guid.Data1
+      value: 1257912972
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <AcidDrop>k__BackingField.Guid.Data2
+      value: 1286619263
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <AcidDrop>k__BackingField.Guid.Data3
+      value: 1586066090
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <AcidDrop>k__BackingField.Guid.Data4
+      value: -1773480034
       objectReference: {fileID: 0}
     - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: <playerLand>k__BackingField.Guid.Data1
@@ -61908,6 +61932,22 @@ PrefabInstance:
     - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: <playerLand>k__BackingField.Guid.Data4
       value: 712895218
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <playerDeath>k__BackingField.Guid.Data1
+      value: 1887217334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <playerDeath>k__BackingField.Guid.Data2
+      value: 1320905530
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <playerDeath>k__BackingField.Guid.Data3
+      value: 1642894210
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <playerDeath>k__BackingField.Guid.Data4
+      value: 1327029813
       objectReference: {fileID: 0}
     - target: {fileID: 2183015601692869184, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: m_LocalPosition.x
