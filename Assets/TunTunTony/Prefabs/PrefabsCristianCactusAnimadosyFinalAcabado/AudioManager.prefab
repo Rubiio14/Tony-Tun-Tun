@@ -173,3 +173,38 @@ MonoBehaviour:
       Data3: 609691816
       Data4: 1163968484
     Path: event:/SFX/EntarNivel
+  <AcidLeak>k__BackingField:
+    Guid:
+      Data1: -1030108834
+      Data2: 1208762079
+      Data3: 205191848
+      Data4: 1154930950
+    Path: event:/SFX/GotaAcido
+  <AcidGas>k__BackingField:
+    Guid:
+      Data1: 975639822
+      Data2: 1330452694
+      Data3: -1478262895
+      Data4: -1966745610
+    Path: event:/SFX/TuberiaGas
+  <WalkingEnemy>k__BackingField:
+    Guid:
+      Data1: -798037384
+      Data2: 1308952899
+      Data3: -161923172
+      Data4: 1788078872
+    Path: event:/SFX/MetalSteps
+  <FlyingEnemy>k__BackingField:
+    Guid:
+      Data1: 459694098
+      Data2: 1308236837
+      Data3: 803598216
+      Data4: -229173702
+    Path: event:/SFX/FlyingEnemy
+  <Shooter>k__BackingField:
+    Guid:
+      Data1: -1539054694
+      Data2: 1329457869
+      Data3: 797813164
+      Data4: 1714114752
+    Path: event:/SFX/Shooter
