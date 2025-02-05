@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{291991b2-27e8-4390-bb90-b887c6e0f438}">
 		<property name="name">
-			<value>Zanahoria 2</value>
+			<value>ZanahoriaIdleNuevo</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -139,7 +139,7 @@
 	</object>
 	<object class="TransitionMarker" id="{d3de34c6-d2ff-4658-9482-4758a09ed5d9}">
 		<property name="position">
-			<value>2.7869080739027958</value>
+			<value>2.65625</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{0800d826-7e85-4c15-9c42-8a62f9c66209}</destination>
