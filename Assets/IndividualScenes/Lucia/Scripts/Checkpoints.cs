@@ -33,6 +33,7 @@ public class Checkpoints : MonoBehaviour
             if (!checkpointPainted.activeSelf)
             {
                 spray.SetActive(true);
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.checkPoint, this.gameObject.transform.position);
                 _vfxCheckpoint.SetActive(true);
 
 

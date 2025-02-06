@@ -33,6 +33,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference AcidLeak { get; private set; }
     [field: SerializeField] public EventReference AcidDrop { get; private set; }
     [field: SerializeField] public EventReference AcidGas { get; private set; }
+    [field: SerializeField] public EventReference checkPoint { get; private set; }
+    [field: SerializeField] public EventReference metalDoors { get; private set; }
 
     [field: Header("Enemies")]
     [field: SerializeField] public EventReference WalkingEnemy { get; private set; }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9bce3ac9-e6af-4b04-bb30-c0b34d1a4b05}">
+		<property name="assetPath">
+			<value>Air, Burst, Aerosol Can, Spray, Short SND26649.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>192</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.81541145833333328</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a5ac086a-6eb0-4ff4-881d-37e12e0ca793}</destination>
+		</relationship>
+	</object>
+</objects>

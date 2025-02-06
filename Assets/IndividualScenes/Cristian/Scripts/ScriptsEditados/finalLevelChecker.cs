@@ -20,6 +20,7 @@ public class finalLevelChecker : MonoBehaviour
             if (hudManager.instance.carrotsCounter == 3)
             {
                 doorController.SetBool("OpenDoor", true);
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.metalDoors, this.gameObject.transform.position);
             }
         }
     }

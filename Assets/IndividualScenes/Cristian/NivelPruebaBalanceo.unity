@@ -61894,6 +61894,22 @@ PrefabInstance:
       value: event:/SFX/GotaAcidoNuevo
       objectReference: {fileID: 0}
     - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <CheckPoint>k__BackingField.Path
+      value: event:/SFX/CheckPointSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <MetalDoors>k__BackingField.Path
+      value: event:/SFX/MetalDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <checkPoint>k__BackingField.Path
+      value: event:/SFX/CheckPointSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <metalDoors>k__BackingField.Path
+      value: event:/SFX/MetalDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: <playerLand>k__BackingField.Path
       value: event:/SFX/Player/Land
       objectReference: {fileID: 0}
@@ -61916,6 +61932,70 @@ PrefabInstance:
     - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: <AcidDrop>k__BackingField.Guid.Data4
       value: -1773480034
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <CheckPoint>k__BackingField.Guid.Data1
+      value: -668179325
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <CheckPoint>k__BackingField.Guid.Data2
+      value: 1121542162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <CheckPoint>k__BackingField.Guid.Data3
+      value: 852933285
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <CheckPoint>k__BackingField.Guid.Data4
+      value: 1809645608
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <MetalDoors>k__BackingField.Guid.Data1
+      value: -1723795947
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <MetalDoors>k__BackingField.Guid.Data2
+      value: 1284975251
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <MetalDoors>k__BackingField.Guid.Data3
+      value: -875896420
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <MetalDoors>k__BackingField.Guid.Data4
+      value: -2080168015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <checkPoint>k__BackingField.Guid.Data1
+      value: -668179325
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <checkPoint>k__BackingField.Guid.Data2
+      value: 1121542162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <checkPoint>k__BackingField.Guid.Data3
+      value: 852933285
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <checkPoint>k__BackingField.Guid.Data4
+      value: 1809645608
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <metalDoors>k__BackingField.Guid.Data1
+      value: -1723795947
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <metalDoors>k__BackingField.Guid.Data2
+      value: 1284975251
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <metalDoors>k__BackingField.Guid.Data3
+      value: -875896420
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
+      propertyPath: <metalDoors>k__BackingField.Guid.Data4
+      value: -2080168015
       objectReference: {fileID: 0}
     - target: {fileID: 2072206602489308386, guid: 6d9be5f053bacc44fabdad83f943f94b, type: 3}
       propertyPath: <playerLand>k__BackingField.Guid.Data1
