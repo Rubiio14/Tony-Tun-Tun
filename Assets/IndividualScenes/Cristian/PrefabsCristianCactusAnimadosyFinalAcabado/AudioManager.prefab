@@ -117,6 +117,13 @@ MonoBehaviour:
       Data3: -1189719663
       Data4: 712895218
     Path: event:/SFX/Player/Land
+  <playerDeath>k__BackingField:
+    Guid:
+      Data1: 1887217334
+      Data2: 1320905530
+      Data3: 1642894210
+      Data4: 1327029813
+    Path: event:/SFX/Die
   <playerChargedJump>k__BackingField:
     Guid:
       Data1: 453184360
@@ -187,6 +194,13 @@ MonoBehaviour:
       Data3: 205191848
       Data4: 1154930950
     Path: event:/SFX/GotaAcido
+  <AcidDrop>k__BackingField:
+    Guid:
+      Data1: 1257912972
+      Data2: 1286619263
+      Data3: 1586066090
+      Data4: -1773480034
+    Path: event:/SFX/GotaAcidoNuevo
   <AcidGas>k__BackingField:
     Guid:
       Data1: 975639822
