@@ -3,14 +3,13 @@ using UnityEngine;
 public class parallax : MonoBehaviour 
 
 {
-    private float length, startpos;
+    private float startpos;
     public GameObject cam;
     public float parallaxEffect;
 
     private void Start()
     {
         startpos = transform.position.x;
-        length = GetComponent<MeshRenderer>().bounds.size.x;
     }
 
     private void FixedUpdate()

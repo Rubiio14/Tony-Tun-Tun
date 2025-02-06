@@ -110,6 +110,13 @@ MonoBehaviour:
       Data3: 1742431155
       Data4: 759768299
     Path: event:/SFX/Player/Jump
+  <playerLand>k__BackingField:
+    Guid:
+      Data1: 707213421
+      Data2: 1092739558
+      Data3: -1189719663
+      Data4: 712895218
+    Path: event:/SFX/Player/Land
   <playerChargedJump>k__BackingField:
     Guid:
       Data1: 453184360

@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -41,18 +39,20 @@ public class UIManager : MonoBehaviour
     public event Action<bool> OnControllerChange;
 
     //Global variables for UI localization
-    private string UITableName = "UI";
-    private string KeyboardKey = "Keyboard";
-    private string GamepadKey = "Gamepad";
+    private readonly string UITableName = "UI";
+    private readonly string KeyboardKey = "Keyboard";
+    private readonly string GamepadKey = "Gamepad";
 
     //Icon change
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private string keyboardControlScheme = "Keyboard&Mouse";
-    [SerializeField] private string gamepadControlScheme = "Gamepad";
+    [SerializeField] private string _keyboardControlScheme = "Keyboard&Mouse";
+    [SerializeField] private string _gamepadControlScheme = "Gamepad";
 
     //BlackFade 
-    public Image fadeImage;
-    public float fadeDuration = 1f;
+    [SerializeField] private Image _fadeImage;
+    [SerializeField] private float _fadeDuration = 1f;
+    [SerializeField] private float _fadeIncrement;
+
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -100,11 +100,11 @@ public class UIManager : MonoBehaviour
 
     public void OnControlsChanged(PlayerInput input)
     {
-        if (input.currentControlScheme == keyboardControlScheme)
+        if (input.currentControlScheme == _keyboardControlScheme)
         {
             ChangeToKeyboard();
         }
-        else if (input.currentControlScheme == gamepadControlScheme)
+        else if (input.currentControlScheme == _gamepadControlScheme)
         {
             ChangeToGamepad();
         }
@@ -133,7 +133,6 @@ public class UIManager : MonoBehaviour
     public IEnumerator LoadScene(string sceneName)
     {
         //meter fundido a negro
-        
         StartCoroutine(FadeToBlack());
         yield return new WaitForSeconds(_delayForSceneChange * 4);
         SceneManager.LoadScene(sceneName);
@@ -178,8 +177,7 @@ public class UIManager : MonoBehaviour
         if (context.performed)
         {
             FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.openPause);
-            _playerInput.uiInputModule.ActivateModule();
-            _playerInput.currentActionMap.Disable();
+            _playerInput.SwitchCurrentActionMap("UI");
             _pauseMenu.gameObject.SetActive(true);
             Time.timeScale = 0;
             _pauseMenu.SelectFirstElement();
@@ -189,8 +187,7 @@ public class UIManager : MonoBehaviour
     public void DisableLevelPauseMenu()
     {
         FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.closePause);
-        _playerInput.uiInputModule.DeactivateModule();
-        _playerInput.currentActionMap.Enable();
+        _playerInput.SwitchCurrentActionMap("Player");
         Time.timeScale = 1;
         _pauseMenu.gameObject.SetActive(false);
     }
@@ -239,13 +236,14 @@ public class UIManager : MonoBehaviour
     private IEnumerator FadeToBlack()
     {
         float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
+        Color temporalColor = _fadeImage.color;
+        while (elapsedTime < _fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
-            Color temporalColor = fadeImage.color;
-            temporalColor.a = Mathf.Clamp01(elapsedTime / fadeDuration);
-            fadeImage.color = temporalColor;
+            elapsedTime += _fadeIncrement;
+            temporalColor.a = Mathf.Clamp01(elapsedTime / _fadeDuration);
+            _fadeImage.color = temporalColor;
             yield return null;
         }
+        Time.timeScale = 1f;
     }
 }
