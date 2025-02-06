@@ -92,11 +92,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405507edf2f0ede45a990c8bdfc239b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTimer: 2
+  cooldownDrop: 2
+  cooldownGas: 3
   speed: 1
   inRange: 0
   isGas: 0
   isDrop: 1
+  isEnable: 0
   acidPosition: {fileID: 7514072634988313984}
 --- !u!1001 &5950282498503173961
 PrefabInstance:

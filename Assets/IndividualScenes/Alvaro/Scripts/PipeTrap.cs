@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PipeTrap : MonoBehaviour
 {
-    [SerializeField] private float cooldownTimer;
+    [SerializeField] private float cooldownDrop, cooldownGas;
 
     public float speed;
-    public bool inRange, isGas, isDrop;
+    public bool inRange, isGas, isDrop, isEnable;
     public Transform acidPosition;
 
 
@@ -32,13 +32,13 @@ public class PipeTrap : MonoBehaviour
                 InstancedAcidDrop.gameObject.SetActive(true);
                 FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidDrop, this.gameObject.transform.position);
             }
-            StartCoroutine(DropCooldown(InstancedAcidDrop.gameObject, cooldownTimer));
+            StartCoroutine(DropCooldown(InstancedAcidDrop.gameObject, cooldownDrop));
         }
     }
 
     private void PipeGasInstance()
     {
-        if (inRange && isGas)
+        if (inRange && isGas && !isEnable)
         {
             GameObject Gas = ObjectPool.SharedInstance.GetGasPooledObject();
             if (Gas)
@@ -47,8 +47,9 @@ public class PipeTrap : MonoBehaviour
                 Gas.transform.position = acidPosition.transform.position;
                 Gas.transform.rotation = acidPosition.transform.rotation;
                 Gas.gameObject.SetActive(true);
+                isEnable = true;
             }
-            StartCoroutine(GasCooldown(Gas, cooldownTimer));
+            StartCoroutine(GasCooldown(Gas, cooldownGas));
         }
     }
 
@@ -87,6 +88,7 @@ public class PipeTrap : MonoBehaviour
         yield return new WaitForSeconds(timer);
         gas.SetActive(false);
         yield return new WaitForSeconds(timer);
+        isEnable = false;
         PipeGasInstance();
     }
 }
