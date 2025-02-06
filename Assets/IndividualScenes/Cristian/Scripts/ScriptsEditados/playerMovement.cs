@@ -6,21 +6,18 @@ public class playerMovement : MonoBehaviour
     public static playerMovement instance;
 
     [Header("Components")]
-
     private Rigidbody2D _rb;
     playerGround groundScript;
 
     [Header("Movement Stats")]
-    [SerializeField, Range(0f, 40f)] [Tooltip("Velocidad máxima de movimeinto")] public float maxSpeed = 10f;
-    [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda en alcanzar la velocidad máxima")] public float maxAcceleration = 52f;
-    [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda en decelerar")] public float maxDecceleration = 52f;
-    [SerializeField, Range(0f, 100f)] [Tooltip("Velocidad a la que para al cambiar de dirección")] public float maxTurnSpeed = 80f;
-    [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda en alcanzar la velocidad máxima en el aire")] public float maxAirAcceleration;
-    [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda en frenarse si no se mueve en el aire")] public float maxAirDeceleration;
-    [SerializeField, Range(0f, 100f)] [Tooltip("Tiempo que tarda al frenarse cuando cambia de dirección en el aire")] public float maxAirTurnSpeed = 80f;
+    [SerializeField, Range(0f, 40f)] public float maxSpeed = 10f;
+    [SerializeField, Range(0f, 100f)] public float maxAcceleration = 52f;
+    [SerializeField, Range(0f, 100f)] public float maxDecceleration = 52f;
+    [SerializeField, Range(0f, 100f)] public float maxTurnSpeed = 80f;
+    [SerializeField, Range(0f, 100f)] public float maxAirAcceleration;
+    [SerializeField, Range(0f, 100f)] public float maxAirDeceleration;
+    [SerializeField, Range(0f, 100f)] public float maxAirTurnSpeed = 80f;
 
-
-    //Math Operations
     private float _directionX;
     private Vector2 _desiredVelocity;
     public Vector2 velocity;
@@ -34,6 +31,7 @@ public class playerMovement : MonoBehaviour
     public bool pressingKey;
     public bool useAcceleration;
     public bool isFacingRight;
+    private bool isSliding = false;
 
     void Awake()
     {
@@ -49,6 +47,7 @@ public class playerMovement : MonoBehaviour
             Destroy(this);
         }
     }
+
     public void OnMovement(InputAction.CallbackContext context)
     {
         if (playerMovementLimiter.instance.CharacterCanMove)
@@ -56,7 +55,7 @@ public class playerMovement : MonoBehaviour
             _directionX = context.ReadValue<float>();
         }
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (!playerMovementLimiter.instance.CharacterCanMove)
@@ -64,15 +63,11 @@ public class playerMovement : MonoBehaviour
             _directionX = 0;
         }
         slideTony();
-    } 
+    }
+
     private void FixedUpdate()
     {
-       
-
-        //Get current ground status from Player's ground script
         onGround = groundScript.GetOnGround();
-
-        //Get the Rigidbody's current velocity
         velocity = _rb.linearVelocity;
 
         if (useAcceleration)
@@ -87,7 +82,6 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
-                //Only for SpiderWeb
                 runWithAcceleration();
             }
         }
@@ -95,49 +89,40 @@ public class playerMovement : MonoBehaviour
 
     private void runWithAcceleration()
     {
-        //Set Player's acceleration, deceleration, and turn speed stats, based on whether Player's on the ground on in the air
         _acceleration = onGround ? maxAcceleration : maxAirAcceleration;
         _deceleration = onGround ? maxDecceleration : maxAirDeceleration;
         _turnSpeed = onGround ? maxTurnSpeed : maxAirTurnSpeed;
 
         if (pressingKey)
         {
-            //If the sign of our input direction doesn't match Player's movement, Player's turning.
             if (Mathf.Sign(_directionX) != Mathf.Sign(velocity.x) && _directionX != 0)
             {
                 _maxSpeedChange = _turnSpeed * Time.deltaTime;
-               
                 playerJuice.instance.myAnimator.SetBool("IsTurn", true);
-            }          
-
+            }
             else
             {
-                //If they match, it means Player's running along.
                 _maxSpeedChange = _acceleration * Time.deltaTime;
                 playerJuice.instance.myAnimator.SetBool("IsTurn", false);
             }
         }
         else
         {
-            //If we're not pressing a direction speed down Player. 
             _maxSpeedChange = _deceleration * Time.deltaTime;
         }
-        //Move Player's velocity towards the desired velocity, at the rate of the number calculated above
+
         velocity.x = Mathf.MoveTowards(velocity.x, _desiredVelocity.x, _maxSpeedChange);
         _rb.linearVelocity = velocity;
-
     }
 
     private void runWithoutAcceleration()
     {
-        //Just for SpiderWeb
         velocity.x = _desiredVelocity.x;
-
         _rb.linearVelocity = velocity;
     }
 
     private void slideTony()
-    {    
+    {
         if (_directionX != 0)
         {
             transform.localScale = new Vector3(_directionX > 0 ? 1 : -1, 1, 1);
@@ -159,6 +144,19 @@ public class playerMovement : MonoBehaviour
             isFacingRight = false;
         }
 
+        if (playerJuice.instance.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SLIDETURN"))
+        {
+            if (!isSliding)
+            {
+                FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.playerSlide, this.gameObject.transform.position);
+                isSliding = true;
+            }
+        }
+        else
+        {
+            isSliding = false;
+        }
+
         resetSlideAnimation();
     }
 
@@ -175,5 +173,3 @@ public class playerMovement : MonoBehaviour
         }
     }
 }
-    
-
