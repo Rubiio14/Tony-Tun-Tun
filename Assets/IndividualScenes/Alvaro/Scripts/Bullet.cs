@@ -4,11 +4,11 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRigidbody;
 
-    public Vector3 Direction { get; set; }
-    public float Speed { get; set; }
+    [field: SerializeField] public Vector3 Direction { get; set; }
+    [field:SerializeField]public float Speed { get; set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void OnEnable()
     {
         bulletRigidbody = GetComponent<Rigidbody2D>();
         bulletRigidbody.gravityScale = 0;

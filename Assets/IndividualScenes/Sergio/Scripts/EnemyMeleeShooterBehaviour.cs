@@ -27,7 +27,7 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     //El tiempo que tarda la animación de detección en hacerse, dura 1 segundo, no tocar este valor.
     private float _waitForDetection = 1;
 
-    public bool _playerDetected = false;
+    public bool _playerDetected = false, isEnabled;
 
     private void Start()
     {
@@ -59,7 +59,7 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
     }
     private void BulletInstance()
     {
-        if (_playerDetected == true)
+        if (_playerDetected == true && !isEnabled)
         {
             GameObject Bullet = ObjectPool.SharedInstance.GetBulletPooledObject();
             Bullet InstancedBullet = null;
@@ -70,12 +70,12 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
                 InstancedBullet.Speed = speed;
                 InstancedBullet.Direction = bulletPosition.right;
                 InstancedBullet.gameObject.SetActive(true);
+                isEnabled = true;
                 _vfxShot.SetActive(true);
                 _vfxShot.transform.position = _vfxShotWaypoint.transform.position;
                 FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.Shooter, this.gameObject.transform.position);
+                StartCoroutine(ActivateShot(_shootDelay));
             }
-
-            StartCoroutine(ActivateShot(_shootDelay));
         }
     }
     
@@ -85,6 +85,7 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
         _vfxShot.SetActive(false);
 
         Debug.Log("Disparo");
+        isEnabled = false;
         BulletInstance();
     }
 

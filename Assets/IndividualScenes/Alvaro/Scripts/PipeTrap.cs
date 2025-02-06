@@ -19,7 +19,7 @@ public class PipeTrap : MonoBehaviour
 
     private void PipeDropInstance()
     {
-        if (inRange && isDrop)
+        if (inRange && isDrop && !isEnable)
         {
             GameObject Drop = ObjectPool.SharedInstance.GetDropPooledObject();
             AcidDrop InstancedAcidDrop = null;
@@ -30,6 +30,7 @@ public class PipeTrap : MonoBehaviour
                 InstancedAcidDrop.Speed = speed;
                 InstancedAcidDrop.Direction = acidPosition.forward;
                 InstancedAcidDrop.gameObject.SetActive(true);
+                isEnable = true;
                 FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidDrop, this.gameObject.transform.position);
             }
             StartCoroutine(DropCooldown(InstancedAcidDrop.gameObject, cooldownDrop));
@@ -68,16 +69,13 @@ public class PipeTrap : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
-            if (isDrop)
-            {
-                StopAllCoroutines();
-            }
         }
     }
 
     public IEnumerator DropCooldown(GameObject drop, float timer)
     {
         yield return new WaitForSeconds(timer);
+        isEnable = false;
         PipeDropInstance();
     }
 
