@@ -185,6 +185,6 @@ public class hudManager : MonoBehaviour
     {
         staminaImage.fillAmount += stamina * Time.deltaTime;
         rayoCounter++;
-        rayoText.SetText(rayoCounter.ToString());
+        rayoText.SetText("x" + rayoCounter.ToString());
     }
 }
