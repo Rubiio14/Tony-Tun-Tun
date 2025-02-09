@@ -103,6 +103,13 @@ MonoBehaviour:
       Data3: -192966732
       Data4: -1603678641
     Path: event:/SFX/Zanahoria
+  <zapatoCollectedSound>k__BackingField:
+    Guid:
+      Data1: 2080679133
+      Data2: 1219604321
+      Data3: -970507102
+      Data4: -1419514362
+    Path: event:/SFX/Zapato
   <playerJump>k__BackingField:
     Guid:
       Data1: -1979239125
@@ -124,6 +131,13 @@ MonoBehaviour:
       Data3: 1642894210
       Data4: 1327029813
     Path: event:/SFX/Die
+  <playerSlide>k__BackingField:
+    Guid:
+      Data1: -879612526
+      Data2: 1211134775
+      Data3: 1851463852
+      Data4: 1736557939
+    Path: event:/SFX/Player/Slide
   <playerChargedJump>k__BackingField:
     Guid:
       Data1: 453184360
@@ -208,6 +222,27 @@ MonoBehaviour:
       Data3: -1478262895
       Data4: -1966745610
     Path: event:/SFX/TuberiaGas
+  <checkPoint>k__BackingField:
+    Guid:
+      Data1: -668179325
+      Data2: 1121542162
+      Data3: 852933285
+      Data4: 1809645608
+    Path: event:/SFX/CheckPointSound
+  <metalDoors>k__BackingField:
+    Guid:
+      Data1: -1723795947
+      Data2: 1284975251
+      Data3: -875896420
+      Data4: -2080168015
+    Path: event:/SFX/MetalDoor
+  <brokenPlatform>k__BackingField:
+    Guid:
+      Data1: -1405321375
+      Data2: 1157323258
+      Data3: -672662910
+      Data4: -43261210
+    Path: event:/SFX/PlataformaRota
   <WalkingEnemy>k__BackingField:
     Guid:
       Data1: -798037384
