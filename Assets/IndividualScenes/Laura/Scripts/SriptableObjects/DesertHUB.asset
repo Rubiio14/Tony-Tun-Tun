@@ -47,8 +47,8 @@ MonoBehaviour:
     - Identifier: 2
       IsPicked: 0
   CurrentLevelIndex: 0
-  MusicVolume: 0.4
-  SFXVolume: 0.6
+  MusicVolume: 0.5
+  SFXVolume: 0.3
   Locale: en
   SessionResolution:
     Width: 1920
