@@ -9,5 +9,6 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         FMODAudioManager.instance.InitializeMusic(FMODEvents.instance.levelMusic);
+        FMODAudioManager.instance.SetMusicParameter("Zona", 0);
     }
 }

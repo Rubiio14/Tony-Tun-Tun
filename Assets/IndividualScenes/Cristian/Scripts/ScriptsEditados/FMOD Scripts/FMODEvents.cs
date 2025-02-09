@@ -10,6 +10,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference rayoCollectedSound { get; private set; }
     //ZanahoriaSound
     [field: SerializeField] public EventReference zanahoriaCollectedSound { get; private set; }
+    [field: SerializeField] public EventReference zapatoCollectedSound { get; private set; }
     //Jump
     [field: Header("Player")]
     [field: SerializeField] public EventReference playerJump { get; private set; }

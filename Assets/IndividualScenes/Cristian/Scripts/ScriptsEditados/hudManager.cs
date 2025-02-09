@@ -157,6 +157,7 @@ public class hudManager : MonoBehaviour
     {
         //Update Stamina Cap
         shoesCounter++;
+        
 
         if (shoesCounter == 1)
         {
