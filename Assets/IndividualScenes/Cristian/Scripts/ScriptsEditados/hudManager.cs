@@ -74,15 +74,16 @@ public class hudManager : MonoBehaviour
         if (_isBaseFilling && playerGround.instance.GetOnGround() && Math.Round(staminaImage.fillAmount, 2) >= 0.25f)
         {
             holdTime += Time.deltaTime;
-            FMODAudioManager.instance.PlayChargedJump();
             _vfxChargedJump.SetActive(true);
 
             //ActivarVFX
 
             if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.25f && shoesCounter == 0)
             {
+                
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
                 {
+                    //FMODAudioManager.instance.PlayChargedJump();
                     jumpImage.fillAmount += 0.5f * Time.deltaTime;
                 }
             }

@@ -4919,73 +4919,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 109aec8df237f5f49ac3e4aa14312c02, type: 3}
   m_PrefabInstance: {fileID: 901156019}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &306901562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5195251124588451800, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-  m_PrefabInstance: {fileID: 774846730}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &306901568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306901562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1677135610
-      Data2: 1217772973
-      Data3: -528018297
-      Data4: 2041396431
-    Path: event:/SFX/FlyingEnemyFlutter
-  Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &306901569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306901562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 459694098
-      Data2: 1308236837
-      Data3: 803598216
-      Data4: -229173702
-    Path: event:/SFX/FlyingEnemy
-  Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!4 &314488676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 109aec8df237f5f49ac3e4aa14312c02, type: 3}
@@ -12157,44 +12090,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2633828811505126824, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 2633828811505126824, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4851201380099771746, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 4851201380099771746, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.32
-      objectReference: {fileID: 0}
     - target: {fileID: 8103670650328478116, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
       propertyPath: m_Name
       value: EnVoladorPREFAB
       objectReference: {fileID: 0}
-    - target: {fileID: 8265086593987709626, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 8265086593987709626, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.93
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5195251124588451800, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 306901568}
-    - targetCorrespondingSourceObject: {fileID: 5195251124588451800, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 306901569}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7f2ccdeb613474699239a1baec7dbb, type: 3}
 --- !u!4 &774900010 stripped
 Transform:

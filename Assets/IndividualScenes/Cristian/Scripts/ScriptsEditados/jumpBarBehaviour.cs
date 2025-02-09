@@ -104,7 +104,7 @@ public class jumpBarBehaviour : MonoBehaviour
                     
                 }
                 baseBarImage.fillAmount += 3f * Time.deltaTime; // Rellenado gradual
-                FMODAudioManager.instance.PlayChargedJump();
+                //FMODAudioManager.instance.PlayChargedJump();
             }
             // Solo comienza a llenar la barra base si ha pasado el tiempo requerido
             if (baseBarImage.fillAmount >= 1f && firstBarImage.fillAmount < 1f)        
