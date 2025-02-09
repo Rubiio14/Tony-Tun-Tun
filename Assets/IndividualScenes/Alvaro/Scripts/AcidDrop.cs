@@ -3,6 +3,8 @@ using UnityEngine;
 public class AcidDrop : MonoBehaviour
 {
     Rigidbody2D dropRigidbody;
+    public GameObject particles;
+    public GameObject mesh;
 
     public Vector3 Direction {  get; set; }
     public float Speed { get; set; }
@@ -17,7 +19,8 @@ public class AcidDrop : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         dropRigidbody.linearVelocity = Direction * 0;
-        gameObject.SetActive(false);
+        mesh.SetActive(false);
+        particles.SetActive(true);
         FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidLeak, this.gameObject.transform.position);
     }
 }
