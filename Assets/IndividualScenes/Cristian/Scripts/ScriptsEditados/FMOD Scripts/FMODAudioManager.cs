@@ -27,11 +27,6 @@ public class FMODAudioManager : MonoBehaviour
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
     }
-    //Para probar nada mas Laura =), luego la playeas doden quieras
-    /*public void Start()
-    {
-        InitializeMusic(FMODEvents.instance.levelMusic);
-    }*/
 
     public void InitializeMusic(EventReference musicEventReference)
     {
@@ -86,7 +81,6 @@ public class FMODAudioManager : MonoBehaviour
         {
             chargedJumpInstance = CreateInstance(FMODEvents.instance.playerChargedJump);
             chargedJumpInstance.start();
-            Debug.Log("Sonido de salto cargado iniciado.");
         }
     }
 
@@ -97,7 +91,6 @@ public class FMODAudioManager : MonoBehaviour
             chargedJumpInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             chargedJumpInstance.release();
             chargedJumpInstance.clearHandle();
-            Debug.Log("Sonido de salto cargado detenido.");
         }
     }
 }
