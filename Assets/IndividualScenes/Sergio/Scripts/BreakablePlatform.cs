@@ -28,6 +28,8 @@ public class BreakablePlatform : MonoBehaviour
     [Header("Temblor Plataforma")]
     public bool _isShaking;
     [Tooltip("La cantidad de distancia por la que tiembla la plataforma")] public float shakeDistance;
+    //Repetición del shake
+    public float _shakeRepeat = 0.25f;
 
     [Header("Timer")]
     public float _timer = 0f;
@@ -37,12 +39,7 @@ public class BreakablePlatform : MonoBehaviour
     public bool _needBreakingTimer = false;
     public float _platformBreakingTime = 3f;
     //Tiempo en el que tardan las piezas en desactivarse
-    [Tooltip("Lo que tardan en desaparecer las piezas, debe ser INFERIOR al Platform Respawn Time")]  public float _despawnPieceTime = 2f;
-
-    [Header("Respawn")]
-    [Tooltip("Si esta plataforma puede reaparecer o no")] public bool _canRespawn;
-    public bool _needRespawningTimer = false;
-    [Tooltip("Lo que tarda en volver a aparecer la plataforma")] public float _platformRespawnTime = 5f;
+     public float _despawnPieceTime = 2f;
 
     //Rotación de las piezas
     Vector3 _pieceRotation;
@@ -50,24 +47,6 @@ public class BreakablePlatform : MonoBehaviour
     [Header("Rotación piezas")]
     [Tooltip("Cantidad mínima de rotación")] public float _minRotationValue = -1f;
     [Tooltip("Cantidad máxima de rotación")] public float _maxRotationValue = 1f;
-
-    //Posiciones de las piezas para volver a colocarlas
-    private Vector3 _piece1Position;
-    private Vector3 _piece2Position;
-    private Vector3 _piece3Position;
-    private Vector3 _piece4Position;
-    private Vector3 _piece5Position;
-    private Vector3 _piece6Position;
-    private Vector3 _piece7Position;
-
-    //Rotacion de las piezas para volver a colocarlas
-    private Quaternion _piece1Rotation;
-    private Quaternion _piece2Rotation;
-    private Quaternion _piece3Rotation;
-    private Quaternion _piece4Rotation;
-    private Quaternion _piece5Rotation;
-    private Quaternion _piece6Rotation;
-    private Quaternion _piece7Rotation;
 
 
     //Para declarar si es un atajo, para activar el collider que bloquea al jugador por el lado contrario al que rompe la plataforma.
@@ -83,24 +62,6 @@ public class BreakablePlatform : MonoBehaviour
         _vfxPlatformBreakDust.SetActive(false);
         _vfxPlatformShakingDust.SetActive(false);
 
-        //Posiciones de las piezas para volver a colocarlas 
-        _piece1Position = piece1.transform.position;
-        _piece2Position = piece2.transform.position;
-        _piece3Position = piece3.transform.position;
-        _piece4Position = piece4.transform.position;
-        _piece5Position = piece5.transform.position;
-        _piece6Position = piece6.transform.position;
-        _piece7Position = piece7.transform.position;
-
-        //Rotacion de las piezas para volver a colocarlas
-        _piece1Rotation = piece1.transform.rotation;
-        _piece2Rotation = piece2.transform.rotation;
-        _piece3Rotation = piece3.transform.rotation;
-        _piece4Rotation = piece4.transform.rotation;
-        _piece5Rotation = piece5.transform.rotation;
-        _piece6Rotation = piece6.transform.rotation;
-        _piece7Rotation = piece7.transform.rotation;
-
         originalPos = _platformMesh.transform.position; 
     }
 
@@ -108,7 +69,6 @@ public class BreakablePlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && playerGround.instance._isOnGround)
         {
-            Debug.Log("ColliderPlataform");
             Hit();
         }
     }
@@ -132,12 +92,6 @@ public class BreakablePlatform : MonoBehaviour
             if (_isShaking)
             {
                 Vector3 newPos = originalPos + Random.insideUnitSphere * (Time.deltaTime * shakeDistance);
-
-                //Los ejes NO comentados son aquellos que No se moverán
-               // newPos.x = _platformMesh.transform.position.x;
-               // newPos.y = _platformMesh.transform.position.y;
-               // newPos.z = _platformMesh.transform.position.z;
-
                 _platformMesh.transform.position = newPos;
             }
 
@@ -160,19 +114,6 @@ public class BreakablePlatform : MonoBehaviour
             piece7.transform.Rotate(_pieceRotation);
         }
 
-        if(_canRespawn == true)
-        {
-            if (_needRespawningTimer == true)
-            {
-                _timer += Time.deltaTime;
-                if (_timer >= _platformRespawnTime)
-                {
-                    _timer = 0f;
-                    _needRespawningTimer = false;
-                    Respawn();
-                }
-            }
-        }
         if (_isShortcut == true)
         {
             _shortcutColliderEmpty.SetActive(true);
@@ -196,7 +137,7 @@ public class BreakablePlatform : MonoBehaviour
             _isShaking = true;
         }
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(_shakeRepeat);
 
         _isShaking = false;
         _platformMesh.transform.position = originalPos;
@@ -208,11 +149,9 @@ public class BreakablePlatform : MonoBehaviour
         _isShortcut = false;
         _needRotations = true;
         FallingPhysics();
-        //Se necesita el timer para respawnear la plataforma
-        if (_canRespawn == true)
-        {
-            _needRespawningTimer = true;
-        }
+
+        //audioRomperse
+        FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.brokenPlatform, this.gameObject.transform.position);
 
         //Corrutina para que desaparezcan las piezas tras un tiempo
         StartCoroutine(Waiting());
@@ -258,50 +197,5 @@ public class BreakablePlatform : MonoBehaviour
         piece7.SetActive(false);
         _vfxPlatformBreakDust.SetActive(false);
         Destroy(_prefabBreakablePlatform);
-
-    }
-
-    //Vuelve a aparecer y a colocarse la pieza
-    private void Respawn()
-    {
-        _needRotations = false;
-
-        piece1.GetComponent<Rigidbody>().isKinematic = true;
-        piece1.SetActive(true);
-        piece1.transform.position = _piece1Position;
-        piece1.transform.rotation = _piece1Rotation;
-
-        piece2.GetComponent<Rigidbody>().isKinematic = true;
-        piece2.SetActive(true);
-        piece2.transform.position = _piece2Position;
-        piece2.transform.rotation = _piece2Rotation;
-
-        piece3.GetComponent<Rigidbody>().isKinematic = true;
-        piece3.SetActive(true);
-        piece3.transform.position = _piece3Position;
-        piece3.transform.rotation = _piece3Rotation;
-
-        piece4.GetComponent<Rigidbody>().isKinematic = true;
-        piece4.SetActive(true);
-        piece4.transform.position = _piece4Position;
-        piece4.transform.rotation = _piece4Rotation;
-
-
-        piece5.GetComponent<Rigidbody>().isKinematic = true;
-        piece5.SetActive(true);
-        piece5.transform.position = _piece5Position;
-        piece5.transform.rotation = _piece5Rotation;
-
-        piece6.GetComponent<Rigidbody>().isKinematic = true;
-        piece6.SetActive(true);
-        piece6.transform.position = _piece6Position;
-        piece6.transform.rotation = _piece6Rotation;
-
-        piece7.GetComponent<Rigidbody>().isKinematic = true;
-        piece7.SetActive(true);
-        piece7.transform.position = _piece7Position;
-        piece7.transform.rotation = _piece7Rotation;
-
-        _platformCollider.enabled = true;
-    }
+    }   
 }

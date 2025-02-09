@@ -35,14 +35,12 @@ public class DeathAndRespawnManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        Debug.Log("Jugador ha muerto, iniciando proceso de muerte.");
         prosesingDeath = true;
         StartCoroutine(HandleDeath());
     }
 
     private IEnumerator HandleDeath()
     {
-        Debug.Log("Comienza la animación de muerte.");
         float positionInZ = 3.25f;
         float positionInY = 3f;
 
@@ -64,7 +62,6 @@ public class DeathAndRespawnManager : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Animación de muerte completada, comenzando fade-in.");
 
         yield return StartCoroutine(FadeCanvasGroup(deathBackground, 1f, fadeInOutSpeed));
 
@@ -75,16 +72,13 @@ public class DeathAndRespawnManager : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        Debug.Log("Responiendo al jugador en el último checkpoint.");
         checkpoint_Manager.ReSpawn();
         FadeOut();
 
-        Debug.Log("Jugador respawneado y listo para continuar.");
     }
 
     private void FadeOut()
     {
-        Debug.Log("Comenzando fade-out.");
         StartCoroutine(FadeCanvasGroup(deathBackground, 0f, fadeInOutSpeed));
 
         prosesingDeath = false;
@@ -92,7 +86,6 @@ public class DeathAndRespawnManager : MonoBehaviour
         player.SetActive(true);
         tonyGhost.SetActive(false);
 
-        Debug.Log("FadeOut completado, fondo restablecido.");
     }
 
     IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float endAlpha, float duration)
