@@ -51,9 +51,9 @@ public class hudManager : MonoBehaviour
     public float refillSpeedBar = 0.5f;
     //Trameo barra
     public float firstVisualTram = 0.25f;
-    public float secondVisualTram = 0.25f;
-    public float thirdVisualTram = 0.25f;
-    public float fullVisualTram = 0.25f;
+    public float secondVisualTram = 0.5f;
+    public float thirdVisualTram = 0.75f;
+    public float fullVisualTram = 1f;
 
 
     //VFX Salto Cargado
