@@ -88,6 +88,10 @@ public class MainMenuUIController : MonoBehaviour
         {
             UIManager.Instance.SaveAndQuit();
         }
+        else
+        {
+            Application.Quit();
+        }
     }
 
 }
