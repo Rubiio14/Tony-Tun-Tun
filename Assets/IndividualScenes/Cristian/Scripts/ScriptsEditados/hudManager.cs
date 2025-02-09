@@ -36,16 +36,25 @@ public class hudManager : MonoBehaviour
     [Header("Colored Carrot")]
     public Sprite coloredCarrot;
 
+
     public int carrotsCounter;
     public int shoesCounter;
     private float _requiredHoldTime = 0.03f;
     public int rayoCounter;
     public TextMeshProUGUI rayoText;
 
-    private bool _isBaseFilling = false; // Bandera para controlar el llenado
+    private bool _isBaseFilling = false; //Bandera para controlar el llenado
     private float holdTime = 0f;
     private float actualLimit = 0.25f;
     public float staminaRecharge = 0.1f;
+    private float _resetRefillSpeed = 0.8f;
+    public float refillSpeedBar = 0.5f;
+    //Trameo barra
+    public float firstVisualTram = 0.25f;
+    public float secondVisualTram = 0.25f;
+    public float thirdVisualTram = 0.25f;
+    public float fullVisualTram = 0.25f;
+
 
     //VFX Salto Cargado
     [SerializeField]
@@ -71,47 +80,48 @@ public class hudManager : MonoBehaviour
         {            
             staminaImage.fillAmount += staminaRecharge * Time.deltaTime;
         }
-        if (_isBaseFilling && playerGround.instance.GetOnGround() && Math.Round(staminaImage.fillAmount, 2) >= 0.25f)
+        if (_isBaseFilling && playerGround.instance.GetOnGround() && Math.Round(staminaImage.fillAmount, 2) >= firstVisualTram)
         {
             holdTime += Time.deltaTime;
+            //ActivarVFX y Audio
             _vfxChargedJump.SetActive(true);
             FMODAudioManager.instance.PlayChargedJump();
-            //ActivarVFX
+            
 
-            if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.25f && shoesCounter == 0)
+            if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= firstVisualTram && shoesCounter == 0)
             {
                 
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
                 {
-                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                    jumpImage.fillAmount += refillSpeedBar * Time.deltaTime;
                 }
             }
-            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.5f && shoesCounter == 1)
+            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= secondVisualTram && shoesCounter == 1)
             {
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
                 {
-                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                    jumpImage.fillAmount += refillSpeedBar * Time.deltaTime;
                 }
             }
-            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.75f && shoesCounter == 2)
+            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= thirdVisualTram && shoesCounter == 2)
             {
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
                 {
-                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                    jumpImage.fillAmount += refillSpeedBar * Time.deltaTime;
                 }
             }
-            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 1f && shoesCounter == 3)
+            else if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= fullVisualTram && shoesCounter == 3)
             {
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
                 {
-                    jumpImage.fillAmount += 0.5f * Time.deltaTime;
+                    jumpImage.fillAmount += refillSpeedBar * Time.deltaTime;
                 }
             }
         }
         //reset jumpBar
         if (jumpImage.fillAmount >= 0 && _isBaseFilling == false)
         {
-            jumpImage.fillAmount -= 0.8f * Time.deltaTime;
+            jumpImage.fillAmount -= _resetRefillSpeed * Time.deltaTime;
         }
     }
 
