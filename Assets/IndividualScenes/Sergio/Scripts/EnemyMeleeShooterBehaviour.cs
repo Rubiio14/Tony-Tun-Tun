@@ -84,7 +84,6 @@ public class EnemyMeleeShooterBehaviour : MonoBehaviour
         yield return new WaitForSeconds(timer);
         _vfxShot.SetActive(false);
 
-        Debug.Log("Disparo");
         isEnabled = false;
         BulletInstance();
     }
