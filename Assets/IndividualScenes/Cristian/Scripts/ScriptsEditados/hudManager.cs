@@ -75,7 +75,7 @@ public class hudManager : MonoBehaviour
         {
             holdTime += Time.deltaTime;
             _vfxChargedJump.SetActive(true);
-
+            FMODAudioManager.instance.PlayChargedJump();
             //ActivarVFX
 
             if (_isBaseFilling && holdTime >= _requiredHoldTime && jumpImage.fillAmount <= 0.25f && shoesCounter == 0)
@@ -83,7 +83,6 @@ public class hudManager : MonoBehaviour
                 
                 if (jumpImage.fillAmount < staminaImage.fillAmount)
                 {
-                    //FMODAudioManager.instance.PlayChargedJump();
                     jumpImage.fillAmount += 0.5f * Time.deltaTime;
                 }
             }
@@ -120,7 +119,6 @@ public class hudManager : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("entra");
             _isBaseFilling = true; // Activa el temporizador de relleno
             holdTime = 0f;
             jumpImage.fillAmount = 0f;

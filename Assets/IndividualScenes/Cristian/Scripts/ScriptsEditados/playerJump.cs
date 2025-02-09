@@ -297,13 +297,11 @@ public class playerJump : MonoBehaviour
         if (acumulatedJumpForce >= 1)
         {
             _jumpMultiplier = hudManager.instance.maxThirdBar;
-            Debug.Log("MaxThirdBar");
             return; //Stops the flow
         }
         else if (acumulatedJumpForce >= 0.875)
         {
             _jumpMultiplier = hudManager.instance.halfThirdBar;
-            Debug.Log("HalfThirdBar");
             return; //Stops the flow
         }
         SecondShoe(acumulatedJumpForce); //if there is no return jumps to the next function
@@ -315,13 +313,11 @@ public class playerJump : MonoBehaviour
         if (fillAmount >= 0.75)
         {
             _jumpMultiplier = hudManager.instance.maxSecondBar;
-            Debug.Log("MaxSecondBar");
             return; //Stops the flow
         }
         else if (fillAmount >= 0.625)
         {
             _jumpMultiplier = hudManager.instance.halfSecondBar;
-            Debug.Log("HalfSecondBar");
             return; //Stops the flow
         }
         FirstShoe(fillAmount); //if there is no return jumps to the next function
@@ -333,13 +329,11 @@ public class playerJump : MonoBehaviour
         if (fillAmount >= 0.5)
         {
             _jumpMultiplier = hudManager.instance.maxFirstBar;
-            Debug.Log("MaxFirstBar");
             return; //Stops the flow
         }
         else if (fillAmount >= 0.375)
         {
             _jumpMultiplier = hudManager.instance.halfFirstBar;
-            Debug.Log("HalfFirstBar");
             return; //Stops the flow
         }
         BaseShoe(fillAmount); //if there is no return jumps to the next function
@@ -351,13 +345,11 @@ public class playerJump : MonoBehaviour
         if (fillAmount >= 0.25)
         {
             _jumpMultiplier = hudManager.instance.maxBaseBar;
-            Debug.Log("MaxBaseBar");
             return; //Stops the flow
         }
         else if (fillAmount >= 0.125)
         {
             _jumpMultiplier = hudManager.instance.halfBaseBar;
-            Debug.Log("HalfBaseBar");
             return; //Stops the flow
         }
     }

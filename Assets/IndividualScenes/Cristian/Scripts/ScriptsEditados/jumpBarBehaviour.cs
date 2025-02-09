@@ -21,9 +21,9 @@ public class jumpBarBehaviour : MonoBehaviour
     public Image firstBarImage;
     public Image secondBarImage;
     public Image thirdBarImage;
-    private bool _isBaseFilling = false; // Bandera para controlar el llenado
-    private float holdTime = 0f; // Temporizador para contar el tiempo que se mantiene presionado
-    private float requiredHoldTime = 0.3f; // Tiempo requerido antes de comenzar el llenado
+    private bool _isBaseFilling = false;
+    private float holdTime = 0f; //Temporizador para contar el tiempo que se mantiene presionado
+    private float requiredHoldTime = 0.3f; //Tiempo requerido antes de comenzar el llenado
     public playerJuice juice;
 
     [Header("Trameo de salto base")]
@@ -103,20 +103,20 @@ public class jumpBarBehaviour : MonoBehaviour
                     }
                     
                 }
-                baseBarImage.fillAmount += 3f * Time.deltaTime; // Rellenado gradual
+                baseBarImage.fillAmount += 3f * Time.deltaTime; //Rellenado gradual
                 //FMODAudioManager.instance.PlayChargedJump();
             }
-            // Solo comienza a llenar la barra base si ha pasado el tiempo requerido
+            //Solo comienza a llenar la barra base si ha pasado el tiempo requerido
             if (baseBarImage.fillAmount >= 1f && firstBarImage.fillAmount < 1f)        
             {
                 firstBarImage.fillAmount += 3f * Time.deltaTime;
             }
-            // Solo comienza a llenar la primera barra si las segunda está llena
+            //Solo comienza a llenar la primera barra si las segunda está llena
             if (firstBarImage.fillAmount >= 1f && secondBarImage.fillAmount < 1f)
             {
                 secondBarImage.fillAmount += 3f * Time.deltaTime;
             }
-            // Solo comienza a llenar la primera barra si las segunda está llena
+            //Solo comienza a llenar la primera barra si las segunda está llena
             if (secondBarImage.fillAmount >= 1f && thirdBarImage.fillAmount < 1f)
             {
                 thirdBarImage.fillAmount += 3f * Time.deltaTime;
@@ -129,18 +129,18 @@ public class jumpBarBehaviour : MonoBehaviour
     {
         if (context.started)
         {
-            _isBaseFilling = true; // Activa el temporizador de relleno
-            holdTime = 0f; // Reinicia el temporizador al presionar            
+            _isBaseFilling = true;
+            holdTime = 0f; //Reinicia el temporizador al presionar            
 
         }
         if (context.canceled)
         {
-            _isBaseFilling = false; // Detiene el relleno y reinicia
+            _isBaseFilling = false; //Detiene el relleno y reinicia
             baseBarImage.fillAmount = 0f;
             firstBarImage.fillAmount = 0f;
             secondBarImage.fillAmount = 0f;
             thirdBarImage.fillAmount = 0f;
-            holdTime = 0f; // Reinicia el temporizador al soltar
+            holdTime = 0f; //Reinicia el temporizador al soltar
             baseBarImageBG.GetComponent<Image>().enabled = false;
             firstBarImageBG.GetComponent<Image>().enabled = false;
             secondBarImageBG.GetComponent<Image>().enabled = false;
