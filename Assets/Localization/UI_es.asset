@@ -47,8 +47,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8343600754126848
-    m_Localized: "\xBFseguro que quieres empezar una nueva partida ? \\n\\n\nel progreso
-      actual se sobreescribe"
+    m_Localized: 'seguro que quieres empezar una nueva partida ? \n\n
+
+      el progreso
+      actual se sobreescribe'
     m_Metadata:
       m_Items: []
   - m_Id: 10110082328621056

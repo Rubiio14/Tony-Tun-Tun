@@ -21,6 +21,7 @@ public class HubManager : MonoBehaviour
     private InputAction _submit;
     private InputAction _cancel;
 
+
     private bool _isOnPlatform;
 
     //Rotation
@@ -67,7 +68,7 @@ public class HubManager : MonoBehaviour
 
     void OnEnable()
     {
-        EnableInput();
+        StartCoroutine(EnableInputAfterDelay(_secondsToEnableInput));
     }
 
     void OnDisable()
@@ -281,7 +282,7 @@ public class HubManager : MonoBehaviour
     public void ReturnControlsToPlayer()
     {
         _playerInput.uiInputModule.DeactivateModule();
-        EnableInput();
+        StartCoroutine(EnableInputAfterDelay(_secondsToEnableInput));
     }
 
     public void MarkAsPlatformArrival()
