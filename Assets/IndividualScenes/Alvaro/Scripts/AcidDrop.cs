@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class AcidDrop : MonoBehaviour
@@ -9,18 +11,30 @@ public class AcidDrop : MonoBehaviour
     public Vector3 Direction {  get; set; }
     public float Speed { get; set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
         dropRigidbody = GetComponent<Rigidbody2D>();
         dropRigidbody.linearVelocity = Direction * Speed * Time.deltaTime;
     }
 
+    private void OnDisable()
+    {
+        mesh.SetActive(true);
+        particles.SetActive(false);
+        dropRigidbody.linearVelocity = Direction * 0;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        dropRigidbody.linearVelocity = Direction * 0;
+        StartCoroutine(DisableAfterDelay());
         mesh.SetActive(false);
         particles.SetActive(true);
         FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.AcidLeak, this.gameObject.transform.position);
+    }
+
+    private IEnumerator DisableAfterDelay()
+    {
+        yield return new WaitForSeconds(.1f);
+        gameObject.SetActive(false);
     }
 }
