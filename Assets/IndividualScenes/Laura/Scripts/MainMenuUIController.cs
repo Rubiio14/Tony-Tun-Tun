@@ -84,7 +84,10 @@ public class MainMenuUIController : MonoBehaviour
     public void Quit()
     {
         FMODAudioManager.instance.PlayOneShot(FMODEvents.instance.confirm);
-        UIManager.Instance.SaveAndQuit();
+        if (SaveGameManager.HUBVisitedInCurrentSession)
+        {
+            UIManager.Instance.SaveAndQuit();
+        }
     }
 
 }
