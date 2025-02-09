@@ -19,7 +19,7 @@ public class ConfirmationController : MonoBehaviour, IDeselectHandler, ISubmitHa
 
     public void OnDisable()
     {
-        if (PreviousSelected)
+        if (PreviousSelected && EventSystem.current)
         {
             EventSystem.current.SetSelectedGameObject(PreviousSelected);
         }

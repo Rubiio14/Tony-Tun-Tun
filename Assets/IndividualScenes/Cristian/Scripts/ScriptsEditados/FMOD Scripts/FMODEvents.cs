@@ -45,10 +45,13 @@ public class FMODEvents : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogError("Más de 1 AudioManager en la escena");
+            Destroy(this);
         }
-        instance = this;
+        else
+        {
+            instance = this;
+        }
     }
 }

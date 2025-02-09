@@ -23,6 +23,7 @@ public class SaveGameManager : MonoBehaviour
 
     public int GetTotalPickedCarrots()
     {
+        //Not the best to do it each time
         int totalNumberOfCarrots = 0;
         foreach (SessionLevel level in SessionData.SessionLevels)
         {

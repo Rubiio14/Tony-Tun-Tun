@@ -1,13 +1,10 @@
 using FMODUnity;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class HubManager : MonoBehaviour
 {
@@ -48,8 +45,9 @@ public class HubManager : MonoBehaviour
     [SerializeField] private GameObject _enemyCinematic;
     [SerializeField] private float _enemyWalkingDuration;
 
+    [SerializeField] private float _secondsToEnableInput;
+
     private Dictionary<int, LevelModelSwitcher> _switchers = new Dictionary<int, LevelModelSwitcher>();
-    
 
     public void Awake()
     {
@@ -85,9 +83,9 @@ public class HubManager : MonoBehaviour
         _cancel.performed += Cancel;
     }
     
-    public IEnumerator EnableInputAfterDelay()
+    public IEnumerator EnableInputAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(_enemyWalkingDuration);
+        yield return new WaitForSeconds(delay);
         EnableInput();
     }
     
@@ -105,7 +103,7 @@ public class HubManager : MonoBehaviour
         {
             _enemyCinematic.SetActive(true);
             DisableInput();
-            StartCoroutine(EnableInputAfterDelay());
+            StartCoroutine(EnableInputAfterDelay(_enemyWalkingDuration));
         }
         transform.position = SaveGameManager.Instance.SessionData.SessionLevels[SaveGameManager.Instance.SessionData.CurrentLevelIndex].Position;
         _isOnPlatform = true;
@@ -199,7 +197,7 @@ public class HubManager : MonoBehaviour
                     if (!currentLevel.IsLocked)
                     {
                         FMODAudioManager.instance.StopMusic();
-                        StartCoroutine(LoadLevel(currentLevel));
+                        LoadLevel(currentLevel);
                     }
                     else
                     {
@@ -257,12 +255,14 @@ public class HubManager : MonoBehaviour
         return level.SessionCarrots.Where(carrot => carrot.IsPicked).Count();
     }
 
-    private IEnumerator LoadLevel(SessionLevel level)
+    private void LoadLevel(SessionLevel level)
     {
         _animationController.Play("IdleB");
         FMODAudioManager.instance.PlayOneShot(_levelSelectionAudio);
+        //Just in case, scene does not load by any reason, do not restrict the player.
+        StartCoroutine(EnableInputAfterDelay(_secondsToEnableInput));
         DisableInput();
-        yield return StartCoroutine(UIManager.Instance.LoadScene(level.SceneName));
+        StartCoroutine(UIManager.Instance.LoadScene(level.SceneName));
     }
 
     private void SelectLockedLevel()

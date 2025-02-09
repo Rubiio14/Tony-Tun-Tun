@@ -23,10 +23,7 @@ public class UIManager : MonoBehaviour
 
     //Confirmation
     [SerializeField] private ConfirmationController _confirmation;
-    
-    //Scene
-    [SerializeField] private float _delayForSceneChange;
-
+   
     //Localization
     public static Locale[] AvailableLocales { get; private set; }
     public StringTable UITextTable { get; private set; }
@@ -48,8 +45,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private string _keyboardControlScheme = "Keyboard&Mouse";
     [SerializeField] private string _gamepadControlScheme = "Gamepad";
 
-    //BlackFade 
-    [SerializeField] private Image _fadeImage;
+    //Scene change
+    [Header("Delay will be added after fade duration")]
+    [SerializeField] private float _delayForSceneChange;
+    [SerializeField] private CanvasGroup _loadingScreen;
     [SerializeField] private float _fadeDuration = 1f;
     [SerializeField] private float _fadeIncrement;
 
@@ -85,7 +84,7 @@ public class UIManager : MonoBehaviour
         //Localization initialization
         LoadLocale();
 
-        //Volume initialization
+        //Volume and music initialization
         FMODAudioManager.instance.LoadVolumes();
 
         UITextTable = LocalizationSettings.StringDatabase.GetTable(UITableName);
@@ -134,7 +133,7 @@ public class UIManager : MonoBehaviour
     {
         //meter fundido a negro
         StartCoroutine(FadeToBlack());
-        yield return new WaitForSeconds(_delayForSceneChange * 4);
+        yield return new WaitForSeconds(_fadeDuration + _delayForSceneChange);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -236,12 +235,10 @@ public class UIManager : MonoBehaviour
     private IEnumerator FadeToBlack()
     {
         float elapsedTime = 0f;
-        Color temporalColor = _fadeImage.color;
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += _fadeIncrement;
-            temporalColor.a = Mathf.Clamp01(elapsedTime / _fadeDuration);
-            _fadeImage.color = temporalColor;
+            _loadingScreen.alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
             yield return null;
         }
         Time.timeScale = 1f;
