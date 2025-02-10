@@ -27,9 +27,6 @@ public class Checkpoints : MonoBehaviour
         {
             checkpoint_Manager.ChangeCheckpointIndex(transform);
 
-            // SFX
-            // VFX
-
             if (!checkpointPainted.activeSelf)
             {
                 spray.SetActive(true);
@@ -42,15 +39,9 @@ public class Checkpoints : MonoBehaviour
                 {
                     StartCoroutine(WaitForAnimationToEnd(sprayAnimator, spray));
                 }
-                else
-                {
-                    Debug.LogWarning("El objeto 'spray' no tiene un componente Animator.");
-                }
 
                 checkpointPainted.SetActive(true);
                 checkpointNotPainted.SetActive(false);
-
-                Debug.Log("Checkpoint activado.");
             }
         }
     }

@@ -31,32 +31,20 @@ public class Checkpoint_Manager : MonoBehaviour
     {
         int newCheckPointIndex = checkpoints_List.IndexOf(checkPoint);
 
-        if (newCheckPointIndex != -1 && newCheckPointIndex > currentIndexCheckpoint)
+        currentIndexCheckpoint = newCheckPointIndex;
+        spawnPoint.position = checkpoints_List[currentIndexCheckpoint].position;
+
+        if (currentIndexCheckpoint == 1)
         {
-            currentIndexCheckpoint = newCheckPointIndex;
-            spawnPoint.position = checkpoints_List[currentIndexCheckpoint].position;
-
-            Debug.Log($"Checkpoint actualizado a índice {currentIndexCheckpoint}, posición del spawn: {spawnPoint.position}");
-
-            if (currentIndexCheckpoint == 1)
-            {
-                hudManager.staminaRecharge += ch1updateJump;
-                Debug.Log("Tony tiene esta stamina actualmente " + hudManager.staminaRecharge);
-            }
-            else if (currentIndexCheckpoint == 2)
-            {
-                hudManager.staminaRecharge += ch2updateJump;
-                Debug.Log("Tony tiene esta stamina actualmente " + hudManager.staminaRecharge);
-            }
-            else if (currentIndexCheckpoint == 3)
-            {
-                hudManager.staminaRecharge += ch3updateJump;
-                Debug.Log("Tony tiene esta stamina actualmente " + hudManager.staminaRecharge);
-            }
+            hudManager.staminaRecharge += ch1updateJump;
         }
-        else
+        else if (currentIndexCheckpoint == 2)
         {
-            Debug.LogWarning("Checkpoint no encontrado o ya está activado.");
+            hudManager.staminaRecharge += ch2updateJump;
+        }
+        else if (currentIndexCheckpoint == 3)
+        {
+            hudManager.staminaRecharge += ch3updateJump;
         }
     }
 
@@ -65,7 +53,6 @@ public class Checkpoint_Manager : MonoBehaviour
         if (DeathAndRespawnManager.instance.prosesingDeath)
         {
             tony.transform.position = spawnPoint.position;
-            Debug.Log("Jugador respawneado en: " + spawnPoint.position);
         }
     }
 }
