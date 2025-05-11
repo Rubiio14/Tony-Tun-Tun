@@ -62,7 +62,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.606
+    m_Value: 0.133
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.8621258, y: 0.8834818, z: 1, w: -0.0723328}
+    m_Value: {x: 0.8621258, y: 0.8834818, z: 1, w: -0.060248207}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.9767206, z: 0.80323577, w: 0.19378456}
